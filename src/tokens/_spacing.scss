@@ -1,0 +1,13 @@
+:root {
+  --space-base: 4px;
+  --space-1x: var(--space-base);
+  --space-2x: calc(var(--space-base) * 2);
+  --space-3x: calc(var(--space-base) * 3);
+  --space-4x: calc(var(--space-base) * 4);
+  --space-8x: calc(var(--space-base) * 8);
+  --space-16x: calc(var(--space-base) * 16);
+  --space-32x: calc(var(--space-base) * 32);
+  --space-48x: calc(var(--space-base) * 48);
+  --space-64x: calc(var(--space-base) * 64);
+  --max-width: 1440px;
+}

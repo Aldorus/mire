@@ -1,0 +1,19 @@
+:root {
+  --shortAnimation: .3s;
+  --longAnimation: .7s;
+}
+
+@mixin opacityAnimation($animationDuration: var(--shortAnimation), $animationDelay: 0) {
+  @keyframes opacityEffect {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  animation: opacityEffect;
+  animation-fill-mode: both;
+  animation-duration: $animationDuration;
+  animation-delay: $animationDelay;
+}

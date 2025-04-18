@@ -1,0 +1,15 @@
+.Menu {
+  font-family: var(--font-seconday);
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: var(--space-16x) 216px 0 auto;
+
+  ol {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    gap: var(--space-8x);
+  }
+}

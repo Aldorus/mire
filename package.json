@@ -1,0 +1,40 @@
+{
+  "name": "mire",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc -b && vite build",
+    "lint": "eslint .",
+    "preview": "vite preview",
+    "graph:generate": "NODE_TLS_REJECT_UNAUTHORIZED=0 graphql-codegen --config .graphqlrc.yml"
+  },
+  "dependencies": {
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "graphql": "^16.10.0",
+    "@apollo/client": "^3.13.8",
+    "react-router-dom": "^7.5.1",
+    "react-markdown": "^10.1.0",
+    "rehype-raw": "^7.0.0",
+    "@contentful/rich-text-react-renderer": "^16.0.1",
+    "classnames": "^2.5.1"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.22.0",
+    "@types/react": "^19.0.10",
+    "@types/react-dom": "^19.0.4",
+    "@vitejs/plugin-react-swc": "^3.8.0",
+    "eslint": "^9.22.0",
+    "eslint-plugin-react-hooks": "^5.2.0",
+    "eslint-plugin-react-refresh": "^0.4.19",
+    "globals": "^16.0.0",
+    "typescript": "~5.7.2",
+    "typescript-eslint": "^8.26.1",
+    "vite": "^6.3.1",
+    "sass": "^1.86.3",
+    "@graphql-cli/codegen": "3.0.4",
+    "@graphql-codegen/typescript-resolvers": "^4.5.0"
+  }
+}

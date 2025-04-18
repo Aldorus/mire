@@ -1,0 +1,14 @@
+.SkillList {
+  display: flex;
+  gap: var(--space-2x);
+
+  .item {
+    font-family: var(--font-seconday);
+    font-size: 0.66rem;
+    border-radius: 20px;
+    border: 1px solid #000000;
+    padding: var(--space-2x) var(--space-3x);
+    text-transform: uppercase;
+  }
+
+}

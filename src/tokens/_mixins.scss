@@ -1,0 +1,20 @@
+@mixin asideSpacer {
+  --color-space: var(--color-primary);
+
+  &::before {
+    content: "";
+    position: absolute;
+    left: var(--space-4x);
+    top: 0;
+    bottom: 0;
+    background: var(--color-space);
+    width: 1px;
+  }
+}
+
+@mixin pageLayout {
+  position: relative;
+  display: grid;
+  grid-gap: var(--space-4x);
+  padding: 0 var(--space-4x);
+}

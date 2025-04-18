@@ -1,0 +1,53 @@
+@use "../../tokens/typography";
+
+.Markdown {
+  display: grid;
+  grid-gap: var(--space-4x);
+
+  h1 {
+    @include typography.heading1;
+  }
+
+  h2 {
+    @include typography.heading2;
+  }
+
+  h3 {
+    @include typography.heading3;
+  }
+
+  h4 {
+    @include typography.heading4;
+  }
+
+  p {
+    font-family: var(--font-primary);
+  }
+
+  a {
+    @include typography.link;
+    @include typography.linkHover;
+  }
+
+  em {
+    @include typography.em;
+  }
+
+  strong {
+    @include typography.strong;
+  }
+
+  img {
+    width: 100%;
+  }
+
+  &__figure {
+    width: 70%;
+    margin: auto;
+
+    figcaption {
+      @include typography.em;
+    }
+  }
+
+}

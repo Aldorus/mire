@@ -1,0 +1,19 @@
+:root {
+  line-height: 1;
+  font-weight: 400;
+  font-size: 18px;
+  font-family: var(--font-primary);
+
+  color-scheme: light dark;
+  color: var(--text-color);
+  background: radial-gradient(114.6% 114.6% at 32.08% 15.87%, #F1F5F8 0%, #F1F5F8 50.34%, #F6D7B7 100%);
+
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+
+  body{ padding: 0}
+}

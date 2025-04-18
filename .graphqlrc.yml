@@ -1,0 +1,15 @@
+schema: >-
+  https://graphql.contentful.com/content/v1/spaces/bvolcybk2xx6/environments/master?access_token=h4BYfdi10dRMYuFHSJOFWD97-jzattUwAEvHYY7bGmo
+extensions:
+  codegen:
+    config:
+      nonOptionalTypename: true
+    generates:
+      src/models/graphql.ts:
+        plugins:
+          - typescript
+          - typescript-resolvers
+      src/models/schema.graphql:
+        plugins:
+          - schema-ast
+    overwrite: true
