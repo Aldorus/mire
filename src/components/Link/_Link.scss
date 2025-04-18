@@ -1,0 +1,8 @@
+@use "../../tokens/typography";
+
+.Link {
+  @include typography.link;
+  width: fit-content;
+
+
+}

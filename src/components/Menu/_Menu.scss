@@ -1,9 +1,8 @@
 .Menu {
   font-family: var(--font-seconday);
   position: absolute;
-  top: 0;
-  right: 0;
-  margin: var(--space-16x) 216px 0 auto;
+  top: var(--space-16x);
+  right: var(--space-16x);
 
   ol {
     list-style: none;
@@ -11,5 +10,6 @@
     margin: 0;
     display: flex;
     gap: var(--space-8x);
+
   }
 }

@@ -1,5 +1,5 @@
-schema: >-
-  https://graphql.contentful.com/content/v1/spaces/bvolcybk2xx6/environments/master?access_token=h4BYfdi10dRMYuFHSJOFWD97-jzattUwAEvHYY7bGmo
+schema: 'https://graphql.contentful.com/content/v1/spaces/bvolcybk2xx6/environments/master?access_token=h4BYfdi10dRMYuFHSJOFWD97-jzattUwAEvHYY7bGmo'
+documents: './src/queries/**/*.graphql'
 extensions:
   codegen:
     config:
@@ -9,7 +9,9 @@ extensions:
         plugins:
           - typescript
           - typescript-resolvers
-      src/models/schema.graphql:
+          - typescript-operations
+          - typescript-react-apollo
+      ./schema.graphql:
         plugins:
           - schema-ast
     overwrite: true

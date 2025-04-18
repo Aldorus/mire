@@ -4,11 +4,13 @@ import {HTMLAttributes} from "react";
 import classnames from "classnames";
 
 
-type MarkdownProps = {content: Parameters<typeof documentToReactComponents>[0], className?: HTMLAttributes<HTMLElement>['className']};
+type MarkdownProps = {
+  content?: Parameters<typeof documentToReactComponents>[0],
+  className?: HTMLAttributes<HTMLElement>['className']
+};
 export const RichText = ({
                            content,
-  className
-                         }: MarkdownProps) => {
-  return <div className={classnames(['Markdown',className])}>{documentToReactComponents(content)}</div>;
-};
+                           className
+                         }: MarkdownProps) => content && <div
+  className={classnames(['Markdown', className])}>{documentToReactComponents(content, {preserveWhitespace: true})}</div>;
 RichText.displayName = "Markdown";

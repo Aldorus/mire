@@ -4,9 +4,9 @@ import Homepage from "./pages/Homepage.tsx";
 import Project from "./pages/Project.tsx";
 import Menu from "./components/Menu/Menu.tsx";
 
-const App = () => <BrowserRouter>
+const App = () => <BrowserRouter basename="/mire">
   <Menu/>
-  <Routes>
+  <Routes >
     <Route path="/" element={<Homepage />}></Route>
     <Route path="/projects/:slug" element={<Project />}></Route>
   </Routes>

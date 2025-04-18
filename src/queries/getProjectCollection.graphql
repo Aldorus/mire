@@ -1,0 +1,11 @@
+query GetProjectCollection {
+  projectCollection {
+    items {
+      _id
+      title
+      asset {
+        url
+      }
+    }
+  }
+}

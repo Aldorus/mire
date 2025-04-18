@@ -1,0 +1,14 @@
+query GetTextQuery($id: String!) {
+  text(id: $id) {
+    content {
+      json
+    }
+    skillsCollection {
+      items {
+        _id
+        title
+      }
+    }
+
+  }
+}

@@ -1,0 +1,20 @@
+query GetCaseStudyCollection {
+  caseStudyCollection {
+    items {
+      _id
+      text {
+        json
+      }
+      title
+      assets {
+        fileName
+      }
+      skillsCollection {
+        items {
+          _id
+          title
+        }
+      }
+    }
+  }
+}

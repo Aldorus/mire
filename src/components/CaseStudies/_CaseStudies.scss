@@ -1,0 +1,22 @@
+.CaseStudies {
+  .CaseStudies__item {
+    display: grid;
+    grid-template-columns: 420px 1fr;
+    gap: var(--space-4x);
+
+    .asset {
+      aspect-ratio: 16 / 9;
+      width: 100%;
+      background: grey;
+    }
+  }
+
+  .CaseStudies__title {
+    margin-bottom: 150px;
+    font-size: 1.5rem;
+  }
+
+  .CaseStudies__item__title {
+    margin-bottom: var(--space-6x);
+  }
+}

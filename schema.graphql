@@ -92,7 +92,9 @@ input AssetFilter {
 }
 
 type AssetLinkingCollections {
+  caseStudyCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): CaseStudyCollection
   entryCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): EntryCollection
+  projectCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): ProjectCollection
 }
 
 enum AssetOrder {
@@ -116,6 +118,134 @@ enum AssetOrder {
   url_DESC
   width_ASC
   width_DESC
+}
+
+"""
+[See type definition](https://app.contentful.com/spaces/bvolcybk2xx6/content_types/caseStudy)
+"""
+type CaseStudy implements Entry & _Node {
+  _id: ID!
+  assets(locale: String, preview: Boolean): Asset
+  client(locale: String): String
+  contentfulMetadata: ContentfulMetadata!
+  linkedFrom(allowedLocales: [String]): CaseStudyLinkingCollections
+  skillsCollection(limit: Int = 100, locale: String, order: [CaseStudySkillsCollectionOrder], preview: Boolean, skip: Int = 0, where: SkillFilter): CaseStudySkillsCollection
+  sys: Sys!
+  text(locale: String): CaseStudyText
+  title(locale: String): String
+}
+
+type CaseStudyCollection {
+  items: [CaseStudy]!
+  limit: Int!
+  skip: Int!
+  total: Int!
+}
+
+input CaseStudyFilter {
+  AND: [CaseStudyFilter]
+  OR: [CaseStudyFilter]
+  assets_exists: Boolean
+  client: String
+  client_contains: String
+  client_exists: Boolean
+  client_in: [String]
+  client_not: String
+  client_not_contains: String
+  client_not_in: [String]
+  contentfulMetadata: ContentfulMetadataFilter
+  skills: cfSkillNestedFilter
+  skillsCollection_exists: Boolean
+  sys: SysFilter
+  text_contains: String
+  text_exists: Boolean
+  text_not_contains: String
+  title: String
+  title_contains: String
+  title_exists: Boolean
+  title_in: [String]
+  title_not: String
+  title_not_contains: String
+  title_not_in: [String]
+}
+
+type CaseStudyLinkingCollections {
+  entryCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): EntryCollection
+}
+
+enum CaseStudyOrder {
+  client_ASC
+  client_DESC
+  sys_firstPublishedAt_ASC
+  sys_firstPublishedAt_DESC
+  sys_id_ASC
+  sys_id_DESC
+  sys_publishedAt_ASC
+  sys_publishedAt_DESC
+  sys_publishedVersion_ASC
+  sys_publishedVersion_DESC
+  title_ASC
+  title_DESC
+}
+
+type CaseStudySkillsCollection {
+  items: [Skill]!
+  limit: Int!
+  skip: Int!
+  total: Int!
+}
+
+enum CaseStudySkillsCollectionOrder {
+  sys_firstPublishedAt_ASC
+  sys_firstPublishedAt_DESC
+  sys_id_ASC
+  sys_id_DESC
+  sys_publishedAt_ASC
+  sys_publishedAt_DESC
+  sys_publishedVersion_ASC
+  sys_publishedVersion_DESC
+  title_ASC
+  title_DESC
+}
+
+type CaseStudyText {
+  json: JSON!
+  links: CaseStudyTextLinks!
+}
+
+type CaseStudyTextAssets {
+  block: [Asset]!
+  hyperlink: [Asset]!
+}
+
+type CaseStudyTextEntries {
+  block: [Entry]!
+  hyperlink: [Entry]!
+  inline: [Entry]!
+}
+
+type CaseStudyTextLinks {
+  assets: CaseStudyTextAssets!
+  entries: CaseStudyTextEntries!
+  resources: CaseStudyTextResources!
+}
+
+type CaseStudyTextResources {
+  block: [CaseStudyTextResourcesBlock!]!
+  hyperlink: [CaseStudyTextResourcesHyperlink!]!
+  inline: [CaseStudyTextResourcesInline!]!
+}
+
+type CaseStudyTextResourcesBlock implements ResourceLink {
+  sys: ResourceSys!
+}
+
+type CaseStudyTextResourcesHyperlink implements ResourceLink {
+  sys: ResourceSys!
+}
+
+type CaseStudyTextResourcesInline implements ResourceLink {
+  sys: ResourceSys!
 }
 
 type ContentfulMetadata {
@@ -342,11 +472,10 @@ scalar JSON
 """
 type Project implements Entry & _Node {
   _id: ID!
-  client(locale: String): String
+  asset(locale: String, preview: Boolean): Asset
   contentfulMetadata: ContentfulMetadata!
   linkedFrom(allowedLocales: [String]): ProjectLinkingCollections
   sys: Sys!
-  text(locale: String): ProjectText
   title(locale: String): String
 }
 
@@ -360,18 +489,9 @@ type ProjectCollection {
 input ProjectFilter {
   AND: [ProjectFilter]
   OR: [ProjectFilter]
-  client: String
-  client_contains: String
-  client_exists: Boolean
-  client_in: [String]
-  client_not: String
-  client_not_contains: String
-  client_not_in: [String]
+  asset_exists: Boolean
   contentfulMetadata: ContentfulMetadataFilter
   sys: SysFilter
-  text_contains: String
-  text_exists: Boolean
-  text_not_contains: String
   title: String
   title_contains: String
   title_exists: Boolean
@@ -386,8 +506,6 @@ type ProjectLinkingCollections {
 }
 
 enum ProjectOrder {
-  client_ASC
-  client_DESC
   sys_firstPublishedAt_ASC
   sys_firstPublishedAt_DESC
   sys_id_ASC
@@ -400,46 +518,6 @@ enum ProjectOrder {
   title_DESC
 }
 
-type ProjectText {
-  json: JSON!
-  links: ProjectTextLinks!
-}
-
-type ProjectTextAssets {
-  block: [Asset]!
-  hyperlink: [Asset]!
-}
-
-type ProjectTextEntries {
-  block: [Entry]!
-  hyperlink: [Entry]!
-  inline: [Entry]!
-}
-
-type ProjectTextLinks {
-  assets: ProjectTextAssets!
-  entries: ProjectTextEntries!
-  resources: ProjectTextResources!
-}
-
-type ProjectTextResources {
-  block: [ProjectTextResourcesBlock!]!
-  hyperlink: [ProjectTextResourcesHyperlink!]!
-  inline: [ProjectTextResourcesInline!]!
-}
-
-type ProjectTextResourcesBlock implements ResourceLink {
-  sys: ResourceSys!
-}
-
-type ProjectTextResourcesHyperlink implements ResourceLink {
-  sys: ResourceSys!
-}
-
-type ProjectTextResourcesInline implements ResourceLink {
-  sys: ResourceSys!
-}
-
 """
 The 'Quality' type represents quality as whole numeric values between `1` and `100`.
 """
@@ -450,6 +528,8 @@ type Query {
   _nodes(ids: [ID!]!, locale: String, preview: Boolean): [_Node]!
   asset(id: String!, locale: String, preview: Boolean): Asset
   assetCollection(limit: Int = 100, locale: String, order: [AssetOrder], preview: Boolean, skip: Int = 0, where: AssetFilter): AssetCollection
+  caseStudy(id: String!, locale: String, preview: Boolean): CaseStudy
+  caseStudyCollection(limit: Int = 100, locale: String, order: [CaseStudyOrder], preview: Boolean, skip: Int = 0, where: CaseStudyFilter): CaseStudyCollection
   entryCollection(limit: Int = 100, locale: String, order: [EntryOrder], preview: Boolean, skip: Int = 0, where: EntryFilter): EntryCollection
   project(id: String!, locale: String, preview: Boolean): Project
   projectCollection(limit: Int = 100, locale: String, order: [ProjectOrder], preview: Boolean, skip: Int = 0, where: ProjectFilter): ProjectCollection
@@ -501,8 +581,24 @@ input SkillFilter {
 }
 
 type SkillLinkingCollections {
+  caseStudyCollection(limit: Int = 100, locale: String, order: [SkillLinkingCollectionsCaseStudyCollectionOrder], preview: Boolean, skip: Int = 0): CaseStudyCollection
   entryCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): EntryCollection
   textCollection(limit: Int = 100, locale: String, order: [SkillLinkingCollectionsTextCollectionOrder], preview: Boolean, skip: Int = 0): TextCollection
+}
+
+enum SkillLinkingCollectionsCaseStudyCollectionOrder {
+  client_ASC
+  client_DESC
+  sys_firstPublishedAt_ASC
+  sys_firstPublishedAt_DESC
+  sys_id_ASC
+  sys_id_DESC
+  sys_publishedAt_ASC
+  sys_publishedAt_DESC
+  sys_publishedVersion_ASC
+  sys_publishedVersion_DESC
+  title_ASC
+  title_DESC
 }
 
 enum SkillLinkingCollectionsTextCollectionOrder {
