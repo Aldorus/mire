@@ -1,13 +1,14 @@
 import './_CaseStudies.scss';
 import {useGetCaseStudyCollectionSuspenseQuery} from "../../models/graphql.ts";
 import {compact, flow, map, sortBy} from "lodash/fp";
-import SkillList from "../Skill/SkillList.tsx";
 import {RichText} from "../Typography/RichText.tsx";
 import Divider from "../Divider/Divider.tsx";
 import ArrowBottom from "../../assets/ArrowBottom.svg";
 import {Link} from "../Link/Link.tsx";
 import {generatePath} from "react-router-dom";
 import arrowLeft from "../../assets/ArrowLeft.svg";
+import {ROUTE} from "../../App.tsx";
+import TagList from "../Tags/TagList.tsx";
 
 type CaseStudy = NonNullable<NonNullable<NonNullable<ReturnType<typeof useGetCaseStudyCollectionSuspenseQuery>['data']>['caseStudyCollection']>['items'][number]>;
 const CaseStudies = () => {
@@ -20,9 +21,9 @@ const CaseStudies = () => {
           <p className="CaseStudies__item__date">{item.date}</p>
           <RichText content={item.text?.json} className="CaseStudies__item__text"/>
           <Divider/>
-          <SkillList skills={item.skillsCollection?.items} className="CaseStudies__item__skills"/>
+          <TagList tags={item.tags} className="CaseStudies__item__skills"/>
           <Divider/>
-          <Link to={generatePath('/case/:caseId', {caseId: item._id})} className="CaseStudies__item__link">View case
+          <Link to={generatePath(ROUTE.CASE_STUDY, {slug: item.slug})} className="CaseStudies__item__link">View case
             study<img src={arrowLeft}/></Link>
         </div>
         <div className="asset">

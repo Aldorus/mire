@@ -1,7 +1,12 @@
 import "./_Divider.scss";
+import {HTMLAttributes} from "react";
+import classnames from "classnames";
 
-const Divider = () => {
-  return <hr className="Divider" />
+type Props = {
+  className?: HTMLAttributes<HTMLElement>['className'];
+}
+const Divider = ({className}: Props) => {
+  return <hr className={classnames([className, "Divider"])}/>
 }
 
 export default Divider;

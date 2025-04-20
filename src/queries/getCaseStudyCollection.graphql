@@ -2,6 +2,7 @@ query GetCaseStudyCollection {
   caseStudyCollection {
     items {
       _id
+      slug
       text {
         json
       }
@@ -11,12 +12,7 @@ query GetCaseStudyCollection {
       }
       order
       date
-      skillsCollection {
-        items {
-          _id
-          title
-        }
-      }
+      tags
     }
   }
 }

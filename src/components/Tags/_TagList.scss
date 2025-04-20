@@ -1,9 +1,9 @@
-.SkillList {
+.TagList {
   display: flex;
   gap: var(--space-2x);
   flex-wrap: wrap;
 
-  .SkillList__item {
+  .TagList__item {
     font-family: var(--font-secondary);
     font-size: 0.66rem;
     border-radius: 20px;

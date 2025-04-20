@@ -49,4 +49,10 @@
       @include typography.em;
     }
   }
+
+  blockquote {
+    font-size: 1.77rem;
+    font-style: italic;
+    margin: 0;
+  }
 }

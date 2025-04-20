@@ -1,5 +1,13 @@
+@use './tokens/breakpoints';
+
 #root {
   max-width: var(--max-width);
   margin: 0 auto;
+  padding: var(--space-8x) var(--space-16x) var(--space-16x) var(--space-16x);
   position: relative;
+
+  @media screen and (max-width: breakpoints.$breakpoint-sm) {
+    padding: var(--space-32x) var(--space-8x) var(--space-8x);
+  }
+
 }

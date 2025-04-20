@@ -1,33 +1,24 @@
 import "./_Homepage.scss";
 import {RichText} from "../components/Typography/RichText.tsx";
-import SkillList from "../components/Skill/SkillList.tsx";
 import Projects from "../components/Projects/Projects.tsx";
 import CaseStudies from "../components/CaseStudies/CaseStudies.tsx";
-import {useGetTextQuerySuspenseQuery} from "../models/graphql.ts";
-import {Link} from "../components/Link/Link.tsx";
+import {useGetHeaderSuspenseQuery} from "../models/graphql.ts";
+import Contact from "../components/Contact/Contact.tsx";
 
 
 const Homepage = () => {
-  const {data: aboutData}= useGetTextQuerySuspenseQuery({variables: {id:'12ANWp777vctus3SbZL6gM'}});
-  const {data: contactData}= useGetTextQuerySuspenseQuery({variables: {id:'3vxhVPirdQQnqb2wFEg68F'}});
+  const {data} = useGetHeaderSuspenseQuery();
   return <div className="Homepage">
     <section className="Homepage__top">
       <div className="about">
         <h2 className="Homepage__hi">👋 Hi! I’m Barbara Marche,</h2>
-        <RichText content={aboutData?.text?.content?.json}/>
-        <SkillList skills={aboutData?.text?.skillsCollection?.items ?? []}/>
+        <RichText content={data?.header?.title?.json}/>
+        <div className="Homepage__info">{data?.header?.info?.map(info => <div key={info}>{info}</div>)}</div>
       </div>
     </section>
     <CaseStudies/>
-    <Projects/>
-    <section className="Homepage__contact" id="contact">
-      <RichText content={contactData?.text?.content?.json}/>
-      <div className="Homepage__contact__links">
-        <Link to="mailto:barbara.mrch@gmail.com">Email</Link>
-        <Link to="https://www.linkedin.com/in/barbaramarche/" target="_blank">Linkedin</Link>
-        <Link to="https://www.behance.net/barbara-marche" target="_blank">Behance</Link>
-      </div>
-    </section>
+    <Projects className="Homepage__projects"/>
+    <Contact className="Homepage__contact"/>
   </div>
 }
 export default Homepage

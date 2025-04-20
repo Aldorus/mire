@@ -131,8 +131,9 @@ type CaseStudy implements Entry & _Node {
   date(locale: String): String
   linkedFrom(allowedLocales: [String]): CaseStudyLinkingCollections
   order(locale: String): Int
-  skillsCollection(limit: Int = 100, locale: String, order: [CaseStudySkillsCollectionOrder], preview: Boolean, skip: Int = 0, where: SkillFilter): CaseStudySkillsCollection
+  slug(locale: String): String
   sys: Sys!
+  tags(locale: String): [String]
   text(locale: String): CaseStudyText
   title(locale: String): String
 }
@@ -172,9 +173,18 @@ input CaseStudyFilter {
   order_lte: Int
   order_not: Int
   order_not_in: [Int]
-  skills: cfSkillNestedFilter
-  skillsCollection_exists: Boolean
+  slug: String
+  slug_contains: String
+  slug_exists: Boolean
+  slug_in: [String]
+  slug_not: String
+  slug_not_contains: String
+  slug_not_in: [String]
   sys: SysFilter
+  tags_contains_all: [String]
+  tags_contains_none: [String]
+  tags_contains_some: [String]
+  tags_exists: Boolean
   text_contains: String
   text_exists: Boolean
   text_not_contains: String
@@ -198,26 +208,8 @@ enum CaseStudyOrder {
   date_DESC
   order_ASC
   order_DESC
-  sys_firstPublishedAt_ASC
-  sys_firstPublishedAt_DESC
-  sys_id_ASC
-  sys_id_DESC
-  sys_publishedAt_ASC
-  sys_publishedAt_DESC
-  sys_publishedVersion_ASC
-  sys_publishedVersion_DESC
-  title_ASC
-  title_DESC
-}
-
-type CaseStudySkillsCollection {
-  items: [Skill]!
-  limit: Int!
-  skip: Int!
-  total: Int!
-}
-
-enum CaseStudySkillsCollectionOrder {
+  slug_ASC
+  slug_DESC
   sys_firstPublishedAt_ASC
   sys_firstPublishedAt_DESC
   sys_id_ASC
@@ -351,6 +343,199 @@ enum EntryOrder {
   sys_publishedAt_DESC
   sys_publishedVersion_ASC
   sys_publishedVersion_DESC
+}
+
+"""
+[See type definition](https://app.contentful.com/spaces/bvolcybk2xx6/content_types/experience)
+"""
+type Experience implements Entry & _Node {
+  _id: ID!
+  contentfulMetadata: ContentfulMetadata!
+  date(locale: String): String
+  linkedFrom(allowedLocales: [String]): ExperienceLinkingCollections
+  order(locale: String): Int
+  sys: Sys!
+  text(locale: String): ExperienceText
+}
+
+type ExperienceCollection {
+  items: [Experience]!
+  limit: Int!
+  skip: Int!
+  total: Int!
+}
+
+input ExperienceFilter {
+  AND: [ExperienceFilter]
+  OR: [ExperienceFilter]
+  contentfulMetadata: ContentfulMetadataFilter
+  date: String
+  date_contains: String
+  date_exists: Boolean
+  date_in: [String]
+  date_not: String
+  date_not_contains: String
+  date_not_in: [String]
+  order: Int
+  order_exists: Boolean
+  order_gt: Int
+  order_gte: Int
+  order_in: [Int]
+  order_lt: Int
+  order_lte: Int
+  order_not: Int
+  order_not_in: [Int]
+  sys: SysFilter
+  text_contains: String
+  text_exists: Boolean
+  text_not_contains: String
+}
+
+type ExperienceLinkingCollections {
+  entryCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): EntryCollection
+}
+
+enum ExperienceOrder {
+  date_ASC
+  date_DESC
+  order_ASC
+  order_DESC
+  sys_firstPublishedAt_ASC
+  sys_firstPublishedAt_DESC
+  sys_id_ASC
+  sys_id_DESC
+  sys_publishedAt_ASC
+  sys_publishedAt_DESC
+  sys_publishedVersion_ASC
+  sys_publishedVersion_DESC
+}
+
+type ExperienceText {
+  json: JSON!
+  links: ExperienceTextLinks!
+}
+
+type ExperienceTextAssets {
+  block: [Asset]!
+  hyperlink: [Asset]!
+}
+
+type ExperienceTextEntries {
+  block: [Entry]!
+  hyperlink: [Entry]!
+  inline: [Entry]!
+}
+
+type ExperienceTextLinks {
+  assets: ExperienceTextAssets!
+  entries: ExperienceTextEntries!
+  resources: ExperienceTextResources!
+}
+
+type ExperienceTextResources {
+  block: [ExperienceTextResourcesBlock!]!
+  hyperlink: [ExperienceTextResourcesHyperlink!]!
+  inline: [ExperienceTextResourcesInline!]!
+}
+
+type ExperienceTextResourcesBlock implements ResourceLink {
+  sys: ResourceSys!
+}
+
+type ExperienceTextResourcesHyperlink implements ResourceLink {
+  sys: ResourceSys!
+}
+
+type ExperienceTextResourcesInline implements ResourceLink {
+  sys: ResourceSys!
+}
+
+"""
+[See type definition](https://app.contentful.com/spaces/bvolcybk2xx6/content_types/header)
+"""
+type Header implements Entry & _Node {
+  _id: ID!
+  contentfulMetadata: ContentfulMetadata!
+  info(locale: String): [String]
+  linkedFrom(allowedLocales: [String]): HeaderLinkingCollections
+  sys: Sys!
+  title(locale: String): HeaderTitle
+}
+
+type HeaderCollection {
+  items: [Header]!
+  limit: Int!
+  skip: Int!
+  total: Int!
+}
+
+input HeaderFilter {
+  AND: [HeaderFilter]
+  OR: [HeaderFilter]
+  contentfulMetadata: ContentfulMetadataFilter
+  info_contains_all: [String]
+  info_contains_none: [String]
+  info_contains_some: [String]
+  info_exists: Boolean
+  sys: SysFilter
+  title_contains: String
+  title_exists: Boolean
+  title_not_contains: String
+}
+
+type HeaderLinkingCollections {
+  entryCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): EntryCollection
+}
+
+enum HeaderOrder {
+  sys_firstPublishedAt_ASC
+  sys_firstPublishedAt_DESC
+  sys_id_ASC
+  sys_id_DESC
+  sys_publishedAt_ASC
+  sys_publishedAt_DESC
+  sys_publishedVersion_ASC
+  sys_publishedVersion_DESC
+}
+
+type HeaderTitle {
+  json: JSON!
+  links: HeaderTitleLinks!
+}
+
+type HeaderTitleAssets {
+  block: [Asset]!
+  hyperlink: [Asset]!
+}
+
+type HeaderTitleEntries {
+  block: [Entry]!
+  hyperlink: [Entry]!
+  inline: [Entry]!
+}
+
+type HeaderTitleLinks {
+  assets: HeaderTitleAssets!
+  entries: HeaderTitleEntries!
+  resources: HeaderTitleResources!
+}
+
+type HeaderTitleResources {
+  block: [HeaderTitleResourcesBlock!]!
+  hyperlink: [HeaderTitleResourcesHyperlink!]!
+  inline: [HeaderTitleResourcesInline!]!
+}
+
+type HeaderTitleResourcesBlock implements ResourceLink {
+  sys: ResourceSys!
+}
+
+type HeaderTitleResourcesHyperlink implements ResourceLink {
+  sys: ResourceSys!
+}
+
+type HeaderTitleResourcesInline implements ResourceLink {
+  sys: ResourceSys!
 }
 
 """The 'HexColor' type represents color in `rgb:ffffff` string format."""
@@ -553,10 +738,12 @@ type Query {
   caseStudy(id: String!, locale: String, preview: Boolean): CaseStudy
   caseStudyCollection(limit: Int = 100, locale: String, order: [CaseStudyOrder], preview: Boolean, skip: Int = 0, where: CaseStudyFilter): CaseStudyCollection
   entryCollection(limit: Int = 100, locale: String, order: [EntryOrder], preview: Boolean, skip: Int = 0, where: EntryFilter): EntryCollection
+  experience(id: String!, locale: String, preview: Boolean): Experience
+  experienceCollection(limit: Int = 100, locale: String, order: [ExperienceOrder], preview: Boolean, skip: Int = 0, where: ExperienceFilter): ExperienceCollection
+  header(id: String!, locale: String, preview: Boolean): Header
+  headerCollection(limit: Int = 100, locale: String, order: [HeaderOrder], preview: Boolean, skip: Int = 0, where: HeaderFilter): HeaderCollection
   project(id: String!, locale: String, preview: Boolean): Project
   projectCollection(limit: Int = 100, locale: String, order: [ProjectOrder], preview: Boolean, skip: Int = 0, where: ProjectFilter): ProjectCollection
-  skill(id: String!, locale: String, preview: Boolean): Skill
-  skillCollection(limit: Int = 100, locale: String, order: [SkillOrder], preview: Boolean, skip: Int = 0, where: SkillFilter): SkillCollection
   text(id: String!, locale: String, preview: Boolean): Text
   textCollection(limit: Int = 100, locale: String, order: [TextOrder], preview: Boolean, skip: Int = 0, where: TextFilter): TextCollection
 }
@@ -568,91 +755,6 @@ interface ResourceLink {
 type ResourceSys {
   linkType: String!
   urn: String!
-}
-
-"""
-[See type definition](https://app.contentful.com/spaces/bvolcybk2xx6/content_types/skill)
-"""
-type Skill implements Entry & _Node {
-  _id: ID!
-  contentfulMetadata: ContentfulMetadata!
-  linkedFrom(allowedLocales: [String]): SkillLinkingCollections
-  sys: Sys!
-  title(locale: String): String
-}
-
-type SkillCollection {
-  items: [Skill]!
-  limit: Int!
-  skip: Int!
-  total: Int!
-}
-
-input SkillFilter {
-  AND: [SkillFilter]
-  OR: [SkillFilter]
-  contentfulMetadata: ContentfulMetadataFilter
-  sys: SysFilter
-  title: String
-  title_contains: String
-  title_exists: Boolean
-  title_in: [String]
-  title_not: String
-  title_not_contains: String
-  title_not_in: [String]
-}
-
-type SkillLinkingCollections {
-  caseStudyCollection(limit: Int = 100, locale: String, order: [SkillLinkingCollectionsCaseStudyCollectionOrder], preview: Boolean, skip: Int = 0): CaseStudyCollection
-  entryCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): EntryCollection
-  textCollection(limit: Int = 100, locale: String, order: [SkillLinkingCollectionsTextCollectionOrder], preview: Boolean, skip: Int = 0): TextCollection
-}
-
-enum SkillLinkingCollectionsCaseStudyCollectionOrder {
-  client_ASC
-  client_DESC
-  date_ASC
-  date_DESC
-  order_ASC
-  order_DESC
-  sys_firstPublishedAt_ASC
-  sys_firstPublishedAt_DESC
-  sys_id_ASC
-  sys_id_DESC
-  sys_publishedAt_ASC
-  sys_publishedAt_DESC
-  sys_publishedVersion_ASC
-  sys_publishedVersion_DESC
-  title_ASC
-  title_DESC
-}
-
-enum SkillLinkingCollectionsTextCollectionOrder {
-  reference_ASC
-  reference_DESC
-  secondaryFont_ASC
-  secondaryFont_DESC
-  sys_firstPublishedAt_ASC
-  sys_firstPublishedAt_DESC
-  sys_id_ASC
-  sys_id_DESC
-  sys_publishedAt_ASC
-  sys_publishedAt_DESC
-  sys_publishedVersion_ASC
-  sys_publishedVersion_DESC
-}
-
-enum SkillOrder {
-  sys_firstPublishedAt_ASC
-  sys_firstPublishedAt_DESC
-  sys_id_ASC
-  sys_id_DESC
-  sys_publishedAt_ASC
-  sys_publishedAt_DESC
-  sys_publishedVersion_ASC
-  sys_publishedVersion_DESC
-  title_ASC
-  title_DESC
 }
 
 type Sys {
@@ -722,8 +824,8 @@ type Text implements Entry & _Node {
   linkedFrom(allowedLocales: [String]): TextLinkingCollections
   reference(locale: String): String
   secondaryFont(locale: String): Boolean
-  skillsCollection(limit: Int = 100, locale: String, order: [TextSkillsCollectionOrder], preview: Boolean, skip: Int = 0, where: SkillFilter): TextSkillsCollection
   sys: Sys!
+  tags(locale: String): [String]
 }
 
 type TextCollection {
@@ -790,9 +892,11 @@ input TextFilter {
   secondaryFont: Boolean
   secondaryFont_exists: Boolean
   secondaryFont_not: Boolean
-  skills: cfSkillNestedFilter
-  skillsCollection_exists: Boolean
   sys: SysFilter
+  tags_contains_all: [String]
+  tags_contains_none: [String]
+  tags_contains_some: [String]
+  tags_exists: Boolean
 }
 
 type TextLinkingCollections {
@@ -814,40 +918,6 @@ enum TextOrder {
   sys_publishedVersion_DESC
 }
 
-type TextSkillsCollection {
-  items: [Skill]!
-  limit: Int!
-  skip: Int!
-  total: Int!
-}
-
-enum TextSkillsCollectionOrder {
-  sys_firstPublishedAt_ASC
-  sys_firstPublishedAt_DESC
-  sys_id_ASC
-  sys_id_DESC
-  sys_publishedAt_ASC
-  sys_publishedAt_DESC
-  sys_publishedVersion_ASC
-  sys_publishedVersion_DESC
-  title_ASC
-  title_DESC
-}
-
 interface _Node {
   _id: ID!
-}
-
-input cfSkillNestedFilter {
-  AND: [cfSkillNestedFilter]
-  OR: [cfSkillNestedFilter]
-  contentfulMetadata: ContentfulMetadataFilter
-  sys: SysFilter
-  title: String
-  title_contains: String
-  title_exists: Boolean
-  title_in: [String]
-  title_not: String
-  title_not_contains: String
-  title_not_in: [String]
 }
