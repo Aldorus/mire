@@ -1,19 +1,18 @@
 @use "../../tokens/typography";
 
-.Markdown {
-  display: grid;
-  grid-gap: var(--space-4x);
-
+.RichText {
   h1 {
     @include typography.heading1;
   }
 
   h2 {
     @include typography.heading2;
+    margin-bottom: var(--space-6x);
   }
 
   h3 {
     @include typography.heading3;
+    margin-bottom: var(--space-6x);
   }
 
   h4 {
@@ -22,6 +21,7 @@
 
   p {
     font-family: var(--font-primary);
+    line-height: 1.5rem;
   }
 
   a {
@@ -49,9 +49,4 @@
       @include typography.em;
     }
   }
-
-  p {
-    line-height: 1.77rem;
-  }
-
 }

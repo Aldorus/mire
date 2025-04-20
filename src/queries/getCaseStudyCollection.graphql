@@ -9,6 +9,8 @@ query GetCaseStudyCollection {
       assets {
         url
       }
+      order
+      date
       skillsCollection {
         items {
           _id

@@ -2,6 +2,7 @@ import * as React from "react";
 import {NavLinkProps} from "react-router-dom";
 import {HashLink as NavLink} from "react-router-hash-link";
 import "./_Link.scss";
+import classnames from "classnames";
 
 type ReactRouterLinkProps = NavLinkProps &
   React.AnchorHTMLAttributes<HTMLAnchorElement>;
@@ -13,12 +14,12 @@ export const Link: React.FC<LinkProps> = ({...props}) => {
       smooth
       {...(props as ReactRouterLinkProps)}
       data-testid={Link.displayName}
-      className={"Link"}
+      className={classnames([props.className, "Link"])}
     />
   ) : (
     <a
       {...(props as DefaultLinkProps)}
-      className={'Link'}
+      className={classnames([props.className, 'Link'])}
       data-testid={Link.displayName}
     >
       {props.children}

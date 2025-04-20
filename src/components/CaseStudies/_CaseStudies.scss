@@ -1,6 +1,25 @@
 @use '../../tokens/breakpoints';
 
 .CaseStudies {
+  .CaseStudies__title {
+    margin-bottom: 110px;
+    font-size: 1rem;
+    font-family: var(--font-secondary);
+    display: flex;
+    gap: var(--space-3x);
+
+    .CaseStudies__title__icon {
+      margin-top: var(--space-2x);
+      font-weight: bold;
+    }
+  }
+
+  .CaseStudies__list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-16x);
+  }
+
   .CaseStudies__item {
     display: grid;
     grid-template-columns: 4fr 8fr;
@@ -21,14 +40,28 @@
     }
   }
 
-
-  .CaseStudies__title {
-    margin-bottom: 150px;
-    font-size: 1.5rem;
-    font-family: var(--font-secondary);
+  .CaseStudies__item__title {
+    margin-bottom: var(--space-2x);
   }
 
-  .CaseStudies__item__title {
+  .CaseStudies__item__date {
+    font-family: var(--font-secondary);
     margin-bottom: var(--space-6x);
+    text-transform: uppercase;
+  }
+
+  .CaseStudies__item__text {
+    margin-bottom: var(--space-6x);
+  }
+
+  .CaseStudies__item__skills {
+    padding: var(--space-6x) 0;
+  }
+
+  .CaseStudies__item__link {
+    margin-top: var(--space-6x);
+    display: flex;
+    gap: var(--space-3x);
+    align-content: center;
   }
 }

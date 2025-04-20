@@ -234,7 +234,9 @@ export type CaseStudy = Entry & _Node & {
   assets?: Maybe<Asset>;
   client?: Maybe<Scalars['String']['output']>;
   contentfulMetadata: ContentfulMetadata;
+  date?: Maybe<Scalars['String']['output']>;
   linkedFrom?: Maybe<CaseStudyLinkingCollections>;
+  order?: Maybe<Scalars['Int']['output']>;
   skillsCollection?: Maybe<CaseStudySkillsCollection>;
   sys: Sys;
   text?: Maybe<CaseStudyText>;
@@ -256,8 +258,20 @@ export type CaseStudyClientArgs = {
 
 
 /** [See type definition](https://app.contentful.com/spaces/bvolcybk2xx6/content_types/caseStudy) */
+export type CaseStudyDateArgs = {
+  locale?: InputMaybe<Scalars['String']['input']>;
+};
+
+
+/** [See type definition](https://app.contentful.com/spaces/bvolcybk2xx6/content_types/caseStudy) */
 export type CaseStudyLinkedFromArgs = {
   allowedLocales?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+};
+
+
+/** [See type definition](https://app.contentful.com/spaces/bvolcybk2xx6/content_types/caseStudy) */
+export type CaseStudyOrderArgs = {
+  locale?: InputMaybe<Scalars['String']['input']>;
 };
 
 
@@ -303,6 +317,22 @@ export type CaseStudyFilter = {
   client_not_contains?: InputMaybe<Scalars['String']['input']>;
   client_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   contentfulMetadata?: InputMaybe<ContentfulMetadataFilter>;
+  date?: InputMaybe<Scalars['String']['input']>;
+  date_contains?: InputMaybe<Scalars['String']['input']>;
+  date_exists?: InputMaybe<Scalars['Boolean']['input']>;
+  date_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  date_not?: InputMaybe<Scalars['String']['input']>;
+  date_not_contains?: InputMaybe<Scalars['String']['input']>;
+  date_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  order?: InputMaybe<Scalars['Int']['input']>;
+  order_exists?: InputMaybe<Scalars['Boolean']['input']>;
+  order_gt?: InputMaybe<Scalars['Int']['input']>;
+  order_gte?: InputMaybe<Scalars['Int']['input']>;
+  order_in?: InputMaybe<Array<InputMaybe<Scalars['Int']['input']>>>;
+  order_lt?: InputMaybe<Scalars['Int']['input']>;
+  order_lte?: InputMaybe<Scalars['Int']['input']>;
+  order_not?: InputMaybe<Scalars['Int']['input']>;
+  order_not_in?: InputMaybe<Array<InputMaybe<Scalars['Int']['input']>>>;
   skills?: InputMaybe<CfSkillNestedFilter>;
   skillsCollection_exists?: InputMaybe<Scalars['Boolean']['input']>;
   sys?: InputMaybe<SysFilter>;
@@ -334,6 +364,10 @@ export type CaseStudyLinkingCollectionsEntryCollectionArgs = {
 export enum CaseStudyOrder {
   ClientAsc = 'client_ASC',
   ClientDesc = 'client_DESC',
+  DateAsc = 'date_ASC',
+  DateDesc = 'date_DESC',
+  OrderAsc = 'order_ASC',
+  OrderDesc = 'order_DESC',
   SysFirstPublishedAtAsc = 'sys_firstPublishedAt_ASC',
   SysFirstPublishedAtDesc = 'sys_firstPublishedAt_DESC',
   SysIdAsc = 'sys_id_ASC',
@@ -878,6 +912,10 @@ export type SkillLinkingCollectionsTextCollectionArgs = {
 export enum SkillLinkingCollectionsCaseStudyCollectionOrder {
   ClientAsc = 'client_ASC',
   ClientDesc = 'client_DESC',
+  DateAsc = 'date_ASC',
+  DateDesc = 'date_DESC',
+  OrderAsc = 'order_ASC',
+  OrderDesc = 'order_DESC',
   SysFirstPublishedAtAsc = 'sys_firstPublishedAt_ASC',
   SysFirstPublishedAtDesc = 'sys_firstPublishedAt_DESC',
   SysIdAsc = 'sys_id_ASC',
@@ -1436,7 +1474,9 @@ export type CaseStudyResolvers<ContextType = any, ParentType extends ResolversPa
   assets?: Resolver<Maybe<ResolversTypes['Asset']>, ParentType, ContextType, Partial<CaseStudyAssetsArgs>>;
   client?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType, Partial<CaseStudyClientArgs>>;
   contentfulMetadata?: Resolver<ResolversTypes['ContentfulMetadata'], ParentType, ContextType>;
+  date?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType, Partial<CaseStudyDateArgs>>;
   linkedFrom?: Resolver<Maybe<ResolversTypes['CaseStudyLinkingCollections']>, ParentType, ContextType, Partial<CaseStudyLinkedFromArgs>>;
+  order?: Resolver<Maybe<ResolversTypes['Int']>, ParentType, ContextType, Partial<CaseStudyOrderArgs>>;
   skillsCollection?: Resolver<Maybe<ResolversTypes['CaseStudySkillsCollection']>, ParentType, ContextType, RequireFields<CaseStudySkillsCollectionArgs, 'limit' | 'skip'>>;
   sys?: Resolver<ResolversTypes['Sys'], ParentType, ContextType>;
   text?: Resolver<Maybe<ResolversTypes['CaseStudyText']>, ParentType, ContextType, Partial<CaseStudyTextArgs>>;
@@ -1793,7 +1833,7 @@ export type DirectiveResolvers<ContextType = any> = {
 export type GetCaseStudyCollectionQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type GetCaseStudyCollectionQuery = { __typename: 'Query', caseStudyCollection?: { __typename: 'CaseStudyCollection', items: Array<{ __typename: 'CaseStudy', _id: string, title?: string | null, text?: { __typename: 'CaseStudyText', json: any } | null, assets?: { __typename: 'Asset', url?: string | null } | null, skillsCollection?: { __typename: 'CaseStudySkillsCollection', items: Array<{ __typename: 'Skill', _id: string, title?: string | null } | null> } | null } | null> } | null };
+export type GetCaseStudyCollectionQuery = { __typename: 'Query', caseStudyCollection?: { __typename: 'CaseStudyCollection', items: Array<{ __typename: 'CaseStudy', _id: string, title?: string | null, order?: number | null, date?: string | null, text?: { __typename: 'CaseStudyText', json: any } | null, assets?: { __typename: 'Asset', url?: string | null } | null, skillsCollection?: { __typename: 'CaseStudySkillsCollection', items: Array<{ __typename: 'Skill', _id: string, title?: string | null } | null> } | null } | null> } | null };
 
 export type GetProjectCollectionQueryVariables = Exact<{ [key: string]: never; }>;
 
@@ -1820,6 +1860,8 @@ export const GetCaseStudyCollectionDocument = gql`
       assets {
         url
       }
+      order
+      date
       skillsCollection {
         items {
           _id

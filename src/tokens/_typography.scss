@@ -13,7 +13,7 @@
 @mixin heading1 {
   @include heading;
   font-family: var(--font-primary);
-  font-size: 3.5rem;
+  font-size: 3.3rem;
   line-height: 1;
   margin-bottom: var(--space-2x);
   font-weight: 400;
@@ -32,7 +32,6 @@ h1 {
   font-family: var(--font-secondary);
   font-size: 2rem;
   font-weight: 600;
-  margin-bottom: var(--space-2x);
 }
 
 h2 {
@@ -74,12 +73,21 @@ strong {
   @include strong;
 }
 
+@mixin p {
+  margin: 0;
+}
+
+p {
+  @include p;
+}
+
 @mixin link {
   text-decoration: none;
-  color: var(--color-primary);
+  color: var(--text-color);
   font-size: 1em;
   position: relative;
   display: inline-block;
+  font-family: var(--font-secondary);
 }
 
 @mixin linkHover {
@@ -90,7 +98,7 @@ strong {
     bottom: calc(-1 * var(--space-2x));
     width: 100%;
     height: 1px;
-    background: var(--color-primary);
+
     transition: opacity 0.3s, transform 0.3s;
     opacity: 0;
     transform: scale(0, 1);

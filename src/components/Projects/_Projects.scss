@@ -1,8 +1,12 @@
 .Projects {
+  .Projects_skills {
+    margin-top: var(--space-6x);
+  }
+
   .Projects__list {
     display: flex;
-
   }
+
   .Projects__item {
     height: 350px;
   }

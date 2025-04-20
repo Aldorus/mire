@@ -10,7 +10,12 @@
 
   .Homepage__top {
     display: flex;
+    margin-bottom: var(--space-16x);
+  }
+
+  .Homepage__hi {
     margin-bottom: var(--space-8x);
+    font-weight: normal;
   }
 
   .about {
@@ -18,10 +23,13 @@
   }
 
 
-  .contact {
-    .links {
+  .Homepage__contact {
+    margin-top: var(--space-20x);
+
+    .Homepage__contact__links {
       display: flex;
       gap: var(--space-8x);
+      margin-top: var(--space-4x);
     }
   }
 }

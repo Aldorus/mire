@@ -10,13 +10,14 @@ const Projects = () => {
   const {data: projectCollectionData} = useGetProjectCollectionSuspenseQuery();
   const {data: projectTextData} = useGetTextQuerySuspenseQuery({variables: {id: "2uA3U2hLkUfSU2d352XNlc"}});
 
-  const renderProject = (project: Project) => {
-    return <div key={project._id} className="Projects__item"><img className="Projects__asset"
-                                                                  src={project.asset?.url ?? ''}/></div>
-  }
+  const renderProject = (project: Project) => <div key={project._id} className="Projects__item">
+    <img className="Projects__asset" src={project.asset?.url ?? ''}/>
+  </div>;
+
   return <div className="Projects">
     <RichText content={projectTextData?.text?.content?.json}/>
-    <SkillList skills={projectTextData?.text?.skillsCollection?.items}/>
+    <Divider/>
+    <SkillList skills={projectTextData?.text?.skillsCollection?.items} className="Projects_skills"/>
     <div
       className="Projects__list">{flow(compact, map(renderProject))(projectCollectionData?.projectCollection?.items)}</div>
     <Divider/>
