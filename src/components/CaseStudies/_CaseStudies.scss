@@ -3,17 +3,21 @@
 .CaseStudies {
   .CaseStudies__item {
     display: grid;
-    grid-template-columns: 420px 1fr;
+    grid-template-columns: 4fr 8fr;
     gap: var(--space-4x);
 
-    @media screen and (max-width: breakpoints.$breakpoint-sm) {
+    @media screen and (max-width: breakpoints.$breakpoint-md) {
       grid-template-columns: 1fr;
     }
 
     .asset {
-      aspect-ratio: 16 / 9;
-      width: 100%;
-      background: grey;
+      overflow: hidden;
+
+      img {
+        width: 100%;
+        aspect-ratio: 16/9;
+        object-fit: contain;
+      }
     }
   }
 

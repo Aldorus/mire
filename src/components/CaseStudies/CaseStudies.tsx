@@ -18,7 +18,7 @@ const CaseStudies = () => {
           <RichText content={item.text?.json}/>
         </div>
         <div className="asset">
-          {item.assets?.fileName}
+          <img src={item.assets?.url ?? ''}/>
         </div>
       </div>
       <Divider/>

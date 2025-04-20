@@ -7,7 +7,7 @@ query GetCaseStudyCollection {
       }
       title
       assets {
-        fileName
+        url
       }
       skillsCollection {
         items {

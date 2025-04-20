@@ -1793,7 +1793,7 @@ export type DirectiveResolvers<ContextType = any> = {
 export type GetCaseStudyCollectionQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type GetCaseStudyCollectionQuery = { __typename: 'Query', caseStudyCollection?: { __typename: 'CaseStudyCollection', items: Array<{ __typename: 'CaseStudy', _id: string, title?: string | null, text?: { __typename: 'CaseStudyText', json: any } | null, assets?: { __typename: 'Asset', fileName?: string | null } | null, skillsCollection?: { __typename: 'CaseStudySkillsCollection', items: Array<{ __typename: 'Skill', _id: string, title?: string | null } | null> } | null } | null> } | null };
+export type GetCaseStudyCollectionQuery = { __typename: 'Query', caseStudyCollection?: { __typename: 'CaseStudyCollection', items: Array<{ __typename: 'CaseStudy', _id: string, title?: string | null, text?: { __typename: 'CaseStudyText', json: any } | null, assets?: { __typename: 'Asset', url?: string | null } | null, skillsCollection?: { __typename: 'CaseStudySkillsCollection', items: Array<{ __typename: 'Skill', _id: string, title?: string | null } | null> } | null } | null> } | null };
 
 export type GetProjectCollectionQueryVariables = Exact<{ [key: string]: never; }>;
 
@@ -1818,7 +1818,7 @@ export const GetCaseStudyCollectionDocument = gql`
       }
       title
       assets {
-        fileName
+        url
       }
       skillsCollection {
         items {
