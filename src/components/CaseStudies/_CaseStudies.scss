@@ -1,8 +1,14 @@
+@use '../../tokens/breakpoints';
+
 .CaseStudies {
   .CaseStudies__item {
     display: grid;
     grid-template-columns: 420px 1fr;
     gap: var(--space-4x);
+
+    @media screen and (max-width: breakpoints.$breakpoint-sm) {
+      grid-template-columns: 1fr;
+    }
 
     .asset {
       aspect-ratio: 16 / 9;
@@ -10,6 +16,7 @@
       background: grey;
     }
   }
+
 
   .CaseStudies__title {
     margin-bottom: 150px;
