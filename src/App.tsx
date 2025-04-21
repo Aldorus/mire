@@ -16,8 +16,6 @@ const App = () => {
   const href = window.location.href;
   if (href.includes('/?/')) {
     window.history.replaceState({}, "", window.location.href.replace("/?/", "/"));
-
-    return null;
   }
   return <div className="App"><BrowserRouter basename="/">
     <Menu/>
