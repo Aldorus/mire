@@ -8,11 +8,9 @@ import Contact from "../components/Contact/Contact.tsx";
 
 const Homepage = () => {
   const {data} = useGetHeaderSuspenseQuery();
-  console.log("HOme")
   return <div className="Homepage">
     <section className="Homepage__top">
       <div className="about">
-        <h2 className="Homepage__hi">👋 Hi! I’m Barbara Marche,</h2>
         <RichText content={data?.header?.title?.json}/>
         <div className="Homepage__info">{data?.header?.info?.map(info => <div key={info}>{info}</div>)}</div>
       </div>

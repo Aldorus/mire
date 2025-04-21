@@ -2,7 +2,6 @@ import './_CaseStudies.scss';
 import {useGetCaseStudyCollectionSuspenseQuery} from "../../models/graphql.ts";
 import {compact, flow, map, sortBy} from "lodash/fp";
 import {RichText} from "../Typography/RichText.tsx";
-import Divider from "../Divider/Divider.tsx";
 import ArrowBottom from "../../assets/ArrowBottom.svg";
 import {Link} from "../Link/Link.tsx";
 import {generatePath} from "react-router-dom";
@@ -14,23 +13,19 @@ type CaseStudy = NonNullable<NonNullable<NonNullable<ReturnType<typeof useGetCas
 const CaseStudies = () => {
   const {data} = useGetCaseStudyCollectionSuspenseQuery();
   const renderCaseStudies = (item: CaseStudy) => {
-    return <div key={item._id}>
-      <div className="CaseStudies__item">
-        <div className="CaseStudies__item__content">
-          <h2 className="CaseStudies__item__title">{item.title}</h2>
-          <p className="CaseStudies__item__date">{item.date}</p>
-          <RichText content={item.text?.json} className="CaseStudies__item__text"/>
-          <Divider/>
-          <TagList tags={item.tags} className="CaseStudies__item__skills"/>
-          <Divider/>
-          <Link to={generatePath(ROUTE.CASE_STUDY, {slug: item.slug})} className="CaseStudies__item__link">View case
-            study<img src={arrowLeft}/></Link>
-        </div>
-        <div className="asset">
-          <video loop autoPlay muted>
-            <source src={item.assets?.url ?? ''} type="video/mp4"/>
-          </video>
-        </div>
+    return <div className="CaseStudies__item" key={item._id}>
+      <div className="asset">
+        <video loop autoPlay muted>
+          <source src={item.assets?.url ?? ''} type="video/mp4"/>
+        </video>
+      </div>
+      <div className="CaseStudies__item__content">
+        <Link to={generatePath(ROUTE.CASE_STUDY, {slug: item.slug})} className="CaseStudies__item__link">
+          <h2 className="CaseStudies__item__title">{item.title}&nbsp;<img src={arrowLeft}/></h2>
+        </Link>
+        <p className="CaseStudies__item__date">{item.date}</p>
+        <RichText content={item.text?.json} className="CaseStudies__item__text"/>
+        <TagList tags={item.tags} className="CaseStudies__item__skills"/>
       </div>
     </div>
   };

@@ -21,8 +21,10 @@
   }
 
   .CaseStudies__item {
-    display: grid;
-    grid-template-columns: 4fr 8fr;
+    width: 80%;
+    margin: 0 auto 0 0;
+    display: flex;
+    flex-direction: column;
     gap: var(--space-4x);
 
     @media screen and (max-width: breakpoints.$breakpoint-md) {
@@ -36,6 +38,10 @@
         width: 100%;
         object-fit: contain;
       }
+    }
+
+    &:nth-child(even) {
+      margin: 0 0 0 auto;
     }
   }
 
@@ -53,14 +59,4 @@
     margin-bottom: var(--space-6x);
   }
 
-  .CaseStudies__item__skills {
-    padding: var(--space-6x) 0;
-  }
-
-  .CaseStudies__item__link {
-    margin-top: var(--space-6x);
-    display: flex;
-    gap: var(--space-3x);
-    align-content: center;
-  }
 }

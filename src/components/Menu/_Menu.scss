@@ -1,8 +1,16 @@
 .Menu {
-  font-family: var(--font-seconday);
-  position: absolute;
-  top: var(--space-8x);
-  right: var(--space-16x);
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  align-self: center;
+
+  .Menu__hi {
+    display: flex;
+    font-family: var(--font-secondary);
+    font-size: 1.33rem;
+    line-height: 1rem;
+    align-items: center;
+  }
 
   ol {
     list-style: none;
@@ -10,6 +18,6 @@
     margin: 0;
     display: flex;
     gap: var(--space-8x);
-
+    align-self: center;
   }
 }
