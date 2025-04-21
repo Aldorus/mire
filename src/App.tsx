@@ -5,6 +5,7 @@ import CaseStudy from "./pages/CaseStudy.tsx";
 import Menu from "./components/Menu/Menu.tsx";
 import About from "./pages/About.tsx";
 import CaseStudyRSI from "./pages/CaseStudyRSI.tsx";
+import Redirect404 from "./pages/Redirect.tsx";
 
 export const ROUTE = {
   HOME: '/',
@@ -14,14 +15,15 @@ export const ROUTE = {
 }
 
 const App = () =>
-  <div className="App"><BrowserRouter >
-  <Menu/>
-  <Routes >
-    <Route path={ROUTE.HOME} element={<Homepage />}></Route>
-    <Route path={ROUTE.CASE_STUDY_RSI} element={<CaseStudyRSI />}></Route>
-    <Route path={ROUTE.CASE_STUDY} element={<CaseStudy />}></Route>
-    <Route path={ROUTE.ABOUT} element={<About />}></Route>
-  </Routes>
-</BrowserRouter></div>
+  <div className="App"><BrowserRouter>
+    <Menu/>
+    <Routes>
+      <Route path={ROUTE.HOME} element={<Homepage/>}></Route>
+      <Route path={ROUTE.CASE_STUDY_RSI} element={<CaseStudyRSI/>}></Route>
+      <Route path={ROUTE.CASE_STUDY} element={<CaseStudy/>}></Route>
+      <Route path={ROUTE.ABOUT} element={<About/>}></Route>
+      <Route path={'/r/*'} element={<Redirect404/>}></Route>
+    </Routes>
+  </BrowserRouter></div>
 
 export default App
