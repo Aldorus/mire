@@ -1,8 +1,12 @@
 .Menu {
   display: flex;
   justify-content: space-between;
-  width: 100%;
   align-self: center;
+  position: absolute;
+  top: 0;
+  left: var(--space-16x);
+  right: var(--space-16x);
+  height: var(--space-16x);
 
   .Menu__hi {
     display: flex;

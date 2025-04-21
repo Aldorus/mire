@@ -21,7 +21,7 @@ const Projects = ({className}: Props) => {
   </div>;
 
   return <div className={classnames([className, "Projects"])}>
-    <RichText content={projectTextData?.text?.content?.json}/>
+    <RichText content={projectTextData?.text?.content?.json} className="Project__title"/>
     <Divider/>
     <TagList tags={projectTextData?.text?.tags} className="Projects_skills"/>
     <div

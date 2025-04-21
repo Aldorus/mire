@@ -2,7 +2,6 @@ import './_CaseStudies.scss';
 import {useGetCaseStudyCollectionSuspenseQuery} from "../../models/graphql.ts";
 import {compact, flow, map, sortBy} from "lodash/fp";
 import {RichText} from "../Typography/RichText.tsx";
-import ArrowBottom from "../../assets/ArrowBottom.svg";
 import {Link} from "../Link/Link.tsx";
 import {generatePath} from "react-router-dom";
 import arrowLeft from "../../assets/ArrowLeft.svg";
@@ -30,8 +29,6 @@ const CaseStudies = () => {
     </div>
   };
   return <section className="CaseStudies" id="projects">
-    <h3 className="CaseStudies__title"><img src={ArrowBottom}/><span
-      className="CaseStudies__title__icon">Selected work</span></h3>
     <div className="CaseStudies__list">{flow(
       compact,
       sortBy((item: CaseStudy) => item.order),

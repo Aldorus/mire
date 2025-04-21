@@ -5,14 +5,12 @@ import Divider from "../components/Divider/Divider.tsx";
 import ExperienceList from "../components/Experience/List.tsx";
 import TagList from "../components/Tags/TagList.tsx";
 import Contact from "../components/Contact/Contact.tsx";
-import BackLink from "../components/BackLink/BackLink.tsx";
 
 const About = () => {
   const {data: dataAbout} = useGetTextQuerySuspenseQuery({variables: {id: '12ANWp777vctus3SbZL6gM'}});
   const {data: dataSkills} = useGetTextQuerySuspenseQuery({variables: {id: '6ueoiDKGmH3GahQ878uPRZ'}});
   const {data: dataSoftware} = useGetTextQuerySuspenseQuery({variables: {id: '4Km8JbyoI3bXtGYgiTd5fj'}});
   return <div className="About">
-    <BackLink/>
     <div className="About__wrapper">
       <div className="About__wrapper__portrait">
         <img

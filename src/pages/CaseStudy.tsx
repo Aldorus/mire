@@ -2,7 +2,6 @@ import "./_CaseStudy.scss";
 import {useGetCaseStudySuspenseQuery} from "../models/graphql.ts";
 import {useParams} from "react-router-dom";
 import {isNil} from "lodash";
-import BackLink from "../components/BackLink/BackLink.tsx";
 import ProgressBar from "../components/ProgressBar/ProgressBar.tsx";
 
 type Params = {
@@ -16,7 +15,6 @@ const CaseStudy = () => {
     return null;
   }
   return <div className="CaseStudy">
-    <BackLink/>
     <ProgressBar/>
     <div className="CaseStudy__wrapper">
       <div className="CaseStudy__info">
