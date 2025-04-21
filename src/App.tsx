@@ -4,26 +4,28 @@ import Homepage from "./pages/Homepage.tsx";
 import CaseStudy from "./pages/CaseStudy.tsx";
 import Menu from "./components/Menu/Menu.tsx";
 import About from "./pages/About.tsx";
-import CaseStudyRSI from "./pages/CaseStudyRSI.tsx";
-import Redirect404 from "./pages/Redirect.tsx";
 
 export const ROUTE = {
-  HOME: '/',
-  CASE_STUDY_RSI: '/case/rsi',
-  CASE_STUDY: '/case/:slug',
-  ABOUT: '/about'
+  HOME: '',
+  CASE_STUDY_RSI: 'case/rsi',
+  CASE_STUDY: 'case/:slug',
+  ABOUT: 'about'
 }
 
-const App = () =>
-  <div className="App"><BrowserRouter>
+const App = () => {
+  const href = window.location.href;
+  if (href.includes('/?/')) {
+    window.location.href = window.location.href.replace("/?/", "/");
+    return null;
+  }
+  return <div className="App"><BrowserRouter basename="/">
     <Menu/>
     <Routes>
-      <Route path={ROUTE.HOME} element={<Homepage/>}></Route>
-      <Route path={ROUTE.CASE_STUDY_RSI} element={<CaseStudyRSI/>}></Route>
       <Route path={ROUTE.CASE_STUDY} element={<CaseStudy/>}></Route>
       <Route path={ROUTE.ABOUT} element={<About/>}></Route>
-      <Route path={'/r/*'} element={<Redirect404/>}></Route>
+      <Route path={ROUTE.HOME} element={<Homepage/>}></Route>
     </Routes>
   </BrowserRouter></div>
+}
 
 export default App
