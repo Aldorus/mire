@@ -6,10 +6,9 @@ import Menu from "./components/Menu/Menu.tsx";
 import About from "./pages/About.tsx";
 
 export const ROUTE = {
-  HOME: '',
-  CASE_STUDY_RSI: 'case/rsi',
-  CASE_STUDY: 'case/:slug',
-  ABOUT: 'about'
+  HOME: '/',
+  CASE_STUDY: '/case/:slug',
+  ABOUT: '/about'
 }
 
 const App = () => {
@@ -17,14 +16,17 @@ const App = () => {
   if (href.includes('/?/')) {
     window.history.replaceState({}, "", window.location.href.replace("/?/", "/"));
   }
-  return <div className="App"><BrowserRouter basename="/">
-    <Menu/>
-    <Routes>
-      <Route path={ROUTE.CASE_STUDY} element={<CaseStudy/>}></Route>
-      <Route path={ROUTE.ABOUT} element={<About/>}></Route>
-      <Route path={ROUTE.HOME} element={<Homepage/>}></Route>
-    </Routes>
-  </BrowserRouter></div>
+  console.log("App");
+  return <div className="App">
+    <BrowserRouter>
+      <Menu/>
+      <Routes>
+        <Route path={ROUTE.CASE_STUDY} element={<CaseStudy/>}></Route>
+        <Route path={ROUTE.ABOUT} element={<About/>}></Route>
+        <Route path={ROUTE.HOME} element={<Homepage/>}></Route>
+      </Routes>
+    </BrowserRouter>
+  </div>
 }
 
 export default App
