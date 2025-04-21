@@ -15,7 +15,8 @@ export const ROUTE = {
 const App = () => {
   const href = window.location.href;
   if (href.includes('/?/')) {
-    window.location.href = window.location.href.replace("/?/", "/");
+    window.history.replaceState({}, "", window.location.href.replace("/?/", "/"));
+
     return null;
   }
   return <div className="App"><BrowserRouter basename="/">

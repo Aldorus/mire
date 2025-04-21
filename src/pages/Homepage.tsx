@@ -8,6 +8,7 @@ import Contact from "../components/Contact/Contact.tsx";
 
 const Homepage = () => {
   const {data} = useGetHeaderSuspenseQuery();
+  console.log("HOme")
   return <div className="Homepage">
     <section className="Homepage__top">
       <div className="about">
