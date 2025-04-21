@@ -1,4 +1,5 @@
 
+
 .Homepage {
   display: flex;
   flex-direction: column;
@@ -6,7 +7,8 @@
 
   .Homepage__top {
     min-height: calc(100vh - 32px);
-    width: 80%;
+    width: 100%;
+    max-width: 750px;
     padding-top: var(--space-20x);
   }
 
@@ -15,14 +17,42 @@
     flex-wrap: wrap;
   }
 
-  .Homepage__title {
+  .Homepage__cta {
     font-size: 1rem;
     font-family: var(--font-secondary);
     display: flex;
     gap: var(--space-3x);
     margin-top: var(--space-16x);
 
-    .Homepage__title__icon {
+
+    @keyframes shink {
+      from {
+        transform: scaleY(2);
+        transform-origin: center 6px;
+      }
+      to{
+        transform: scaleY(2);
+        transform-origin: center 6px;
+      }
+    }
+    @keyframes move {
+      from {
+        transform: translateY(0);
+      }
+      to{
+        transform: translateY(15px);
+      }
+    }
+    .Homepage__cta__icon {
+      g rect {
+        animation: shink 1s alternate-reverse infinite;
+      }
+      g #bottom {
+        animation: move 1s alternate-reverse infinite;
+      }
+    }
+
+    .Homepage__cta__title {
       margin-top: var(--space-2x);
       font-weight: bold;
     }

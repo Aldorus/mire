@@ -2,7 +2,6 @@ import "./_Projects.scss";
 import {useGetProjectCollectionSuspenseQuery, useGetTextQuerySuspenseQuery} from "../../models/graphql.ts";
 import {compact, flow, map} from "lodash/fp";
 import {RichText} from "../Typography/RichText.tsx";
-import Divider from "../Divider/Divider.tsx";
 import {HTMLAttributes} from "react";
 import classnames from "classnames";
 import TagList from "../Tags/TagList.tsx";
@@ -21,12 +20,10 @@ const Projects = ({className}: Props) => {
   </div>;
 
   return <div className={classnames([className, "Projects"])}>
-    <RichText content={projectTextData?.text?.content?.json} className="Project__title"/>
-    <Divider/>
-    <TagList tags={projectTextData?.text?.tags} className="Projects_skills"/>
     <div
       className="Projects__list">{flow(compact, map(renderProject))(projectCollectionData?.projectCollection?.items)}</div>
-    <Divider/>
+    <RichText content={projectTextData?.text?.content?.json} className="Project__title"/>
+    <TagList tags={projectTextData?.text?.tags} className="Projects_skills"/>
   </div>
 }
 export default Projects;

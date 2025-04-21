@@ -25,6 +25,7 @@
     "react-router-hash-link": "^2.4.3"
   },
   "devDependencies": {
+    "vite-plugin-svgr": "^4.3.0",
     "@eslint/js": "^9.22.0",
     "@types/react": "^19.0.10",
     "@types/react-dom": "^19.0.4",

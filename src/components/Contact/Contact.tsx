@@ -12,12 +12,15 @@ const Contact = ({className}: Props) => {
   const {data: contactData} = useGetTextQuerySuspenseQuery({variables: {id: '3vxhVPirdQQnqb2wFEg68F'}});
 
   return <section className={classnames([className, 'Contact'])} id="contact">
-    <RichText content={contactData?.text?.content?.json}/>
-    <div className="Contact__links">
-      <Link to="mailto:barbara.mrch@gmail.com">Email</Link>
-      <Link to="https://www.linkedin.com/in/barbaramarche/" target="_blank">Linkedin</Link>
-      <Link to="https://www.behance.net/barbara-marche" target="_blank">Behance</Link>
+    <div className="Contact__wrapper">
+      <RichText content={contactData?.text?.content?.json}/>
+      <div className="Contact__links">
+        <Link to="mailto:barbara.mrch@gmail.com">Email</Link>
+        <Link to="https://www.linkedin.com/in/barbaramarche/" target="_blank">Linkedin</Link>
+        <Link to="https://www.behance.net/barbara-marche" target="_blank">Behance</Link>
+      </div>
     </div>
+
   </section>
 }
 

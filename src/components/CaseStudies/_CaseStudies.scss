@@ -19,10 +19,13 @@
 
     .asset {
       overflow: hidden;
+      border-radius: 8px;
+      aspect-ratio: 1010 / 629;
 
       >* {
         width: 100%;
-        object-fit: contain;
+        object-fit: cover;
+        height: 100%;
       }
     }
 

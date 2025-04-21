@@ -1,7 +1,20 @@
+@use "../../tokens/mixins";
+
 .Contact {
+  .Contact__wrapper {
+    @include mixins.centered;
+    padding: var(--space-16x) var(--space-16x) var(--space-16x);
+    display: flex;
+    justify-content: space-between;
+  }
+
   .Contact__links {
     display: flex;
     gap: var(--space-8x);
     margin-top: var(--space-4x);
+
+    .Link {
+      color: #FFFFFF;
+    }
   }
 }

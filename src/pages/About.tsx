@@ -4,7 +4,6 @@ import {RichText} from "../components/Typography/RichText.tsx";
 import Divider from "../components/Divider/Divider.tsx";
 import ExperienceList from "../components/Experience/List.tsx";
 import TagList from "../components/Tags/TagList.tsx";
-import Contact from "../components/Contact/Contact.tsx";
 
 const About = () => {
   const {data: dataAbout} = useGetTextQuerySuspenseQuery({variables: {id: '12ANWp777vctus3SbZL6gM'}});
@@ -30,8 +29,6 @@ const About = () => {
         <TagList tags={dataSoftware?.text?.tags}/>
       </div>
     </div>
-    <Divider className="About__divider"/>
-    <Contact/>
   </div>
 }
 export default About;
