@@ -2117,7 +2117,7 @@ export type GetCaseStudyCollectionQuery = { __typename: 'Query', caseStudyCollec
 export type GetExperienceCollectionQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type GetExperienceCollectionQuery = { __typename: 'Query', experienceCollection?: { __typename: 'ExperienceCollection', items: Array<{ __typename: 'Experience', date?: string | null, order?: number | null, text?: { __typename: 'ExperienceText', json: any } | null } | null> } | null };
+export type GetExperienceCollectionQuery = { __typename: 'Query', experienceCollection?: { __typename: 'ExperienceCollection', items: Array<{ __typename: 'Experience', _id: string, date?: string | null, order?: number | null, text?: { __typename: 'ExperienceText', json: any } | null } | null> } | null };
 
 export type GetHeaderQueryVariables = Exact<{ [key: string]: never; }>;
 
@@ -2236,6 +2236,7 @@ export const GetExperienceCollectionDocument = gql`
     query getExperienceCollection {
   experienceCollection {
     items {
+      _id
       date
       order
       text {
