@@ -1,11 +1,5 @@
-:root {
+.About {
   position: relative;
-
-  .About__backlink {
-    display: flex;
-    gap: var(--space-8x);
-
-  }
 
   .About__wrapper {
     margin-top: var(--space-8x);

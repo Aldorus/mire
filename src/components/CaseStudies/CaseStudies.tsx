@@ -27,7 +27,9 @@ const CaseStudies = () => {
             study<img src={arrowLeft}/></Link>
         </div>
         <div className="asset">
-          <img src={item.assets?.url ?? ''}/>
+          <video loop autoPlay muted>
+            <source src={item.assets?.url ?? ''} type="video/mp4"/>
+          </video>
         </div>
       </div>
     </div>

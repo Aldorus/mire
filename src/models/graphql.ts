@@ -2102,6 +2102,13 @@ export type DirectiveResolvers<ContextType = any> = {
   contentSourceMaps?: ContentSourceMapsDirectiveResolver<any, any, ContextType>;
 };
 
+export type GetCaseStudyQueryVariables = Exact<{
+  where?: InputMaybe<CaseStudyFilter>;
+}>;
+
+
+export type GetCaseStudyQuery = { __typename: 'Query', caseStudyCollection?: { __typename: 'CaseStudyCollection', items: Array<{ __typename: 'CaseStudy', title?: string | null, date?: string | null } | null> } | null };
+
 export type GetCaseStudyCollectionQueryVariables = Exact<{ [key: string]: never; }>;
 
 
@@ -2130,6 +2137,49 @@ export type GetTextQueryQueryVariables = Exact<{
 export type GetTextQueryQuery = { __typename: 'Query', text?: { __typename: 'Text', tags?: Array<string | null> | null, content?: { __typename: 'TextContent', json: any } | null } | null };
 
 
+export const GetCaseStudyDocument = gql`
+    query GetCaseStudy($where: CaseStudyFilter) {
+  caseStudyCollection(where: $where) {
+    items {
+      title
+      date
+    }
+  }
+}
+    `;
+
+/**
+ * __useGetCaseStudyQuery__
+ *
+ * To run a query within a React component, call `useGetCaseStudyQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetCaseStudyQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetCaseStudyQuery({
+ *   variables: {
+ *      where: // value for 'where'
+ *   },
+ * });
+ */
+export function useGetCaseStudyQuery(baseOptions?: Apollo.QueryHookOptions<GetCaseStudyQuery, GetCaseStudyQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<GetCaseStudyQuery, GetCaseStudyQueryVariables>(GetCaseStudyDocument, options);
+      }
+export function useGetCaseStudyLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetCaseStudyQuery, GetCaseStudyQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<GetCaseStudyQuery, GetCaseStudyQueryVariables>(GetCaseStudyDocument, options);
+        }
+export function useGetCaseStudySuspenseQuery(baseOptions?: Apollo.SkipToken | Apollo.SuspenseQueryHookOptions<GetCaseStudyQuery, GetCaseStudyQueryVariables>) {
+          const options = baseOptions === Apollo.skipToken ? baseOptions : {...defaultOptions, ...baseOptions}
+          return Apollo.useSuspenseQuery<GetCaseStudyQuery, GetCaseStudyQueryVariables>(GetCaseStudyDocument, options);
+        }
+export type GetCaseStudyQueryHookResult = ReturnType<typeof useGetCaseStudyQuery>;
+export type GetCaseStudyLazyQueryHookResult = ReturnType<typeof useGetCaseStudyLazyQuery>;
+export type GetCaseStudySuspenseQueryHookResult = ReturnType<typeof useGetCaseStudySuspenseQuery>;
+export type GetCaseStudyQueryResult = Apollo.QueryResult<GetCaseStudyQuery, GetCaseStudyQueryVariables>;
 export const GetCaseStudyCollectionDocument = gql`
     query GetCaseStudyCollection {
   caseStudyCollection {

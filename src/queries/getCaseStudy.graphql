@@ -1,0 +1,8 @@
+query GetCaseStudy($where: CaseStudyFilter) {
+  caseStudyCollection(where: $where) {
+    items {
+      title
+      date
+    }
+  }
+}
