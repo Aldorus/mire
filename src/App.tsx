@@ -14,7 +14,7 @@ export const ROUTE = {
 }
 
 const App = () =>
-  <div className="App"><BrowserRouter>
+  <div className="App"><BrowserRouter >
   <Menu/>
   <Routes >
     <Route path={ROUTE.HOME} element={<Homepage />}></Route>

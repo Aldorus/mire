@@ -1,6 +1,7 @@
 {
   "name": "mire",
   "private": true,
+  "homepage": "https://barbaramarche.com",
   "version": "0.0.0",
   "type": "module",
   "scripts": {
