@@ -2,13 +2,14 @@
 @use './tokens/mixins';
 
 .App {
+  min-width: 425px;
 
   .App__container {
     @include mixins.centered;
     padding: var(--space-8x) var(--space-16x) var(--space-16x) var(--space-16x);
     position: relative;
-    @media screen and (max-width: breakpoints.$breakpoint-sm) {
-      padding: var(--space-32x) var(--space-8x) var(--space-8x);
+    @media screen and (max-width: breakpoints.$breakpoint-md) {
+      padding: var(--space-8x) var(--space-4x) var(--space-8x);
     }
   }
 

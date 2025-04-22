@@ -2102,6 +2102,13 @@ export type DirectiveResolvers<ContextType = any> = {
   contentSourceMaps?: ContentSourceMapsDirectiveResolver<any, any, ContextType>;
 };
 
+export type GetAssetQueryVariables = Exact<{
+  id: Scalars['String']['input'];
+}>;
+
+
+export type GetAssetQuery = { __typename: 'Query', asset?: { __typename: 'Asset', url?: string | null } | null };
+
 export type GetCaseStudyQueryVariables = Exact<{
   where?: InputMaybe<CaseStudyFilter>;
 }>;
@@ -2137,6 +2144,46 @@ export type GetTextQueryQueryVariables = Exact<{
 export type GetTextQueryQuery = { __typename: 'Query', text?: { __typename: 'Text', tags?: Array<string | null> | null, content?: { __typename: 'TextContent', json: any } | null } | null };
 
 
+export const GetAssetDocument = gql`
+    query GetAsset($id: String!) {
+  asset(id: $id) {
+    url
+  }
+}
+    `;
+
+/**
+ * __useGetAssetQuery__
+ *
+ * To run a query within a React component, call `useGetAssetQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetAssetQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetAssetQuery({
+ *   variables: {
+ *      id: // value for 'id'
+ *   },
+ * });
+ */
+export function useGetAssetQuery(baseOptions: Apollo.QueryHookOptions<GetAssetQuery, GetAssetQueryVariables> & ({ variables: GetAssetQueryVariables; skip?: boolean; } | { skip: boolean; }) ) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<GetAssetQuery, GetAssetQueryVariables>(GetAssetDocument, options);
+      }
+export function useGetAssetLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetAssetQuery, GetAssetQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<GetAssetQuery, GetAssetQueryVariables>(GetAssetDocument, options);
+        }
+export function useGetAssetSuspenseQuery(baseOptions?: Apollo.SkipToken | Apollo.SuspenseQueryHookOptions<GetAssetQuery, GetAssetQueryVariables>) {
+          const options = baseOptions === Apollo.skipToken ? baseOptions : {...defaultOptions, ...baseOptions}
+          return Apollo.useSuspenseQuery<GetAssetQuery, GetAssetQueryVariables>(GetAssetDocument, options);
+        }
+export type GetAssetQueryHookResult = ReturnType<typeof useGetAssetQuery>;
+export type GetAssetLazyQueryHookResult = ReturnType<typeof useGetAssetLazyQuery>;
+export type GetAssetSuspenseQueryHookResult = ReturnType<typeof useGetAssetSuspenseQuery>;
+export type GetAssetQueryResult = Apollo.QueryResult<GetAssetQuery, GetAssetQueryVariables>;
 export const GetCaseStudyDocument = gql`
     query GetCaseStudy($where: CaseStudyFilter) {
   caseStudyCollection(where: $where) {

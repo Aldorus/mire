@@ -10,6 +10,7 @@
 
   .ExperienceList__item__date {
     font-family: var(--font-secondary);
-    align-self: center;
+    align-self: self-start;
+    padding-top: 4px;
   }
 }

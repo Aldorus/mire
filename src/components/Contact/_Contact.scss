@@ -9,10 +9,12 @@
     padding: var(--space-16x) var(--space-16x) var(--space-16x);
     display: grid;
     grid-template-columns: 1fr auto;
+    gap: 0 var(--space-32x);
 
     @media screen and (max-width: breakpoints.$breakpoint-md) {
       grid-template-columns: 100%;
       grid-auto-rows: auto auto;
+      padding: var(--space-8x) var(--space-4x) var(--space-8x);
     }
   }
 

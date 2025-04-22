@@ -2,16 +2,18 @@
   position: relative;
 
   .About__wrapper {
-    margin-top: var(--space-8x);
     display: grid;
     grid-gap: var(--space-6x);
     grid-template-columns: 5fr 7fr;
+    padding-bottom: var(--space-16x);
   }
 
   .About__wrapper__portrait {
+
     width: 100%;
     position: sticky;
     top: var(--space-8x);
+    align-self: start;
 
     img {
       width: 100%;
@@ -21,22 +23,11 @@
   .About__content {
     display: flex;
     flex-direction: column;
-    gap: var(--space-6x);
+    gap: var(--space-16x);
 
-    blockquote {
-      margin: var(--space-6x) 0;
+    h2 {
+      margin-bottom: var(--space-8x);
     }
   }
 
-  .About__content__divider {
-    margin-bottom: var(--space-8x);
-  }
-
-  .About__content__tags {
-    margin-bottom: var(--space-16x);
-  }
-
-  .About__divider {
-    margin: var(--space-16x) 0;
-  }
 }

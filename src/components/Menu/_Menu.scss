@@ -1,13 +1,6 @@
 @use '../../tokens/mixins';
+@use '../../tokens/breakpoints';
 
-@keyframes rotating {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
 
 .Menu {
   @include mixins.centered;
@@ -24,6 +17,15 @@
     line-height: 1rem;
     align-items: center;
 
+    @keyframes rotating {
+      from {
+        transform: rotate(0deg);
+      }
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
     img {
       animation: rotating 12s linear infinite;
     }
@@ -36,5 +38,9 @@
     display: flex;
     gap: var(--space-8x);
     align-self: center;
+  }
+
+  @media screen and (max-width: breakpoints.$breakpoint-md) {
+    padding: 0 var(--space-4x);
   }
 }

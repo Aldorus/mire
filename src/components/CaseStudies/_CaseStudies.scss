@@ -10,12 +10,12 @@
     margin: 0 auto 0 0;
     display: flex;
     width: 66%;
-    min-width: 400px;
     flex-direction: column;
     gap: var(--space-4x);
 
     @media screen and (max-width: breakpoints.$breakpoint-md) {
       grid-template-columns: 1fr;
+      width: 100%;
     }
 
     .asset {
