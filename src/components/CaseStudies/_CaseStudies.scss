@@ -1,4 +1,5 @@
 @use '../../tokens/breakpoints';
+@use '../../tokens/typography';
 
 .CaseStudies {
   .CaseStudies__list {
@@ -34,8 +35,18 @@
     }
   }
 
-  .CaseStudies__item__title {
+  .CaseStudies__item__content__title {
     margin-bottom: var(--space-2x);
+
+    img {
+      transform: rotate(-45deg);
+      position: relative;
+      bottom: 4px;
+    }
+  }
+
+  .CaseStudies__title {
+    @include typography.heading2;
   }
 
   .CaseStudies__item__date {

@@ -19,9 +19,11 @@ const CaseStudies = () => {
         </video>
       </div>
       <div className="CaseStudies__item__content">
-        <Link to={generatePath(ROUTE.CASE_STUDY, {slug: item.slug})} className="CaseStudies__item__link">
-          <h2 className="CaseStudies__item__title">{item.title}&nbsp;<img src={arrowLeft}/></h2>
-        </Link>
+        <div className="CaseStudies__item__content__title">
+          <Link to={generatePath(ROUTE.CASE_STUDY, {slug: item.slug})} className="CaseStudies__title">
+            {item.title}&nbsp;<img src={arrowLeft}/>
+          </Link>
+        </div>
         <p className="CaseStudies__item__date">{item.date}</p>
         <RichText content={item.text?.json} className="CaseStudies__item__text"/>
         <TagList tags={item.tags} className="CaseStudies__item__skills"/>
