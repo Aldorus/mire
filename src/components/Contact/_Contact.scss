@@ -1,4 +1,7 @@
 @use "../../tokens/mixins";
+@use "../../tokens/breakpoints";
+@use "../../tokens/typography";
+
 
 .Contact {
   .Contact__wrapper {
@@ -7,15 +10,21 @@
     display: grid;
     grid-template-columns: 1fr auto;
 
+    @media screen and (max-width: breakpoints.$breakpoint-md) {
+      grid-template-columns: 100%;
+      grid-auto-rows: auto auto;
+    }
   }
 
   .Contact__links {
     display: flex;
     gap: var(--space-8x);
     margin-top: var(--space-4x);
+    height: fit-content;
 
     .Link {
-      color: #FFFFFF;
+      @include typography.link(#FFFFFF);
     }
   }
+
 }

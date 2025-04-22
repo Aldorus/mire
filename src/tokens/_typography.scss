@@ -81,31 +81,20 @@ p {
   @include p;
 }
 
-@mixin link {
+@mixin link($color:var(--text-color) ) {
+  font-family: var(--font-secondary);
   text-decoration: none;
-  color: var(--text-color);
+  color: $color;
   font-size: 1em;
   position: relative;
-  display: inline-block;
-  font-family: var(--font-secondary);
-}
+  display: inline;
+  text-decoration: none;
+  background: linear-gradient($color,$color) left bottom no-repeat;
+  background-size: 0% 1px;
+  transition: all 0.5s;
+  padding-bottom: 2px;
 
-@mixin linkHover {
-  &::after {
-    content: "";
-    display: block;
-    position: absolute;
-    bottom: calc(-1 * var(--space-2x));
-    width: 100%;
-    height: 1px;
-
-    transition: opacity 0.3s, transform 0.3s;
-    opacity: 0;
-    transform: scale(0, 1);
-  }
-
-  &:hover::after {
-    opacity: 1;
-    transform: scale(1);
+  &:hover {
+    background-size: 100% 1px;
   }
 }

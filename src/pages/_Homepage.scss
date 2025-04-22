@@ -45,16 +45,19 @@
     }
     .Homepage__cta__icon {
       g rect {
-        animation: shink 1s alternate-reverse infinite;
+        animation: shink 2s alternate-reverse infinite linear;
       }
       g #bottom {
-        animation: move 1s alternate-reverse infinite;
+        animation: move 2s alternate-reverse infinite linear;
       }
     }
 
     .Homepage__cta__title {
       margin-top: var(--space-2x);
-      font-weight: bold;
+      font-family: var(--font-secondary);
+      font-size: 1.33rem;
+      line-height: 1rem;
+
     }
   }
 }
