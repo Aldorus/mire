@@ -2119,7 +2119,7 @@ export type GetCaseStudyQuery = { __typename: 'Query', caseStudyCollection?: { _
 export type GetCaseStudyCollectionQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type GetCaseStudyCollectionQuery = { __typename: 'Query', caseStudyCollection?: { __typename: 'CaseStudyCollection', items: Array<{ __typename: 'CaseStudy', _id: string, slug?: string | null, title?: string | null, order?: number | null, date?: string | null, tags?: Array<string | null> | null, text?: { __typename: 'CaseStudyText', json: any } | null, assets?: { __typename: 'Asset', url?: string | null } | null } | null> } | null };
+export type GetCaseStudyCollectionQuery = { __typename: 'Query', caseStudyCollection?: { __typename: 'CaseStudyCollection', items: Array<{ __typename: 'CaseStudy', _id: string, slug?: string | null, title?: string | null, order?: number | null, date?: string | null, tags?: Array<string | null> | null, text?: { __typename: 'CaseStudyText', json: any } | null, assets?: { __typename: 'Asset', url?: string | null, contentType?: string | null } | null } | null> } | null };
 
 export type GetExperienceCollectionQueryVariables = Exact<{ [key: string]: never; }>;
 
@@ -2239,6 +2239,7 @@ export const GetCaseStudyCollectionDocument = gql`
       title
       assets {
         url
+        contentType
       }
       order
       date

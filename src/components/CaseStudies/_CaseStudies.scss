@@ -3,7 +3,9 @@
 
 .CaseStudies {
   .CaseStudies__list {
-
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-10x);
   }
 
   .CaseStudies__item {

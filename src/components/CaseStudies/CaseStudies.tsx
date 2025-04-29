@@ -14,9 +14,9 @@ const CaseStudies = () => {
   const renderCaseStudies = (item: CaseStudy) => {
     return <div className="CaseStudies__item" key={item._id}>
       <div className="asset">
-        <video loop autoPlay muted>
+        {item.assets?.contentType?.includes("video") ? <video loop autoPlay muted>
           <source src={item.assets?.url ?? ''} type="video/mp4"/>
-        </video>
+        </video> : <img src={item.assets?.url ?? ''}/>}
       </div>
       <div className="CaseStudies__item__content">
         <div className="CaseStudies__item__content__title">

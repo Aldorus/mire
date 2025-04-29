@@ -1,7 +1,6 @@
 /// <reference types="vite-plugin-svgr/client" />
 import "./_Homepage.scss";
 import {RichText} from "../components/Typography/RichText.tsx";
-import Projects from "../components/Projects/Projects.tsx";
 import CaseStudies from "../components/CaseStudies/CaseStudies.tsx";
 import {useGetHeaderSuspenseQuery} from "../models/graphql.ts";
 import ArrowBottom from "../assets/ArrowBottom.svg?react";
@@ -17,11 +16,10 @@ const Homepage = () => {
       </div>
       <h3 className="Homepage__cta">
         <ArrowBottom className="Homepage__cta__icon"/>
-        <span className="Homepage__cta__title">Selected work</span>
+        <span className="Homepage__cta__title">Selected works</span>
       </h3>
     </section>
     <CaseStudies/>
-    <Projects className="Homepage__projects"/>
   </div>
 }
 export default Homepage

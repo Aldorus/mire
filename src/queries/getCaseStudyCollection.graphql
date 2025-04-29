@@ -9,6 +9,7 @@ query GetCaseStudyCollection {
       title
       assets {
         url
+        contentType
       }
       order
       date
