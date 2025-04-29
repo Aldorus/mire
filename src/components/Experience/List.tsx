@@ -10,7 +10,7 @@ const ExperienceList = () => {
 
   const renderExperience = (item: ExperienceItem) => <div className="ExperienceList__item" key={item._id}>
     <p className="ExperienceList__item__date">{item.date}</p>
-    <RichText content={item.text?.json}/>
+    <RichText content={item.text}/>
   </div>
 
   return <div className="ExperienceList">

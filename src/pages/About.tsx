@@ -15,17 +15,17 @@ const About = () => {
         <img src={dataAsset?.asset?.url ?? ''}/>
       </div>
       <div className="About__content">
-        <RichText content={dataAbout?.text?.content?.json}/>
+        <RichText content={dataAbout?.text?.content}/>
         <div>
           <h2>Experience</h2>
           <ExperienceList/>
         </div>
         <div>
-          <RichText content={dataSkills?.text?.content?.json}/>
+          <RichText content={dataSkills?.text?.content}/>
           <TagList tags={dataSkills?.text?.tags}/>
         </div>
         <div>
-          <RichText content={dataSoftware?.text?.content?.json}/>
+          <RichText content={dataSoftware?.text?.content}/>
           <TagList tags={dataSoftware?.text?.tags}/></div>
       </div>
     </div>

@@ -13,7 +13,7 @@ const Contact = ({className}: Props) => {
 
   return <section className={classnames([className, 'Contact'])} id="contact">
     <div className="Contact__wrapper">
-      <RichText content={contactData?.text?.content?.json}/>
+      <RichText content={contactData?.text?.content}/>
       <div className="Contact__links">
         <Link to="mailto:barbara.mrch@gmail.com">Email</Link>
         <Link to="https://www.linkedin.com/in/barbaramarche/" target="_blank">Linkedin</Link>

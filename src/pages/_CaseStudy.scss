@@ -1,10 +1,9 @@
 .CaseStudy {
 
   .CaseStudy__wrapper {
-    display: grid;
-    grid-template-columns: 3fr 7fr;
-    grid-gap: var(--space-8x);
-    padding-top: var(--space-16x);
+    padding: var(--space-16x) var(--space-8x);
+    width: 100%;
+    max-width: var(--max-width);
   }
 
   .CaseStudy__info__item__label {

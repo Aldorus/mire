@@ -126,7 +126,9 @@ enum AssetOrder {
 type CaseStudy implements Entry & _Node {
   _id: ID!
   assets(locale: String, preview: Boolean): Asset
+  classified(locale: String): Boolean
   client(locale: String): String
+  completeText(locale: String): CaseStudyCompleteText
   contentfulMetadata: ContentfulMetadata!
   date(locale: String): String
   linkedFrom(allowedLocales: [String]): CaseStudyLinkingCollections
@@ -145,10 +147,53 @@ type CaseStudyCollection {
   total: Int!
 }
 
+type CaseStudyCompleteText {
+  json: JSON!
+  links: CaseStudyCompleteTextLinks!
+}
+
+type CaseStudyCompleteTextAssets {
+  block: [Asset]!
+  hyperlink: [Asset]!
+}
+
+type CaseStudyCompleteTextEntries {
+  block: [Entry]!
+  hyperlink: [Entry]!
+  inline: [Entry]!
+}
+
+type CaseStudyCompleteTextLinks {
+  assets: CaseStudyCompleteTextAssets!
+  entries: CaseStudyCompleteTextEntries!
+  resources: CaseStudyCompleteTextResources!
+}
+
+type CaseStudyCompleteTextResources {
+  block: [CaseStudyCompleteTextResourcesBlock!]!
+  hyperlink: [CaseStudyCompleteTextResourcesHyperlink!]!
+  inline: [CaseStudyCompleteTextResourcesInline!]!
+}
+
+type CaseStudyCompleteTextResourcesBlock implements ResourceLink {
+  sys: ResourceSys!
+}
+
+type CaseStudyCompleteTextResourcesHyperlink implements ResourceLink {
+  sys: ResourceSys!
+}
+
+type CaseStudyCompleteTextResourcesInline implements ResourceLink {
+  sys: ResourceSys!
+}
+
 input CaseStudyFilter {
   AND: [CaseStudyFilter]
   OR: [CaseStudyFilter]
   assets_exists: Boolean
+  classified: Boolean
+  classified_exists: Boolean
+  classified_not: Boolean
   client: String
   client_contains: String
   client_exists: Boolean
@@ -156,6 +201,9 @@ input CaseStudyFilter {
   client_not: String
   client_not_contains: String
   client_not_in: [String]
+  completeText_contains: String
+  completeText_exists: Boolean
+  completeText_not_contains: String
   contentfulMetadata: ContentfulMetadataFilter
   date: String
   date_contains: String
@@ -202,6 +250,8 @@ type CaseStudyLinkingCollections {
 }
 
 enum CaseStudyOrder {
+  classified_ASC
+  classified_DESC
   client_ASC
   client_DESC
   date_ASC

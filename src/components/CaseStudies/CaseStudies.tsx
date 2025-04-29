@@ -25,7 +25,7 @@ const CaseStudies = () => {
           </Link>
         </div>
         <p className="CaseStudies__item__date">{item.date}</p>
-        <RichText content={item.text?.json} className="CaseStudies__item__text"/>
+        <RichText content={item.text} className="CaseStudies__item__text"/>
         <TagList tags={item.tags} className="CaseStudies__item__skills"/>
       </div>
     </div>
