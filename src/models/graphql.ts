@@ -2254,16 +2254,23 @@ export type GetAssetQueryVariables = Exact<{
 export type GetAssetQuery = { __typename: 'Query', asset?: { __typename: 'Asset', url?: string | null } | null };
 
 export type GetCaseStudyQueryVariables = Exact<{
-  where?: InputMaybe<CaseStudyFilter>;
+  id: Scalars['String']['input'];
 }>;
 
 
-export type GetCaseStudyQuery = { __typename: 'Query', caseStudyCollection?: { __typename: 'CaseStudyCollection', items: Array<{ __typename: 'CaseStudy', title?: string | null, date?: string | null, classified?: boolean | null, completeText?: { __typename: 'CaseStudyCompleteText', json: any } | null } | null> } | null };
+export type GetCaseStudyQuery = { __typename: 'Query', caseStudy?: { __typename: 'CaseStudy', title?: string | null, date?: string | null, classified?: boolean | null, completeText?: { __typename: 'CaseStudyCompleteText', json: any, links: { __typename: 'CaseStudyCompleteTextLinks', entries: { __typename: 'CaseStudyCompleteTextEntries', inline: Array<{ __typename: 'CaseStudy', sys: { __typename: 'Sys', id: string } } | { __typename: 'Experience', sys: { __typename: 'Sys', id: string } } | { __typename: 'Header', sys: { __typename: 'Sys', id: string } } | { __typename: 'Project', sys: { __typename: 'Sys', id: string } } | { __typename: 'Text', sys: { __typename: 'Sys', id: string } } | null>, block: Array<{ __typename: 'CaseStudy', sys: { __typename: 'Sys', id: string } } | { __typename: 'Experience', sys: { __typename: 'Sys', id: string } } | { __typename: 'Header', sys: { __typename: 'Sys', id: string } } | { __typename: 'Project', sys: { __typename: 'Sys', id: string } } | { __typename: 'Text', sys: { __typename: 'Sys', id: string } } | null> }, assets: { __typename: 'CaseStudyCompleteTextAssets', block: Array<{ __typename: 'Asset', url?: string | null, title?: string | null, width?: number | null, height?: number | null, description?: string | null, sys: { __typename: 'Sys', id: string } } | null> } } } | null } | null };
 
 export type GetCaseStudyCollectionQueryVariables = Exact<{ [key: string]: never; }>;
 
 
 export type GetCaseStudyCollectionQuery = { __typename: 'Query', caseStudyCollection?: { __typename: 'CaseStudyCollection', items: Array<{ __typename: 'CaseStudy', _id: string, slug?: string | null, title?: string | null, order?: number | null, date?: string | null, tags?: Array<string | null> | null, text?: { __typename: 'CaseStudyText', json: any } | null, assets?: { __typename: 'Asset', url?: string | null, contentType?: string | null } | null } | null> } | null };
+
+export type GetCaseStudyIdQueryVariables = Exact<{
+  where?: InputMaybe<CaseStudyFilter>;
+}>;
+
+
+export type GetCaseStudyIdQuery = { __typename: 'Query', caseStudyCollection?: { __typename: 'CaseStudyCollection', items: Array<{ __typename: 'CaseStudy', _id: string, sys: { __typename: 'Sys', id: string } } | null> } | null };
 
 export type GetExperienceCollectionQueryVariables = Exact<{ [key: string]: never; }>;
 
@@ -2329,14 +2336,38 @@ export type GetAssetLazyQueryHookResult = ReturnType<typeof useGetAssetLazyQuery
 export type GetAssetSuspenseQueryHookResult = ReturnType<typeof useGetAssetSuspenseQuery>;
 export type GetAssetQueryResult = Apollo.QueryResult<GetAssetQuery, GetAssetQueryVariables>;
 export const GetCaseStudyDocument = gql`
-    query GetCaseStudy($where: CaseStudyFilter) {
-  caseStudyCollection(where: $where) {
-    items {
-      title
-      date
-      classified
-      completeText {
-        json
+    query GetCaseStudy($id: String!) {
+  caseStudy(id: $id) {
+    title
+    date
+    classified
+    completeText {
+      json
+      links {
+        entries {
+          inline {
+            sys {
+              id
+            }
+          }
+          block {
+            sys {
+              id
+            }
+          }
+        }
+        assets {
+          block {
+            sys {
+              id
+            }
+            url
+            title
+            width
+            height
+            description
+          }
+        }
       }
     }
   }
@@ -2355,11 +2386,11 @@ export const GetCaseStudyDocument = gql`
  * @example
  * const { data, loading, error } = useGetCaseStudyQuery({
  *   variables: {
- *      where: // value for 'where'
+ *      id: // value for 'id'
  *   },
  * });
  */
-export function useGetCaseStudyQuery(baseOptions?: Apollo.QueryHookOptions<GetCaseStudyQuery, GetCaseStudyQueryVariables>) {
+export function useGetCaseStudyQuery(baseOptions: Apollo.QueryHookOptions<GetCaseStudyQuery, GetCaseStudyQueryVariables> & ({ variables: GetCaseStudyQueryVariables; skip?: boolean; } | { skip: boolean; }) ) {
         const options = {...defaultOptions, ...baseOptions}
         return Apollo.useQuery<GetCaseStudyQuery, GetCaseStudyQueryVariables>(GetCaseStudyDocument, options);
       }
@@ -2428,6 +2459,51 @@ export type GetCaseStudyCollectionQueryHookResult = ReturnType<typeof useGetCase
 export type GetCaseStudyCollectionLazyQueryHookResult = ReturnType<typeof useGetCaseStudyCollectionLazyQuery>;
 export type GetCaseStudyCollectionSuspenseQueryHookResult = ReturnType<typeof useGetCaseStudyCollectionSuspenseQuery>;
 export type GetCaseStudyCollectionQueryResult = Apollo.QueryResult<GetCaseStudyCollectionQuery, GetCaseStudyCollectionQueryVariables>;
+export const GetCaseStudyIdDocument = gql`
+    query GetCaseStudyID($where: CaseStudyFilter) {
+  caseStudyCollection(where: $where) {
+    items {
+      _id
+      sys {
+        id
+      }
+    }
+  }
+}
+    `;
+
+/**
+ * __useGetCaseStudyIdQuery__
+ *
+ * To run a query within a React component, call `useGetCaseStudyIdQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetCaseStudyIdQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetCaseStudyIdQuery({
+ *   variables: {
+ *      where: // value for 'where'
+ *   },
+ * });
+ */
+export function useGetCaseStudyIdQuery(baseOptions?: Apollo.QueryHookOptions<GetCaseStudyIdQuery, GetCaseStudyIdQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<GetCaseStudyIdQuery, GetCaseStudyIdQueryVariables>(GetCaseStudyIdDocument, options);
+      }
+export function useGetCaseStudyIdLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetCaseStudyIdQuery, GetCaseStudyIdQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<GetCaseStudyIdQuery, GetCaseStudyIdQueryVariables>(GetCaseStudyIdDocument, options);
+        }
+export function useGetCaseStudyIdSuspenseQuery(baseOptions?: Apollo.SkipToken | Apollo.SuspenseQueryHookOptions<GetCaseStudyIdQuery, GetCaseStudyIdQueryVariables>) {
+          const options = baseOptions === Apollo.skipToken ? baseOptions : {...defaultOptions, ...baseOptions}
+          return Apollo.useSuspenseQuery<GetCaseStudyIdQuery, GetCaseStudyIdQueryVariables>(GetCaseStudyIdDocument, options);
+        }
+export type GetCaseStudyIdQueryHookResult = ReturnType<typeof useGetCaseStudyIdQuery>;
+export type GetCaseStudyIdLazyQueryHookResult = ReturnType<typeof useGetCaseStudyIdLazyQuery>;
+export type GetCaseStudyIdSuspenseQueryHookResult = ReturnType<typeof useGetCaseStudyIdSuspenseQuery>;
+export type GetCaseStudyIdQueryResult = Apollo.QueryResult<GetCaseStudyIdQuery, GetCaseStudyIdQueryVariables>;
 export const GetExperienceCollectionDocument = gql`
     query getExperienceCollection {
   experienceCollection {

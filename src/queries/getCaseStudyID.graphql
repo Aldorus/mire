@@ -1,0 +1,10 @@
+query GetCaseStudyID($where: CaseStudyFilter) {
+  caseStudyCollection(where: $where) {
+    items {
+      _id
+      sys {
+        id
+      }
+    }
+  }
+}

@@ -1,35 +1,33 @@
-query GetCaseStudy($where: CaseStudyFilter) {
-  caseStudyCollection(where: $where) {
-    items {
-      title
-      date
-      classified
-      completeText {
-        json
-        links {
-          entries {
-            inline {
-              sys {
-                id
-              }
-            }
-            block {
-              sys {
-                id
-              }
+query GetCaseStudy($id: String!) {
+  caseStudy(id: $id) {
+    title
+    date
+    classified
+    completeText {
+      json
+      links {
+        entries {
+          inline {
+            sys {
+              id
             }
           }
-          assets {
-            block {
-              sys {
-                id
-              }
-              url
-              title
-              width
-              height
-              description
+          block {
+            sys {
+              id
             }
+          }
+        }
+        assets {
+          block {
+            sys {
+              id
+            }
+            url
+            title
+            width
+            height
+            description
           }
         }
       }
