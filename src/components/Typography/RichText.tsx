@@ -1,12 +1,12 @@
 // Create a bespoke renderOptions object to target BLOCKS.EMBEDDED_ENTRY (linked entries e.g. videoEmbed)
-// and BLOCKS.EMBEDDED_ASSET (linked assets e.g. images)
-import {BLOCKS, Document} from '@contentful/rich-text-types';
+// and BLOCKS.EMBEDDED_ASSET (linked assets e.g. ima
+import {BLOCKS} from '@contentful/rich-text-types';
 
 import {documentToReactComponents} from "@contentful/rich-text-react-renderer";
 import {HTMLAttributes} from "react";
 import classnames from "classnames";
 
-function renderOptions(links) {
+function renderOptions(links: any) {
   // create an asset block map
   const assetBlockMap = new Map();
   // loop through the assets and add them to the map
@@ -27,7 +27,7 @@ function renderOptions(links) {
     renderNode: {
       // other options...
 
-      [BLOCKS.EMBEDDED_ENTRY]: (node, children) => {
+      [BLOCKS.EMBEDDED_ENTRY]: (node: any) => {
         // find the entry in the entryBlockMap by ID
         const entry = entryBlockMap.get(node.data.target.sys.id);
 
@@ -48,7 +48,7 @@ function renderOptions(links) {
           );
         }
       },
-      [BLOCKS.EMBEDDED_ASSET]: (node, next) => {
+      [BLOCKS.EMBEDDED_ASSET]: (node: any) => {
         // find the asset in the assetBlockMap by ID
         const asset = assetBlockMap.get(node.data.target.sys.id);
 

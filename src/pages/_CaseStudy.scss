@@ -1,13 +1,39 @@
+@use "../tokens/breakpoints";
+
 .CaseStudy {
+  --paddingCaseStudy: var(--space-48x);
+
+  @media screen and (max-width: breakpoints.$breakpoint-md) {
+    --paddingCaseStudy: var(--space-6x);
+  }
 
   .CaseStudy__wrapper {
-    padding: var(--space-16x) var(--space-8x);
+    padding: var(--space-16x) var(--paddingCaseStudy) var(--space-6x);
     width: 100%;
     max-width: var(--max-width);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-8x);
+  }
+
+  .CaseStudy__quote {
+    border-radius: 8px;
+    background: #FED584;
+    padding: var(--space-4x) var(--space-6x);
   }
 
   .CaseStudy__info__item__label {
     font-family: var(--font-secondary);
     font-weight: 600;
+  }
+
+  .CaseStudy__completeText {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-8x);
+    line-height: 32px;
+    > *:not(img) {
+      padding: 0 var(--paddingCaseStudy);
+    }
   }
 }

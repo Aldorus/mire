@@ -26,14 +26,14 @@ const CaseStudy = () => {
         <div className="CaseStudy__info__item"><span
           className="CaseStudy__info__item__label">Time:</span> {data?.caseStudy.date}</div>
       </div>
-      {data?.caseStudy.classified && <div>
+      {data?.caseStudy.classified && <div className="CaseStudy__quote">
         This project is part of a broader redesign initiative currently underway at RSI. Due to confidentiality
         agreements, I am not able to share the most recent work completed over the past six months, including certain
         outcomes and upcoming features. This case study focuses on the first major milestone: the redesign of the global
         navigation, which laid the groundwork for the larger revamp.
       </div>}
-      <RichText content={data?.caseStudy.completeText}/>
     </div>
+      <RichText content={data?.caseStudy.completeText} className="CaseStudy__completeText"/>
   </div>
 }
 export default CaseStudy;
