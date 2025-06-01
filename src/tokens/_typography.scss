@@ -81,6 +81,10 @@ p {
   @include p;
 }
 
+b {
+  font-weight: 600;
+}
+
 @mixin link($color:var(--text-color) ) {
   font-family: var(--font-secondary);
   text-decoration: none;

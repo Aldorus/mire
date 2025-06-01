@@ -3,10 +3,11 @@
 
 .App {
   min-width: 425px;
+  background: var(--background-color);
 
-  .App__container {
+  .App__container .Section{
     @include mixins.centered;
-    padding: var(--space-8x) var(--space-16x) var(--space-16x) var(--space-16x);
+    padding: var(--space-10x) var(--space-16x) var(--space-16x) var(--space-16x);
     position: relative;
     @media screen and (max-width: breakpoints.$breakpoint-md) {
       padding: var(--space-8x) var(--space-4x) var(--space-8x);
@@ -14,8 +15,7 @@
   }
 
   .App__contact {
-    background: #000000;
+    background: #222B2A;
     color: #FFFFFF;
-    margin-top: var(--space-32x);
   }
 }

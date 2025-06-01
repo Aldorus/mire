@@ -70,7 +70,7 @@ export const RichText = ({content, className}: RichTextProps) => {
       className={classnames(['RichText', className])}>
       {content ? documentToReactComponents(
         content.json,
-        content.links ? renderOptions(content.links) : undefined
+        content.links ? renderOptions(content.links) : {preserveWhitespace: true}
       ) : null}
     </div>
   );

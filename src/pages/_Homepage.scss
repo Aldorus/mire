@@ -1,61 +1,69 @@
 .Homepage {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-16x);
-
-  .Homepage__top {
-    min-height: calc(100vh - 32px);
-    width: 100%;
-    max-width: 750px;
-    padding-top: var(--space-20x);
+  &__top {
+    height: 100vh;
+    text-align: center;
+    position: relative;
   }
 
-  .Homepage__info {
-    display: flex;
-    flex-wrap: wrap;
-  }
-
-  .Homepage__cta {
-    font-size: 1rem;
-    font-family: var(--font-secondary);
-    display: flex;
-    gap: var(--space-3x);
-    margin-top: var(--space-16x);
-
-
-    @keyframes shink {
-      from {
-        transform: scaleY(2);
-        transform-origin: center 6px;
-      }
-      to{
-        transform: scaleY(2);
-        transform-origin: center 6px;
-      }
-    }
-    @keyframes move {
-      from {
-        transform: translateY(0);
-      }
-      to{
-        transform: translateY(15px);
-      }
-    }
-    .Homepage__cta__icon {
-      g rect {
-        animation: shink 2s alternate-reverse infinite linear;
-      }
-      g #bottom {
-        animation: move 2s alternate-reverse infinite linear;
-      }
-    }
-
-    .Homepage__cta__title {
-      margin-top: var(--space-2x);
+  &__headline {
+    h1 {
+      font-size: 98px;
+      line-height: 1.06;
       font-family: var(--font-secondary);
-      font-size: 1.33rem;
-      line-height: 1rem;
-
     }
+
+    i {
+      font-family: var(--font-primary);
+      color: var(--accent-2);
+      font-size: 104px;
+      line-height: 94px;
+    }
+
+    p {
+      width: 540px;
+      margin: var(--space-8x) auto 0;
+      text-align: left;
+      line-height: 1.33;
+    }
+  }
+
+  &__town {
+    font-family: var(--font-secondary);
+    margin-bottom: var(--space-8x);
+  }
+
+  @keyframes shink {
+    from {
+      transform: scaleY(2);
+      transform-origin: center 6px;
+    }
+    to{
+      transform: scaleY(2);
+      transform-origin: center 6px;
+    }
+  }
+  @keyframes move {
+    from {
+      transform: translateY(0);
+    }
+    to{
+      transform: translateY(15px);
+    }
+  }
+  &__cta__icon {
+    position: absolute;
+    bottom: 160px;
+    g rect {
+      animation: shink 2s alternate-reverse infinite linear;
+    }
+    g #bottom {
+      animation: move 2s alternate-reverse infinite linear;
+    }
+  }
+
+  &__sections {
+    height: 100vh;
+    background: #D4DDDC;
+
   }
 }

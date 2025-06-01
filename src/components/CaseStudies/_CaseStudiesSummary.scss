@@ -1,0 +1,72 @@
+@use '../../tokens/breakpoints';
+@use '../../tokens/typography';
+
+.CaseStudies {
+  &__title {
+    text-align: center;
+    margin-bottom: var(--space-10x);
+  }
+
+  &__list {
+    .slick-slide {
+      .asset {
+        transition: all .3s ease 0.2s;
+        scale: .8;
+        transform-origin: center;
+      }
+      .description {
+        transition: opacity .3s ease 0.5s;
+        opacity: 0;
+      }
+
+    }
+    .slick-current {
+      .asset {
+        scale: 1;
+      }
+      .description {
+        opacity: 1;
+      }
+    }
+
+    .slick-arrow {
+      height: 48px;
+      width: 80px;
+      background: #D88374;
+      z-index: 1;
+      border-radius: 40px;
+      top: 200px;
+    }
+  }
+
+  &__item{
+    height: 500px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    .asset {
+      flex: 1;
+      overflow: hidden;
+      border-radius: 8px;
+      aspect-ratio: 1010 / 629;
+
+      >* {
+        width: 100%;
+        object-fit: cover;
+        height: 100%;
+      }
+    }
+
+    .description {
+      text-align: center;
+    }
+
+    .title {
+      font-family: var(--font-secondary);
+      margin: var(--space-6x) 0;
+    }
+  }
+
+}
