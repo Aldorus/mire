@@ -32,10 +32,24 @@
     .slick-arrow {
       height: 48px;
       width: 80px;
-      background: #D88374;
+      background: var(--accent-4);
       z-index: 1;
       border-radius: 40px;
       top: 200px;
+      transition: all .3s ease;
+      padding: 17px;
+
+      path {
+        transition: all .3s ease;
+      }
+
+      &:hover{
+        background: var(--accent-2);
+        path {
+          fill: white;
+        }
+
+      }
     }
 
     .slick-dots {

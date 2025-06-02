@@ -4,8 +4,7 @@
 
 .Menu {
   @include mixins.centered;
-  padding: 0 var(--space-16x);
-  height: var(--space-16x);
+  padding: var(--space-4x) var(--space-16x);
   display: flex;
   justify-content: space-between;
   align-items: center;

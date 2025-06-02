@@ -1,3 +1,4 @@
+/// <reference types="vite-plugin-svgr/client" />
 import './_CaseStudiesSummary.scss';
 import {useGetCaseStudyCollectionSuspenseQuery} from "../../models/graphql.ts";
 import {compact, flow, map, sortBy} from "lodash/fp";
@@ -5,12 +6,13 @@ import {RichText} from "../Typography/RichText.tsx";
 import {HTMLAttributes} from "react";
 import classnames from "classnames";
 import Slider from "react-slick";
+import ArrowLeft from "../../assets/ArrowLeft.svg?react";
+import ArrowRight from "../../assets/ArrowRight.svg?react";
 
 type Props = {
   className?: HTMLAttributes<HTMLDivElement>['className'],
 }
 type CaseStudy = NonNullable<NonNullable<NonNullable<ReturnType<typeof useGetCaseStudyCollectionSuspenseQuery>['data']>['caseStudyCollection']>['items'][number]>;
-
 
 const CaseStudiesSummary = ({className}: Props) => {
   const {data} = useGetCaseStudyCollectionSuspenseQuery();
@@ -35,7 +37,11 @@ const CaseStudiesSummary = ({className}: Props) => {
       infinite={false}
       centerPadding="150px"
       dots
-      centerMode>
+      centerMode
+      nextArrow={<ArrowLeft/>}
+      prevArrow={<ArrowRight/>}
+
+    >
       {flow(
         compact,
         sortBy((item: CaseStudy) => item.order),
