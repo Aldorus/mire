@@ -5,7 +5,7 @@
   min-width: 425px;
   background: var(--background-color);
 
-  .App__container .Section{
+  .Section{
     @include mixins.centered;
     padding: var(--space-10x) var(--space-16x) var(--space-16x) var(--space-16x);
     position: relative;

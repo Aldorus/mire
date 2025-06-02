@@ -37,6 +37,41 @@
       border-radius: 40px;
       top: 200px;
     }
+
+    .slick-dots {
+      margin-top: var(--space-20x);
+      position: static;
+      --size-dot: 8px;
+      li{
+        width: var(--size-dot);
+        height: var(--size-dot);
+        transition: all .3s ease;
+        button {
+          width: var(--size-dot);
+          height: var(--size-dot);
+          transition: all .3s ease;
+          &::before{
+            width: var(--size-dot);
+            height: var(--size-dot);
+            transition: all .3s ease;
+            content: '';
+            border-radius: 4px;
+            background: #5A726F;
+            margin: 0;
+          }
+        }
+      }
+      .slick-active {
+        width: 40px;
+        button {
+          width: 40px;
+          &::before{
+            width: 40px;
+            background: #222B2A;
+          }
+        }
+      }
+    }
   }
 
   &__item{

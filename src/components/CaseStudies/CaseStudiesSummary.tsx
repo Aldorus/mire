@@ -34,6 +34,7 @@ const CaseStudiesSummary = ({className}: Props) => {
       className="CaseStudies__list"
       infinite={false}
       centerPadding="150px"
+      dots
       centerMode>
       {flow(
         compact,
