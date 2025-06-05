@@ -1,6 +1,9 @@
+@use "../tokens/breakpoints";
+
+
 .Homepage {
   &__top {
-    height: 100vh;
+    min-height: 100vh;
     text-align: center;
     position: relative;
   }
@@ -10,6 +13,10 @@
       font-size: 98px;
       line-height: 1.06;
       font-family: var(--font-secondary);
+
+      @media screen and (max-width: breakpoints.$breakpoint-md) {
+        font-size: 50px;
+      }
     }
 
     i {
@@ -17,10 +24,13 @@
       color: var(--accent-2);
       font-size: 104px;
       line-height: 94px;
+      @media screen and (max-width: breakpoints.$breakpoint-md) {
+        font-size: 55px;
+      }
     }
 
     p {
-      width: 540px;
+      max-width: 540px;
       margin: var(--space-8x) auto 0;
       text-align: left;
       line-height: 1.33;
@@ -61,9 +71,7 @@
     }
   }
 
-  &__sections {
-    height: 100vh;
+  &__CaseStudies {
     background: #D4DDDC;
-
   }
 }

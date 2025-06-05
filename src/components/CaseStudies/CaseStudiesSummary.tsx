@@ -35,7 +35,7 @@ const CaseStudiesSummary = ({className}: Props) => {
     <Slider
       className="CaseStudies__list"
       infinite={false}
-      centerPadding="150px"
+      centerPadding="10%"
       dots
       centerMode
       nextArrow={<ArrowLeft/>}
