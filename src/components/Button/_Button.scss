@@ -1,0 +1,18 @@
+.Button {
+  padding: var(--space-3x) var(--space-4x);
+  font-size: .9rem;
+  text-transform: uppercase;
+  font-family: var(--font-secondary);
+  background: #9BB0AE;
+  transition: all 0.3s ease;
+  border-radius: 20px;
+  border: none;
+  display: inline-flex;
+  gap: var(--space-2x);
+  cursor: pointer;
+  align-items: center;
+
+  &:hover{
+    background: #5A726F;
+  }
+}

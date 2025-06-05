@@ -4,6 +4,8 @@
 .App {
   min-width: 425px;
   background: var(--background-color);
+  width: 100%;
+  overflow-x: hidden;
 
   .Section{
     @include mixins.centered;
