@@ -592,6 +592,7 @@ type HeaderTitleResourcesInline implements ResourceLink {
 scalar HexColor
 
 enum ImageFormat {
+  """AVIF image format."""
   AVIF
 
   """JPG image format."""

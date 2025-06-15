@@ -1,8 +1,0 @@
-query GetHeader {
-  header(id: "2x4Lnj8AHPSBLc83Y0aHn6") {
-    title {
-      json
-    }
-    info
-  }
-}

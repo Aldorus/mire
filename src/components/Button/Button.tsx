@@ -10,7 +10,7 @@ type Props = {
 const Button = ({className, icon, children}: Props) => {
   return <button className={classnames(["Button", className])}>
     {children}
-    {icon}
+    {icon && <span className="Button__icon">{icon}</span>}
   </button>
 }
 

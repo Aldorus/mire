@@ -4,29 +4,32 @@
 
 
 .Contact {
-  .Contact__wrapper {
+  &__wrapper {
     @include mixins.centered;
-    padding: var(--space-16x) var(--space-16x) var(--space-16x);
-    display: grid;
-    grid-template-columns: 1fr auto;
-    gap: 0 var(--space-32x);
+    text-align: center;
+  }
+
+  &__links {
+    display: inline-flex;
+    gap: var(--space-4x);
+    margin-top: var(--space-4x);
+    height: fit-content;
+    justify-content: center;
+    flex-wrap: wrap;
 
     @media screen and (max-width: breakpoints.$breakpoint-md) {
-      grid-template-columns: 100%;
-      grid-auto-rows: auto auto;
-      padding: var(--space-8x) var(--space-4x) var(--space-8x);
     }
   }
 
-  .Contact__links {
-    display: flex;
-    gap: var(--space-8x);
-    margin-top: var(--space-4x);
-    height: fit-content;
+  &__text {
+    color: var(--primary-6);
+    line-height: 1.5;
+  }
 
-    .Link {
-      @include typography.link(#FFFFFF);
-    }
+  &__credits {
+    color: var(--primary-6);
+    margin-top: var(--space-10x);
+    font-family: var(--font-secondary);
   }
 
 }

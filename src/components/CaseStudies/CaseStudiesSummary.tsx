@@ -8,6 +8,7 @@ import classnames from "classnames";
 import Slider from "react-slick";
 import ArrowLeft from "../../assets/ArrowLeft.svg?react";
 import ArrowRight from "../../assets/ArrowRight.svg?react";
+import {Link} from "react-router-dom";
 
 type Props = {
   className?: HTMLAttributes<HTMLDivElement>['className'],
@@ -17,7 +18,7 @@ type CaseStudy = NonNullable<NonNullable<NonNullable<ReturnType<typeof useGetCas
 const CaseStudiesSummary = ({className}: Props) => {
   const {data} = useGetCaseStudyCollectionSuspenseQuery();
   const renderCaseStudies = (item: CaseStudy) => {
-    return <div key={item._id} className="CaseStudies__item">
+    return <Link to={`/case/${item.slug}`} key={item._id} className="CaseStudies__item">
       <div className="asset">
         {item.assets?.contentType?.includes("video") ? <video loop autoPlay muted>
           <source src={item.assets?.url ?? ''} type="video/mp4"/>
@@ -27,13 +28,13 @@ const CaseStudiesSummary = ({className}: Props) => {
         <p className="title">{item.title}</p>
         <RichText content={item.text} className="text"/>
       </div>
-    </div>
+    </Link>
   };
 
   return <section className={classnames('CaseStudies', className)} id="projects">
     <h2 className="CaseStudies__title">Selected works</h2>
     <Slider
-      className="CaseStudies__list"
+      className="CaseStudies__list--carrousel"
       infinite={false}
       centerPadding="10%"
       dots
@@ -48,6 +49,14 @@ const CaseStudiesSummary = ({className}: Props) => {
         map(renderCaseStudies)
       )(data?.caseStudyCollection?.items ?? [])}
     </Slider>
+
+    <div className="CaseStudies__list--vertical">
+      {flow(
+        compact,
+        sortBy((item: CaseStudy) => item.order),
+        map(renderCaseStudies)
+      )(data?.caseStudyCollection?.items ?? [])}
+    </div>
   </section>
 }
 

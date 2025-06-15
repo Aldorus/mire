@@ -854,6 +854,7 @@ export type HeaderTitleResourcesInline = ResourceLink & {
 };
 
 export enum ImageFormat {
+  /** AVIF image format. */
   Avif = 'AVIF',
   /** JPG image format. */
   Jpg = 'JPG',
@@ -2277,11 +2278,6 @@ export type GetExperienceCollectionQueryVariables = Exact<{ [key: string]: never
 
 export type GetExperienceCollectionQuery = { __typename: 'Query', experienceCollection?: { __typename: 'ExperienceCollection', items: Array<{ __typename: 'Experience', _id: string, date?: string | null, order?: number | null, text?: { __typename: 'ExperienceText', json: any } | null } | null> } | null };
 
-export type GetHeaderQueryVariables = Exact<{ [key: string]: never; }>;
-
-
-export type GetHeaderQuery = { __typename: 'Query', header?: { __typename: 'Header', info?: Array<string | null> | null, title?: { __typename: 'HeaderTitle', json: any } | null } | null };
-
 export type GetProjectCollectionQueryVariables = Exact<{ [key: string]: never; }>;
 
 
@@ -2550,48 +2546,6 @@ export type GetExperienceCollectionQueryHookResult = ReturnType<typeof useGetExp
 export type GetExperienceCollectionLazyQueryHookResult = ReturnType<typeof useGetExperienceCollectionLazyQuery>;
 export type GetExperienceCollectionSuspenseQueryHookResult = ReturnType<typeof useGetExperienceCollectionSuspenseQuery>;
 export type GetExperienceCollectionQueryResult = Apollo.QueryResult<GetExperienceCollectionQuery, GetExperienceCollectionQueryVariables>;
-export const GetHeaderDocument = gql`
-    query GetHeader {
-  header(id: "2x4Lnj8AHPSBLc83Y0aHn6") {
-    title {
-      json
-    }
-    info
-  }
-}
-    `;
-
-/**
- * __useGetHeaderQuery__
- *
- * To run a query within a React component, call `useGetHeaderQuery` and pass it any options that fit your needs.
- * When your component renders, `useGetHeaderQuery` returns an object from Apollo Client that contains loading, error, and data properties
- * you can use to render your UI.
- *
- * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
- *
- * @example
- * const { data, loading, error } = useGetHeaderQuery({
- *   variables: {
- *   },
- * });
- */
-export function useGetHeaderQuery(baseOptions?: Apollo.QueryHookOptions<GetHeaderQuery, GetHeaderQueryVariables>) {
-        const options = {...defaultOptions, ...baseOptions}
-        return Apollo.useQuery<GetHeaderQuery, GetHeaderQueryVariables>(GetHeaderDocument, options);
-      }
-export function useGetHeaderLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetHeaderQuery, GetHeaderQueryVariables>) {
-          const options = {...defaultOptions, ...baseOptions}
-          return Apollo.useLazyQuery<GetHeaderQuery, GetHeaderQueryVariables>(GetHeaderDocument, options);
-        }
-export function useGetHeaderSuspenseQuery(baseOptions?: Apollo.SkipToken | Apollo.SuspenseQueryHookOptions<GetHeaderQuery, GetHeaderQueryVariables>) {
-          const options = baseOptions === Apollo.skipToken ? baseOptions : {...defaultOptions, ...baseOptions}
-          return Apollo.useSuspenseQuery<GetHeaderQuery, GetHeaderQueryVariables>(GetHeaderDocument, options);
-        }
-export type GetHeaderQueryHookResult = ReturnType<typeof useGetHeaderQuery>;
-export type GetHeaderLazyQueryHookResult = ReturnType<typeof useGetHeaderLazyQuery>;
-export type GetHeaderSuspenseQueryHookResult = ReturnType<typeof useGetHeaderSuspenseQuery>;
-export type GetHeaderQueryResult = Apollo.QueryResult<GetHeaderQuery, GetHeaderQueryVariables>;
 export const GetProjectCollectionDocument = gql`
     query GetProjectCollection {
   projectCollection {

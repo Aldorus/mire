@@ -3,7 +3,7 @@
   font-size: .9rem;
   text-transform: uppercase;
   font-family: var(--font-secondary);
-  background: #9BB0AE;
+  background: var(--primary-6);
   transition: all 0.3s ease;
   border-radius: 20px;
   border: none;
@@ -12,7 +12,14 @@
   cursor: pointer;
   align-items: center;
 
+
+
   &:hover{
-    background: #5A726F;
+    background: var(--primary-4);
+  }
+
+  &__icon svg {
+    height: 12px;
+    width: 12px;
   }
 }

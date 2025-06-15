@@ -13,7 +13,6 @@ type Props = {
 
 const GetToKnowMe = ({className}: Props) => {
   const {data: knowMeData} = useGetTextQuerySuspenseQuery({variables: {id: '2uA3U2hLkUfSU2d352XNlc'}});
-  console.log(knowMeData)
   return <div className={classnames([className, "GetToKnowMe"])}>
     <div className="GetToKnowMe__centered">
       <RichText content={knowMeData?.text?.content}/>

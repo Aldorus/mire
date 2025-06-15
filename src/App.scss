@@ -1,5 +1,6 @@
 @use './tokens/breakpoints';
 @use './tokens/mixins';
+@use './tokens/colors';
 
 .App {
   min-width: 425px;
@@ -12,12 +13,12 @@
     padding: var(--space-10x) var(--space-16x) var(--space-16x) var(--space-16x);
     position: relative;
     @media screen and (max-width: breakpoints.$breakpoint-md) {
-      padding: var(--space-8x) var(--space-4x) var(--space-8x);
+      padding: var(--space-10x) var(--space-4x) var(--space-10x);
     }
   }
 
   .App__contact {
-    background: #222B2A;
+    background: var(--primary-1);
     color: #FFFFFF;
   }
 }

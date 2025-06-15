@@ -3,43 +3,59 @@
 
 .Homepage {
   &__top {
-    min-height: 100vh;
-    text-align: center;
+    min-height: 800px;
     position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
 
   &__headline {
-    h1 {
+    &__title {
+      text-align: center;
       font-size: 98px;
-      line-height: 1.06;
       font-family: var(--font-secondary);
+      font-weight: 600;
 
       @media screen and (max-width: breakpoints.$breakpoint-md) {
+        text-align: left;
         font-size: 50px;
+        line-height: 56px;
+      }
+
+      &__alternativeColor {
+        color: var(--accent-2)
+      }
+
+      &__alternativeFont {
+        font-family: var(--font-primary);
+        font-weight: 300;
+        font-style: italic;
+      }
+
+      &__icon {
+        width: 64px;
+        height: 64px;
+        @media screen and (max-width: breakpoints.$breakpoint-md) {
+          width: 30px;
+          height: 30px;
+        }
+
+        path {
+          fill: #9BB0AE;
+        }
       }
     }
-
-    i {
-      font-family: var(--font-primary);
-      color: var(--accent-2);
-      font-size: 104px;
-      line-height: 94px;
-      @media screen and (max-width: breakpoints.$breakpoint-md) {
-        font-size: 55px;
-      }
-    }
-
-    p {
-      max-width: 540px;
-      margin: var(--space-8x) auto 0;
-      text-align: left;
-      line-height: 1.33;
+    &__text {
+      margin-top: var(--space-8x);
+      line-height: 24px;
     }
   }
 
   &__town {
     font-family: var(--font-secondary);
     margin-bottom: var(--space-8x);
+    color: #4F6461;
   }
 
   @keyframes shink {
