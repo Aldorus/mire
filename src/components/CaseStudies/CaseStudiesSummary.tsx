@@ -18,17 +18,17 @@ type CaseStudy = NonNullable<NonNullable<NonNullable<ReturnType<typeof useGetCas
 const CaseStudiesSummary = ({className}: Props) => {
   const {data} = useGetCaseStudyCollectionSuspenseQuery();
   const renderCaseStudies = (item: CaseStudy) => {
-    return <Link to={`/case/${item.slug}`} key={item._id} className="CaseStudies__item">
+    return <div key={item._id} className="CaseStudies__item">
       <div className="asset">
         {item.assets?.contentType?.includes("video") ? <video loop autoPlay muted>
           <source src={item.assets?.url ?? ''} type="video/mp4"/>
         </video> : <img src={item.assets?.url ?? ''}/>}
       </div>
-      <div className="description">
+      <Link to={`/case/${item.slug}`}><div className="description">
         <p className="title">{item.title}</p>
         <RichText content={item.text} className="text"/>
-      </div>
-    </Link>
+      </div></Link>
+    </div>
   };
 
   return <section className={classnames('CaseStudies', className)} id="projects">
@@ -41,7 +41,6 @@ const CaseStudiesSummary = ({className}: Props) => {
       centerMode
       nextArrow={<ArrowLeft/>}
       prevArrow={<ArrowRight/>}
-
     >
       {flow(
         compact,

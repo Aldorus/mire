@@ -2,22 +2,27 @@
   position: relative;
 
   .About__wrapper {
-    display: grid;
-    grid-gap: var(--space-6x);
-    grid-template-columns: 5fr 7fr;
-    padding-bottom: var(--space-16x);
-  }
+    &__portrait {
+      background: var(--primary-2);
 
-  .About__wrapper__portrait {
-    width: 100%;
-    position: sticky;
-    top: 96px;
-    align-self: start;
 
-    img {
-      width: 100%;
+      img {
+        width: 196px;
+        height: 264px;
+        object-fit: cover;
+        border-radius: 98px;
+      }
+    }
+
+    &__text {
+      background: url("../assets/AboutShape.svg");
+      background-repeat: no-repeat;
+      background-size: 100% 100%;
+      padding: 94px 200px  50px 160px;
     }
   }
+
+
 
   .About__content {
     display: flex;

@@ -31,8 +31,10 @@ const Menu = () => {
       onMouseEnter={() => setIsHover(true)}
       onMouseLeave={() => setIsHover(false)}
       className="Menu__trigger">
-      <img src={BettyStandard} className={classnames(['betty', 'standard', isHover && 'hovered'])}/>
-      <img src={BettyHappy} className={classnames(['betty', 'happy', isHover && 'hovered'])}/>
+      <div>
+        <img src={BettyStandard} className={classnames(['betty', 'standard', isHover && 'hovered'])}/>
+        <img src={BettyHappy} className={classnames(['betty', 'happy', isHover && 'hovered'])}/>
+      </div>
     </div>
     <div className={classnames(['Menu__panel', isMenuOpen && 'Menu__panel--open'])}>
       <div className="Section">

@@ -11,6 +11,11 @@
     @media screen and (max-width: breakpoints.$breakpoint-md) {
       display: none !important;
     }
+    &:hover{
+      .slick-arrow {
+        opacity: 1;
+      }
+    }
 
     .slick-slide {
       .asset {
@@ -24,6 +29,7 @@
       }
 
     }
+
     .slick-current {
       .asset {
         scale: 1;
@@ -42,6 +48,12 @@
       top: 200px;
       transition: all .3s ease;
       padding: 17px;
+      opacity: 0;
+      transition: all .3s ease;
+
+      &.slick-disabled {
+        display: none !important;
+      }
 
       path {
         transition: all .3s ease;
@@ -55,6 +67,7 @@
 
       }
     }
+
 
     .slick-dots {
       margin-top: var(--space-20x);
@@ -119,6 +132,10 @@
         font-family: var(--font-secondary);
         margin: var(--space-6x) 0;
       }
+
+      .text {
+        font-family: var(--font-primary);
+      }
     }
   }
 
@@ -154,6 +171,10 @@
 
       .title {
         font-family: var(--font-secondary);
+      }
+
+      .text {
+        font-family: var(--font-primary);
       }
     }
   }
