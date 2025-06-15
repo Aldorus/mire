@@ -13,7 +13,7 @@ type Props = {
 const Contact = ({className}: Props) => {
   const {data: contactData} = useGetTextQuerySuspenseQuery({variables: {id: '3vxhVPirdQQnqb2wFEg68F'}});
 
-  return <section className={classnames([className, 'Contact', 'Section'])} id="contact">
+  return <section className={classnames([className, 'Contact'])} id="contact">
     <div className="Contact__wrapper">
       <RichText content={contactData?.text?.content} className="Contact__text" />
       <div className="Contact__links">

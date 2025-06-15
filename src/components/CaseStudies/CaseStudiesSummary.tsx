@@ -8,7 +8,7 @@ import classnames from "classnames";
 import Slider from "react-slick";
 import ArrowLeft from "../../assets/ArrowLeft.svg?react";
 import ArrowRight from "../../assets/ArrowRight.svg?react";
-import {Link} from "react-router-dom";
+import {Link} from "../Link/Link.tsx";
 
 type Props = {
   className?: HTMLAttributes<HTMLDivElement>['className'],

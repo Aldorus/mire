@@ -7,6 +7,7 @@
   &__wrapper {
     @include mixins.centered;
     text-align: center;
+    padding: 120px var(--space-16x) 120px var(--space-16x);
   }
 
   &__links {
@@ -22,7 +23,6 @@
   }
 
   &__text {
-    color: var(--primary-6);
     line-height: 1.5;
   }
 
