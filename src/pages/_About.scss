@@ -1,9 +1,16 @@
+@use './../tokens/breakpoints';
+
 .About {
   position: relative;
 
   .About__top {
     background: var(--primary-2);
     padding: 164px 0 164px;
+
+    @media screen and (max-width: breakpoints.$breakpoint-md) {
+      padding: 80px 0 80px;
+    }
+
     &__wrapper {
       margin: auto;
       max-width: var(--max-width);
@@ -17,6 +24,10 @@
         border-radius: 98px;
         z-index: 1;
         position: relative;
+        @media screen and (max-width: breakpoints.$breakpoint-md) {
+          width: 156px;
+          height: 210px;
+        }
       }
 
       &__text {
@@ -29,6 +40,11 @@
         z-index: 0;
         position: relative;
         margin-top: -70px;
+
+        @media screen and (max-width: breakpoints.$breakpoint-md) {
+          padding: 100px 50px 60px 50px;
+          margin-top: -70px;
+        }
       }
     }
   }
