@@ -1,33 +1,50 @@
 .About {
   position: relative;
 
-  .About__wrapper {
-    &__portrait {
-      background: var(--primary-2);
+  .About__top {
+    margin: auto;
+    background: var(--primary-2);
 
+    &__wrapper {
+      margin: 164px auto 164px;
+      max-width: var(--max-width);
 
       img {
+        margin: auto;
+        display: block;
         width: 196px;
         height: 264px;
         object-fit: cover;
         border-radius: 98px;
+        z-index: 1;
+        position: relative;
+      }
+
+      &__text {
+        background: url("../assets/AboutShape.svg");
+        background-repeat: no-repeat;
+        background-size: 100% 100%;
+        padding: 100px 200px 100px 180px;
+        max-width: 998px;
+        margin: auto;
+        z-index: 0;
+        position: relative;
+        margin-top: -70px;
       }
     }
-
-    &__text {
-      background: url("../assets/AboutShape.svg");
-      background-repeat: no-repeat;
-      background-size: 100% 100%;
-      padding: 94px 200px  50px 160px;
-    }
   }
-
 
 
   .About__content {
     display: flex;
     flex-direction: column;
     gap: var(--space-16x);
+    background: var(--background-color);
+
+    &__wrapper {
+      margin: auto;
+      max-width: var(--max-width);
+    }
 
     h2 {
       margin-bottom: var(--space-8x);
