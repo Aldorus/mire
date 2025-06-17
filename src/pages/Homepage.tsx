@@ -5,31 +5,34 @@ import CaseStudiesSummary from "../components/CaseStudies/CaseStudiesSummary.tsx
 import {useGetTextQuerySuspenseQuery} from "../models/graphql.ts";
 import ArrowBottom from "../assets/ArrowBottom.svg?react";
 import GetToKnowMe from "../components/GetToKnowMe/GetToKnowMe.tsx";
-import classnames from "classnames";
 import Sun from "../assets/Sun.svg?react";
+import Page from "./Page.tsx";
+import Section from "./Section.tsx";
 
 
 const Homepage = () => {
   const {data} = useGetTextQuerySuspenseQuery({variables: {id: "3j5F4HgCVPo7IRhuwuxNrx"}});
-  return <div className="Homepage">
-    <section className="Homepage__top Section">
-      <p className="Homepage__town">MONTRÉAL | CANADA</p>
-      <div className="Homepage__headline">
-        <div className="Homepage__headline__title">
-          WEBSITES <span className="Homepage__headline__title__alternativeFont">&</span><br/>
-          MOBILE APPS<br/>
-          that <span className="Homepage__headline__title__alternativeFont Homepage__headline__title__alternativeColor">engage</span>&nbsp;<Sun className="Homepage__headline__title__icon"/>
-          </div>
-          <RichText content={data?.text?.content} className="Homepage__headline__text"/>
+  return <Page className="Homepage">
+    <Section fullHeight>
+      <div className="Homepage__top">
+        <p className="Homepage__town">MONTRÉAL | CANADA</p>
+        <div className="Homepage__headline">
+          <div className="Homepage__headline__title">
+            WEBSITES <span className="Homepage__headline__title__alternativeFont">&</span><br/>
+            MOBILE APPS<br/>
+            that <span className="Homepage__headline__title__alternativeFont Homepage__headline__title__alternativeColor">engage</span>&nbsp;<Sun className="Homepage__headline__title__icon"/>
+            </div>
+            <RichText content={data?.text?.content} className="Homepage__headline__text"/>
+        </div>
+        <ArrowBottom className="Homepage__cta__icon"/>
       </div>
-      <ArrowBottom className="Homepage__cta__icon"/>
-    </section>
-    <div className={classnames(["Homepage__sections", "Homepage__CaseStudies"])}>
-      <CaseStudiesSummary className="Section"/>
-    </div>
-    <div className={classnames(["Homepage__sections", "Homepage__GetToKnowMe"])}>
+    </Section>
+    <Section className="Homepage__CaseStudies">
+      <CaseStudiesSummary/>
+    </Section>
+    <Section noPadding>
       <GetToKnowMe/>
-    </div>
-  </div>
+    </Section>
+  </Page>
 }
 export default Homepage

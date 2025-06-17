@@ -2,11 +2,10 @@
   position: relative;
 
   .About__top {
-    margin: auto;
     background: var(--primary-2);
-
+    padding: 164px 0 164px;
     &__wrapper {
-      margin: 164px auto 164px;
+      margin: auto;
       max-width: var(--max-width);
 
       img {

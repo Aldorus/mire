@@ -8,16 +8,6 @@
   width: 100%;
   overflow-x: hidden;
 
-  .Section{
-    min-height: 100vh;
-    @include mixins.centered;
-    padding: 120px var(--space-16x) 120px var(--space-16x);
-    position: relative;
-    @media screen and (max-width: breakpoints.$breakpoint-md) {
-      padding: 80px var(--space-4x) 80px;
-    }
-  }
-
   .App__contact {
     background: var(--primary-1);
     color: #FFFFFF;

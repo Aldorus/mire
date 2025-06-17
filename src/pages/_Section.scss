@@ -1,0 +1,20 @@
+@use './../tokens/breakpoints';
+@use './../tokens/mixins';
+@use './../tokens/colors';
+
+.Section{
+  position: relative;
+  padding: 120px var(--space-16x) 120px var(--space-16x);
+  @media screen and (max-width: breakpoints.$breakpoint-md) {
+    padding: 80px var(--space-4x) 80px;
+  }
+  &--fullHeight{
+    min-height: 100vh;
+  }
+  &--noPadding {
+    padding: 0;
+  }
+  &__content {
+    @include mixins.centered;
+  }
+}
