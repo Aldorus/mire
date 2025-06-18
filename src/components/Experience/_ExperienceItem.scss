@@ -1,0 +1,38 @@
+@use '../../tokens/breakpoints';
+
+.ExperienceItem {
+  &__mainLine {
+    width: 100%;
+    display: grid;
+    grid-gap: var(--space-4x);
+    grid-template-columns: 1fr 1fr 1fr auto;
+    cursor: pointer;
+
+    @media screen and (max-width: breakpoints.$breakpoint-md) {
+      grid-template-columns: 1fr auto;
+      grid-gap: var(--space-2x) var(--space-4x);
+      & > *:nth-child(1) {
+        order: 0;
+      }
+      & > *:nth-child(1) {
+        order: 2;
+        grid-column: 1 / 2;
+      }
+      & > *:nth-child(1) {
+        order: 3;
+        grid-column: 1 / 2;
+      }
+      & > *:nth-child(3) {
+        order: 1;
+      }
+    }
+  }
+
+  &__text {
+    margin: var(--space-6x) 0 var(--space-6x) 33%;
+
+    @media screen and (max-width: breakpoints.$breakpoint-md) {
+      margin: var(--space-6x) 0;
+    }
+  }
+}

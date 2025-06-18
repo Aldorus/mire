@@ -4,14 +4,11 @@ import {ROUTE} from "../../App.tsx";
 import Sun from "../../assets/Sun.svg";
 import BettyStandard from "../../assets/BettyStandard.svg";
 import BettyHappy from "../../assets/BettyHappy.svg";
-import {useLocation} from "react-router-dom";
-import BackLink from "../BackLink/BackLink.tsx";
 import {useEffect, useState} from "react";
 import classnames from "classnames";
 import ExternalLink from "../../assets/ExternalLink.svg?react";
 
 const Menu = () => {
-  const {pathname} = useLocation();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isHover, setIsHover] = useState(false);
 
@@ -24,8 +21,7 @@ const Menu = () => {
   }
 
   return <nav className="Menu">
-    {pathname === '/' ? <p className="Menu__hi"><img src={Sun}/>&nbsp;Hi! I’m Barbara</p> :
-      <BackLink className="Menu__backlink"/>}
+    <Link to="/" className="Menu__hi"><img src={Sun}/>&nbsp;Hi! I’m Barbara</Link>
     <div
       onClick={() => setIsMenuOpen(!isMenuOpen)}
       onMouseEnter={() => setIsHover(true)}

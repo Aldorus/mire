@@ -588,12 +588,20 @@ export enum EntryOrder {
 export type Experience = Entry & _Node & {
   __typename: 'Experience';
   _id: Scalars['ID']['output'];
+  client?: Maybe<Scalars['String']['output']>;
   contentfulMetadata: ContentfulMetadata;
   date?: Maybe<Scalars['String']['output']>;
   linkedFrom?: Maybe<ExperienceLinkingCollections>;
   order?: Maybe<Scalars['Int']['output']>;
+  position?: Maybe<Scalars['String']['output']>;
   sys: Sys;
   text?: Maybe<ExperienceText>;
+};
+
+
+/** [See type definition](https://app.contentful.com/spaces/bvolcybk2xx6/content_types/experience) */
+export type ExperienceClientArgs = {
+  locale?: InputMaybe<Scalars['String']['input']>;
 };
 
 
@@ -616,6 +624,12 @@ export type ExperienceOrderArgs = {
 
 
 /** [See type definition](https://app.contentful.com/spaces/bvolcybk2xx6/content_types/experience) */
+export type ExperiencePositionArgs = {
+  locale?: InputMaybe<Scalars['String']['input']>;
+};
+
+
+/** [See type definition](https://app.contentful.com/spaces/bvolcybk2xx6/content_types/experience) */
 export type ExperienceTextArgs = {
   locale?: InputMaybe<Scalars['String']['input']>;
 };
@@ -631,6 +645,13 @@ export type ExperienceCollection = {
 export type ExperienceFilter = {
   AND?: InputMaybe<Array<InputMaybe<ExperienceFilter>>>;
   OR?: InputMaybe<Array<InputMaybe<ExperienceFilter>>>;
+  client?: InputMaybe<Scalars['String']['input']>;
+  client_contains?: InputMaybe<Scalars['String']['input']>;
+  client_exists?: InputMaybe<Scalars['Boolean']['input']>;
+  client_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  client_not?: InputMaybe<Scalars['String']['input']>;
+  client_not_contains?: InputMaybe<Scalars['String']['input']>;
+  client_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   contentfulMetadata?: InputMaybe<ContentfulMetadataFilter>;
   date?: InputMaybe<Scalars['String']['input']>;
   date_contains?: InputMaybe<Scalars['String']['input']>;
@@ -648,6 +669,13 @@ export type ExperienceFilter = {
   order_lte?: InputMaybe<Scalars['Int']['input']>;
   order_not?: InputMaybe<Scalars['Int']['input']>;
   order_not_in?: InputMaybe<Array<InputMaybe<Scalars['Int']['input']>>>;
+  position?: InputMaybe<Scalars['String']['input']>;
+  position_contains?: InputMaybe<Scalars['String']['input']>;
+  position_exists?: InputMaybe<Scalars['Boolean']['input']>;
+  position_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  position_not?: InputMaybe<Scalars['String']['input']>;
+  position_not_contains?: InputMaybe<Scalars['String']['input']>;
+  position_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   sys?: InputMaybe<SysFilter>;
   text_contains?: InputMaybe<Scalars['String']['input']>;
   text_exists?: InputMaybe<Scalars['Boolean']['input']>;
@@ -668,10 +696,14 @@ export type ExperienceLinkingCollectionsEntryCollectionArgs = {
 };
 
 export enum ExperienceOrder {
+  ClientAsc = 'client_ASC',
+  ClientDesc = 'client_DESC',
   DateAsc = 'date_ASC',
   DateDesc = 'date_DESC',
   OrderAsc = 'order_ASC',
   OrderDesc = 'order_DESC',
+  PositionAsc = 'position_ASC',
+  PositionDesc = 'position_DESC',
   SysFirstPublishedAtAsc = 'sys_firstPublishedAt_ASC',
   SysFirstPublishedAtDesc = 'sys_firstPublishedAt_DESC',
   SysIdAsc = 'sys_id_ASC',
@@ -1868,10 +1900,12 @@ export type EntryCollectionResolvers<ContextType = any, ParentType extends Resol
 
 export type ExperienceResolvers<ContextType = any, ParentType extends ResolversParentTypes['Experience'] = ResolversParentTypes['Experience']> = {
   _id?: Resolver<ResolversTypes['ID'], ParentType, ContextType>;
+  client?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType, Partial<ExperienceClientArgs>>;
   contentfulMetadata?: Resolver<ResolversTypes['ContentfulMetadata'], ParentType, ContextType>;
   date?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType, Partial<ExperienceDateArgs>>;
   linkedFrom?: Resolver<Maybe<ResolversTypes['ExperienceLinkingCollections']>, ParentType, ContextType, Partial<ExperienceLinkedFromArgs>>;
   order?: Resolver<Maybe<ResolversTypes['Int']>, ParentType, ContextType, Partial<ExperienceOrderArgs>>;
+  position?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType, Partial<ExperiencePositionArgs>>;
   sys?: Resolver<ResolversTypes['Sys'], ParentType, ContextType>;
   text?: Resolver<Maybe<ResolversTypes['ExperienceText']>, ParentType, ContextType, Partial<ExperienceTextArgs>>;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
@@ -2276,7 +2310,7 @@ export type GetCaseStudyIdQuery = { __typename: 'Query', caseStudyCollection?: {
 export type GetExperienceCollectionQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type GetExperienceCollectionQuery = { __typename: 'Query', experienceCollection?: { __typename: 'ExperienceCollection', items: Array<{ __typename: 'Experience', _id: string, date?: string | null, order?: number | null, text?: { __typename: 'ExperienceText', json: any } | null } | null> } | null };
+export type GetExperienceCollectionQuery = { __typename: 'Query', experienceCollection?: { __typename: 'ExperienceCollection', items: Array<{ __typename: 'Experience', _id: string, date?: string | null, order?: number | null, client?: string | null, position?: string | null, text?: { __typename: 'ExperienceText', json: any } | null } | null> } | null };
 
 export type GetProjectCollectionQueryVariables = Exact<{ [key: string]: never; }>;
 
@@ -2507,6 +2541,8 @@ export const GetExperienceCollectionDocument = gql`
       _id
       date
       order
+      client
+      position
       text {
         json
       }

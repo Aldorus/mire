@@ -4,6 +4,8 @@ query getExperienceCollection {
       _id
       date
       order
+      client
+      position
       text {
         json
       }

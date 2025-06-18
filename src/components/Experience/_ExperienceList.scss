@@ -1,0 +1,14 @@
+.ExperienceList {
+  display: flex;
+  flex-direction: column;
+
+  &__item {
+    padding: var(--space-6x) 0;
+    border-bottom: 1px solid #9BB0AE;
+
+    &:last-child {
+      border-bottom: none;
+    }
+  }
+
+}

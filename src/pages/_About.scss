@@ -11,40 +11,35 @@
       padding: 80px 0 80px;
     }
 
-    &__wrapper {
+    img {
       margin: auto;
-      max-width: var(--max-width);
-
-      img {
-        margin: auto;
-        display: block;
-        width: 196px;
-        height: 264px;
-        object-fit: cover;
-        border-radius: 98px;
-        z-index: 1;
-        position: relative;
-        @media screen and (max-width: breakpoints.$breakpoint-md) {
-          width: 156px;
-          height: 210px;
-        }
+      display: block;
+      width: 196px;
+      height: 264px;
+      object-fit: cover;
+      border-radius: 98px;
+      z-index: 1;
+      position: relative;
+      @media screen and (max-width: breakpoints.$breakpoint-md) {
+        width: 156px;
+        height: 210px;
       }
+    }
 
-      &__text {
-        background: url("../assets/AboutShape.svg");
-        background-repeat: no-repeat;
-        background-size: 100% 100%;
-        padding: 100px 200px 100px 180px;
-        max-width: 998px;
-        margin: auto;
-        z-index: 0;
-        position: relative;
+    &__text {
+      background: url("../assets/AboutShape.svg");
+      background-repeat: no-repeat;
+      background-size: 100% 100%;
+      padding: 100px 200px 100px 180px;
+      max-width: 998px;
+      margin: auto;
+      z-index: 0;
+      position: relative;
+      margin-top: -70px;
+
+      @media screen and (max-width: breakpoints.$breakpoint-md) {
+        padding: 100px 50px 60px 50px;
         margin-top: -70px;
-
-        @media screen and (max-width: breakpoints.$breakpoint-md) {
-          padding: 100px 50px 60px 50px;
-          margin-top: -70px;
-        }
       }
     }
   }
@@ -56,13 +51,11 @@
     gap: var(--space-16x);
     background: var(--background-color);
 
-    &__wrapper {
-      margin: auto;
-      max-width: var(--max-width);
-    }
 
     h2 {
       margin-bottom: var(--space-8x);
+      color: var(--primary-1);
+      text-align: center;
     }
   }
 

@@ -400,10 +400,12 @@ enum EntryOrder {
 """
 type Experience implements Entry & _Node {
   _id: ID!
+  client(locale: String): String
   contentfulMetadata: ContentfulMetadata!
   date(locale: String): String
   linkedFrom(allowedLocales: [String]): ExperienceLinkingCollections
   order(locale: String): Int
+  position(locale: String): String
   sys: Sys!
   text(locale: String): ExperienceText
 }
@@ -418,6 +420,13 @@ type ExperienceCollection {
 input ExperienceFilter {
   AND: [ExperienceFilter]
   OR: [ExperienceFilter]
+  client: String
+  client_contains: String
+  client_exists: Boolean
+  client_in: [String]
+  client_not: String
+  client_not_contains: String
+  client_not_in: [String]
   contentfulMetadata: ContentfulMetadataFilter
   date: String
   date_contains: String
@@ -435,6 +444,13 @@ input ExperienceFilter {
   order_lte: Int
   order_not: Int
   order_not_in: [Int]
+  position: String
+  position_contains: String
+  position_exists: Boolean
+  position_in: [String]
+  position_not: String
+  position_not_contains: String
+  position_not_in: [String]
   sys: SysFilter
   text_contains: String
   text_exists: Boolean
@@ -446,10 +462,14 @@ type ExperienceLinkingCollections {
 }
 
 enum ExperienceOrder {
+  client_ASC
+  client_DESC
   date_ASC
   date_DESC
   order_ASC
   order_DESC
+  position_ASC
+  position_DESC
   sys_firstPublishedAt_ASC
   sys_firstPublishedAt_DESC
   sys_id_ASC

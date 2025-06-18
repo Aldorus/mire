@@ -8,6 +8,8 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  position: relative;
+  z-index: 10;
 
   @media screen and (max-width: breakpoints.$breakpoint-md) {
     padding:var(--space-4x);

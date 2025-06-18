@@ -6,9 +6,18 @@ type Props = {
   className?: HTMLAttributes<HTMLDivElement>['className'];
   children?: ReactNode;
   icon?: ReactNode;
+  onClick?: () => void;
+  type?: "text" | "primary";
 }
-const Button = ({className, icon, children}: Props) => {
-  return <button className={classnames(["Button", className])}>
+const Button = ({className, icon, children, onClick, type="primary"}: Props) => {
+  return <button className={
+    classnames([
+      "Button",
+      className,
+      type === 'text' && 'Button--text',
+      type === 'primary' && 'Button--primary'
+    ])}
+    onClick={onClick}>
     {children}
     {icon && <span className="Button__icon">{icon}</span>}
   </button>

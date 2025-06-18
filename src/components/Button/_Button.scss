@@ -1,25 +1,28 @@
 .Button {
-  padding: var(--space-3x) var(--space-4x);
   font-size: .9rem;
   text-transform: uppercase;
   font-family: var(--font-secondary);
-  background: var(--primary-6);
   transition: all 0.3s ease;
-  border-radius: 20px;
   border: none;
   display: inline-flex;
   gap: var(--space-2x);
   cursor: pointer;
   align-items: center;
-
-
-
-  &:hover{
-    background: var(--primary-4);
-  }
+  background: none;
 
   &__icon svg {
     height: 12px;
     width: 12px;
+  }
+
+  &--primary {
+    padding: var(--space-3x) var(--space-4x);
+    background: var(--primary-6);
+    border-radius: 20px;
+
+    &:hover{
+      background: var(--primary-4);
+    }
+
   }
 }
