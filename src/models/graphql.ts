@@ -589,6 +589,7 @@ export type Experience = Entry & _Node & {
   __typename: 'Experience';
   _id: Scalars['ID']['output'];
   client?: Maybe<Scalars['String']['output']>;
+  clientLink?: Maybe<Scalars['String']['output']>;
   contentfulMetadata: ContentfulMetadata;
   date?: Maybe<Scalars['String']['output']>;
   linkedFrom?: Maybe<ExperienceLinkingCollections>;
@@ -601,6 +602,12 @@ export type Experience = Entry & _Node & {
 
 /** [See type definition](https://app.contentful.com/spaces/bvolcybk2xx6/content_types/experience) */
 export type ExperienceClientArgs = {
+  locale?: InputMaybe<Scalars['String']['input']>;
+};
+
+
+/** [See type definition](https://app.contentful.com/spaces/bvolcybk2xx6/content_types/experience) */
+export type ExperienceClientLinkArgs = {
   locale?: InputMaybe<Scalars['String']['input']>;
 };
 
@@ -646,6 +653,13 @@ export type ExperienceFilter = {
   AND?: InputMaybe<Array<InputMaybe<ExperienceFilter>>>;
   OR?: InputMaybe<Array<InputMaybe<ExperienceFilter>>>;
   client?: InputMaybe<Scalars['String']['input']>;
+  clientLink?: InputMaybe<Scalars['String']['input']>;
+  clientLink_contains?: InputMaybe<Scalars['String']['input']>;
+  clientLink_exists?: InputMaybe<Scalars['Boolean']['input']>;
+  clientLink_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  clientLink_not?: InputMaybe<Scalars['String']['input']>;
+  clientLink_not_contains?: InputMaybe<Scalars['String']['input']>;
+  clientLink_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   client_contains?: InputMaybe<Scalars['String']['input']>;
   client_exists?: InputMaybe<Scalars['Boolean']['input']>;
   client_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -696,6 +710,8 @@ export type ExperienceLinkingCollectionsEntryCollectionArgs = {
 };
 
 export enum ExperienceOrder {
+  ClientLinkAsc = 'clientLink_ASC',
+  ClientLinkDesc = 'clientLink_DESC',
   ClientAsc = 'client_ASC',
   ClientDesc = 'client_DESC',
   DateAsc = 'date_ASC',
@@ -1901,6 +1917,7 @@ export type EntryCollectionResolvers<ContextType = any, ParentType extends Resol
 export type ExperienceResolvers<ContextType = any, ParentType extends ResolversParentTypes['Experience'] = ResolversParentTypes['Experience']> = {
   _id?: Resolver<ResolversTypes['ID'], ParentType, ContextType>;
   client?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType, Partial<ExperienceClientArgs>>;
+  clientLink?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType, Partial<ExperienceClientLinkArgs>>;
   contentfulMetadata?: Resolver<ResolversTypes['ContentfulMetadata'], ParentType, ContextType>;
   date?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType, Partial<ExperienceDateArgs>>;
   linkedFrom?: Resolver<Maybe<ResolversTypes['ExperienceLinkingCollections']>, ParentType, ContextType, Partial<ExperienceLinkedFromArgs>>;
@@ -2310,7 +2327,7 @@ export type GetCaseStudyIdQuery = { __typename: 'Query', caseStudyCollection?: {
 export type GetExperienceCollectionQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type GetExperienceCollectionQuery = { __typename: 'Query', experienceCollection?: { __typename: 'ExperienceCollection', items: Array<{ __typename: 'Experience', _id: string, date?: string | null, order?: number | null, client?: string | null, position?: string | null, text?: { __typename: 'ExperienceText', json: any } | null } | null> } | null };
+export type GetExperienceCollectionQuery = { __typename: 'Query', experienceCollection?: { __typename: 'ExperienceCollection', items: Array<{ __typename: 'Experience', _id: string, date?: string | null, order?: number | null, client?: string | null, clientLink?: string | null, position?: string | null, text?: { __typename: 'ExperienceText', json: any } | null } | null> } | null };
 
 export type GetProjectCollectionQueryVariables = Exact<{ [key: string]: never; }>;
 
@@ -2542,6 +2559,7 @@ export const GetExperienceCollectionDocument = gql`
       date
       order
       client
+      clientLink
       position
       text {
         json

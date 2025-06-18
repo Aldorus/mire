@@ -7,6 +7,8 @@ import Minus from "../../assets/Minus.svg?react";
 import classNames from "classnames";
 import {CCollapse} from "@coreui/react";
 import {RichText} from "../Typography/RichText.tsx";
+import {Link} from "../Link/Link.tsx";
+import Text from "../Typography/Text.tsx";
 
 interface Props {
   experience: Experience;
@@ -18,10 +20,10 @@ const ExperienceItem = ({experience, className}: Props) => {
   console.log(experience);
   return <div className={classNames([className, "ExperienceItem"])}>
     <div className="ExperienceItem__mainLine" onClick={() => experience.text !== null && setExpended(!expended)}>
-      <span>{experience.date}</span>
-      <span>{experience.client}</span>
-      <span>{experience.position}</span>
-      {experience.text !== null && <Button icon={expended ? <Minus/> : <Plus/>} type="text" />}
+      <Text className="ExperienceItem__mainLine__date">{experience.date}</Text>
+      {experience.clientLink !== null ? <Link to={experience.clientLink} target="_blank" className="ExperienceItem__mainLine__link">{experience.client}</Link> : <Text>{experience.client}</Text>}
+      <Text>{experience.position}</Text>
+      <Button icon={expended ? <Minus/> : <Plus/>} className={classNames([experience.text === null && "ExperienceItem--disabled"])} type="text" />
     </div>
     <CCollapse visible={expended}>
       <RichText content={experience.text} className="ExperienceItem__text"/>

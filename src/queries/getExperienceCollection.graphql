@@ -5,6 +5,7 @@ query getExperienceCollection {
       date
       order
       client
+      clientLink
       position
       text {
         json

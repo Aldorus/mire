@@ -1,6 +1,9 @@
 @use '../../tokens/breakpoints';
 
 .ExperienceItem {
+  &--disabled {
+    visibility: hidden;
+  }
   &__mainLine {
     width: 100%;
     display: grid;
@@ -25,6 +28,16 @@
       & > *:nth-child(3) {
         order: 1;
       }
+    }
+
+    .ExperienceItem__mainLine__date {
+      font-family: var(--font-secondary);
+      color: var(--primary-1);
+      font-size: 1.1rem;
+    }
+
+    .ExperienceItem__mainLine__link {
+      font-family: var(--font-primary);
     }
   }
 
