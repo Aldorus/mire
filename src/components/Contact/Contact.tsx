@@ -6,6 +6,7 @@ import classnames from "classnames";
 import "./_Contact.scss";
 import Button from "../Button/Button.tsx";
 import ExternalLink from "../../assets/ExternalLink.svg?react";
+import Section from "../../pages/Section.tsx";
 
 type Props = {
   className?: HTMLAttributes<HTMLElement>['className'];
@@ -13,7 +14,7 @@ type Props = {
 const Contact = ({className}: Props) => {
   const {data: contactData} = useGetTextQuerySuspenseQuery({variables: {id: '3vxhVPirdQQnqb2wFEg68F'}});
 
-  return <section className={classnames([className, 'Contact'])} id="contact">
+  return <Section className={classnames([className, 'Contact'])} id="contact">
     <div className="Contact__wrapper">
       <RichText content={contactData?.text?.content} className="Contact__text" />
       <div className="Contact__links">
@@ -36,7 +37,7 @@ const Contact = ({className}: Props) => {
       <div className="Contact__credits">@ 2025 BARBARA MARCHE</div>
     </div>
 
-  </section>
+  </Section>
 }
 
 export default Contact;

@@ -4,6 +4,9 @@ import {useParams} from "react-router-dom";
 import {isNil} from "lodash";
 import ProgressBar from "../components/ProgressBar/ProgressBar.tsx";
 import {RichText} from "../components/Typography/RichText.tsx";
+import Page from "./Page.tsx";
+import Section from "./Section.tsx";
+import {useEffect} from "react";
 
 type Params = {
   slug: string;
@@ -13,12 +16,17 @@ const CaseStudy = () => {
   const {data: caseStudySummary} = useGetCaseStudyIdSuspenseQuery({variables: {where: {slug}}});
   const caseStudyId = caseStudySummary?.caseStudyCollection?.items[0];
   const {data} = useGetCaseStudySuspenseQuery({variables: {id: caseStudyId?.sys.id as string}});
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   if (isNil(data?.caseStudy)) {
     return null;
   }
-  return <div className="CaseStudy">
+  return <Page className="CaseStudy">
     <ProgressBar/>
-    <div className="CaseStudy__wrapper">
+    <Section className="CaseStudy__section">
       <div className="CaseStudy__content">
         <h1>{data?.caseStudy.title}</h1>
       </div>
@@ -32,8 +40,8 @@ const CaseStudy = () => {
         outcomes and upcoming features. This case study focuses on the first major milestone: the redesign of the global
         navigation, which laid the groundwork for the larger revamp.
       </div>}
-    </div>
-      <RichText content={data?.caseStudy.completeText} className="CaseStudy__completeText"/>
-  </div>
+    </Section>
+    <RichText content={data?.caseStudy.completeText} className="CaseStudy__completeText"/>
+  </Page>
 }
 export default CaseStudy;

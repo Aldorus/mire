@@ -4,11 +4,7 @@
 
 
 .Contact {
-  &__wrapper {
-    @include mixins.centered;
-    text-align: center;
-    padding: 120px var(--space-16x) 120px var(--space-16x);
-  }
+  text-align: center;
 
   &__links {
     display: inline-flex;

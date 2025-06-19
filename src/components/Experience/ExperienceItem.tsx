@@ -17,12 +17,11 @@ interface Props {
 const ExperienceItem = ({experience, className}: Props) => {
   const [expended, setExpended] = useState(false);
 
-  console.log(experience);
   return <div className={classNames([className, "ExperienceItem"])}>
     <div className="ExperienceItem__mainLine" onClick={() => experience.text !== null && setExpended(!expended)}>
       <Text className="ExperienceItem__mainLine__date">{experience.date}</Text>
-      {experience.clientLink !== null ? <Link to={experience.clientLink} target="_blank" className="ExperienceItem__mainLine__link">{experience.client}</Link> : <Text>{experience.client}</Text>}
-      <Text>{experience.position}</Text>
+      {experience.clientLink !== null ? <Link to={experience.clientLink} target="_blank" className="ExperienceItem__mainLine__link">{experience.client}</Link> : <Text className="ExperienceItem__mainLine__link">{experience.client}</Text>}
+      <Text className="ExperienceItem__mainLine__position">{experience.position}</Text>
       <Button icon={expended ? <Minus/> : <Plus/>} className={classNames([experience.text === null && "ExperienceItem--disabled"])} type="text" />
     </div>
     <CCollapse visible={expended}>

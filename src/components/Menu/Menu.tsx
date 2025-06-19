@@ -1,16 +1,18 @@
 import './_Menu.scss';
 import {Link} from "../Link/Link.tsx";
 import {ROUTE} from "../../App.tsx";
-import Sun from "../../assets/Sun.svg";
+import Sun from "../../assets/Sun.svg?react";
 import BettyStandard from "../../assets/BettyStandard.svg";
 import BettyHappy from "../../assets/BettyHappy.svg";
 import {useEffect, useState} from "react";
 import classnames from "classnames";
 import ExternalLink from "../../assets/ExternalLink.svg?react";
+import {useLocation} from "react-router-dom";
+import classNames from "classnames";
 
 const Menu = () => {
+  const {pathname} = useLocation();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isHover, setIsHover] = useState(false);
 
   useEffect(() => {
     document.body.style.overflowY = isMenuOpen ? "hidden" : "auto";
@@ -21,15 +23,13 @@ const Menu = () => {
   }
 
   return <nav className="Menu">
-    <Link to="/" className="Menu__hi"><img src={Sun}/>&nbsp;Hi! I’m Barbara</Link>
+    <Link to="/" className={classNames(["Menu__hi", pathname.includes("about") && "Menu__hi--alternate" ])}><Sun/>&nbsp;Hi! I’m Barbara</Link>
     <div
       onClick={() => setIsMenuOpen(!isMenuOpen)}
-      onMouseEnter={() => setIsHover(true)}
-      onMouseLeave={() => setIsHover(false)}
       className="Menu__trigger">
       <div>
-        <img src={BettyStandard} className={classnames(['betty', 'standard', isHover && 'hovered'])}/>
-        <img src={BettyHappy} className={classnames(['betty', 'happy', isHover && 'hovered'])}/>
+        <img src={BettyStandard} className={classnames(['betty', 'standard'])}/>
+        <img src={BettyHappy} className={classnames(['betty', 'happy'])}/>
       </div>
     </div>
     <div className={classnames(['Menu__panel', isMenuOpen && 'Menu__panel--open'])}>

@@ -21,6 +21,21 @@
     font-size: 1.33rem;
     line-height: 1rem;
     align-items: center;
+    color: var(--text-color);
+
+    &--alternate {
+      color: var(--neutral-3);
+    }
+
+    svg path {
+      transition: all .3s ease;
+    }
+
+    &:hover, &:active {
+      svg path {
+        fill: var(--accent-2);
+      }
+    }
 
     @keyframes rotating {
       from {
@@ -31,7 +46,7 @@
       }
     }
 
-    img {
+    svg {
       animation: rotating 12s linear infinite;
     }
   }
@@ -47,24 +62,37 @@
       position: fixed;
       transition: opacity .3s ease;
     }
-    .standard.hovered {
+    .standard{
+      opacity: 1;
+    }
+    .happy {
       opacity: 0;
     }
-    .happy:not(.hovered) {
-      opacity: 0;
+    &:hover {
+      .standard{
+        opacity: 0;
+      }
+      .happy {
+        opacity: 1;
+      }
     }
   }
 
   &__panel {
     background: #F3EDEC;
-    height: 100vh;
-    width: 100vw;
-    inset: 0;
+    min-height: 100vh;
+    width: 100%;
     position: fixed;
+    overflow-y: auto;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
     transform: translateY(-100%);
     transition: transform .3s ease;
     pointer-events: none;
     z-index: 2;
+    padding: 170px 0 var(--space-20x);
 
     &--open {
       transform: translateY(0);
@@ -74,7 +102,6 @@
     ol {
       list-style: none;
       padding: 0;
-      margin: var(--space-20x) 0 0;
       display: flex;
       flex-direction: column;
       gap: var(--space-4x);
