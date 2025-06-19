@@ -5,6 +5,7 @@
 .Section{
   position: relative;
   padding: 120px var(--space-16x) 120px var(--space-16x);
+
   @media screen and (max-width: breakpoints.$breakpoint-md) {
     padding: 80px var(--space-4x) 80px;
   }
@@ -16,5 +17,6 @@
   }
   &__content {
     @include mixins.centered;
+    padding: 0 var(--space-16x) 0 var(--space-16x);
   }
 }

@@ -21,6 +21,21 @@
     font-size: 1.33rem;
     line-height: 1rem;
     align-items: center;
+    color: var(--text-color);
+
+    &--alternate {
+      color: var(--neutral-3);
+    }
+
+    svg path {
+      transition: all .3s ease;
+    }
+
+    &:hover {
+      svg path {
+        fill: var(--accent-2);
+      }
+    }
 
     @keyframes rotating {
       from {
@@ -31,7 +46,7 @@
       }
     }
 
-    img {
+    svg {
       animation: rotating 12s linear infinite;
     }
   }

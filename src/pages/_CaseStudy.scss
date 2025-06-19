@@ -2,19 +2,20 @@
 
 .CaseStudy {
   --paddingCaseStudy: var(--space-48x);
+  background: var(--primary-8);
 
   @media screen and (max-width: breakpoints.$breakpoint-md) {
     --paddingCaseStudy: var(--space-6x);
   }
-
-  .CaseStudy__wrapper {
-    padding: var(--space-16x) var(--paddingCaseStudy) var(--space-6x);
-    width: 100%;
-    max-width: var(--max-width);
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-8x);
-  }
+  //
+  //.CaseStudy__wrapper {
+  //  padding: var(--space-16x) var(--paddingCaseStudy) var(--space-6x);
+  //  width: 100%;
+  //  max-width: var(--max-width);
+  //  display: flex;
+  //  flex-direction: column;
+  //  gap: var(--space-8x);
+  //}
 
   .CaseStudy__quote {
     border-radius: 8px;
