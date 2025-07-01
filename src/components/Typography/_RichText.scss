@@ -19,13 +19,13 @@
     @include typography.heading4;
   }
 
+  a {
+    @include typography.link;
+  }
+
   p {
     font-family: var(--font-primary);
     line-height: 1.5rem;
-  }
-
-  a {
-    @include typography.link;
   }
 
   em {

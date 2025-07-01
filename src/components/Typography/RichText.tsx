@@ -5,6 +5,7 @@ import {BLOCKS} from '@contentful/rich-text-types';
 import {documentToReactComponents} from "@contentful/rich-text-react-renderer";
 import {HTMLAttributes} from "react";
 import classnames from "classnames";
+import './_RichText.scss';
 
 function renderOptions(links: any) {
   // create an asset block map

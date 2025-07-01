@@ -91,7 +91,6 @@ b {
 }
 
 @mixin link($color:var(--text-color), $colorHover: var(--accent-2))  {
-  font-family: var(--font-secondary);
   text-decoration: none;
   color: $color;
   font-size: 1em;

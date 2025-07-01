@@ -4,12 +4,19 @@
   &--disabled {
     visibility: hidden;
   }
+
   &__mainLine {
     width: 100%;
     display: grid;
     grid-gap: var(--space-4x);
     grid-template-columns: 1fr 1fr 1fr auto;
     cursor: pointer;
+    transition: all .3s ease;
+    padding: var(--space-6x) var(--space-4x);
+
+    &:hover {
+      background: var(--accent-4);
+    }
 
     @media screen and (max-width: breakpoints.$breakpoint-md) {
       grid-template-columns: 1fr auto;
@@ -41,7 +48,7 @@
     line-height: 1.6;
 
     @media screen and (max-width: breakpoints.$breakpoint-md) {
-      margin: var(--space-6x) 0;
+      margin: var(--space-6x) var(--space-4x);
     }
   }
 }
