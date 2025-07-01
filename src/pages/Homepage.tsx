@@ -4,7 +4,6 @@ import {RichText} from "../components/Typography/RichText.tsx";
 import CaseStudiesSummary from "../components/CaseStudies/CaseStudiesSummary.tsx";
 import {useGetTextQuerySuspenseQuery} from "../models/graphql.ts";
 import ArrowBottom from "../assets/ArrowBottom.svg?react";
-import GetToKnowMe from "../components/GetToKnowMe/GetToKnowMe.tsx";
 import Sun from "../assets/Sun.svg?react";
 import Page from "./Page.tsx";
 import Section from "./Section.tsx";
@@ -29,9 +28,6 @@ const Homepage = () => {
     </Section>
     <Section className="Homepage__CaseStudies">
       <CaseStudiesSummary/>
-    </Section>
-    <Section noPadding>
-      <GetToKnowMe/>
     </Section>
   </Page>
 }
