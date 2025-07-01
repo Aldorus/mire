@@ -114,6 +114,13 @@
       font-weight: 600;
       font-family: var(--font-secondary);
       text-transform: uppercase;
+
+      .Link__icon svg {
+        width: 46px;
+        height: 46px;
+        position: relative;
+        top: -5px;
+      }
     }
   }
 }

@@ -1,8 +1,32 @@
 @use "../../tokens/typography";
 
+
 .Link {
   @include typography.link;
   width: fit-content;
-  display: inline;
+  display: inline-flex;
   position: relative;
+  gap: var(--space-2x);
+
+  .Link__icon svg, .Link__icon path {
+    transition: all 0.3s ease;
+  }
+  &:hover {
+    .Link__icon svg, .Link__icon path {
+      fill: var(--accent-2);
+    }
+  }
+
+  &--hoverIcon {
+    .Link__icon {
+      opacity: 0;
+      transition: all 0.3s ease;
+    }
+
+    &:hover{
+      .Link__icon {
+        opacity: 1;
+      }
+    }
+  }
 }

@@ -84,7 +84,7 @@
   }
   &__cta__icon {
     position: absolute;
-    bottom: 160px;
+    bottom: 10%;
 
     @media screen and (max-width: breakpoints.$breakpoint-md) {
       bottom: var(--space-6x);

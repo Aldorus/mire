@@ -18,7 +18,7 @@ const Contact = ({className}: Props) => {
     <div className="Contact__wrapper">
       <RichText content={contactData?.text?.content} className="Contact__text" />
       <div className="Contact__links">
-        <Link to="mailto:barbara.mrch@gmail.com">
+        <Link to="https://assets.ctfassets.net/bvolcybk2xx6/7vsh60Sp5ygHoftxr1Eime/6b5aa61dea4d009267af0b37e5007fdd/bmarche-resume.pdf" target="_blank">
           <Button>
             My resume
           </Button>

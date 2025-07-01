@@ -35,17 +35,54 @@ const Menu = () => {
     <div className={classnames(['Menu__panel', isMenuOpen && 'Menu__panel--open'])}>
       <div className="Section">
         <ol>
-          <li><Link to='/#projects' onClick={handleCloseMenu}>Projects</Link></li>
-          <li><Link to={ROUTE.ABOUT} onClick={handleCloseMenu}>About</Link></li>
-          <li><Link to='/#resume' onClick={handleCloseMenu}>Resume</Link></li>
-          <li><Link to="https://www.linkedin.com/in/barbaramarche/" onClick={handleCloseMenu}
-                    target="_blank">Linkedin&nbsp;<ExternalLink/></Link></li>
-          <li><Link to="https://www.behance.net/barbara-marche" onClick={handleCloseMenu} target="_blank">Behance&nbsp;
-            <ExternalLink/></Link></li>
+          <li>
+            <Link
+              to='/#projects'
+              onClick={handleCloseMenu}
+              icon={<Sun/>}
+              hoverIcon>
+              Projects
+            </Link>
+          </li>
+          <li>
+            <Link
+              to={ROUTE.ABOUT}
+              onClick={handleCloseMenu}
+              icon={<Sun/>}
+              hoverIcon>
+              About
+            </Link>
+          </li>
+          <li>
+            <Link
+              to='https://assets.ctfassets.net/bvolcybk2xx6/7vsh60Sp5ygHoftxr1Eime/6b5aa61dea4d009267af0b37e5007fdd/bmarche-resume.pdf'
+              onClick={handleCloseMenu}
+              target="_blank"
+              icon={<ExternalLink/>}>
+              Resume
+            </Link>
+          </li>
+          <li>
+            <Link
+              to="https://www.linkedin.com/in/barbaramarche/"
+              onClick={handleCloseMenu}
+              target="_blank"
+              icon={<ExternalLink/>}>
+              LinkedIn
+            </Link>
+          </li>
+          <li>
+            <Link
+              to="https://www.behance.net/barbara-marche"
+              onClick={handleCloseMenu}
+              target="_blank"
+              icon={<ExternalLink/>}>
+              Behance
+            </Link>
+          </li>
         </ol>
       </div>
     </div>
-
   </nav>
 }
 export default Menu
