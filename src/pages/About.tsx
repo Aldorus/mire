@@ -8,7 +8,7 @@ import {useEffect} from "react";
 
 const About = () => {
   useEffect(() => {
-    window.scrollTo(0, 0);
+    window.scrollTo({top: 0, left: 0, behavior: "instant"});
   }, []);
   const {data: dataAsset} = useGetAssetSuspenseQuery({variables: {id: "474fXASEikS8R3wRpn6H6E"}});
   const {data: dataAbout} = useGetTextQuerySuspenseQuery({variables: {id: '12ANWp777vctus3SbZL6gM'}});

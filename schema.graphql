@@ -1,5 +1,15 @@
 directive @contentSourceMaps on QUERY
 
+directive @delegatedResourceLink(contentTypeId: String, field: JSON) on FIELD_DEFINITION | OBJECT
+
+directive @enumMapper(value: JSON) on ENUM_VALUE
+
+directive @featureFlag(featureName: String) on FIELD
+
+directive @fieldResolver(data: JSON, kind: String) on FIELD_DEFINITION
+
+directive @typeIdentifier(contentTypeId: String) on OBJECT
+
 """Represents a binary file in a space. An asset can be any file type."""
 type Asset {
   contentType(locale: String): String
@@ -126,6 +136,7 @@ enum AssetOrder {
 type CaseStudy implements Entry & _Node {
   _id: ID!
   assets(locale: String, preview: Boolean): Asset
+  category(locale: String): String
   classified(locale: String): Boolean
   client(locale: String): String
   completeText(locale: String): CaseStudyCompleteText
@@ -133,9 +144,11 @@ type CaseStudy implements Entry & _Node {
   date(locale: String): String
   linkedFrom(allowedLocales: [String]): CaseStudyLinkingCollections
   order(locale: String): Int
+  role(locale: String): String
   slug(locale: String): String
+  subtitle(locale: String): String
   sys: Sys!
-  tags(locale: String): [String]
+  team(locale: String): String
   text(locale: String): CaseStudyText
   title(locale: String): String
 }
@@ -191,6 +204,13 @@ input CaseStudyFilter {
   AND: [CaseStudyFilter]
   OR: [CaseStudyFilter]
   assets_exists: Boolean
+  category: String
+  category_contains: String
+  category_exists: Boolean
+  category_in: [String]
+  category_not: String
+  category_not_contains: String
+  category_not_in: [String]
   classified: Boolean
   classified_exists: Boolean
   classified_not: Boolean
@@ -221,6 +241,13 @@ input CaseStudyFilter {
   order_lte: Int
   order_not: Int
   order_not_in: [Int]
+  role: String
+  role_contains: String
+  role_exists: Boolean
+  role_in: [String]
+  role_not: String
+  role_not_contains: String
+  role_not_in: [String]
   slug: String
   slug_contains: String
   slug_exists: Boolean
@@ -228,11 +255,21 @@ input CaseStudyFilter {
   slug_not: String
   slug_not_contains: String
   slug_not_in: [String]
+  subtitle: String
+  subtitle_contains: String
+  subtitle_exists: Boolean
+  subtitle_in: [String]
+  subtitle_not: String
+  subtitle_not_contains: String
+  subtitle_not_in: [String]
   sys: SysFilter
-  tags_contains_all: [String]
-  tags_contains_none: [String]
-  tags_contains_some: [String]
-  tags_exists: Boolean
+  team: String
+  team_contains: String
+  team_exists: Boolean
+  team_in: [String]
+  team_not: String
+  team_not_contains: String
+  team_not_in: [String]
   text_contains: String
   text_exists: Boolean
   text_not_contains: String
@@ -250,6 +287,8 @@ type CaseStudyLinkingCollections {
 }
 
 enum CaseStudyOrder {
+  category_ASC
+  category_DESC
   classified_ASC
   classified_DESC
   client_ASC
@@ -258,8 +297,12 @@ enum CaseStudyOrder {
   date_DESC
   order_ASC
   order_DESC
+  role_ASC
+  role_DESC
   slug_ASC
   slug_DESC
+  subtitle_ASC
+  subtitle_DESC
   sys_firstPublishedAt_ASC
   sys_firstPublishedAt_DESC
   sys_id_ASC
@@ -268,6 +311,8 @@ enum CaseStudyOrder {
   sys_publishedAt_DESC
   sys_publishedVersion_ASC
   sys_publishedVersion_DESC
+  team_ASC
+  team_DESC
   title_ASC
   title_DESC
 }

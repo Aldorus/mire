@@ -1,6 +1,11 @@
 query GetCaseStudy($id: String!) {
   caseStudy(id: $id) {
     title
+    subtitle
+    team
+    category
+    role
+    client
     date
     classified
     completeText {

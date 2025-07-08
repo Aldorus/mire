@@ -232,6 +232,7 @@ export type CaseStudy = Entry & _Node & {
   __typename: 'CaseStudy';
   _id: Scalars['ID']['output'];
   assets?: Maybe<Asset>;
+  category?: Maybe<Scalars['String']['output']>;
   classified?: Maybe<Scalars['Boolean']['output']>;
   client?: Maybe<Scalars['String']['output']>;
   completeText?: Maybe<CaseStudyCompleteText>;
@@ -239,9 +240,11 @@ export type CaseStudy = Entry & _Node & {
   date?: Maybe<Scalars['String']['output']>;
   linkedFrom?: Maybe<CaseStudyLinkingCollections>;
   order?: Maybe<Scalars['Int']['output']>;
+  role?: Maybe<Scalars['String']['output']>;
   slug?: Maybe<Scalars['String']['output']>;
+  subtitle?: Maybe<Scalars['String']['output']>;
   sys: Sys;
-  tags?: Maybe<Array<Maybe<Scalars['String']['output']>>>;
+  team?: Maybe<Scalars['String']['output']>;
   text?: Maybe<CaseStudyText>;
   title?: Maybe<Scalars['String']['output']>;
 };
@@ -251,6 +254,12 @@ export type CaseStudy = Entry & _Node & {
 export type CaseStudyAssetsArgs = {
   locale?: InputMaybe<Scalars['String']['input']>;
   preview?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+
+/** [See type definition](https://app.contentful.com/spaces/bvolcybk2xx6/content_types/caseStudy) */
+export type CaseStudyCategoryArgs = {
+  locale?: InputMaybe<Scalars['String']['input']>;
 };
 
 
@@ -291,13 +300,25 @@ export type CaseStudyOrderArgs = {
 
 
 /** [See type definition](https://app.contentful.com/spaces/bvolcybk2xx6/content_types/caseStudy) */
+export type CaseStudyRoleArgs = {
+  locale?: InputMaybe<Scalars['String']['input']>;
+};
+
+
+/** [See type definition](https://app.contentful.com/spaces/bvolcybk2xx6/content_types/caseStudy) */
 export type CaseStudySlugArgs = {
   locale?: InputMaybe<Scalars['String']['input']>;
 };
 
 
 /** [See type definition](https://app.contentful.com/spaces/bvolcybk2xx6/content_types/caseStudy) */
-export type CaseStudyTagsArgs = {
+export type CaseStudySubtitleArgs = {
+  locale?: InputMaybe<Scalars['String']['input']>;
+};
+
+
+/** [See type definition](https://app.contentful.com/spaces/bvolcybk2xx6/content_types/caseStudy) */
+export type CaseStudyTeamArgs = {
   locale?: InputMaybe<Scalars['String']['input']>;
 };
 
@@ -373,6 +394,13 @@ export type CaseStudyFilter = {
   AND?: InputMaybe<Array<InputMaybe<CaseStudyFilter>>>;
   OR?: InputMaybe<Array<InputMaybe<CaseStudyFilter>>>;
   assets_exists?: InputMaybe<Scalars['Boolean']['input']>;
+  category?: InputMaybe<Scalars['String']['input']>;
+  category_contains?: InputMaybe<Scalars['String']['input']>;
+  category_exists?: InputMaybe<Scalars['Boolean']['input']>;
+  category_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  category_not?: InputMaybe<Scalars['String']['input']>;
+  category_not_contains?: InputMaybe<Scalars['String']['input']>;
+  category_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   classified?: InputMaybe<Scalars['Boolean']['input']>;
   classified_exists?: InputMaybe<Scalars['Boolean']['input']>;
   classified_not?: InputMaybe<Scalars['Boolean']['input']>;
@@ -403,6 +431,13 @@ export type CaseStudyFilter = {
   order_lte?: InputMaybe<Scalars['Int']['input']>;
   order_not?: InputMaybe<Scalars['Int']['input']>;
   order_not_in?: InputMaybe<Array<InputMaybe<Scalars['Int']['input']>>>;
+  role?: InputMaybe<Scalars['String']['input']>;
+  role_contains?: InputMaybe<Scalars['String']['input']>;
+  role_exists?: InputMaybe<Scalars['Boolean']['input']>;
+  role_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  role_not?: InputMaybe<Scalars['String']['input']>;
+  role_not_contains?: InputMaybe<Scalars['String']['input']>;
+  role_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   slug?: InputMaybe<Scalars['String']['input']>;
   slug_contains?: InputMaybe<Scalars['String']['input']>;
   slug_exists?: InputMaybe<Scalars['Boolean']['input']>;
@@ -410,11 +445,21 @@ export type CaseStudyFilter = {
   slug_not?: InputMaybe<Scalars['String']['input']>;
   slug_not_contains?: InputMaybe<Scalars['String']['input']>;
   slug_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  subtitle?: InputMaybe<Scalars['String']['input']>;
+  subtitle_contains?: InputMaybe<Scalars['String']['input']>;
+  subtitle_exists?: InputMaybe<Scalars['Boolean']['input']>;
+  subtitle_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  subtitle_not?: InputMaybe<Scalars['String']['input']>;
+  subtitle_not_contains?: InputMaybe<Scalars['String']['input']>;
+  subtitle_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   sys?: InputMaybe<SysFilter>;
-  tags_contains_all?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
-  tags_contains_none?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
-  tags_contains_some?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
-  tags_exists?: InputMaybe<Scalars['Boolean']['input']>;
+  team?: InputMaybe<Scalars['String']['input']>;
+  team_contains?: InputMaybe<Scalars['String']['input']>;
+  team_exists?: InputMaybe<Scalars['Boolean']['input']>;
+  team_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  team_not?: InputMaybe<Scalars['String']['input']>;
+  team_not_contains?: InputMaybe<Scalars['String']['input']>;
+  team_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   text_contains?: InputMaybe<Scalars['String']['input']>;
   text_exists?: InputMaybe<Scalars['Boolean']['input']>;
   text_not_contains?: InputMaybe<Scalars['String']['input']>;
@@ -441,6 +486,8 @@ export type CaseStudyLinkingCollectionsEntryCollectionArgs = {
 };
 
 export enum CaseStudyOrder {
+  CategoryAsc = 'category_ASC',
+  CategoryDesc = 'category_DESC',
   ClassifiedAsc = 'classified_ASC',
   ClassifiedDesc = 'classified_DESC',
   ClientAsc = 'client_ASC',
@@ -449,8 +496,12 @@ export enum CaseStudyOrder {
   DateDesc = 'date_DESC',
   OrderAsc = 'order_ASC',
   OrderDesc = 'order_DESC',
+  RoleAsc = 'role_ASC',
+  RoleDesc = 'role_DESC',
   SlugAsc = 'slug_ASC',
   SlugDesc = 'slug_DESC',
+  SubtitleAsc = 'subtitle_ASC',
+  SubtitleDesc = 'subtitle_DESC',
   SysFirstPublishedAtAsc = 'sys_firstPublishedAt_ASC',
   SysFirstPublishedAtDesc = 'sys_firstPublishedAt_DESC',
   SysIdAsc = 'sys_id_ASC',
@@ -459,6 +510,8 @@ export enum CaseStudyOrder {
   SysPublishedAtDesc = 'sys_publishedAt_DESC',
   SysPublishedVersionAsc = 'sys_publishedVersion_ASC',
   SysPublishedVersionDesc = 'sys_publishedVersion_DESC',
+  TeamAsc = 'team_ASC',
+  TeamDesc = 'team_DESC',
   TitleAsc = 'title_ASC',
   TitleDesc = 'title_DESC'
 }
@@ -1723,6 +1776,38 @@ export type ContentSourceMapsDirectiveArgs = { };
 
 export type ContentSourceMapsDirectiveResolver<Result, Parent, ContextType = any, Args = ContentSourceMapsDirectiveArgs> = DirectiveResolverFn<Result, Parent, ContextType, Args>;
 
+export type DelegatedResourceLinkDirectiveArgs = {
+  contentTypeId?: Maybe<Scalars['String']['input']>;
+  field?: Maybe<Scalars['JSON']['input']>;
+};
+
+export type DelegatedResourceLinkDirectiveResolver<Result, Parent, ContextType = any, Args = DelegatedResourceLinkDirectiveArgs> = DirectiveResolverFn<Result, Parent, ContextType, Args>;
+
+export type EnumMapperDirectiveArgs = {
+  value?: Maybe<Scalars['JSON']['input']>;
+};
+
+export type EnumMapperDirectiveResolver<Result, Parent, ContextType = any, Args = EnumMapperDirectiveArgs> = DirectiveResolverFn<Result, Parent, ContextType, Args>;
+
+export type FeatureFlagDirectiveArgs = {
+  featureName?: Maybe<Scalars['String']['input']>;
+};
+
+export type FeatureFlagDirectiveResolver<Result, Parent, ContextType = any, Args = FeatureFlagDirectiveArgs> = DirectiveResolverFn<Result, Parent, ContextType, Args>;
+
+export type FieldResolverDirectiveArgs = {
+  data?: Maybe<Scalars['JSON']['input']>;
+  kind?: Maybe<Scalars['String']['input']>;
+};
+
+export type FieldResolverDirectiveResolver<Result, Parent, ContextType = any, Args = FieldResolverDirectiveArgs> = DirectiveResolverFn<Result, Parent, ContextType, Args>;
+
+export type TypeIdentifierDirectiveArgs = {
+  contentTypeId?: Maybe<Scalars['String']['input']>;
+};
+
+export type TypeIdentifierDirectiveResolver<Result, Parent, ContextType = any, Args = TypeIdentifierDirectiveArgs> = DirectiveResolverFn<Result, Parent, ContextType, Args>;
+
 export type AssetResolvers<ContextType = any, ParentType extends ResolversParentTypes['Asset'] = ResolversParentTypes['Asset']> = {
   contentType?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType, Partial<AssetContentTypeArgs>>;
   contentfulMetadata?: Resolver<ResolversTypes['ContentfulMetadata'], ParentType, ContextType>;
@@ -1756,6 +1841,7 @@ export type AssetLinkingCollectionsResolvers<ContextType = any, ParentType exten
 export type CaseStudyResolvers<ContextType = any, ParentType extends ResolversParentTypes['CaseStudy'] = ResolversParentTypes['CaseStudy']> = {
   _id?: Resolver<ResolversTypes['ID'], ParentType, ContextType>;
   assets?: Resolver<Maybe<ResolversTypes['Asset']>, ParentType, ContextType, Partial<CaseStudyAssetsArgs>>;
+  category?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType, Partial<CaseStudyCategoryArgs>>;
   classified?: Resolver<Maybe<ResolversTypes['Boolean']>, ParentType, ContextType, Partial<CaseStudyClassifiedArgs>>;
   client?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType, Partial<CaseStudyClientArgs>>;
   completeText?: Resolver<Maybe<ResolversTypes['CaseStudyCompleteText']>, ParentType, ContextType, Partial<CaseStudyCompleteTextArgs>>;
@@ -1763,9 +1849,11 @@ export type CaseStudyResolvers<ContextType = any, ParentType extends ResolversPa
   date?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType, Partial<CaseStudyDateArgs>>;
   linkedFrom?: Resolver<Maybe<ResolversTypes['CaseStudyLinkingCollections']>, ParentType, ContextType, Partial<CaseStudyLinkedFromArgs>>;
   order?: Resolver<Maybe<ResolversTypes['Int']>, ParentType, ContextType, Partial<CaseStudyOrderArgs>>;
+  role?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType, Partial<CaseStudyRoleArgs>>;
   slug?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType, Partial<CaseStudySlugArgs>>;
+  subtitle?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType, Partial<CaseStudySubtitleArgs>>;
   sys?: Resolver<ResolversTypes['Sys'], ParentType, ContextType>;
-  tags?: Resolver<Maybe<Array<Maybe<ResolversTypes['String']>>>, ParentType, ContextType, Partial<CaseStudyTagsArgs>>;
+  team?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType, Partial<CaseStudyTeamArgs>>;
   text?: Resolver<Maybe<ResolversTypes['CaseStudyText']>, ParentType, ContextType, Partial<CaseStudyTextArgs>>;
   title?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType, Partial<CaseStudyTitleArgs>>;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
@@ -2296,6 +2384,11 @@ export type Resolvers<ContextType = any> = {
 
 export type DirectiveResolvers<ContextType = any> = {
   contentSourceMaps?: ContentSourceMapsDirectiveResolver<any, any, ContextType>;
+  delegatedResourceLink?: DelegatedResourceLinkDirectiveResolver<any, any, ContextType>;
+  enumMapper?: EnumMapperDirectiveResolver<any, any, ContextType>;
+  featureFlag?: FeatureFlagDirectiveResolver<any, any, ContextType>;
+  fieldResolver?: FieldResolverDirectiveResolver<any, any, ContextType>;
+  typeIdentifier?: TypeIdentifierDirectiveResolver<any, any, ContextType>;
 };
 
 export type GetAssetQueryVariables = Exact<{
@@ -2310,12 +2403,12 @@ export type GetCaseStudyQueryVariables = Exact<{
 }>;
 
 
-export type GetCaseStudyQuery = { __typename: 'Query', caseStudy?: { __typename: 'CaseStudy', title?: string | null, date?: string | null, classified?: boolean | null, completeText?: { __typename: 'CaseStudyCompleteText', json: any, links: { __typename: 'CaseStudyCompleteTextLinks', entries: { __typename: 'CaseStudyCompleteTextEntries', inline: Array<{ __typename: 'CaseStudy', sys: { __typename: 'Sys', id: string } } | { __typename: 'Experience', sys: { __typename: 'Sys', id: string } } | { __typename: 'Header', sys: { __typename: 'Sys', id: string } } | { __typename: 'Project', sys: { __typename: 'Sys', id: string } } | { __typename: 'Text', sys: { __typename: 'Sys', id: string } } | null>, block: Array<{ __typename: 'CaseStudy', sys: { __typename: 'Sys', id: string } } | { __typename: 'Experience', sys: { __typename: 'Sys', id: string } } | { __typename: 'Header', sys: { __typename: 'Sys', id: string } } | { __typename: 'Project', sys: { __typename: 'Sys', id: string } } | { __typename: 'Text', sys: { __typename: 'Sys', id: string } } | null> }, assets: { __typename: 'CaseStudyCompleteTextAssets', block: Array<{ __typename: 'Asset', url?: string | null, title?: string | null, width?: number | null, height?: number | null, description?: string | null, sys: { __typename: 'Sys', id: string } } | null> } } } | null } | null };
+export type GetCaseStudyQuery = { __typename: 'Query', caseStudy?: { __typename: 'CaseStudy', title?: string | null, subtitle?: string | null, team?: string | null, category?: string | null, role?: string | null, client?: string | null, date?: string | null, classified?: boolean | null, completeText?: { __typename: 'CaseStudyCompleteText', json: any, links: { __typename: 'CaseStudyCompleteTextLinks', entries: { __typename: 'CaseStudyCompleteTextEntries', inline: Array<{ __typename: 'CaseStudy', sys: { __typename: 'Sys', id: string } } | { __typename: 'Experience', sys: { __typename: 'Sys', id: string } } | { __typename: 'Header', sys: { __typename: 'Sys', id: string } } | { __typename: 'Project', sys: { __typename: 'Sys', id: string } } | { __typename: 'Text', sys: { __typename: 'Sys', id: string } } | null>, block: Array<{ __typename: 'CaseStudy', sys: { __typename: 'Sys', id: string } } | { __typename: 'Experience', sys: { __typename: 'Sys', id: string } } | { __typename: 'Header', sys: { __typename: 'Sys', id: string } } | { __typename: 'Project', sys: { __typename: 'Sys', id: string } } | { __typename: 'Text', sys: { __typename: 'Sys', id: string } } | null> }, assets: { __typename: 'CaseStudyCompleteTextAssets', block: Array<{ __typename: 'Asset', url?: string | null, title?: string | null, width?: number | null, height?: number | null, description?: string | null, sys: { __typename: 'Sys', id: string } } | null> } } } | null } | null };
 
 export type GetCaseStudyCollectionQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type GetCaseStudyCollectionQuery = { __typename: 'Query', caseStudyCollection?: { __typename: 'CaseStudyCollection', items: Array<{ __typename: 'CaseStudy', _id: string, slug?: string | null, title?: string | null, order?: number | null, date?: string | null, tags?: Array<string | null> | null, text?: { __typename: 'CaseStudyText', json: any } | null, assets?: { __typename: 'Asset', url?: string | null, contentType?: string | null } | null } | null> } | null };
+export type GetCaseStudyCollectionQuery = { __typename: 'Query', caseStudyCollection?: { __typename: 'CaseStudyCollection', items: Array<{ __typename: 'CaseStudy', _id: string, slug?: string | null, title?: string | null, order?: number | null, date?: string | null, text?: { __typename: 'CaseStudyText', json: any } | null, assets?: { __typename: 'Asset', url?: string | null, contentType?: string | null } | null } | null> } | null };
 
 export type GetCaseStudyIdQueryVariables = Exact<{
   where?: InputMaybe<CaseStudyFilter>;
@@ -2386,6 +2479,11 @@ export const GetCaseStudyDocument = gql`
     query GetCaseStudy($id: String!) {
   caseStudy(id: $id) {
     title
+    subtitle
+    team
+    category
+    role
+    client
     date
     classified
     completeText {
@@ -2469,7 +2567,6 @@ export const GetCaseStudyCollectionDocument = gql`
       }
       order
       date
-      tags
     }
   }
 }

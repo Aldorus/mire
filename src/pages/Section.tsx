@@ -3,20 +3,22 @@ import "./_Section.scss";
 import classnames from "classnames";
 
 interface Props {
-  fullHeight?: boolean
-  noPadding?: boolean
+  fullHeight?: boolean;
+  noPadding?: boolean;
+  type?: 'small' | 'large';
   children: ReactNode;
   id?: string,
   className?: HTMLAttributes<HTMLDivElement>['className'],
 }
 
-const Section = ({fullHeight = false, noPadding=false, className, id, children}: Props) => {
+const Section = ({fullHeight = false, noPadding=false, type="large", className, id, children}: Props) => {
   return <div className={classnames([
     className,
     'Section',
     fullHeight && 'Section--fullHeight',
     noPadding && "Section--noPadding",
-    !noPadding && "Section--withPadding"
+    !noPadding && "Section--withPadding",
+    `Section--${type}`
   ])} id={id}><div className="Section__content">{children}</div></div>
 }
 

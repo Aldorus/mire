@@ -1,4 +1,6 @@
 @use "../tokens/breakpoints";
+@use "../tokens/typography";
+@use "../tokens/mixins";
 
 .CaseStudy {
   --paddingCaseStudy: var(--space-48x);
@@ -12,16 +14,67 @@
     padding-bottom: var(--space-8x);
   }
 
-  &__quote {
-    border-radius: 8px;
-    background: #FED584;
-    margin-top: var(--space-4x);
-    padding: var(--space-4x) var(--space-6x);
+  &__title {
+    @include typography.heading2;
+    margin-bottom: var(--space-2x);
   }
 
-  &__info__item__label {
-    font-family: var(--font-secondary);
-    font-weight: 600;
+  &__subtitle {
+    font-size: 1.33rem;
+    font-weight: normal;
+    margin-bottom: var(--space-8x);
+  }
+
+  &__info {
+    border-top: 1px solid var(--primary-2);
+    border-bottom: 1px solid var(--primary-2);
+    padding: var(--space-4x);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: var(--space-2x);
+    margin-bottom: var(--space-8x);
+
+    *:nth-child(4) {
+      grid-column: 2 / 2;
+      grid-row: 2 / 4;
+    }
+
+    &__item__label {
+      font-family: var(--font-secondary);
+      font-weight: 600;
+    }
+
+    &__item__value {
+      color: var(--primary-2);
+    }
+  }
+
+  &__quote {
+    border-radius: 8px;
+    background: var(--primary-1);
+
+    margin-top: var(--space-4x);
+    padding: var(--space-8x) var(--space-8x);
+    display: inline-flex;
+    gap: var(--space-4x);
+
+    &__warning {
+      width: 24px;
+      height: 24px;
+    }
+
+    &__title {
+      display: block;
+      font-family: var(--font-secondary);
+      margin-bottom: var(--space-4x);
+      color: var(--neutral-2);
+    }
+
+    &__text {
+      flex: 1;
+      color: var(--primary-8);
+      line-height: 1.5;
+    }
   }
 
   &__completeText {
@@ -29,8 +82,14 @@
     flex-direction: column;
     gap: var(--space-8x);
     line-height: 32px;
+
     > *:not(img) {
-      padding: 0 var(--paddingCaseStudy);
+      @include mixins.centered;
+      max-width: 984px;
+      padding: 0 var(--space-16x);
+      @media screen and (max-width: breakpoints.$breakpoint-md) {
+        padding: 0 var(--space-4x);
+      }
     }
   }
 }

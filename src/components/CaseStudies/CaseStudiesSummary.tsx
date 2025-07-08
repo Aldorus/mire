@@ -9,6 +9,7 @@ import Slider from "react-slick";
 import ArrowLeft from "../../assets/ArrowLeft.svg?react";
 import ArrowRight from "../../assets/ArrowRight.svg?react";
 import {Link} from "../Link/Link.tsx";
+import {useNavigate} from "react-router";
 
 type Props = {
   className?: HTMLAttributes<HTMLDivElement>['className'],
@@ -17,8 +18,12 @@ type CaseStudy = NonNullable<NonNullable<NonNullable<ReturnType<typeof useGetCas
 
 const CaseStudiesSummary = ({className}: Props) => {
   const {data} = useGetCaseStudyCollectionSuspenseQuery();
+  const navigate = useNavigate();
   const renderCaseStudies = (item: CaseStudy) => {
-    return <div key={item._id} className="CaseStudies__item">
+    return <div key={item._id} className="CaseStudies__item" onClick={flow(
+      (e) => e.stopPropagation(),
+      ()=> navigate(`/case/${item.slug}`),
+    )}>
       <div className="asset">
         {item.assets?.contentType?.includes("video") ? <video loop autoPlay muted>
           <source src={item.assets?.url ?? ''} type="video/mp4"/>

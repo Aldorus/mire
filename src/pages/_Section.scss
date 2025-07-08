@@ -20,10 +20,24 @@
       padding: 80px var(--space-4x) 80px;
     }
 
+  }
+
+  &--large {
     .Section__content {
       @include mixins.centered;
       padding: 0 var(--space-16x) 0 var(--space-16x);
 
+      @media screen and (max-width: breakpoints.$breakpoint-md) {
+        padding: 0;
+      }
+    }
+  }
+
+  &--small {
+    .Section__content {
+      @include mixins.centered;
+      max-width: 984px;
+      padding: 0 var(--space-16x) 0 var(--space-16x);
       @media screen and (max-width: breakpoints.$breakpoint-md) {
         padding: 0;
       }

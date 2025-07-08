@@ -68,7 +68,7 @@
     .happy {
       opacity: 0;
     }
-    &:hover {
+    &:hover, &--open {
       .standard{
         opacity: 0;
       }
@@ -79,7 +79,7 @@
   }
 
   &__panel {
-    background: #F3EDEC;
+    background: var(--neutral-2);
     min-height: 100vh;
     width: 100%;
     position: fixed;

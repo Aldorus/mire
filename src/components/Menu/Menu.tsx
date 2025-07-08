@@ -26,7 +26,7 @@ const Menu = () => {
     <Link to="/" className={classNames(["Menu__hi", pathname.includes("about") && "Menu__hi--alternate" ])}><Sun/>&nbsp;Hi! I’m Barbara</Link>
     <div
       onClick={() => setIsMenuOpen(!isMenuOpen)}
-      className="Menu__trigger">
+      className={classnames(["Menu__trigger", isMenuOpen && 'Menu__trigger--open'])}>
       <div>
         <img src={BettyStandard} className={classnames(['betty', 'standard'])}/>
         <img src={BettyHappy} className={classnames(['betty', 'happy'])}/>

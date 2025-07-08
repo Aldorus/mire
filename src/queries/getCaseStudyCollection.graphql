@@ -13,7 +13,6 @@ query GetCaseStudyCollection {
       }
       order
       date
-      tags
     }
   }
 }
