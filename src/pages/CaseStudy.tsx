@@ -1,6 +1,7 @@
 import "./_CaseStudy.scss";
 import {useGetCaseStudyIdSuspenseQuery, useGetCaseStudySuspenseQuery} from "../models/graphql.ts";
 import {useParams} from "react-router-dom";
+import Warning from "../assets/Warning.svg?react";
 import {isNil} from "lodash";
 import ProgressBar from "../components/ProgressBar/ProgressBar.tsx";
 import {RichText} from "../components/Typography/RichText.tsx";
@@ -18,7 +19,7 @@ const CaseStudy = () => {
   const {data} = useGetCaseStudySuspenseQuery({variables: {id: caseStudyId?.sys.id as string}});
 
   useEffect(() => {
-    window.scrollTo(0, 0);
+    window.scrollTo({top: 0, left: 0, behavior: "instant"});
   }, []);
 
   if (isNil(data?.caseStudy)) {
@@ -26,22 +27,48 @@ const CaseStudy = () => {
   }
   return <Page className="CaseStudy">
     <ProgressBar/>
-    <Section className="CaseStudy__section">
-      <div className="CaseStudy__content">
-        <h1>{data?.caseStudy.title}</h1>
-      </div>
+    <Section type="small" className="CaseStudy__section">
+      <h1 className="CaseStudy__title">{data?.caseStudy.title}</h1>
+      <h2 className="CaseStudy__subtitle">{data?.caseStudy.subtitle}</h2>
       <div className="CaseStudy__info">
-        <div className="CaseStudy__info__item"><span
-          className="CaseStudy__info__item__label">Time:</span> {data?.caseStudy.date}</div>
+        <div className="CaseStudy__info__item">
+          <span className="CaseStudy__info__item__label">Client:</span>&nbsp;
+          <span className="CaseStudy__info__item__value">{data?.caseStudy.client}</span>
+        </div>
+        <div className="CaseStudy__info__item">
+          <span className="CaseStudy__info__item__label">Role:</span>&nbsp;
+          <span className="CaseStudy__info__item__value">{data?.caseStudy.role}</span>
+        </div>
+        <div className="CaseStudy__info__item">
+          <span className="CaseStudy__info__item__label">Category:</span>&nbsp;
+          <span className="CaseStudy__info__item__value">{data?.caseStudy.category}</span>
+        </div>
+        <div className="CaseStudy__info__item">
+          <span className="CaseStudy__info__item__label">Team:</span>&nbsp;
+          <span className="CaseStudy__info__item__value">{data?.caseStudy.team}</span>
+        </div>
+        <div className="CaseStudy__info__item">
+          <span className="CaseStudy__info__item__label">Time:</span>&nbsp;
+          <span className="CaseStudy__info__item__value">{data?.caseStudy.date}</span>
+        </div>
       </div>
       {data?.caseStudy.classified && <div className="CaseStudy__quote">
-        This project is part of a broader redesign initiative currently underway at RSI. Due to confidentiality
-        agreements, I am not able to share the most recent work completed over the past six months, including certain
-        outcomes and upcoming features. This case study focuses on the first major milestone: the redesign of the global
-        navigation, which laid the groundwork for the larger revamp.
+        <Warning className="CaseStudy__quote__warning"/>
+        <div className="CaseStudy__quote__text">
+          <strong className="CaseStudy__quote__title">Confidentiality Notice</strong>
+          <p>
+          This project is part of a broader redesign initiative currently underway at RSI. Due to confidentiality
+          agreements, I am not able to share the most recent work completed over the past six months, including certain
+          outcomes and upcoming features. This case study focuses on the first major milestone: the redesign of the global
+          navigation, which laid the groundwork for the larger revamp.
+            </p>
+        </div>
       </div>}
     </Section>
-    <RichText content={data?.caseStudy.completeText} className="CaseStudy__completeText"/>
+    <Section noPadding>
+      <RichText content={data?.caseStudy.completeText} className="CaseStudy__completeText"/>
+    </Section>
+
   </Page>
 }
 export default CaseStudy;
