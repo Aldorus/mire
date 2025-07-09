@@ -68,7 +68,6 @@ const CaseStudy = () => {
     <Section noPadding>
       <RichText content={data?.caseStudy.completeText} className="CaseStudy__completeText"/>
     </Section>
-
   </Page>
 }
 export default CaseStudy;

@@ -82,6 +82,7 @@
     flex-direction: column;
     gap: var(--space-8x);
     line-height: 32px;
+    padding-bottom: var(--space-16x);
 
     > *:not(img) {
       @include mixins.centered;
@@ -89,6 +90,33 @@
       padding: 0 var(--space-16x);
       @media screen and (max-width: breakpoints.$breakpoint-md) {
         padding: 0 var(--space-4x);
+      }
+    }
+
+    blockquote {
+      border: 1px solid var(--primary-2);
+      border-radius: 8px;
+      text-align: center;
+      padding: var(--space-10x);
+      max-width: calc(984px - 64px - 64px);
+      width: calc(100% - 64px - 64px);
+
+      @media screen and (max-width: breakpoints.$breakpoint-md) {
+        width: calc(100% - var(--space-8x));
+        margin: 0 var(--space-4x);
+      }
+
+      p {
+        line-height: 1.5;
+      }
+
+      &::before{
+        content: "";
+        background: url("../assets/Union.svg") no-repeat center;
+        width: 56px;
+        height: 56px;
+        display: block;
+        margin: auto;
       }
     }
   }

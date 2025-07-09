@@ -2408,7 +2408,7 @@ export type GetCaseStudyQuery = { __typename: 'Query', caseStudy?: { __typename:
 export type GetCaseStudyCollectionQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type GetCaseStudyCollectionQuery = { __typename: 'Query', caseStudyCollection?: { __typename: 'CaseStudyCollection', items: Array<{ __typename: 'CaseStudy', _id: string, slug?: string | null, title?: string | null, order?: number | null, date?: string | null, text?: { __typename: 'CaseStudyText', json: any } | null, assets?: { __typename: 'Asset', url?: string | null, contentType?: string | null } | null } | null> } | null };
+export type GetCaseStudyCollectionQuery = { __typename: 'Query', caseStudyCollection?: { __typename: 'CaseStudyCollection', items: Array<{ __typename: 'CaseStudy', _id: string, slug?: string | null, title?: string | null, subtitle?: string | null, order?: number | null, date?: string | null, assets?: { __typename: 'Asset', url?: string | null, contentType?: string | null } | null } | null> } | null };
 
 export type GetCaseStudyIdQueryVariables = Exact<{
   where?: InputMaybe<CaseStudyFilter>;
@@ -2557,10 +2557,8 @@ export const GetCaseStudyCollectionDocument = gql`
     items {
       _id
       slug
-      text {
-        json
-      }
       title
+      subtitle
       assets {
         url
         contentType

@@ -3,10 +3,8 @@ query GetCaseStudyCollection {
     items {
       _id
       slug
-      text {
-        json
-      }
       title
+      subtitle
       assets {
         url
         contentType

@@ -1,0 +1,27 @@
+.CaseStudiesItem{
+  cursor: pointer;
+
+  .asset {
+    flex: 1;
+    overflow: hidden;
+    border-radius: 8px;
+    aspect-ratio: 1010 / 629;
+
+    >* {
+      width: 100%;
+      object-fit: cover;
+      height: 100%;
+    }
+  }
+
+  .description {
+    display: flex;
+    flex-direction: column;
+    margin: var(--space-4x) 0;
+  }
+
+  .title {
+    font-family: var(--font-secondary);
+    margin-bottom: var(--space-2x);
+  }
+}

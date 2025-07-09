@@ -56,11 +56,14 @@
 
     p {
       line-height: normal;
+      font-weight: normal;
     }
   }
 
   ul {
     position: relative;
     left: var(--space-6x);
+
+    p{margin-bottom: 0}
   }
 }
