@@ -23,7 +23,7 @@ const Menu = () => {
   }
 
   return <nav className="Menu">
-    <Link to="/" className={classNames(["Menu__hi", pathname.includes("about") && "Menu__hi--alternate" ])}><Sun/>&nbsp;Hi! I’m Barbara</Link>
+    <Link to="/" className={classNames(["Menu__hi", pathname.includes("about") && "Menu__hi--alternate" ])}><Sun/>&nbsp;Hello, I’m Barbara</Link>
     <div
       onClick={() => setIsMenuOpen(!isMenuOpen)}
       className={classnames(["Menu__trigger", isMenuOpen && 'Menu__trigger--open'])}>
