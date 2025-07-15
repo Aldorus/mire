@@ -5,6 +5,8 @@
 .CaseStudy {
   --paddingCaseStudy: var(--space-48x);
   background: var(--primary-8);
+  z-index: 2;
+  position: relative;
 
   @media screen and (max-width: breakpoints.$breakpoint-md) {
     --paddingCaseStudy: var(--space-6x);

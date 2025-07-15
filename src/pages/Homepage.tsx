@@ -7,13 +7,17 @@ import ArrowBottom from "../assets/ArrowBottom.svg?react";
 import Sun from "../assets/Sun.svg?react";
 import Page from "./Page.tsx";
 import Section from "./Section.tsx";
-
+import RoundedBorder from "../components/Sparkle/RoundedBorder.tsx";
+import { useWindowScroll} from "react-use";
 
 const Homepage = () => {
   const {data} = useGetTextQuerySuspenseQuery({variables: {id: "3j5F4HgCVPo7IRhuwuxNrx"}});
+  const {y} = useWindowScroll();
+  const opacity = 1 - (y / (screen.height / 2));
+
   return <Page className="Homepage">
-    <Section fullHeight>
-      <div className="Homepage__top">
+    <Section fullHeight sticky>
+      <div className="Homepage__top" style={{opacity }}>
         <p className="Homepage__town">MONTRÉAL | CANADA</p>
         <div className="Homepage__headline">
           <div className="Homepage__headline__title">
@@ -26,7 +30,8 @@ const Homepage = () => {
         <ArrowBottom className="Homepage__cta__icon"/>
       </div>
     </Section>
-    <Section className="Homepage__CaseStudies">
+    <RoundedBorder/>
+    <Section className="Homepage__CaseStudies" sticky>
       <CaseStudiesSummary/>
     </Section>
   </Page>

@@ -1,16 +1,20 @@
 @use "../tokens/breakpoints";
 
 .Homepage {
+  z-index: 2;
+  position: relative;
+  background: var(--background-color);
+
   &__top {
     display: flex;
     flex-direction: column;
     align-items: center;
     margin-top: var(--space-8x);
+    position: sticky;
 
     @media screen and (max-width: breakpoints.$breakpoint-md) {
       padding-top: 80px;
     }
-
   }
 
   &__headline {
@@ -85,7 +89,10 @@
   }
   &__cta__icon {
     position: absolute;
-    bottom: 10%;
+    left: calc(50% - 12px);
+    bottom: -10vh;
+    z-index: 1;
+    display: none;
 
     @media screen and (max-width: breakpoints.$breakpoint-md) {
       bottom: var(--space-6x);
@@ -99,7 +106,9 @@
     }
   }
 
-  &__CaseStudies {
-    background: #D4DDDC;
+  &__CaseStudies.Section--withPadding {
+    background: var(--primary-8);
+    padding-top: 0;
+    z-index: 3;
   }
 }

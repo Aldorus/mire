@@ -55,6 +55,7 @@ function renderOptions(links: any) {
         const asset = assetBlockMap.get(node.data.target.sys.id);
         return isVideo(asset) ? <video loop muted autoPlay>
           <source src={asset.url ?? ''} type="video/mp4"/>
+          <p>{asset.title}</p>
         </video> : <img src={asset.url} alt={asset.title}/>
       },
     },

@@ -6,10 +6,13 @@
   min-width: 425px;
   background: var(--background-color);
   width: 100%;
-  overflow-x: hidden;
+  overflow-x: clip;
 
   .App__contact {
     background: var(--primary-1);
     color: #FFFFFF;
+    position: sticky;
+    bottom: 0;
+    z-index: 0;
   }
 }

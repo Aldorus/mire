@@ -20,12 +20,12 @@ const App = () => {
   return <div className="App">
     <BrowserRouter>
       <Menu/>
-      <div className="App__container">
-        <Routes>
+        <div className="App__container">
+      <Routes>
           <Route path={ROUTE.CASE_STUDY} element={<CaseStudy/>}></Route>
           <Route path={ROUTE.ABOUT} element={<About/>}></Route>
           <Route path={ROUTE.HOME} element={<Homepage/>}></Route>
-        </Routes>
+      </Routes>
       </div>
       <Contact className="App__contact"/>
     </BrowserRouter>

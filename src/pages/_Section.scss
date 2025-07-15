@@ -19,7 +19,11 @@
     @media screen and (max-width: breakpoints.$breakpoint-md) {
       padding: 80px var(--space-4x) 80px;
     }
+  }
 
+  &--sticky {
+    position: sticky;
+    top: 0;
   }
 
   &--large {

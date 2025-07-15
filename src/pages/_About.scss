@@ -2,6 +2,7 @@
 
 .About {
   position: relative;
+  z-index: 2;
 
   .About__top {
     background: var(--primary-2);
