@@ -22,7 +22,10 @@ const CaseStudySummaryItem = ({item, className}: Props) => {
     if(hover) {
       ref.current?.play();
     } else {
+      if(ref.current){
       ref.current?.pause();
+      ref.current.currentTime = 0;
+      }
     }
 
   }, [hover]);

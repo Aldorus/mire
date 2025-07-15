@@ -1,6 +1,12 @@
 .CaseStudiesItem{
   cursor: pointer;
 
+  &:hover {
+    .title {
+      font-weight: 600;
+    }
+  }
+
   .asset {
     flex: 1;
     overflow: hidden;
