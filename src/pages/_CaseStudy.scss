@@ -84,7 +84,7 @@
     line-height: 32px;
     padding-bottom: var(--space-16x);
 
-    > *:not(img) {
+    > *:not(img, video)  {
       @include mixins.centered;
       max-width: 984px;
       padding: 0 var(--space-16x);

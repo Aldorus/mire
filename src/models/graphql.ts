@@ -2403,7 +2403,7 @@ export type GetCaseStudyQueryVariables = Exact<{
 }>;
 
 
-export type GetCaseStudyQuery = { __typename: 'Query', caseStudy?: { __typename: 'CaseStudy', title?: string | null, subtitle?: string | null, team?: string | null, category?: string | null, role?: string | null, client?: string | null, date?: string | null, classified?: boolean | null, completeText?: { __typename: 'CaseStudyCompleteText', json: any, links: { __typename: 'CaseStudyCompleteTextLinks', entries: { __typename: 'CaseStudyCompleteTextEntries', inline: Array<{ __typename: 'CaseStudy', sys: { __typename: 'Sys', id: string } } | { __typename: 'Experience', sys: { __typename: 'Sys', id: string } } | { __typename: 'Header', sys: { __typename: 'Sys', id: string } } | { __typename: 'Project', sys: { __typename: 'Sys', id: string } } | { __typename: 'Text', sys: { __typename: 'Sys', id: string } } | null>, block: Array<{ __typename: 'CaseStudy', sys: { __typename: 'Sys', id: string } } | { __typename: 'Experience', sys: { __typename: 'Sys', id: string } } | { __typename: 'Header', sys: { __typename: 'Sys', id: string } } | { __typename: 'Project', sys: { __typename: 'Sys', id: string } } | { __typename: 'Text', sys: { __typename: 'Sys', id: string } } | null> }, assets: { __typename: 'CaseStudyCompleteTextAssets', block: Array<{ __typename: 'Asset', url?: string | null, title?: string | null, width?: number | null, height?: number | null, description?: string | null, sys: { __typename: 'Sys', id: string } } | null> } } } | null } | null };
+export type GetCaseStudyQuery = { __typename: 'Query', caseStudy?: { __typename: 'CaseStudy', title?: string | null, subtitle?: string | null, team?: string | null, category?: string | null, role?: string | null, client?: string | null, date?: string | null, classified?: boolean | null, completeText?: { __typename: 'CaseStudyCompleteText', json: any, links: { __typename: 'CaseStudyCompleteTextLinks', entries: { __typename: 'CaseStudyCompleteTextEntries', inline: Array<{ __typename: 'CaseStudy', sys: { __typename: 'Sys', id: string } } | { __typename: 'Experience', sys: { __typename: 'Sys', id: string } } | { __typename: 'Header', sys: { __typename: 'Sys', id: string } } | { __typename: 'Project', sys: { __typename: 'Sys', id: string } } | { __typename: 'Text', sys: { __typename: 'Sys', id: string } } | null>, block: Array<{ __typename: 'CaseStudy', sys: { __typename: 'Sys', id: string } } | { __typename: 'Experience', sys: { __typename: 'Sys', id: string } } | { __typename: 'Header', sys: { __typename: 'Sys', id: string } } | { __typename: 'Project', sys: { __typename: 'Sys', id: string } } | { __typename: 'Text', sys: { __typename: 'Sys', id: string } } | null> }, assets: { __typename: 'CaseStudyCompleteTextAssets', block: Array<{ __typename: 'Asset', url?: string | null, contentType?: string | null, title?: string | null, width?: number | null, height?: number | null, description?: string | null, sys: { __typename: 'Sys', id: string } } | null> } } } | null } | null };
 
 export type GetCaseStudyCollectionQueryVariables = Exact<{ [key: string]: never; }>;
 
@@ -2507,6 +2507,7 @@ export const GetCaseStudyDocument = gql`
               id
             }
             url
+            contentType
             title
             width
             height

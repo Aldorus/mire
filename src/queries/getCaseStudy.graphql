@@ -29,6 +29,7 @@ query GetCaseStudy($id: String!) {
               id
             }
             url
+            contentType
             title
             width
             height

@@ -6,6 +6,7 @@ import {documentToReactComponents} from "@contentful/rich-text-react-renderer";
 import {HTMLAttributes} from "react";
 import classnames from "classnames";
 import './_RichText.scss';
+import {isVideo} from "../../lib/asset.ts";
 
 function renderOptions(links: any) {
   // create an asset block map
@@ -52,9 +53,9 @@ function renderOptions(links: any) {
       [BLOCKS.EMBEDDED_ASSET]: (node: any) => {
         // find the asset in the assetBlockMap by ID
         const asset = assetBlockMap.get(node.data.target.sys.id);
-
-        // render the asset accordingly
-        return <img src={asset.url} alt="My image alt text"/>;
+        return isVideo(asset) ? <video loop muted autoPlay>
+          <source src={asset.url ?? ''} type="video/mp4"/>
+        </video> : <img src={asset.url} alt={asset.title}/>
       },
     },
   };

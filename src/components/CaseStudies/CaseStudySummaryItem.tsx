@@ -5,6 +5,7 @@ import {useGetCaseStudyCollectionSuspenseQuery} from "../../models/graphql.ts";
 import {HTMLAttributes, useEffect, useRef, useState} from "react";
 import classnames from "classnames";
 import "./_CaseStudySummaryItem.scss"
+import {isVideo} from "../../lib/asset.ts";
 
 type CaseStudy = NonNullable<NonNullable<NonNullable<ReturnType<typeof useGetCaseStudyCollectionSuspenseQuery>['data']>['caseStudyCollection']>['items'][number]>;
 
@@ -35,7 +36,7 @@ const CaseStudySummaryItem = ({item, className}: Props) => {
     ()=> navigate(`/case/${item.slug}`),
   )} onMouseOver={() => setHover(true)} onMouseLeave={() => setHover(false)}>
     <div className="asset">
-      {item.assets?.contentType?.includes("video") ? <video loop muted ref={ref}>
+      {isVideo(item.assets) ? <video loop muted ref={ref}>
         <source src={item.assets?.url ?? ''} type="video/mp4"/>
       </video> : <img src={item.assets?.url ?? ''}/>}
     </div>
