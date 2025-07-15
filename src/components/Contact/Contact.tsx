@@ -34,7 +34,7 @@ const Contact = ({className}: Props) => {
           </Button>
         </Link>
       </div>
-      <div className="Contact__credits">Designing stuff since 2011@<br/>2025 Barbara Marche with ❤️ & 🍵 in Montréal, Canada</div>
+      <div className="Contact__credits">Designing stuff since 2011<br/>@ 2025 Barbara Marche with ❤️ & 🍵 in Montréal, Canada</div>
     </div>
 
   </Section>
