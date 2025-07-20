@@ -13,9 +13,13 @@ import classNames from "classnames";
 const Menu = () => {
   const {pathname} = useLocation();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isHover, setIsHover] = useState(false);
 
   useEffect(() => {
     document.body.style.overflowY = isMenuOpen ? "hidden" : "auto";
+    if(!isMenuOpen) {
+      setIsHover(false);
+    }
   }, [isMenuOpen]);
 
   const handleCloseMenu = () => {
@@ -26,7 +30,9 @@ const Menu = () => {
     <Link to="/" className={classNames(["Menu__hi", pathname.includes("about") && "Menu__hi--alternate" ])}><Sun/>&nbsp;Hello, I’m Barbara</Link>
     <div
       onClick={() => setIsMenuOpen(!isMenuOpen)}
-      className={classnames(["Menu__trigger", isMenuOpen && 'Menu__trigger--open'])}>
+      onMouseEnter={() => setIsHover(true)}
+      onMouseLeave={() => setIsHover(false)}
+      className={classnames(["Menu__trigger", isMenuOpen && 'Menu__trigger--open', isHover && 'Menu__trigger--hover'])}>
       <div>
         <img src={BettyStandard} className={classnames(['betty', 'standard'])}/>
         <img src={BettyHappy} className={classnames(['betty', 'happy'])}/>

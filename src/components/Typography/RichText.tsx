@@ -53,7 +53,7 @@ function renderOptions(links: any) {
       [BLOCKS.EMBEDDED_ASSET]: (node: any) => {
         // find the asset in the assetBlockMap by ID
         const asset = assetBlockMap.get(node.data.target.sys.id);
-        return isVideo(asset) ? <video loop muted autoPlay>
+        return isVideo(asset) ? <video loop muted autoPlay playsInline>
           <source src={asset.url ?? ''} type="video/mp4"/>
           <p>{asset.title}</p>
         </video> : <img src={asset.url} alt={asset.title}/>
