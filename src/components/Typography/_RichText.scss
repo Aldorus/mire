@@ -24,8 +24,8 @@
   }
 
   p {
-    font-family: var(--font-primary);
-    line-height: 1.5rem;
+    @include typography.p;
+
   }
 
   em {

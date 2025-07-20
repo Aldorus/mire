@@ -20,15 +20,21 @@ const CaseStudySummaryItem = ({item, className}: Props) => {
   const [hover, setHover] = useState(false);
 
   useEffect(() => {
+    if(ref.current){
+      ref.current?.pause();
+      ref.current.currentTime = 0;
+    }
+  }, []);
+
+  useEffect(() => {
     if(hover) {
       ref.current?.play();
     } else {
       if(ref.current){
-      ref.current?.pause();
-      ref.current.currentTime = 0;
+        ref.current?.pause();
+        ref.current.currentTime = 0;
       }
     }
-
   }, [hover]);
 
   return <div key={item._id} className={classnames(["CaseStudiesItem", className])} onClick={flow(
@@ -36,7 +42,7 @@ const CaseStudySummaryItem = ({item, className}: Props) => {
     ()=> navigate(`/case/${item.slug}`),
   )} onMouseOver={() => setHover(true)} onMouseLeave={() => setHover(false)}>
     <div className="asset">
-      {isVideo(item.assets) ? <video loop muted ref={ref}>
+      {isVideo(item.assets) ? <video loop muted ref={ref} playsInline autoPlay>
         <source src={item.assets?.url ?? ''} type="video/mp4"/>
       </video> : <img src={item.assets?.url ?? ''}/>}
     </div>
