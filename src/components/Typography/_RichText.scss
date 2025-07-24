@@ -36,16 +36,14 @@
     @include typography.strong;
   }
 
-  img {
+  img, video {
     width: 100%;
   }
 
-  &__figure {
-    width: 70%;
-    margin: auto;
-
+  figure {
     figcaption {
       @include typography.em;
+      text-align: center;
     }
   }
 

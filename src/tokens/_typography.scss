@@ -62,7 +62,8 @@ h4 {
 }
 
 @mixin em {
-  font-size: 0.7rem;
+  font-size: 0.9rem;
+  font-style: italic;
 }
 
 @mixin strong {

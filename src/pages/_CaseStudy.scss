@@ -97,13 +97,17 @@
     line-height: 32px;
     padding-bottom: var(--space-16x);
 
-    > *:not(img, video)  {
+    > *:not(figure)  {
       @include mixins.centered;
       max-width: 984px;
       padding: 0 var(--space-16x);
       @media screen and (max-width: breakpoints.$breakpoint-md) {
         padding: 0 var(--space-4x);
       }
+    }
+
+    img,video {
+      border-radius: 8px;
     }
 
     blockquote {
