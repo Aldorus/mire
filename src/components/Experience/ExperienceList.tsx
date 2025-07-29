@@ -7,7 +7,7 @@ const ExperienceList = () => {
   const {data: experienceData} = useGetExperienceCollectionSuspenseQuery();
 
   const renderExperience = (experience: Experience) =>
-    <ExperienceItem experience={experience} className="ExperienceList__item" />
+    <ExperienceItem experience={experience} className="ExperienceList__item" key={experience._id} />
 
   return <div className="ExperienceList">
     {flow(

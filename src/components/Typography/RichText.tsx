@@ -39,6 +39,7 @@ function renderOptions(links: any) {
         if (entry.__typename === 'VideoEmbed') {
           return (
             <iframe
+              key={entry.sys.id}
               src={entry.embedUrl}
               height="100%"
               width="100%"
@@ -57,7 +58,7 @@ function renderOptions(links: any) {
           <source src={asset.url ?? ''} type="video/mp4"/>
           <p>{asset.title}</p>
         </video> : <img src={asset.url} alt={asset.title}/>;
-        return <figure>{media}<figcaption>{asset.description}</figcaption></figure>;
+        return <figure key={node.data.target.sys.id}>{media}<figcaption>{asset.description}</figcaption></figure>;
       },
     },
   };

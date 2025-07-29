@@ -1,0 +1,103 @@
+@use '../../tokens/breakpoints';
+
+.IconZone {
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100vh;
+  width: 100vw;
+  z-index: 1;
+
+  &__icon {
+    position: absolute;
+    cursor: pointer;
+    svg {
+      scale: 2.0;
+      transition: all .3s ease-in-out;
+
+      @media screen and (max-width: breakpoints.$breakpoint-md) {
+        scale: 1.5;
+      }
+    }
+
+    &:hover {
+      svg {
+        scale: 2.2;
+        transform-origin: center;
+
+        @media screen and (max-width: breakpoints.$breakpoint-md) {
+          scale: 1.7;
+        }
+      }
+    }
+
+    &--Mona1 {
+      top: 85%;
+      left: 55%;
+      @media screen and (max-width: breakpoints.$breakpoint-md) {
+        display: none;
+      }
+    }
+    &--Mona2 {
+      top: 40%;
+      left: -1%;
+      @media screen and (max-width: breakpoints.$breakpoint-md) {
+        display: none;
+      }
+    }
+    &--Ricard1 {
+      top: 10%;
+      left: 70%;
+      @media screen and (max-width: breakpoints.$breakpoint-md) {
+        top: 10%;
+        left: 70%;
+      }
+    }
+    &--Ricard2 {
+      top: 60%;
+      left: 75%;
+      @media screen and (max-width: breakpoints.$breakpoint-md) {
+        display: none;
+      }
+    }
+    &--Ricard3 {
+      top: 47%;
+      left: 15%;
+      @media screen and (max-width: breakpoints.$breakpoint-md) {
+        top: 75%;
+        left: -5%;
+      }
+    }
+    &--RSI1 {
+      top: 25%;
+      left: 85%;
+      @media screen and (max-width: breakpoints.$breakpoint-md) {
+        top: 80%;
+        left: 70%;
+
+        svg{rotate: 30deg;}
+      }
+    }
+    &--RSI2 {
+      top: 13%;
+      left: 9%;
+      @media screen and (max-width: breakpoints.$breakpoint-md) {
+        display: none;
+      }
+    }
+    &--RSI3 {
+      top: 82%;
+      left: 9%;
+      @media screen and (max-width: breakpoints.$breakpoint-md) {
+        display: none;
+      }
+    }
+    &--RSI4 {
+      top: 85%;
+      left: 92%;
+      @media screen and (max-width: breakpoints.$breakpoint-md) {
+        display: none;
+      }
+    }
+  }
+}

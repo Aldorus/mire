@@ -9,15 +9,17 @@ import Page from "./Page.tsx";
 import Section from "./Section.tsx";
 import RoundedBorder from "../components/Sparkle/RoundedBorder.tsx";
 import { useWindowScroll} from "react-use";
+import IconZone from "../components/MovableIcon/IconZone.tsx";
 
 const Homepage = () => {
   const {data} = useGetTextQuerySuspenseQuery({variables: {id: "3j5F4HgCVPo7IRhuwuxNrx"}});
   const {y} = useWindowScroll();
-  const opacity = 1 - (y / (screen.height / 2));
+  const opacity = 1 - (y / (window.innerHeight / 2));
 
   return <Page className="Homepage">
-    <Section fullHeight sticky>
-      <div className="Homepage__top" style={{opacity }}>
+    <Section fullHeight sticky style={{opacity}}>
+      <IconZone/>
+      <div className="Homepage__top" >
         <p className="Homepage__town">MONTRÉAL | CANADA</p>
         <div className="Homepage__headline">
           <div className="Homepage__headline__title">

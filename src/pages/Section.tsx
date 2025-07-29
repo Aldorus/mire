@@ -10,10 +10,11 @@ interface Props {
   children: ReactNode;
   id?: string,
   className?: HTMLAttributes<HTMLDivElement>['className'],
+  style?: HTMLAttributes<HTMLDivElement>['style'],
 }
 
-const Section = ({fullHeight = false, sticky=false, noPadding=false, type="large", className, id, children}: Props) => {
-  return <div className={classnames([
+const Section = ({fullHeight = false, sticky=false, noPadding=false, type="large", style, className, id, children}: Props) => {
+  return <div style={style} className={classnames([
     className,
     'Section',
     fullHeight && 'Section--fullHeight',
