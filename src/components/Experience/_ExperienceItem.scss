@@ -15,7 +15,8 @@
     padding: var(--space-6x) var(--space-4x);
 
     &:hover {
-      color: var(--accent-4);
+      color: var(--text-color);
+      font-weight: bold;
     }
 
     @media screen and (max-width: breakpoints.$breakpoint-md) {

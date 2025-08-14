@@ -56,6 +56,8 @@
       color: var(--primary-2);
       margin-top: var(--space-8x);
       line-height: 24px;
+      text-align: center;
+      max-width: 540px;
 
       @media screen and (max-width: breakpoints.$breakpoint-md) {
         max-width: 288px;

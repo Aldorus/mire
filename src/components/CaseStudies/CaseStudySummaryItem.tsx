@@ -46,7 +46,7 @@ const CaseStudySummaryItem = ({item, className}: Props) => {
         <source src={item.assets?.url ?? ''} type="video/mp4"/>
       </video> : <img src={item.assets?.url ?? ''}/>}
     </div>
-    <Link to={`/case/${item.slug}`}><div className="description">
+    <Link to={`/case/${item.slug}`} className="CaseStudiesItem__link"><div className="description">
       <span className="title">{item.title}</span>
       <span className="subtitle">{item.subtitle}</span>
     </div></Link>

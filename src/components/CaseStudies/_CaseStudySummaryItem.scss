@@ -20,14 +20,20 @@
     }
   }
 
+  &__link {
+    &:hover {color:black}
+  }
+
   .description {
     display: flex;
     flex-direction: column;
     margin: var(--space-4x) 0;
   }
+  
 
   .title {
     font-family: var(--font-secondary);
     margin-bottom: var(--space-2x);
+    font-size: 24px;
   }
 }

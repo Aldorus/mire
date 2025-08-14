@@ -19,7 +19,7 @@ const Homepage = () => {
   return <Page className="Homepage">
     <Section fullHeight sticky style={{opacity}}>
       <IconZone/>
-      <div className="Homepage__top" >
+      <div className="Homepage__top">
         <p className="Homepage__town">MONTRÉAL | CANADA</p>
         <div className="Homepage__headline">
           <div className="Homepage__headline__title">
