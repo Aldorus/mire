@@ -1,9 +1,12 @@
+@use './tokens/typography';
+
 :root {
   font-size: 20px;
+
   body{
     padding: 0;
     margin: 0;
-    line-height: 1;
+    line-height: 1.33;
     font-weight: 400;
 
     font-family: var(--font-primary);
@@ -19,4 +22,32 @@
 
 * {
   box-sizing: border-box;
+}
+
+h1 {
+  @include typography.heading1;
+}
+
+h2 {
+  @include typography.heading2;
+}
+
+h3 {
+  @include typography.heading3;
+}
+
+h4 {
+  @include typography.heading4;
+}
+
+strong {
+  @include typography.strong;
+}
+
+p {
+  @include typography.p;
+}
+
+b {
+  font-weight: 600;
 }

@@ -20,9 +20,6 @@
   font-weight: 600;
 }
 
-h1 {
-  @include heading1;
-}
 
 @mixin heading2 {
   @include heading;
@@ -31,11 +28,6 @@ h1 {
   line-height: 1.15;
   font-weight: 600;
 }
-
-h2 {
-  @include heading2;
-}
-
 @mixin heading3 {
   @include heading;
   font-family: var(--font-secondary);
@@ -44,9 +36,7 @@ h2 {
   line-height: 1.2;
 }
 
-h3 {
-  @include heading3;
-}
+
 
 @mixin heading4 {
   @include heading;
@@ -55,22 +45,11 @@ h3 {
   line-height: 1.25;
 }
 
-h4 {
-  @include heading4;
-}
-
-@mixin em {
-  font-size: 0.9rem;
-  font-style: italic;
-}
 
 @mixin strong {
   font-weight: bold;
 }
 
-strong {
-  @include strong;
-}
 
 @mixin p {
   margin: 0;
@@ -108,14 +87,6 @@ strong {
   font-size: 0.7rem;
   font-weight: 400;
   line-height: 1.2;
-}
-
-p {
-  @include p;
-}
-
-b {
-  font-weight: 600;
 }
 
 @mixin link($color:var(--text-color), $colorHover: var(--accent-2))  {

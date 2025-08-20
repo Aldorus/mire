@@ -1,4 +1,5 @@
 @use "../../tokens/typography";
+@use "../../tokens/breakpoints";
 
 .RichText {
   h1 {
@@ -40,6 +41,10 @@
       @include typography.body-3;
       text-align: center;
       margin-top: var(--space-6x);
+
+      @media screen and (max-width: breakpoints.$breakpoint-md) {
+        margin-top: var(--space-2x);
+      }
     }
   }
 

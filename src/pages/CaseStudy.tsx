@@ -53,15 +53,17 @@ const CaseStudy = () => {
         </div>
       </div>
       {data?.caseStudy.classified && <div className="CaseStudy__quote">
-        <Warning className="CaseStudy__quote__warning"/>
-        <div className="CaseStudy__quote__text">
+        <span className="CaseStudy__quote__wrapper">
+          <Warning className="CaseStudy__quote__warning"/>
           <strong className="CaseStudy__quote__title">Confidentiality Notice</strong>
+        </span>
+        <div className="CaseStudy__quote__text">
           <p>
-          This project is part of a broader redesign initiative currently underway at RSI. Due to confidentiality
-          agreements, I am not able to share the most recent work completed over the past six months, including certain
-          outcomes and upcoming features. This case study focuses on the first major milestone: the redesign of the global
-          navigation, which laid the groundwork for the larger revamp.
-            </p>
+            This project is part of a broader redesign initiative currently underway at RSI. Due to confidentiality
+            agreements, I am not able to share the most recent work completed over the past six months, including certain
+            outcomes and upcoming features. This case study focuses on the first major milestone: the redesign of the global
+            navigation, which laid the groundwork for the larger revamp.
+          </p>
         </div>
       </div>}
     </Section>
