@@ -1,5 +1,5 @@
 @use "../../tokens/typography";
 
 .Text {
-  @include typography.text;
+  @include typography.body-2;
 }

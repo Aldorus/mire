@@ -17,13 +17,14 @@
   }
 
   &__title {
-    @include typography.heading2;
+    @include typography.heading1;
     margin-bottom: var(--space-2x);
   }
 
   &__subtitle {
-    font-size: 1.33rem;
-    font-weight: normal;
+    font-size: 1.2rem;
+    line-height: 1.33;
+    font-weight: 300;
     margin-bottom: var(--space-8x);
   }
 
@@ -65,11 +66,11 @@
   &__quote {
     border-radius: 8px;
     background: var(--primary-1);
-
     margin-top: var(--space-4x);
     padding: var(--space-8x) var(--space-8x);
     display: inline-flex;
     gap: var(--space-4x);
+    @include typography.body-4;
 
     &__warning {
       width: 24px;
@@ -78,36 +79,43 @@
 
     &__title {
       display: block;
-      font-family: var(--font-secondary);
-      margin-bottom: var(--space-4x);
+      margin-bottom: var(--space-2x);
       color: var(--neutral-2);
+      @include typography.body-4;
     }
 
     &__text {
       flex: 1;
-      color: var(--primary-8);
-      line-height: 1.5;
+      p {
+        @include typography.body-4;
+        color: var(--primary-8);
+        margin-bottom: 0;
+      }
     }
   }
 
   &__completeText {
     display: flex;
     flex-direction: column;
-    gap: var(--space-8x);
-    line-height: 32px;
+    gap: var(--space-2x);
     padding-bottom: var(--space-16x);
 
     > *:not(figure)  {
       @include mixins.centered;
       max-width: 984px;
       padding: 0 var(--space-16x);
-      @media screen and (max-width: breakpoints.$breakpoint-md) {
-        padding: 0 var(--space-4x);
-      }
+    }
+
+    @media screen and (max-width: breakpoints.$breakpoint-md) {
+      padding: 0 var(--space-4x);
     }
 
     img,video {
       border-radius: 8px;
+    }
+
+    h2 {
+      @include typography.heading4;
     }
 
     blockquote {

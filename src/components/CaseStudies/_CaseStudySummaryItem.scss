@@ -1,6 +1,10 @@
 .CaseStudiesItem{
   cursor: pointer;
 
+  .title {
+    transition: all .3s ease;
+  }
+
   &:hover {
     .title {
       font-weight: 600;

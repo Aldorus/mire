@@ -25,11 +25,6 @@
 
   p {
     @include typography.p;
-
-  }
-
-  em {
-    @include typography.em;
   }
 
   strong {
@@ -42,8 +37,9 @@
 
   figure {
     figcaption {
-      @include typography.em;
+      @include typography.body-3;
       text-align: center;
+      margin-top: var(--space-6x);
     }
   }
 

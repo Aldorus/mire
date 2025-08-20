@@ -20,13 +20,14 @@
   &__headline {
     &__title {
       text-align: center;
-      font-size: 98px;
+      font-size: 4.9rem;
       font-family: var(--font-secondary);
       font-weight: 600;
+      line-height: 1.05;
 
       @media screen and (max-width: breakpoints.$breakpoint-md) {
-        font-size: 50px;
-        line-height: 56px;
+        font-size: 2.5rem;
+        line-height: 1.1;
       }
 
       &__alternativeColor {
@@ -52,6 +53,7 @@
         }
       }
     }
+
     &__text {
       color: var(--primary-2);
       margin-top: var(--space-8x);

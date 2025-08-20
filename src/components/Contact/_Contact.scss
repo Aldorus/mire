@@ -23,9 +23,8 @@
   }
 
   &__credits {
+    @include typography.emphasis-5;
     color: var(--primary-6);
     margin-top: var(--space-10x);
-    font-family: var(--font-secondary);
   }
-
 }

@@ -23,7 +23,7 @@ const ExperienceItem = ({experience, className}: Props) => {
       <Text className="ExperienceItem__mainLine__position">{experience.position}</Text>
       <Button icon={expended ? <Minus/> : <Plus/>} className={classNames([experience.text === null && "ExperienceItem--disabled"])} type="text" />
     </div>
-    <CCollapse visible={expended}>
+    <CCollapse visible={expended} className="ExperienceItem__content">
       <RichText content={experience.text} className="ExperienceItem__text"/>
     </CCollapse>
   </div>

@@ -1,4 +1,6 @@
 @use '../../tokens/breakpoints';
+@use '../../tokens/typography';
+
 
 .ExperienceItem {
   &--disabled {
@@ -9,10 +11,10 @@
     width: 100%;
     display: grid;
     grid-gap: var(--space-4x);
-    grid-template-columns: 1fr 1fr 1fr auto;
+    grid-template-columns: 200px 1fr 1fr auto;
+    padding: var(--space-6x) var(--space-4x);
     cursor: pointer;
     transition: all .3s ease;
-    padding: var(--space-6x) var(--space-4x);
 
     &:hover {
       color: var(--text-color);
@@ -39,17 +41,24 @@
     }
 
     .ExperienceItem__mainLine__date, .ExperienceItem__mainLine__link, .ExperienceItem__mainLine__position {
-      font-family: var(--font-secondary);
-      font-size: 1.1rem;
+      @include typography.emphasis-3;
+    }
+  }
+
+  &__content {
+    width: 100%;
+    display: grid;
+    grid-gap: var(--space-4x);
+    grid-template-columns: 200px 1fr 1fr auto;
+    padding: 0 var(--space-4x) var(--space-6x);
+
+    @media screen and (max-width: breakpoints.$breakpoint-md) {
+      display: block;
     }
   }
 
   &__text {
-    margin: var(--space-6x) 0 var(--space-6x) calc(33% - 3px);
+    grid-column: 2 / -1;
     line-height: 1.6;
-
-    @media screen and (max-width: breakpoints.$breakpoint-md) {
-      margin: var(--space-6x) var(--space-4x);
-    }
   }
 }
