@@ -28,45 +28,50 @@
     margin-bottom: var(--space-8x);
   }
 
-  &__info {
+  &__wrapper {
     border-top: 1px solid var(--primary-2);
-    border-bottom: 1px solid var(--primary-2);
-    padding: var(--space-4x);
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-gap: var(--space-2x);
-    margin-bottom: var(--space-8x);
+    grid-template-columns: 1fr 2fr;
+    padding-top: var(--space-10x);
+    padding-bottom: var(--space-10x);
+    grid-gap: var(--space-8x);
 
     @media screen and (max-width: breakpoints.$breakpoint-md) {
-      grid-template-columns: 1fr;
+      display: block;
+      padding-top: var(--space-8x);
     }
+  }
 
-    *:nth-child(4) {
-      grid-column: 2 / 2;
-      grid-row: 2 / 4;
-    }
+  &__info {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2x);
 
-    @media screen and (max-width: breakpoints.$breakpoint-md) {
-      *:nth-child(4) {
-        grid-column: inherit;
-        grid-row: inherit;
+    &__item {
+      @include typography.body-4;
+
+      &__label {
+        font-weight: bold;
       }
     }
+  }
 
-    &__item__label {
-      font-family: var(--font-secondary);
-      font-weight: 600;
+  &__overview {
+
+    @media screen and (max-width: breakpoints.$breakpoint-md) {
+      margin-top: var(--space-8x);
+      border-top: 1px solid var(--primary-2);
+      padding-top: var(--space-8x);
     }
 
-    &__item__value {
-      color: var(--primary-2);
+    &__text p{
+      font-weight: 300;
     }
   }
 
   &__quote {
     border-radius: 8px;
     background: var(--primary-1);
-    margin-top: var(--space-4x);
     padding: var(--space-8x) var(--space-8x);
     display: flex;
     flex-direction: column;

@@ -239,7 +239,9 @@ export type CaseStudy = Entry & _Node & {
   contentfulMetadata: ContentfulMetadata;
   date?: Maybe<Scalars['String']['output']>;
   linkedFrom?: Maybe<CaseStudyLinkingCollections>;
+  mobileAsset?: Maybe<Asset>;
   order?: Maybe<Scalars['Int']['output']>;
+  overview?: Maybe<CaseStudyOverview>;
   role?: Maybe<Scalars['String']['output']>;
   slug?: Maybe<Scalars['String']['output']>;
   subtitle?: Maybe<Scalars['String']['output']>;
@@ -294,7 +296,20 @@ export type CaseStudyLinkedFromArgs = {
 
 
 /** [See type definition](https://app.contentful.com/spaces/bvolcybk2xx6/content_types/caseStudy) */
+export type CaseStudyMobileAssetArgs = {
+  locale?: InputMaybe<Scalars['String']['input']>;
+  preview?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+
+/** [See type definition](https://app.contentful.com/spaces/bvolcybk2xx6/content_types/caseStudy) */
 export type CaseStudyOrderArgs = {
+  locale?: InputMaybe<Scalars['String']['input']>;
+};
+
+
+/** [See type definition](https://app.contentful.com/spaces/bvolcybk2xx6/content_types/caseStudy) */
+export type CaseStudyOverviewArgs = {
   locale?: InputMaybe<Scalars['String']['input']>;
 };
 
@@ -422,6 +437,7 @@ export type CaseStudyFilter = {
   date_not?: InputMaybe<Scalars['String']['input']>;
   date_not_contains?: InputMaybe<Scalars['String']['input']>;
   date_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  mobileAsset_exists?: InputMaybe<Scalars['Boolean']['input']>;
   order?: InputMaybe<Scalars['Int']['input']>;
   order_exists?: InputMaybe<Scalars['Boolean']['input']>;
   order_gt?: InputMaybe<Scalars['Int']['input']>;
@@ -431,6 +447,9 @@ export type CaseStudyFilter = {
   order_lte?: InputMaybe<Scalars['Int']['input']>;
   order_not?: InputMaybe<Scalars['Int']['input']>;
   order_not_in?: InputMaybe<Array<InputMaybe<Scalars['Int']['input']>>>;
+  overview_contains?: InputMaybe<Scalars['String']['input']>;
+  overview_exists?: InputMaybe<Scalars['Boolean']['input']>;
+  overview_not_contains?: InputMaybe<Scalars['String']['input']>;
   role?: InputMaybe<Scalars['String']['input']>;
   role_contains?: InputMaybe<Scalars['String']['input']>;
   role_exists?: InputMaybe<Scalars['Boolean']['input']>;
@@ -515,6 +534,54 @@ export enum CaseStudyOrder {
   TitleAsc = 'title_ASC',
   TitleDesc = 'title_DESC'
 }
+
+export type CaseStudyOverview = {
+  __typename: 'CaseStudyOverview';
+  json: Scalars['JSON']['output'];
+  links: CaseStudyOverviewLinks;
+};
+
+export type CaseStudyOverviewAssets = {
+  __typename: 'CaseStudyOverviewAssets';
+  block: Array<Maybe<Asset>>;
+  hyperlink: Array<Maybe<Asset>>;
+};
+
+export type CaseStudyOverviewEntries = {
+  __typename: 'CaseStudyOverviewEntries';
+  block: Array<Maybe<Entry>>;
+  hyperlink: Array<Maybe<Entry>>;
+  inline: Array<Maybe<Entry>>;
+};
+
+export type CaseStudyOverviewLinks = {
+  __typename: 'CaseStudyOverviewLinks';
+  assets: CaseStudyOverviewAssets;
+  entries: CaseStudyOverviewEntries;
+  resources: CaseStudyOverviewResources;
+};
+
+export type CaseStudyOverviewResources = {
+  __typename: 'CaseStudyOverviewResources';
+  block: Array<CaseStudyOverviewResourcesBlock>;
+  hyperlink: Array<CaseStudyOverviewResourcesHyperlink>;
+  inline: Array<CaseStudyOverviewResourcesInline>;
+};
+
+export type CaseStudyOverviewResourcesBlock = ResourceLink & {
+  __typename: 'CaseStudyOverviewResourcesBlock';
+  sys: ResourceSys;
+};
+
+export type CaseStudyOverviewResourcesHyperlink = ResourceLink & {
+  __typename: 'CaseStudyOverviewResourcesHyperlink';
+  sys: ResourceSys;
+};
+
+export type CaseStudyOverviewResourcesInline = ResourceLink & {
+  __typename: 'CaseStudyOverviewResourcesInline';
+  sys: ResourceSys;
+};
 
 export type CaseStudyText = {
   __typename: 'CaseStudyText';
@@ -1567,9 +1634,9 @@ export type DirectiveResolverFn<TResult = {}, TParent = {}, TContext = {}, TArgs
 
 /** Mapping of interface types */
 export type ResolversInterfaceTypes<_RefType extends Record<string, unknown>> = {
-  Entry: ( Omit<CaseStudy, 'completeText' | 'linkedFrom' | 'text'> & { completeText?: Maybe<_RefType['CaseStudyCompleteText']>, linkedFrom?: Maybe<_RefType['CaseStudyLinkingCollections']>, text?: Maybe<_RefType['CaseStudyText']> } ) | ( Omit<Experience, 'linkedFrom' | 'text'> & { linkedFrom?: Maybe<_RefType['ExperienceLinkingCollections']>, text?: Maybe<_RefType['ExperienceText']> } ) | ( Omit<Header, 'linkedFrom' | 'title'> & { linkedFrom?: Maybe<_RefType['HeaderLinkingCollections']>, title?: Maybe<_RefType['HeaderTitle']> } ) | ( Omit<Project, 'linkedFrom'> & { linkedFrom?: Maybe<_RefType['ProjectLinkingCollections']> } ) | ( Omit<Text, 'content' | 'linkedFrom'> & { content?: Maybe<_RefType['TextContent']>, linkedFrom?: Maybe<_RefType['TextLinkingCollections']> } );
-  ResourceLink: ( CaseStudyCompleteTextResourcesBlock ) | ( CaseStudyCompleteTextResourcesHyperlink ) | ( CaseStudyCompleteTextResourcesInline ) | ( CaseStudyTextResourcesBlock ) | ( CaseStudyTextResourcesHyperlink ) | ( CaseStudyTextResourcesInline ) | ( ExperienceTextResourcesBlock ) | ( ExperienceTextResourcesHyperlink ) | ( ExperienceTextResourcesInline ) | ( HeaderTitleResourcesBlock ) | ( HeaderTitleResourcesHyperlink ) | ( HeaderTitleResourcesInline ) | ( TextContentResourcesBlock ) | ( TextContentResourcesHyperlink ) | ( TextContentResourcesInline );
-  _Node: ( Omit<CaseStudy, 'completeText' | 'linkedFrom' | 'text'> & { completeText?: Maybe<_RefType['CaseStudyCompleteText']>, linkedFrom?: Maybe<_RefType['CaseStudyLinkingCollections']>, text?: Maybe<_RefType['CaseStudyText']> } ) | ( Omit<Experience, 'linkedFrom' | 'text'> & { linkedFrom?: Maybe<_RefType['ExperienceLinkingCollections']>, text?: Maybe<_RefType['ExperienceText']> } ) | ( Omit<Header, 'linkedFrom' | 'title'> & { linkedFrom?: Maybe<_RefType['HeaderLinkingCollections']>, title?: Maybe<_RefType['HeaderTitle']> } ) | ( Omit<Project, 'linkedFrom'> & { linkedFrom?: Maybe<_RefType['ProjectLinkingCollections']> } ) | ( Omit<Text, 'content' | 'linkedFrom'> & { content?: Maybe<_RefType['TextContent']>, linkedFrom?: Maybe<_RefType['TextLinkingCollections']> } );
+  Entry: ( Omit<CaseStudy, 'completeText' | 'linkedFrom' | 'overview' | 'text'> & { completeText?: Maybe<_RefType['CaseStudyCompleteText']>, linkedFrom?: Maybe<_RefType['CaseStudyLinkingCollections']>, overview?: Maybe<_RefType['CaseStudyOverview']>, text?: Maybe<_RefType['CaseStudyText']> } ) | ( Omit<Experience, 'linkedFrom' | 'text'> & { linkedFrom?: Maybe<_RefType['ExperienceLinkingCollections']>, text?: Maybe<_RefType['ExperienceText']> } ) | ( Omit<Header, 'linkedFrom' | 'title'> & { linkedFrom?: Maybe<_RefType['HeaderLinkingCollections']>, title?: Maybe<_RefType['HeaderTitle']> } ) | ( Omit<Project, 'linkedFrom'> & { linkedFrom?: Maybe<_RefType['ProjectLinkingCollections']> } ) | ( Omit<Text, 'content' | 'linkedFrom'> & { content?: Maybe<_RefType['TextContent']>, linkedFrom?: Maybe<_RefType['TextLinkingCollections']> } );
+  ResourceLink: ( CaseStudyCompleteTextResourcesBlock ) | ( CaseStudyCompleteTextResourcesHyperlink ) | ( CaseStudyCompleteTextResourcesInline ) | ( CaseStudyOverviewResourcesBlock ) | ( CaseStudyOverviewResourcesHyperlink ) | ( CaseStudyOverviewResourcesInline ) | ( CaseStudyTextResourcesBlock ) | ( CaseStudyTextResourcesHyperlink ) | ( CaseStudyTextResourcesInline ) | ( ExperienceTextResourcesBlock ) | ( ExperienceTextResourcesHyperlink ) | ( ExperienceTextResourcesInline ) | ( HeaderTitleResourcesBlock ) | ( HeaderTitleResourcesHyperlink ) | ( HeaderTitleResourcesInline ) | ( TextContentResourcesBlock ) | ( TextContentResourcesHyperlink ) | ( TextContentResourcesInline );
+  _Node: ( Omit<CaseStudy, 'completeText' | 'linkedFrom' | 'overview' | 'text'> & { completeText?: Maybe<_RefType['CaseStudyCompleteText']>, linkedFrom?: Maybe<_RefType['CaseStudyLinkingCollections']>, overview?: Maybe<_RefType['CaseStudyOverview']>, text?: Maybe<_RefType['CaseStudyText']> } ) | ( Omit<Experience, 'linkedFrom' | 'text'> & { linkedFrom?: Maybe<_RefType['ExperienceLinkingCollections']>, text?: Maybe<_RefType['ExperienceText']> } ) | ( Omit<Header, 'linkedFrom' | 'title'> & { linkedFrom?: Maybe<_RefType['HeaderLinkingCollections']>, title?: Maybe<_RefType['HeaderTitle']> } ) | ( Omit<Project, 'linkedFrom'> & { linkedFrom?: Maybe<_RefType['ProjectLinkingCollections']> } ) | ( Omit<Text, 'content' | 'linkedFrom'> & { content?: Maybe<_RefType['TextContent']>, linkedFrom?: Maybe<_RefType['TextLinkingCollections']> } );
 };
 
 /** Mapping between all available schema types and the resolvers types */
@@ -1580,7 +1647,7 @@ export type ResolversTypes = {
   AssetLinkingCollections: ResolverTypeWrapper<Omit<AssetLinkingCollections, 'caseStudyCollection' | 'entryCollection' | 'projectCollection'> & { caseStudyCollection?: Maybe<ResolversTypes['CaseStudyCollection']>, entryCollection?: Maybe<ResolversTypes['EntryCollection']>, projectCollection?: Maybe<ResolversTypes['ProjectCollection']> }>;
   AssetOrder: AssetOrder;
   Boolean: ResolverTypeWrapper<Scalars['Boolean']['output']>;
-  CaseStudy: ResolverTypeWrapper<Omit<CaseStudy, 'completeText' | 'linkedFrom' | 'text'> & { completeText?: Maybe<ResolversTypes['CaseStudyCompleteText']>, linkedFrom?: Maybe<ResolversTypes['CaseStudyLinkingCollections']>, text?: Maybe<ResolversTypes['CaseStudyText']> }>;
+  CaseStudy: ResolverTypeWrapper<Omit<CaseStudy, 'completeText' | 'linkedFrom' | 'overview' | 'text'> & { completeText?: Maybe<ResolversTypes['CaseStudyCompleteText']>, linkedFrom?: Maybe<ResolversTypes['CaseStudyLinkingCollections']>, overview?: Maybe<ResolversTypes['CaseStudyOverview']>, text?: Maybe<ResolversTypes['CaseStudyText']> }>;
   CaseStudyCollection: ResolverTypeWrapper<Omit<CaseStudyCollection, 'items'> & { items: Array<Maybe<ResolversTypes['CaseStudy']>> }>;
   CaseStudyCompleteText: ResolverTypeWrapper<Omit<CaseStudyCompleteText, 'links'> & { links: ResolversTypes['CaseStudyCompleteTextLinks'] }>;
   CaseStudyCompleteTextAssets: ResolverTypeWrapper<CaseStudyCompleteTextAssets>;
@@ -1593,6 +1660,14 @@ export type ResolversTypes = {
   CaseStudyFilter: CaseStudyFilter;
   CaseStudyLinkingCollections: ResolverTypeWrapper<Omit<CaseStudyLinkingCollections, 'entryCollection'> & { entryCollection?: Maybe<ResolversTypes['EntryCollection']> }>;
   CaseStudyOrder: CaseStudyOrder;
+  CaseStudyOverview: ResolverTypeWrapper<Omit<CaseStudyOverview, 'links'> & { links: ResolversTypes['CaseStudyOverviewLinks'] }>;
+  CaseStudyOverviewAssets: ResolverTypeWrapper<CaseStudyOverviewAssets>;
+  CaseStudyOverviewEntries: ResolverTypeWrapper<Omit<CaseStudyOverviewEntries, 'block' | 'hyperlink' | 'inline'> & { block: Array<Maybe<ResolversTypes['Entry']>>, hyperlink: Array<Maybe<ResolversTypes['Entry']>>, inline: Array<Maybe<ResolversTypes['Entry']>> }>;
+  CaseStudyOverviewLinks: ResolverTypeWrapper<Omit<CaseStudyOverviewLinks, 'assets' | 'entries'> & { assets: ResolversTypes['CaseStudyOverviewAssets'], entries: ResolversTypes['CaseStudyOverviewEntries'] }>;
+  CaseStudyOverviewResources: ResolverTypeWrapper<CaseStudyOverviewResources>;
+  CaseStudyOverviewResourcesBlock: ResolverTypeWrapper<CaseStudyOverviewResourcesBlock>;
+  CaseStudyOverviewResourcesHyperlink: ResolverTypeWrapper<CaseStudyOverviewResourcesHyperlink>;
+  CaseStudyOverviewResourcesInline: ResolverTypeWrapper<CaseStudyOverviewResourcesInline>;
   CaseStudyText: ResolverTypeWrapper<Omit<CaseStudyText, 'links'> & { links: ResolversTypes['CaseStudyTextLinks'] }>;
   CaseStudyTextAssets: ResolverTypeWrapper<CaseStudyTextAssets>;
   CaseStudyTextEntries: ResolverTypeWrapper<Omit<CaseStudyTextEntries, 'block' | 'hyperlink' | 'inline'> & { block: Array<Maybe<ResolversTypes['Entry']>>, hyperlink: Array<Maybe<ResolversTypes['Entry']>>, inline: Array<Maybe<ResolversTypes['Entry']>> }>;
@@ -1684,7 +1759,7 @@ export type ResolversParentTypes = {
   AssetFilter: AssetFilter;
   AssetLinkingCollections: Omit<AssetLinkingCollections, 'caseStudyCollection' | 'entryCollection' | 'projectCollection'> & { caseStudyCollection?: Maybe<ResolversParentTypes['CaseStudyCollection']>, entryCollection?: Maybe<ResolversParentTypes['EntryCollection']>, projectCollection?: Maybe<ResolversParentTypes['ProjectCollection']> };
   Boolean: Scalars['Boolean']['output'];
-  CaseStudy: Omit<CaseStudy, 'completeText' | 'linkedFrom' | 'text'> & { completeText?: Maybe<ResolversParentTypes['CaseStudyCompleteText']>, linkedFrom?: Maybe<ResolversParentTypes['CaseStudyLinkingCollections']>, text?: Maybe<ResolversParentTypes['CaseStudyText']> };
+  CaseStudy: Omit<CaseStudy, 'completeText' | 'linkedFrom' | 'overview' | 'text'> & { completeText?: Maybe<ResolversParentTypes['CaseStudyCompleteText']>, linkedFrom?: Maybe<ResolversParentTypes['CaseStudyLinkingCollections']>, overview?: Maybe<ResolversParentTypes['CaseStudyOverview']>, text?: Maybe<ResolversParentTypes['CaseStudyText']> };
   CaseStudyCollection: Omit<CaseStudyCollection, 'items'> & { items: Array<Maybe<ResolversParentTypes['CaseStudy']>> };
   CaseStudyCompleteText: Omit<CaseStudyCompleteText, 'links'> & { links: ResolversParentTypes['CaseStudyCompleteTextLinks'] };
   CaseStudyCompleteTextAssets: CaseStudyCompleteTextAssets;
@@ -1696,6 +1771,14 @@ export type ResolversParentTypes = {
   CaseStudyCompleteTextResourcesInline: CaseStudyCompleteTextResourcesInline;
   CaseStudyFilter: CaseStudyFilter;
   CaseStudyLinkingCollections: Omit<CaseStudyLinkingCollections, 'entryCollection'> & { entryCollection?: Maybe<ResolversParentTypes['EntryCollection']> };
+  CaseStudyOverview: Omit<CaseStudyOverview, 'links'> & { links: ResolversParentTypes['CaseStudyOverviewLinks'] };
+  CaseStudyOverviewAssets: CaseStudyOverviewAssets;
+  CaseStudyOverviewEntries: Omit<CaseStudyOverviewEntries, 'block' | 'hyperlink' | 'inline'> & { block: Array<Maybe<ResolversParentTypes['Entry']>>, hyperlink: Array<Maybe<ResolversParentTypes['Entry']>>, inline: Array<Maybe<ResolversParentTypes['Entry']>> };
+  CaseStudyOverviewLinks: Omit<CaseStudyOverviewLinks, 'assets' | 'entries'> & { assets: ResolversParentTypes['CaseStudyOverviewAssets'], entries: ResolversParentTypes['CaseStudyOverviewEntries'] };
+  CaseStudyOverviewResources: CaseStudyOverviewResources;
+  CaseStudyOverviewResourcesBlock: CaseStudyOverviewResourcesBlock;
+  CaseStudyOverviewResourcesHyperlink: CaseStudyOverviewResourcesHyperlink;
+  CaseStudyOverviewResourcesInline: CaseStudyOverviewResourcesInline;
   CaseStudyText: Omit<CaseStudyText, 'links'> & { links: ResolversParentTypes['CaseStudyTextLinks'] };
   CaseStudyTextAssets: CaseStudyTextAssets;
   CaseStudyTextEntries: Omit<CaseStudyTextEntries, 'block' | 'hyperlink' | 'inline'> & { block: Array<Maybe<ResolversParentTypes['Entry']>>, hyperlink: Array<Maybe<ResolversParentTypes['Entry']>>, inline: Array<Maybe<ResolversParentTypes['Entry']>> };
@@ -1848,7 +1931,9 @@ export type CaseStudyResolvers<ContextType = any, ParentType extends ResolversPa
   contentfulMetadata?: Resolver<ResolversTypes['ContentfulMetadata'], ParentType, ContextType>;
   date?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType, Partial<CaseStudyDateArgs>>;
   linkedFrom?: Resolver<Maybe<ResolversTypes['CaseStudyLinkingCollections']>, ParentType, ContextType, Partial<CaseStudyLinkedFromArgs>>;
+  mobileAsset?: Resolver<Maybe<ResolversTypes['Asset']>, ParentType, ContextType, Partial<CaseStudyMobileAssetArgs>>;
   order?: Resolver<Maybe<ResolversTypes['Int']>, ParentType, ContextType, Partial<CaseStudyOrderArgs>>;
+  overview?: Resolver<Maybe<ResolversTypes['CaseStudyOverview']>, ParentType, ContextType, Partial<CaseStudyOverviewArgs>>;
   role?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType, Partial<CaseStudyRoleArgs>>;
   slug?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType, Partial<CaseStudySlugArgs>>;
   subtitle?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType, Partial<CaseStudySubtitleArgs>>;
@@ -1917,6 +2002,54 @@ export type CaseStudyCompleteTextResourcesInlineResolvers<ContextType = any, Par
 
 export type CaseStudyLinkingCollectionsResolvers<ContextType = any, ParentType extends ResolversParentTypes['CaseStudyLinkingCollections'] = ResolversParentTypes['CaseStudyLinkingCollections']> = {
   entryCollection?: Resolver<Maybe<ResolversTypes['EntryCollection']>, ParentType, ContextType, RequireFields<CaseStudyLinkingCollectionsEntryCollectionArgs, 'limit' | 'skip'>>;
+  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
+};
+
+export type CaseStudyOverviewResolvers<ContextType = any, ParentType extends ResolversParentTypes['CaseStudyOverview'] = ResolversParentTypes['CaseStudyOverview']> = {
+  json?: Resolver<ResolversTypes['JSON'], ParentType, ContextType>;
+  links?: Resolver<ResolversTypes['CaseStudyOverviewLinks'], ParentType, ContextType>;
+  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
+};
+
+export type CaseStudyOverviewAssetsResolvers<ContextType = any, ParentType extends ResolversParentTypes['CaseStudyOverviewAssets'] = ResolversParentTypes['CaseStudyOverviewAssets']> = {
+  block?: Resolver<Array<Maybe<ResolversTypes['Asset']>>, ParentType, ContextType>;
+  hyperlink?: Resolver<Array<Maybe<ResolversTypes['Asset']>>, ParentType, ContextType>;
+  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
+};
+
+export type CaseStudyOverviewEntriesResolvers<ContextType = any, ParentType extends ResolversParentTypes['CaseStudyOverviewEntries'] = ResolversParentTypes['CaseStudyOverviewEntries']> = {
+  block?: Resolver<Array<Maybe<ResolversTypes['Entry']>>, ParentType, ContextType>;
+  hyperlink?: Resolver<Array<Maybe<ResolversTypes['Entry']>>, ParentType, ContextType>;
+  inline?: Resolver<Array<Maybe<ResolversTypes['Entry']>>, ParentType, ContextType>;
+  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
+};
+
+export type CaseStudyOverviewLinksResolvers<ContextType = any, ParentType extends ResolversParentTypes['CaseStudyOverviewLinks'] = ResolversParentTypes['CaseStudyOverviewLinks']> = {
+  assets?: Resolver<ResolversTypes['CaseStudyOverviewAssets'], ParentType, ContextType>;
+  entries?: Resolver<ResolversTypes['CaseStudyOverviewEntries'], ParentType, ContextType>;
+  resources?: Resolver<ResolversTypes['CaseStudyOverviewResources'], ParentType, ContextType>;
+  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
+};
+
+export type CaseStudyOverviewResourcesResolvers<ContextType = any, ParentType extends ResolversParentTypes['CaseStudyOverviewResources'] = ResolversParentTypes['CaseStudyOverviewResources']> = {
+  block?: Resolver<Array<ResolversTypes['CaseStudyOverviewResourcesBlock']>, ParentType, ContextType>;
+  hyperlink?: Resolver<Array<ResolversTypes['CaseStudyOverviewResourcesHyperlink']>, ParentType, ContextType>;
+  inline?: Resolver<Array<ResolversTypes['CaseStudyOverviewResourcesInline']>, ParentType, ContextType>;
+  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
+};
+
+export type CaseStudyOverviewResourcesBlockResolvers<ContextType = any, ParentType extends ResolversParentTypes['CaseStudyOverviewResourcesBlock'] = ResolversParentTypes['CaseStudyOverviewResourcesBlock']> = {
+  sys?: Resolver<ResolversTypes['ResourceSys'], ParentType, ContextType>;
+  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
+};
+
+export type CaseStudyOverviewResourcesHyperlinkResolvers<ContextType = any, ParentType extends ResolversParentTypes['CaseStudyOverviewResourcesHyperlink'] = ResolversParentTypes['CaseStudyOverviewResourcesHyperlink']> = {
+  sys?: Resolver<ResolversTypes['ResourceSys'], ParentType, ContextType>;
+  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
+};
+
+export type CaseStudyOverviewResourcesInlineResolvers<ContextType = any, ParentType extends ResolversParentTypes['CaseStudyOverviewResourcesInline'] = ResolversParentTypes['CaseStudyOverviewResourcesInline']> = {
+  sys?: Resolver<ResolversTypes['ResourceSys'], ParentType, ContextType>;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
 
@@ -2202,7 +2335,7 @@ export type QueryResolvers<ContextType = any, ParentType extends ResolversParent
 };
 
 export type ResourceLinkResolvers<ContextType = any, ParentType extends ResolversParentTypes['ResourceLink'] = ResolversParentTypes['ResourceLink']> = {
-  __resolveType: TypeResolveFn<'CaseStudyCompleteTextResourcesBlock' | 'CaseStudyCompleteTextResourcesHyperlink' | 'CaseStudyCompleteTextResourcesInline' | 'CaseStudyTextResourcesBlock' | 'CaseStudyTextResourcesHyperlink' | 'CaseStudyTextResourcesInline' | 'ExperienceTextResourcesBlock' | 'ExperienceTextResourcesHyperlink' | 'ExperienceTextResourcesInline' | 'HeaderTitleResourcesBlock' | 'HeaderTitleResourcesHyperlink' | 'HeaderTitleResourcesInline' | 'TextContentResourcesBlock' | 'TextContentResourcesHyperlink' | 'TextContentResourcesInline', ParentType, ContextType>;
+  __resolveType: TypeResolveFn<'CaseStudyCompleteTextResourcesBlock' | 'CaseStudyCompleteTextResourcesHyperlink' | 'CaseStudyCompleteTextResourcesInline' | 'CaseStudyOverviewResourcesBlock' | 'CaseStudyOverviewResourcesHyperlink' | 'CaseStudyOverviewResourcesInline' | 'CaseStudyTextResourcesBlock' | 'CaseStudyTextResourcesHyperlink' | 'CaseStudyTextResourcesInline' | 'ExperienceTextResourcesBlock' | 'ExperienceTextResourcesHyperlink' | 'ExperienceTextResourcesInline' | 'HeaderTitleResourcesBlock' | 'HeaderTitleResourcesHyperlink' | 'HeaderTitleResourcesInline' | 'TextContentResourcesBlock' | 'TextContentResourcesHyperlink' | 'TextContentResourcesInline', ParentType, ContextType>;
   sys?: Resolver<ResolversTypes['ResourceSys'], ParentType, ContextType>;
 };
 
@@ -2321,6 +2454,14 @@ export type Resolvers<ContextType = any> = {
   CaseStudyCompleteTextResourcesHyperlink?: CaseStudyCompleteTextResourcesHyperlinkResolvers<ContextType>;
   CaseStudyCompleteTextResourcesInline?: CaseStudyCompleteTextResourcesInlineResolvers<ContextType>;
   CaseStudyLinkingCollections?: CaseStudyLinkingCollectionsResolvers<ContextType>;
+  CaseStudyOverview?: CaseStudyOverviewResolvers<ContextType>;
+  CaseStudyOverviewAssets?: CaseStudyOverviewAssetsResolvers<ContextType>;
+  CaseStudyOverviewEntries?: CaseStudyOverviewEntriesResolvers<ContextType>;
+  CaseStudyOverviewLinks?: CaseStudyOverviewLinksResolvers<ContextType>;
+  CaseStudyOverviewResources?: CaseStudyOverviewResourcesResolvers<ContextType>;
+  CaseStudyOverviewResourcesBlock?: CaseStudyOverviewResourcesBlockResolvers<ContextType>;
+  CaseStudyOverviewResourcesHyperlink?: CaseStudyOverviewResourcesHyperlinkResolvers<ContextType>;
+  CaseStudyOverviewResourcesInline?: CaseStudyOverviewResourcesInlineResolvers<ContextType>;
   CaseStudyText?: CaseStudyTextResolvers<ContextType>;
   CaseStudyTextAssets?: CaseStudyTextAssetsResolvers<ContextType>;
   CaseStudyTextEntries?: CaseStudyTextEntriesResolvers<ContextType>;
@@ -2403,7 +2544,7 @@ export type GetCaseStudyQueryVariables = Exact<{
 }>;
 
 
-export type GetCaseStudyQuery = { __typename: 'Query', caseStudy?: { __typename: 'CaseStudy', title?: string | null, subtitle?: string | null, team?: string | null, category?: string | null, role?: string | null, client?: string | null, date?: string | null, classified?: boolean | null, completeText?: { __typename: 'CaseStudyCompleteText', json: any, links: { __typename: 'CaseStudyCompleteTextLinks', entries: { __typename: 'CaseStudyCompleteTextEntries', inline: Array<{ __typename: 'CaseStudy', sys: { __typename: 'Sys', id: string } } | { __typename: 'Experience', sys: { __typename: 'Sys', id: string } } | { __typename: 'Header', sys: { __typename: 'Sys', id: string } } | { __typename: 'Project', sys: { __typename: 'Sys', id: string } } | { __typename: 'Text', sys: { __typename: 'Sys', id: string } } | null>, block: Array<{ __typename: 'CaseStudy', sys: { __typename: 'Sys', id: string } } | { __typename: 'Experience', sys: { __typename: 'Sys', id: string } } | { __typename: 'Header', sys: { __typename: 'Sys', id: string } } | { __typename: 'Project', sys: { __typename: 'Sys', id: string } } | { __typename: 'Text', sys: { __typename: 'Sys', id: string } } | null> }, assets: { __typename: 'CaseStudyCompleteTextAssets', block: Array<{ __typename: 'Asset', url?: string | null, contentType?: string | null, title?: string | null, width?: number | null, height?: number | null, description?: string | null, sys: { __typename: 'Sys', id: string } } | null> } } } | null } | null };
+export type GetCaseStudyQuery = { __typename: 'Query', caseStudy?: { __typename: 'CaseStudy', title?: string | null, subtitle?: string | null, team?: string | null, category?: string | null, role?: string | null, client?: string | null, date?: string | null, classified?: boolean | null, overview?: { __typename: 'CaseStudyOverview', json: any } | null, completeText?: { __typename: 'CaseStudyCompleteText', json: any, links: { __typename: 'CaseStudyCompleteTextLinks', entries: { __typename: 'CaseStudyCompleteTextEntries', inline: Array<{ __typename: 'CaseStudy', sys: { __typename: 'Sys', id: string } } | { __typename: 'Experience', sys: { __typename: 'Sys', id: string } } | { __typename: 'Header', sys: { __typename: 'Sys', id: string } } | { __typename: 'Project', sys: { __typename: 'Sys', id: string } } | { __typename: 'Text', sys: { __typename: 'Sys', id: string } } | null>, block: Array<{ __typename: 'CaseStudy', sys: { __typename: 'Sys', id: string } } | { __typename: 'Experience', sys: { __typename: 'Sys', id: string } } | { __typename: 'Header', sys: { __typename: 'Sys', id: string } } | { __typename: 'Project', sys: { __typename: 'Sys', id: string } } | { __typename: 'Text', sys: { __typename: 'Sys', id: string } } | null> }, assets: { __typename: 'CaseStudyCompleteTextAssets', block: Array<{ __typename: 'Asset', url?: string | null, contentType?: string | null, title?: string | null, width?: number | null, height?: number | null, description?: string | null, sys: { __typename: 'Sys', id: string } } | null> } } } | null } | null };
 
 export type GetCaseStudyCollectionQueryVariables = Exact<{ [key: string]: never; }>;
 
@@ -2482,6 +2623,9 @@ export const GetCaseStudyDocument = gql`
     subtitle
     team
     category
+    overview {
+      json
+    }
     role
     client
     date

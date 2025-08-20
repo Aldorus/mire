@@ -4,6 +4,7 @@ query GetCaseStudy($id: String!) {
     subtitle
     team
     category
+    overview { json }
     role
     client
     date
