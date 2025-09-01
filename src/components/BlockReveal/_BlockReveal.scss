@@ -1,0 +1,9 @@
+@use '../../tokens/animations';
+
+.BlockReveal {
+  @include animations.blockReveal();
+  animation-play-state: paused;
+  &--revealed {
+    animation-play-state: running;
+  }
+}

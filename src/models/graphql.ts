@@ -2563,11 +2563,6 @@ export type GetExperienceCollectionQueryVariables = Exact<{ [key: string]: never
 
 export type GetExperienceCollectionQuery = { __typename: 'Query', experienceCollection?: { __typename: 'ExperienceCollection', items: Array<{ __typename: 'Experience', _id: string, date?: string | null, order?: number | null, client?: string | null, clientLink?: string | null, position?: string | null, text?: { __typename: 'ExperienceText', json: any } | null } | null> } | null };
 
-export type GetProjectCollectionQueryVariables = Exact<{ [key: string]: never; }>;
-
-
-export type GetProjectCollectionQuery = { __typename: 'Query', projectCollection?: { __typename: 'ProjectCollection', items: Array<{ __typename: 'Project', _id: string, title?: string | null, asset?: { __typename: 'Asset', url?: string | null } | null } | null> } | null };
-
 export type GetTextQueryQueryVariables = Exact<{
   id: Scalars['String']['input'];
 }>;
@@ -2840,51 +2835,6 @@ export type GetExperienceCollectionQueryHookResult = ReturnType<typeof useGetExp
 export type GetExperienceCollectionLazyQueryHookResult = ReturnType<typeof useGetExperienceCollectionLazyQuery>;
 export type GetExperienceCollectionSuspenseQueryHookResult = ReturnType<typeof useGetExperienceCollectionSuspenseQuery>;
 export type GetExperienceCollectionQueryResult = Apollo.QueryResult<GetExperienceCollectionQuery, GetExperienceCollectionQueryVariables>;
-export const GetProjectCollectionDocument = gql`
-    query GetProjectCollection {
-  projectCollection {
-    items {
-      _id
-      title
-      asset {
-        url
-      }
-    }
-  }
-}
-    `;
-
-/**
- * __useGetProjectCollectionQuery__
- *
- * To run a query within a React component, call `useGetProjectCollectionQuery` and pass it any options that fit your needs.
- * When your component renders, `useGetProjectCollectionQuery` returns an object from Apollo Client that contains loading, error, and data properties
- * you can use to render your UI.
- *
- * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
- *
- * @example
- * const { data, loading, error } = useGetProjectCollectionQuery({
- *   variables: {
- *   },
- * });
- */
-export function useGetProjectCollectionQuery(baseOptions?: Apollo.QueryHookOptions<GetProjectCollectionQuery, GetProjectCollectionQueryVariables>) {
-        const options = {...defaultOptions, ...baseOptions}
-        return Apollo.useQuery<GetProjectCollectionQuery, GetProjectCollectionQueryVariables>(GetProjectCollectionDocument, options);
-      }
-export function useGetProjectCollectionLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetProjectCollectionQuery, GetProjectCollectionQueryVariables>) {
-          const options = {...defaultOptions, ...baseOptions}
-          return Apollo.useLazyQuery<GetProjectCollectionQuery, GetProjectCollectionQueryVariables>(GetProjectCollectionDocument, options);
-        }
-export function useGetProjectCollectionSuspenseQuery(baseOptions?: Apollo.SkipToken | Apollo.SuspenseQueryHookOptions<GetProjectCollectionQuery, GetProjectCollectionQueryVariables>) {
-          const options = baseOptions === Apollo.skipToken ? baseOptions : {...defaultOptions, ...baseOptions}
-          return Apollo.useSuspenseQuery<GetProjectCollectionQuery, GetProjectCollectionQueryVariables>(GetProjectCollectionDocument, options);
-        }
-export type GetProjectCollectionQueryHookResult = ReturnType<typeof useGetProjectCollectionQuery>;
-export type GetProjectCollectionLazyQueryHookResult = ReturnType<typeof useGetProjectCollectionLazyQuery>;
-export type GetProjectCollectionSuspenseQueryHookResult = ReturnType<typeof useGetProjectCollectionSuspenseQuery>;
-export type GetProjectCollectionQueryResult = Apollo.QueryResult<GetProjectCollectionQuery, GetProjectCollectionQueryVariables>;
 export const GetTextQueryDocument = gql`
     query GetTextQuery($id: String!) {
   text(id: $id) {

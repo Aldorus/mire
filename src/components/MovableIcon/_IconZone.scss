@@ -12,17 +12,17 @@
     position: absolute;
     cursor: pointer;
     svg {
-      scale: 2.0;
+      scale: 1.5;
       transition: all .3s ease-in-out;
 
       @media screen and (max-width: breakpoints.$breakpoint-md) {
-        scale: 1.5;
+        scale: 1.2;
       }
     }
 
     &:hover {
       svg {
-        scale: 2.2;
+        scale: 1.6;
         transform-origin: center;
 
         @media screen and (max-width: breakpoints.$breakpoint-md) {

@@ -2,7 +2,7 @@ import {flow} from "lodash/fp";
 import {Link} from "../Link/Link.tsx";
 import {useNavigate} from "react-router";
 import {useGetCaseStudyCollectionSuspenseQuery} from "../../models/graphql.ts";
-import {HTMLAttributes, useEffect, useRef, useState} from "react";
+import {CSSProperties, HTMLAttributes, useEffect, useRef, useState} from "react";
 import classnames from "classnames";
 import "./_CaseStudySummaryItem.scss"
 import {isVideo} from "../../lib/asset.ts";
@@ -12,9 +12,10 @@ type CaseStudy = NonNullable<NonNullable<NonNullable<ReturnType<typeof useGetCas
 type Props = {
   item: CaseStudy;
   className?: HTMLAttributes<HTMLDivElement>['className'],
+  style?: CSSProperties,
 };
 
-const CaseStudySummaryItem = ({item, className}: Props) => {
+const CaseStudySummaryItem = ({item, className, style}: Props) => {
   const navigate = useNavigate();
   const ref = useRef<HTMLVideoElement>(null);
   const [hover, setHover] = useState(false);
@@ -37,10 +38,16 @@ const CaseStudySummaryItem = ({item, className}: Props) => {
     }
   }, [hover]);
 
-  return <div key={item._id} className={classnames(["CaseStudiesItem", className])} onClick={flow(
-    (e) => e.stopPropagation(),
-    ()=> navigate(`/case/${item.slug}`),
-  )} onMouseOver={() => setHover(true)} onMouseLeave={() => setHover(false)}>
+  return <div
+    key={item._id}
+    className={classnames(["CaseStudiesItem", className])}
+    style={style}
+    onClick={flow(
+      (e) => e.stopPropagation(),
+      ()=> navigate(`/case/${item.slug}`),
+    )}
+    onMouseOver={() => setHover(true)}
+    onMouseLeave={() => setHover(false)}>
     <div className="asset">
       {isVideo(item.assets) ? <video loop muted ref={ref} playsInline autoPlay>
         <source src={item.assets?.url ?? ''} type="video/mp4"/>

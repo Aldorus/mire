@@ -1,4 +1,4 @@
-import {HTMLAttributes, ReactNode} from "react";
+import {HTMLAttributes, ReactNode, Ref} from "react";
 import "./_Section.scss";
 import classnames from "classnames";
 
@@ -11,10 +11,11 @@ interface Props {
   id?: string,
   className?: HTMLAttributes<HTMLDivElement>['className'],
   style?: HTMLAttributes<HTMLDivElement>['style'],
+  ref?: Ref<HTMLDivElement>;
 }
 
-const Section = ({fullHeight = false, sticky=false, noPadding=false, type="large", style, className, id, children}: Props) => {
-  return <div style={style} className={classnames([
+const Section = ({fullHeight = false, sticky=false, noPadding=false, type="large", style, className, id, children, ref}: Props) => {
+  return <div ref={ref} style={style} className={classnames([
     className,
     'Section',
     fullHeight && 'Section--fullHeight',

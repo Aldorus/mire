@@ -1,6 +1,6 @@
 import {RichText} from "../Typography/RichText.tsx";
 import {Link} from "../Link/Link.tsx";
-import {useGetTextQuerySuspenseQuery} from "../../models/graphql.ts";
+import {useGetAssetSuspenseQuery, useGetTextQuerySuspenseQuery} from "../../models/graphql.ts";
 import {HTMLAttributes} from "react";
 import classnames from "classnames";
 import "./_Contact.scss";
@@ -13,16 +13,17 @@ type Props = {
 }
 const Contact = ({className}: Props) => {
   const {data: contactData} = useGetTextQuerySuspenseQuery({variables: {id: '3vxhVPirdQQnqb2wFEg68F'}});
+  const {data: resumeData} = useGetAssetSuspenseQuery({variables: {id: '7vsh60Sp5ygHoftxr1Eime'}});
 
   return <Section className={classnames([className, 'Contact'])} id="contact">
     <div className="Contact__wrapper">
       <RichText content={contactData?.text?.content} className="Contact__text" />
       <div className="Contact__links">
-        <Link to='https://assets.ctfassets.net/bvolcybk2xx6/7vsh60Sp5ygHoftxr1Eime/3bb6f7f8bbb8c0e3547be52ffe6c1ef4/bmarche-resume.pdf' target="_blank">
+        {resumeData?.asset?.url && <Link to={resumeData.asset.url} target="_blank">
           <Button>
             My resume
           </Button>
-        </Link>
+        </Link>}
         <Link to="https://www.linkedin.com/in/barbaramarche/" target="_blank">
           <Button icon={<ExternalLink/>}>
             Linkedin

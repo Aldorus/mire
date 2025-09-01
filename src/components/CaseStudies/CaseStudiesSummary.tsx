@@ -4,6 +4,7 @@ import {compact, flow, map, sortBy} from "lodash/fp";
 import {HTMLAttributes} from "react";
 import classnames from "classnames";
 import CaseStudySummaryItem from "./CaseStudySummaryItem.tsx";
+import BlockReveal from "../BlockReveal/BlockReveal.tsx";
 
 type Props = {
   className?: HTMLAttributes<HTMLDivElement>['className'],
@@ -12,11 +13,16 @@ type CaseStudy = NonNullable<NonNullable<NonNullable<ReturnType<typeof useGetCas
 
 const CaseStudiesSummary = ({className}: Props) => {
   const {data} = useGetCaseStudyCollectionSuspenseQuery();
-  const renderCaseStudies = (item: CaseStudy) =>
-    <CaseStudySummaryItem key={item._id} className="CaseStudies__item" item={item}/>;
 
-  return <div className={classnames('CaseStudies', className)} id="projects">
-    <h2 className="CaseStudies__title">Selected works</h2>
+  const renderCaseStudies = (item: CaseStudy) =>
+    <BlockReveal key={item._id} style={{transitionDelay: `${(item.order ?? 0) * .5}s`}}>
+      <CaseStudySummaryItem className={"CaseStudies__item"} item={item}/>
+    </BlockReveal>;
+
+  return <div
+    className={classnames('CaseStudies', className)}
+    id="projects">
+    <BlockReveal><h2 className="CaseStudies__title">SELECTED WORKS</h2></BlockReveal>
     <div className="CaseStudies__list--vertical">
       {flow(
         compact,

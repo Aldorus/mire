@@ -1,6 +1,7 @@
 @use "../tokens/breakpoints";
 @use "../tokens/typography";
 @use "../tokens/mixins";
+@use "../tokens/animations";
 
 .CaseStudy {
   --paddingCaseStudy: var(--space-48x);
@@ -8,12 +9,14 @@
   z-index: 2;
   position: relative;
 
+
   @media screen and (max-width: breakpoints.$breakpoint-md) {
     --paddingCaseStudy: var(--space-6x);
   }
 
   &__section {
     padding-bottom: var(--space-8x);
+    @include animations.blockReveal();
   }
 
   &__title {
@@ -132,6 +135,10 @@
 
     h2 {
       @include typography.heading4;
+    }
+
+    > p {
+      margin-bottom: var(--space-6x);
     }
 
     blockquote {
