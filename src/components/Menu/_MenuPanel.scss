@@ -13,13 +13,12 @@
   transform: translateY(-100%);
   transition: transform .3s ease;
   pointer-events: none;
-  z-index: 2;
+  z-index: 3;
   padding: 170px 0 var(--space-20x);
 
   &--open {
     transform: translateY(0);
     pointer-events: auto;
-    z-index: 3;
   }
 
   ol {
