@@ -5,6 +5,8 @@ import CaseStudy from "./pages/CaseStudy.tsx";
 import Menu from "./components/Menu/Menu.tsx";
 import About from "./pages/About.tsx";
 import Contact from "./components/Contact/Contact.tsx";
+import {useEffect, useState} from "react";
+import {MenuPanel} from "./components/Menu/MenuPanel.tsx";
 
 export const ROUTE = {
   HOME: '/',
@@ -13,20 +15,34 @@ export const ROUTE = {
 }
 
 const App = () => {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
   const href = window.location.href;
   if (href.includes('/?/')) {
     window.history.replaceState({}, "", window.location.href.replace("/?/", "/"));
   }
+
+  useEffect(() => {
+    if(isMenuOpen && !document.body.classList.contains("hidden")) {
+      document.body.classList.add("hidden")
+    }
+    if(!isMenuOpen && document.body.classList.contains("hidden")) {
+      document.body.classList.remove("hidden")
+    }
+  }, [isMenuOpen]);
+
   return <div className="App">
     <BrowserRouter>
-      <Menu/>
-        <div className="App__container">
+      <MenuPanel isMenuOpen={isMenuOpen} onClose={() => setIsMenuOpen(false)}/>
+      <Menu
+        isMenuOpen={isMenuOpen}
+        onMenuOpen={() => setIsMenuOpen(true)}
+        onMenuClose={() => setIsMenuOpen(false)}
+      />
       <Routes>
-          <Route path={ROUTE.CASE_STUDY} element={<CaseStudy/>}></Route>
-          <Route path={ROUTE.ABOUT} element={<About/>}></Route>
-          <Route path={ROUTE.HOME} element={<Homepage/>}></Route>
+        <Route path={ROUTE.CASE_STUDY} element={<CaseStudy/>}></Route>
+        <Route path={ROUTE.ABOUT} element={<About/>}></Route>
+        <Route path={ROUTE.HOME} element={<Homepage/>}></Route>
       </Routes>
-      </div>
       <Contact className="App__contact"/>
     </BrowserRouter>
   </div>

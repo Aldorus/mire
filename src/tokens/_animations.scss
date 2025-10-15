@@ -4,14 +4,7 @@
 }
 
 @mixin opacityAnimation($animationDuration: var(--shortAnimation), $animationDelay: 0) {
-  @keyframes opacityEffect {
-    from {
-      opacity: 0;
-    }
-    to {
-      opacity: 1;
-    }
-  }
+
   animation: opacityEffect;
   animation-fill-mode: both;
   animation-duration: $animationDuration;
@@ -19,16 +12,7 @@
 }
 
 @mixin blockReveal($animationDuration: var(--longAnimation), $animationDelay: 0) {
-  @keyframes blockReveal {
-    from {
-      transform: translate(-1%, 20%);
-      opacity: 0;
-    }
-    to {
-      transform: translate(0, 0);
-      opacity: 1;
-    }
-  }
+
   animation: blockReveal;
   animation-fill-mode: both;
   animation-duration: $animationDuration;

@@ -6,9 +6,8 @@
   min-width: 425px;
   background: var(--background-color);
   width: 100%;
-  overflow-x: clip;
 
-  .App__contact {
+  &__contact {
     background: var(--primary-1);
     color: #FFFFFF;
     position: sticky;

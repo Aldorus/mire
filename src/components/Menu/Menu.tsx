@@ -1,95 +1,36 @@
 import './_Menu.scss';
 import {Link} from "../Link/Link.tsx";
-import {ROUTE} from "../../App.tsx";
 import Sun from "../../assets/Sun.svg?react";
 import BettyStandard from "../../assets/BettyStandard.svg";
 import BettyHappy from "../../assets/BettyHappy.svg";
-import {useEffect, useState} from "react";
+import {useState} from "react";
 import classnames from "classnames";
-import ExternalLink from "../../assets/ExternalLink.svg?react";
-import {useLocation} from "react-router-dom";
 import classNames from "classnames";
+import {useLocation} from "react-router-dom";
 
-const Menu = () => {
+interface Props {
+  isMenuOpen: boolean;
+  onMenuOpen: () => void;
+  onMenuClose: () => void;
+}
+const Menu = ({isMenuOpen, onMenuOpen, onMenuClose}: Props) => {
   const {pathname} = useLocation();
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isHover, setIsHover] = useState(false);
-
-  useEffect(() => {
-    document.body.style.overflowY = isMenuOpen ? "hidden" : "auto";
-    if(!isMenuOpen) {
-      setIsHover(false);
-    }
-  }, [isMenuOpen]);
-
-  const handleCloseMenu = () => {
-    setIsMenuOpen(false);
-  }
 
   return <nav className="Menu">
     <Link to="/" className={classNames(["Menu__hi", pathname.includes("about") && "Menu__hi--alternate" ])}><Sun/>&nbsp;Hello, I’m Barbara</Link>
     <div
-      onClick={() => setIsMenuOpen(!isMenuOpen)}
+      onClick={() => isMenuOpen ? onMenuClose(): onMenuOpen()}
       onMouseEnter={() => setIsHover(true)}
       onMouseLeave={() => setIsHover(false)}
-      className={classnames(["Menu__trigger", isMenuOpen && 'Menu__trigger--open', isHover && 'Menu__trigger--hover'])}>
+      className={classnames([
+        "Menu__trigger",
+        isMenuOpen && 'Menu__trigger--open',
+        isHover && 'Menu__trigger--hover'
+      ])}>
       <div>
         <img src={BettyStandard} className={classnames(['betty', 'standard'])}/>
         <img src={BettyHappy} className={classnames(['betty', 'happy'])}/>
-      </div>
-    </div>
-    <div className={classnames(['Menu__panel', isMenuOpen && 'Menu__panel--open'])}>
-      <div className="Section">
-        <ol>
-          <li>
-            <Link
-              to='/#projects'
-              onClick={handleCloseMenu}
-              icon={<Sun/>}
-              hoverIcon>
-              Projects
-            </Link>
-          </li>
-          <li>
-            <Link
-              to={ROUTE.ABOUT}
-              onClick={handleCloseMenu}
-              icon={<Sun/>}
-              hoverIcon>
-              About
-            </Link>
-          </li>
-          <li>
-            <Link
-              to='https://assets.ctfassets.net/bvolcybk2xx6/7vsh60Sp5ygHoftxr1Eime/3bb6f7f8bbb8c0e3547be52ffe6c1ef4/bmarche-resume.pdf'
-              onClick={handleCloseMenu}
-              target="_blank"
-              hoverIcon
-              icon={<ExternalLink/>}>
-              Resume
-            </Link>
-          </li>
-          <li>
-            <Link
-              to="https://www.linkedin.com/in/barbaramarche/"
-              onClick={handleCloseMenu}
-              target="_blank"
-              hoverIcon
-              icon={<ExternalLink/>}>
-              LinkedIn
-            </Link>
-          </li>
-          <li>
-            <Link
-              to="https://www.behance.net/barbara-marche"
-              onClick={handleCloseMenu}
-              target="_blank"
-              hoverIcon
-              icon={<ExternalLink/>}>
-              Behance
-            </Link>
-          </li>
-        </ol>
       </div>
     </div>
   </nav>
