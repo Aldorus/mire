@@ -15,10 +15,17 @@ const BlockReveal = ({children, style, className}: Props) => {
   const [isRevealed, setIsRevealed] = useState(false);
   useEffect(() => {
     if(!isNil(blockRef.current)
-      &&  y > blockRef.current?.getBoundingClientRect().top) {
+      &&  y > blockRef.current.getBoundingClientRect().top) {
       setIsRevealed(true)
     }
   },[y]);
+
+  useEffect(() => {
+    if(!isNil(blockRef.current)
+      &&  screen.height > blockRef.current.getBoundingClientRect().top) {
+      setIsRevealed(true)
+    }
+  }, []);
 
   return <div
     style={style}

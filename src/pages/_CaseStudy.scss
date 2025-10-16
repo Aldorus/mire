@@ -16,7 +16,6 @@
 
   &__section {
     padding-bottom: var(--space-8x);
-    @include animations.blockReveal();
   }
 
   &__title {
