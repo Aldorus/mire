@@ -1,0 +1,61 @@
+@use "../../tokens/mixins";
+@use "../../tokens/breakpoints";
+@use "../../tokens/typography";
+
+
+.Footer {
+  > .Section__content {
+    padding: var(--space-10x) 0;
+    text-align: center;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  &__links {
+    display: flex;
+    gap: var(--space-6x);
+
+    .Link {
+      color: var(--neutral-2);
+      align-items: center;
+      @include typography.body-2;
+
+      &:hover {
+        color: var(--accent-2);
+      }
+    }
+
+    svg {
+      width: 12px;
+      height: 12px;
+      path {
+        fill: var(--neutral-2);
+      }
+    }
+
+  }
+
+  &__credits {
+    @include typography.emphasis-5;
+    color: var(--primary-7);
+    text-align: right;
+  }
+
+  @media screen and (max-width: breakpoints.$breakpoint-md) {
+    .Section__content {
+      padding: var(--space-10x) var(--space-4x);
+      grid-template-columns: 1fr;
+    }
+
+    .Footer__links {
+      flex-direction: column;
+      padding-bottom: var(--space-6x);
+      margin-bottom: var(--space-6x);
+      border-bottom: 1px solid var(--primary-2);
+    }
+
+    .Footer__credits {
+      text-align: left;
+    }
+  }
+}

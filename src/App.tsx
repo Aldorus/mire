@@ -3,15 +3,13 @@ import {BrowserRouter, Route, Routes} from "react-router-dom";
 import Homepage from "./pages/Homepage.tsx";
 import CaseStudy from "./pages/CaseStudy.tsx";
 import Menu from "./components/Menu/Menu.tsx";
-import About from "./pages/About.tsx";
-import Contact from "./components/Contact/Contact.tsx";
+import Footer from "./components/Footer/Footer.tsx";
 import {useEffect, useState} from "react";
 import {MenuPanel} from "./components/Menu/MenuPanel.tsx";
 
 export const ROUTE = {
   HOME: '/',
   CASE_STUDY: '/case/:slug',
-  ABOUT: '/about'
 }
 
 const App = () => {
@@ -40,10 +38,9 @@ const App = () => {
       />
       <Routes>
         <Route path={ROUTE.CASE_STUDY} element={<CaseStudy/>}></Route>
-        <Route path={ROUTE.ABOUT} element={<About/>}></Route>
         <Route path={ROUTE.HOME} element={<Homepage/>}></Route>
       </Routes>
-      <Contact className="App__contact"/>
+      <Footer className="App__contact"/>
     </BrowserRouter>
   </div>
 }

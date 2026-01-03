@@ -8,8 +8,12 @@ import Sun from "../assets/Sun.svg?react";
 import Page from "./Page.tsx";
 import Section from "./Section.tsx";
 import RoundedBorder from "../components/Sparkle/RoundedBorder.tsx";
-import { useWindowScroll} from "react-use";
+import {useWindowScroll} from "react-use";
 import IconZone from "../components/MovableIcon/IconZone.tsx";
+import About from "./About.tsx";
+import ExperienceList from "../components/Experience/ExperienceList.tsx";
+import SkillList from "../components/Skills/SkillList.tsx";
+import classNames from "classnames";
 
 const Homepage = () => {
   const {data} = useGetTextQuerySuspenseQuery({variables: {id: "3j5F4HgCVPo7IRhuwuxNrx"}});
@@ -33,8 +37,11 @@ const Homepage = () => {
       </div>
     </Section>
     <RoundedBorder/>
-    <Section className="Homepage__CaseStudies" sticky>
+    <Section className={classNames(["Homepage__Section", "Homepage__CaseStudies"])} noPadding>
       <CaseStudiesSummary/>
+      <About className="Homepage__About"/>
+      <SkillList className="Homepage__Skills"/>
+      <ExperienceList className="Homepage__Experiences"/>
     </Section>
   </Page>
 }

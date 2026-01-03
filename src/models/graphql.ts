@@ -45,24 +45,28 @@ export type Asset = {
 /** Represents a binary file in a space. An asset can be any file type. */
 export type AssetContentTypeArgs = {
   locale?: InputMaybe<Scalars['String']['input']>;
+  useFallbackLocale?: InputMaybe<Scalars['Boolean']['input']>;
 };
 
 
 /** Represents a binary file in a space. An asset can be any file type. */
 export type AssetDescriptionArgs = {
   locale?: InputMaybe<Scalars['String']['input']>;
+  useFallbackLocale?: InputMaybe<Scalars['Boolean']['input']>;
 };
 
 
 /** Represents a binary file in a space. An asset can be any file type. */
 export type AssetFileNameArgs = {
   locale?: InputMaybe<Scalars['String']['input']>;
+  useFallbackLocale?: InputMaybe<Scalars['Boolean']['input']>;
 };
 
 
 /** Represents a binary file in a space. An asset can be any file type. */
 export type AssetHeightArgs = {
   locale?: InputMaybe<Scalars['String']['input']>;
+  useFallbackLocale?: InputMaybe<Scalars['Boolean']['input']>;
 };
 
 
@@ -75,12 +79,14 @@ export type AssetLinkedFromArgs = {
 /** Represents a binary file in a space. An asset can be any file type. */
 export type AssetSizeArgs = {
   locale?: InputMaybe<Scalars['String']['input']>;
+  useFallbackLocale?: InputMaybe<Scalars['Boolean']['input']>;
 };
 
 
 /** Represents a binary file in a space. An asset can be any file type. */
 export type AssetTitleArgs = {
   locale?: InputMaybe<Scalars['String']['input']>;
+  useFallbackLocale?: InputMaybe<Scalars['Boolean']['input']>;
 };
 
 
@@ -88,12 +94,14 @@ export type AssetTitleArgs = {
 export type AssetUrlArgs = {
   locale?: InputMaybe<Scalars['String']['input']>;
   transform?: InputMaybe<ImageTransformOptions>;
+  useFallbackLocale?: InputMaybe<Scalars['Boolean']['input']>;
 };
 
 
 /** Represents a binary file in a space. An asset can be any file type. */
 export type AssetWidthArgs = {
   locale?: InputMaybe<Scalars['String']['input']>;
+  useFallbackLocale?: InputMaybe<Scalars['Boolean']['input']>;
 };
 
 export type AssetCollection = {
@@ -178,6 +186,7 @@ export type AssetLinkingCollections = {
   caseStudyCollection?: Maybe<CaseStudyCollection>;
   entryCollection?: Maybe<EntryCollection>;
   projectCollection?: Maybe<ProjectCollection>;
+  skillCollection?: Maybe<SkillCollection>;
 };
 
 
@@ -186,6 +195,7 @@ export type AssetLinkingCollectionsCaseStudyCollectionArgs = {
   locale?: InputMaybe<Scalars['String']['input']>;
   preview?: InputMaybe<Scalars['Boolean']['input']>;
   skip?: InputMaybe<Scalars['Int']['input']>;
+  useFallbackLocale?: InputMaybe<Scalars['Boolean']['input']>;
 };
 
 
@@ -194,6 +204,7 @@ export type AssetLinkingCollectionsEntryCollectionArgs = {
   locale?: InputMaybe<Scalars['String']['input']>;
   preview?: InputMaybe<Scalars['Boolean']['input']>;
   skip?: InputMaybe<Scalars['Int']['input']>;
+  useFallbackLocale?: InputMaybe<Scalars['Boolean']['input']>;
 };
 
 
@@ -202,6 +213,16 @@ export type AssetLinkingCollectionsProjectCollectionArgs = {
   locale?: InputMaybe<Scalars['String']['input']>;
   preview?: InputMaybe<Scalars['Boolean']['input']>;
   skip?: InputMaybe<Scalars['Int']['input']>;
+  useFallbackLocale?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+
+export type AssetLinkingCollectionsSkillCollectionArgs = {
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  locale?: InputMaybe<Scalars['String']['input']>;
+  preview?: InputMaybe<Scalars['Boolean']['input']>;
+  skip?: InputMaybe<Scalars['Int']['input']>;
+  useFallbackLocale?: InputMaybe<Scalars['Boolean']['input']>;
 };
 
 export enum AssetOrder {
@@ -256,36 +277,42 @@ export type CaseStudy = Entry & _Node & {
 export type CaseStudyAssetsArgs = {
   locale?: InputMaybe<Scalars['String']['input']>;
   preview?: InputMaybe<Scalars['Boolean']['input']>;
+  useFallbackLocale?: InputMaybe<Scalars['Boolean']['input']>;
 };
 
 
 /** [See type definition](https://app.contentful.com/spaces/bvolcybk2xx6/content_types/caseStudy) */
 export type CaseStudyCategoryArgs = {
   locale?: InputMaybe<Scalars['String']['input']>;
+  useFallbackLocale?: InputMaybe<Scalars['Boolean']['input']>;
 };
 
 
 /** [See type definition](https://app.contentful.com/spaces/bvolcybk2xx6/content_types/caseStudy) */
 export type CaseStudyClassifiedArgs = {
   locale?: InputMaybe<Scalars['String']['input']>;
+  useFallbackLocale?: InputMaybe<Scalars['Boolean']['input']>;
 };
 
 
 /** [See type definition](https://app.contentful.com/spaces/bvolcybk2xx6/content_types/caseStudy) */
 export type CaseStudyClientArgs = {
   locale?: InputMaybe<Scalars['String']['input']>;
+  useFallbackLocale?: InputMaybe<Scalars['Boolean']['input']>;
 };
 
 
 /** [See type definition](https://app.contentful.com/spaces/bvolcybk2xx6/content_types/caseStudy) */
 export type CaseStudyCompleteTextArgs = {
   locale?: InputMaybe<Scalars['String']['input']>;
+  useFallbackLocale?: InputMaybe<Scalars['Boolean']['input']>;
 };
 
 
 /** [See type definition](https://app.contentful.com/spaces/bvolcybk2xx6/content_types/caseStudy) */
 export type CaseStudyDateArgs = {
   locale?: InputMaybe<Scalars['String']['input']>;
+  useFallbackLocale?: InputMaybe<Scalars['Boolean']['input']>;
 };
 
 
@@ -299,54 +326,63 @@ export type CaseStudyLinkedFromArgs = {
 export type CaseStudyMobileAssetArgs = {
   locale?: InputMaybe<Scalars['String']['input']>;
   preview?: InputMaybe<Scalars['Boolean']['input']>;
+  useFallbackLocale?: InputMaybe<Scalars['Boolean']['input']>;
 };
 
 
 /** [See type definition](https://app.contentful.com/spaces/bvolcybk2xx6/content_types/caseStudy) */
 export type CaseStudyOrderArgs = {
   locale?: InputMaybe<Scalars['String']['input']>;
+  useFallbackLocale?: InputMaybe<Scalars['Boolean']['input']>;
 };
 
 
 /** [See type definition](https://app.contentful.com/spaces/bvolcybk2xx6/content_types/caseStudy) */
 export type CaseStudyOverviewArgs = {
   locale?: InputMaybe<Scalars['String']['input']>;
+  useFallbackLocale?: InputMaybe<Scalars['Boolean']['input']>;
 };
 
 
 /** [See type definition](https://app.contentful.com/spaces/bvolcybk2xx6/content_types/caseStudy) */
 export type CaseStudyRoleArgs = {
   locale?: InputMaybe<Scalars['String']['input']>;
+  useFallbackLocale?: InputMaybe<Scalars['Boolean']['input']>;
 };
 
 
 /** [See type definition](https://app.contentful.com/spaces/bvolcybk2xx6/content_types/caseStudy) */
 export type CaseStudySlugArgs = {
   locale?: InputMaybe<Scalars['String']['input']>;
+  useFallbackLocale?: InputMaybe<Scalars['Boolean']['input']>;
 };
 
 
 /** [See type definition](https://app.contentful.com/spaces/bvolcybk2xx6/content_types/caseStudy) */
 export type CaseStudySubtitleArgs = {
   locale?: InputMaybe<Scalars['String']['input']>;
+  useFallbackLocale?: InputMaybe<Scalars['Boolean']['input']>;
 };
 
 
 /** [See type definition](https://app.contentful.com/spaces/bvolcybk2xx6/content_types/caseStudy) */
 export type CaseStudyTeamArgs = {
   locale?: InputMaybe<Scalars['String']['input']>;
+  useFallbackLocale?: InputMaybe<Scalars['Boolean']['input']>;
 };
 
 
 /** [See type definition](https://app.contentful.com/spaces/bvolcybk2xx6/content_types/caseStudy) */
 export type CaseStudyTextArgs = {
   locale?: InputMaybe<Scalars['String']['input']>;
+  useFallbackLocale?: InputMaybe<Scalars['Boolean']['input']>;
 };
 
 
 /** [See type definition](https://app.contentful.com/spaces/bvolcybk2xx6/content_types/caseStudy) */
 export type CaseStudyTitleArgs = {
   locale?: InputMaybe<Scalars['String']['input']>;
+  useFallbackLocale?: InputMaybe<Scalars['Boolean']['input']>;
 };
 
 export type CaseStudyCollection = {
@@ -502,6 +538,7 @@ export type CaseStudyLinkingCollectionsEntryCollectionArgs = {
   locale?: InputMaybe<Scalars['String']['input']>;
   preview?: InputMaybe<Scalars['Boolean']['input']>;
   skip?: InputMaybe<Scalars['Int']['input']>;
+  useFallbackLocale?: InputMaybe<Scalars['Boolean']['input']>;
 };
 
 export enum CaseStudyOrder {
@@ -723,18 +760,21 @@ export type Experience = Entry & _Node & {
 /** [See type definition](https://app.contentful.com/spaces/bvolcybk2xx6/content_types/experience) */
 export type ExperienceClientArgs = {
   locale?: InputMaybe<Scalars['String']['input']>;
+  useFallbackLocale?: InputMaybe<Scalars['Boolean']['input']>;
 };
 
 
 /** [See type definition](https://app.contentful.com/spaces/bvolcybk2xx6/content_types/experience) */
 export type ExperienceClientLinkArgs = {
   locale?: InputMaybe<Scalars['String']['input']>;
+  useFallbackLocale?: InputMaybe<Scalars['Boolean']['input']>;
 };
 
 
 /** [See type definition](https://app.contentful.com/spaces/bvolcybk2xx6/content_types/experience) */
 export type ExperienceDateArgs = {
   locale?: InputMaybe<Scalars['String']['input']>;
+  useFallbackLocale?: InputMaybe<Scalars['Boolean']['input']>;
 };
 
 
@@ -747,18 +787,21 @@ export type ExperienceLinkedFromArgs = {
 /** [See type definition](https://app.contentful.com/spaces/bvolcybk2xx6/content_types/experience) */
 export type ExperienceOrderArgs = {
   locale?: InputMaybe<Scalars['String']['input']>;
+  useFallbackLocale?: InputMaybe<Scalars['Boolean']['input']>;
 };
 
 
 /** [See type definition](https://app.contentful.com/spaces/bvolcybk2xx6/content_types/experience) */
 export type ExperiencePositionArgs = {
   locale?: InputMaybe<Scalars['String']['input']>;
+  useFallbackLocale?: InputMaybe<Scalars['Boolean']['input']>;
 };
 
 
 /** [See type definition](https://app.contentful.com/spaces/bvolcybk2xx6/content_types/experience) */
 export type ExperienceTextArgs = {
   locale?: InputMaybe<Scalars['String']['input']>;
+  useFallbackLocale?: InputMaybe<Scalars['Boolean']['input']>;
 };
 
 export type ExperienceCollection = {
@@ -827,6 +870,7 @@ export type ExperienceLinkingCollectionsEntryCollectionArgs = {
   locale?: InputMaybe<Scalars['String']['input']>;
   preview?: InputMaybe<Scalars['Boolean']['input']>;
   skip?: InputMaybe<Scalars['Int']['input']>;
+  useFallbackLocale?: InputMaybe<Scalars['Boolean']['input']>;
 };
 
 export enum ExperienceOrder {
@@ -913,6 +957,7 @@ export type Header = Entry & _Node & {
 /** [See type definition](https://app.contentful.com/spaces/bvolcybk2xx6/content_types/header) */
 export type HeaderInfoArgs = {
   locale?: InputMaybe<Scalars['String']['input']>;
+  useFallbackLocale?: InputMaybe<Scalars['Boolean']['input']>;
 };
 
 
@@ -925,6 +970,7 @@ export type HeaderLinkedFromArgs = {
 /** [See type definition](https://app.contentful.com/spaces/bvolcybk2xx6/content_types/header) */
 export type HeaderTitleArgs = {
   locale?: InputMaybe<Scalars['String']['input']>;
+  useFallbackLocale?: InputMaybe<Scalars['Boolean']['input']>;
 };
 
 export type HeaderCollection = {
@@ -960,6 +1006,7 @@ export type HeaderLinkingCollectionsEntryCollectionArgs = {
   locale?: InputMaybe<Scalars['String']['input']>;
   preview?: InputMaybe<Scalars['Boolean']['input']>;
   skip?: InputMaybe<Scalars['Int']['input']>;
+  useFallbackLocale?: InputMaybe<Scalars['Boolean']['input']>;
 };
 
 export enum HeaderOrder {
@@ -1133,6 +1180,7 @@ export type Project = Entry & _Node & {
 export type ProjectAssetArgs = {
   locale?: InputMaybe<Scalars['String']['input']>;
   preview?: InputMaybe<Scalars['Boolean']['input']>;
+  useFallbackLocale?: InputMaybe<Scalars['Boolean']['input']>;
 };
 
 
@@ -1145,6 +1193,7 @@ export type ProjectLinkedFromArgs = {
 /** [See type definition](https://app.contentful.com/spaces/bvolcybk2xx6/content_types/project) */
 export type ProjectTitleArgs = {
   locale?: InputMaybe<Scalars['String']['input']>;
+  useFallbackLocale?: InputMaybe<Scalars['Boolean']['input']>;
 };
 
 export type ProjectCollection = {
@@ -1181,6 +1230,7 @@ export type ProjectLinkingCollectionsEntryCollectionArgs = {
   locale?: InputMaybe<Scalars['String']['input']>;
   preview?: InputMaybe<Scalars['Boolean']['input']>;
   skip?: InputMaybe<Scalars['Int']['input']>;
+  useFallbackLocale?: InputMaybe<Scalars['Boolean']['input']>;
 };
 
 export enum ProjectOrder {
@@ -1211,6 +1261,8 @@ export type Query = {
   headerCollection?: Maybe<HeaderCollection>;
   project?: Maybe<Project>;
   projectCollection?: Maybe<ProjectCollection>;
+  skill?: Maybe<Skill>;
+  skillCollection?: Maybe<SkillCollection>;
   text?: Maybe<Text>;
   textCollection?: Maybe<TextCollection>;
 };
@@ -1220,6 +1272,7 @@ export type Query_NodeArgs = {
   id: Scalars['ID']['input'];
   locale?: InputMaybe<Scalars['String']['input']>;
   preview?: InputMaybe<Scalars['Boolean']['input']>;
+  useFallbackLocale?: InputMaybe<Scalars['Boolean']['input']>;
 };
 
 
@@ -1227,6 +1280,7 @@ export type Query_NodesArgs = {
   ids: Array<Scalars['ID']['input']>;
   locale?: InputMaybe<Scalars['String']['input']>;
   preview?: InputMaybe<Scalars['Boolean']['input']>;
+  useFallbackLocale?: InputMaybe<Scalars['Boolean']['input']>;
 };
 
 
@@ -1234,6 +1288,7 @@ export type QueryAssetArgs = {
   id: Scalars['String']['input'];
   locale?: InputMaybe<Scalars['String']['input']>;
   preview?: InputMaybe<Scalars['Boolean']['input']>;
+  useFallbackLocale?: InputMaybe<Scalars['Boolean']['input']>;
 };
 
 
@@ -1243,6 +1298,7 @@ export type QueryAssetCollectionArgs = {
   order?: InputMaybe<Array<InputMaybe<AssetOrder>>>;
   preview?: InputMaybe<Scalars['Boolean']['input']>;
   skip?: InputMaybe<Scalars['Int']['input']>;
+  useFallbackLocale?: InputMaybe<Scalars['Boolean']['input']>;
   where?: InputMaybe<AssetFilter>;
 };
 
@@ -1251,6 +1307,7 @@ export type QueryCaseStudyArgs = {
   id: Scalars['String']['input'];
   locale?: InputMaybe<Scalars['String']['input']>;
   preview?: InputMaybe<Scalars['Boolean']['input']>;
+  useFallbackLocale?: InputMaybe<Scalars['Boolean']['input']>;
 };
 
 
@@ -1260,6 +1317,7 @@ export type QueryCaseStudyCollectionArgs = {
   order?: InputMaybe<Array<InputMaybe<CaseStudyOrder>>>;
   preview?: InputMaybe<Scalars['Boolean']['input']>;
   skip?: InputMaybe<Scalars['Int']['input']>;
+  useFallbackLocale?: InputMaybe<Scalars['Boolean']['input']>;
   where?: InputMaybe<CaseStudyFilter>;
 };
 
@@ -1270,6 +1328,7 @@ export type QueryEntryCollectionArgs = {
   order?: InputMaybe<Array<InputMaybe<EntryOrder>>>;
   preview?: InputMaybe<Scalars['Boolean']['input']>;
   skip?: InputMaybe<Scalars['Int']['input']>;
+  useFallbackLocale?: InputMaybe<Scalars['Boolean']['input']>;
   where?: InputMaybe<EntryFilter>;
 };
 
@@ -1278,6 +1337,7 @@ export type QueryExperienceArgs = {
   id: Scalars['String']['input'];
   locale?: InputMaybe<Scalars['String']['input']>;
   preview?: InputMaybe<Scalars['Boolean']['input']>;
+  useFallbackLocale?: InputMaybe<Scalars['Boolean']['input']>;
 };
 
 
@@ -1287,6 +1347,7 @@ export type QueryExperienceCollectionArgs = {
   order?: InputMaybe<Array<InputMaybe<ExperienceOrder>>>;
   preview?: InputMaybe<Scalars['Boolean']['input']>;
   skip?: InputMaybe<Scalars['Int']['input']>;
+  useFallbackLocale?: InputMaybe<Scalars['Boolean']['input']>;
   where?: InputMaybe<ExperienceFilter>;
 };
 
@@ -1295,6 +1356,7 @@ export type QueryHeaderArgs = {
   id: Scalars['String']['input'];
   locale?: InputMaybe<Scalars['String']['input']>;
   preview?: InputMaybe<Scalars['Boolean']['input']>;
+  useFallbackLocale?: InputMaybe<Scalars['Boolean']['input']>;
 };
 
 
@@ -1304,6 +1366,7 @@ export type QueryHeaderCollectionArgs = {
   order?: InputMaybe<Array<InputMaybe<HeaderOrder>>>;
   preview?: InputMaybe<Scalars['Boolean']['input']>;
   skip?: InputMaybe<Scalars['Int']['input']>;
+  useFallbackLocale?: InputMaybe<Scalars['Boolean']['input']>;
   where?: InputMaybe<HeaderFilter>;
 };
 
@@ -1312,6 +1375,7 @@ export type QueryProjectArgs = {
   id: Scalars['String']['input'];
   locale?: InputMaybe<Scalars['String']['input']>;
   preview?: InputMaybe<Scalars['Boolean']['input']>;
+  useFallbackLocale?: InputMaybe<Scalars['Boolean']['input']>;
 };
 
 
@@ -1321,7 +1385,27 @@ export type QueryProjectCollectionArgs = {
   order?: InputMaybe<Array<InputMaybe<ProjectOrder>>>;
   preview?: InputMaybe<Scalars['Boolean']['input']>;
   skip?: InputMaybe<Scalars['Int']['input']>;
+  useFallbackLocale?: InputMaybe<Scalars['Boolean']['input']>;
   where?: InputMaybe<ProjectFilter>;
+};
+
+
+export type QuerySkillArgs = {
+  id: Scalars['String']['input'];
+  locale?: InputMaybe<Scalars['String']['input']>;
+  preview?: InputMaybe<Scalars['Boolean']['input']>;
+  useFallbackLocale?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+
+export type QuerySkillCollectionArgs = {
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  locale?: InputMaybe<Scalars['String']['input']>;
+  order?: InputMaybe<Array<InputMaybe<SkillOrder>>>;
+  preview?: InputMaybe<Scalars['Boolean']['input']>;
+  skip?: InputMaybe<Scalars['Int']['input']>;
+  useFallbackLocale?: InputMaybe<Scalars['Boolean']['input']>;
+  where?: InputMaybe<SkillFilter>;
 };
 
 
@@ -1329,6 +1413,7 @@ export type QueryTextArgs = {
   id: Scalars['String']['input'];
   locale?: InputMaybe<Scalars['String']['input']>;
   preview?: InputMaybe<Scalars['Boolean']['input']>;
+  useFallbackLocale?: InputMaybe<Scalars['Boolean']['input']>;
 };
 
 
@@ -1338,6 +1423,7 @@ export type QueryTextCollectionArgs = {
   order?: InputMaybe<Array<InputMaybe<TextOrder>>>;
   preview?: InputMaybe<Scalars['Boolean']['input']>;
   skip?: InputMaybe<Scalars['Int']['input']>;
+  useFallbackLocale?: InputMaybe<Scalars['Boolean']['input']>;
   where?: InputMaybe<TextFilter>;
 };
 
@@ -1350,6 +1436,166 @@ export type ResourceSys = {
   linkType: Scalars['String']['output'];
   urn: Scalars['String']['output'];
 };
+
+/** [See type definition](https://app.contentful.com/spaces/bvolcybk2xx6/content_types/skill) */
+export type Skill = Entry & _Node & {
+  __typename: 'Skill';
+  _id: Scalars['ID']['output'];
+  contentfulMetadata: ContentfulMetadata;
+  description?: Maybe<SkillDescription>;
+  icon?: Maybe<Asset>;
+  linkedFrom?: Maybe<SkillLinkingCollections>;
+  order?: Maybe<Scalars['Int']['output']>;
+  sys: Sys;
+  title?: Maybe<Scalars['String']['output']>;
+};
+
+
+/** [See type definition](https://app.contentful.com/spaces/bvolcybk2xx6/content_types/skill) */
+export type SkillDescriptionArgs = {
+  locale?: InputMaybe<Scalars['String']['input']>;
+  useFallbackLocale?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+
+/** [See type definition](https://app.contentful.com/spaces/bvolcybk2xx6/content_types/skill) */
+export type SkillIconArgs = {
+  locale?: InputMaybe<Scalars['String']['input']>;
+  preview?: InputMaybe<Scalars['Boolean']['input']>;
+  useFallbackLocale?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+
+/** [See type definition](https://app.contentful.com/spaces/bvolcybk2xx6/content_types/skill) */
+export type SkillLinkedFromArgs = {
+  allowedLocales?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+};
+
+
+/** [See type definition](https://app.contentful.com/spaces/bvolcybk2xx6/content_types/skill) */
+export type SkillOrderArgs = {
+  locale?: InputMaybe<Scalars['String']['input']>;
+  useFallbackLocale?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+
+/** [See type definition](https://app.contentful.com/spaces/bvolcybk2xx6/content_types/skill) */
+export type SkillTitleArgs = {
+  locale?: InputMaybe<Scalars['String']['input']>;
+  useFallbackLocale?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+export type SkillCollection = {
+  __typename: 'SkillCollection';
+  items: Array<Maybe<Skill>>;
+  limit: Scalars['Int']['output'];
+  skip: Scalars['Int']['output'];
+  total: Scalars['Int']['output'];
+};
+
+export type SkillDescription = {
+  __typename: 'SkillDescription';
+  json: Scalars['JSON']['output'];
+  links: SkillDescriptionLinks;
+};
+
+export type SkillDescriptionAssets = {
+  __typename: 'SkillDescriptionAssets';
+  block: Array<Maybe<Asset>>;
+  hyperlink: Array<Maybe<Asset>>;
+};
+
+export type SkillDescriptionEntries = {
+  __typename: 'SkillDescriptionEntries';
+  block: Array<Maybe<Entry>>;
+  hyperlink: Array<Maybe<Entry>>;
+  inline: Array<Maybe<Entry>>;
+};
+
+export type SkillDescriptionLinks = {
+  __typename: 'SkillDescriptionLinks';
+  assets: SkillDescriptionAssets;
+  entries: SkillDescriptionEntries;
+  resources: SkillDescriptionResources;
+};
+
+export type SkillDescriptionResources = {
+  __typename: 'SkillDescriptionResources';
+  block: Array<SkillDescriptionResourcesBlock>;
+  hyperlink: Array<SkillDescriptionResourcesHyperlink>;
+  inline: Array<SkillDescriptionResourcesInline>;
+};
+
+export type SkillDescriptionResourcesBlock = ResourceLink & {
+  __typename: 'SkillDescriptionResourcesBlock';
+  sys: ResourceSys;
+};
+
+export type SkillDescriptionResourcesHyperlink = ResourceLink & {
+  __typename: 'SkillDescriptionResourcesHyperlink';
+  sys: ResourceSys;
+};
+
+export type SkillDescriptionResourcesInline = ResourceLink & {
+  __typename: 'SkillDescriptionResourcesInline';
+  sys: ResourceSys;
+};
+
+export type SkillFilter = {
+  AND?: InputMaybe<Array<InputMaybe<SkillFilter>>>;
+  OR?: InputMaybe<Array<InputMaybe<SkillFilter>>>;
+  contentfulMetadata?: InputMaybe<ContentfulMetadataFilter>;
+  description_contains?: InputMaybe<Scalars['String']['input']>;
+  description_exists?: InputMaybe<Scalars['Boolean']['input']>;
+  description_not_contains?: InputMaybe<Scalars['String']['input']>;
+  icon_exists?: InputMaybe<Scalars['Boolean']['input']>;
+  order?: InputMaybe<Scalars['Int']['input']>;
+  order_exists?: InputMaybe<Scalars['Boolean']['input']>;
+  order_gt?: InputMaybe<Scalars['Int']['input']>;
+  order_gte?: InputMaybe<Scalars['Int']['input']>;
+  order_in?: InputMaybe<Array<InputMaybe<Scalars['Int']['input']>>>;
+  order_lt?: InputMaybe<Scalars['Int']['input']>;
+  order_lte?: InputMaybe<Scalars['Int']['input']>;
+  order_not?: InputMaybe<Scalars['Int']['input']>;
+  order_not_in?: InputMaybe<Array<InputMaybe<Scalars['Int']['input']>>>;
+  sys?: InputMaybe<SysFilter>;
+  title?: InputMaybe<Scalars['String']['input']>;
+  title_contains?: InputMaybe<Scalars['String']['input']>;
+  title_exists?: InputMaybe<Scalars['Boolean']['input']>;
+  title_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  title_not?: InputMaybe<Scalars['String']['input']>;
+  title_not_contains?: InputMaybe<Scalars['String']['input']>;
+  title_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+};
+
+export type SkillLinkingCollections = {
+  __typename: 'SkillLinkingCollections';
+  entryCollection?: Maybe<EntryCollection>;
+};
+
+
+export type SkillLinkingCollectionsEntryCollectionArgs = {
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  locale?: InputMaybe<Scalars['String']['input']>;
+  preview?: InputMaybe<Scalars['Boolean']['input']>;
+  skip?: InputMaybe<Scalars['Int']['input']>;
+  useFallbackLocale?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+export enum SkillOrder {
+  OrderAsc = 'order_ASC',
+  OrderDesc = 'order_DESC',
+  SysFirstPublishedAtAsc = 'sys_firstPublishedAt_ASC',
+  SysFirstPublishedAtDesc = 'sys_firstPublishedAt_DESC',
+  SysIdAsc = 'sys_id_ASC',
+  SysIdDesc = 'sys_id_DESC',
+  SysPublishedAtAsc = 'sys_publishedAt_ASC',
+  SysPublishedAtDesc = 'sys_publishedAt_DESC',
+  SysPublishedVersionAsc = 'sys_publishedVersion_ASC',
+  SysPublishedVersionDesc = 'sys_publishedVersion_DESC',
+  TitleAsc = 'title_ASC',
+  TitleDesc = 'title_DESC'
+}
 
 export type Sys = {
   __typename: 'Sys';
@@ -1426,6 +1672,7 @@ export type Text = Entry & _Node & {
 /** [See type definition](https://app.contentful.com/spaces/bvolcybk2xx6/content_types/text) */
 export type TextContentArgs = {
   locale?: InputMaybe<Scalars['String']['input']>;
+  useFallbackLocale?: InputMaybe<Scalars['Boolean']['input']>;
 };
 
 
@@ -1438,18 +1685,21 @@ export type TextLinkedFromArgs = {
 /** [See type definition](https://app.contentful.com/spaces/bvolcybk2xx6/content_types/text) */
 export type TextReferenceArgs = {
   locale?: InputMaybe<Scalars['String']['input']>;
+  useFallbackLocale?: InputMaybe<Scalars['Boolean']['input']>;
 };
 
 
 /** [See type definition](https://app.contentful.com/spaces/bvolcybk2xx6/content_types/text) */
 export type TextSecondaryFontArgs = {
   locale?: InputMaybe<Scalars['String']['input']>;
+  useFallbackLocale?: InputMaybe<Scalars['Boolean']['input']>;
 };
 
 
 /** [See type definition](https://app.contentful.com/spaces/bvolcybk2xx6/content_types/text) */
 export type TextTagsArgs = {
   locale?: InputMaybe<Scalars['String']['input']>;
+  useFallbackLocale?: InputMaybe<Scalars['Boolean']['input']>;
 };
 
 export type TextCollection = {
@@ -1543,6 +1793,7 @@ export type TextLinkingCollectionsEntryCollectionArgs = {
   locale?: InputMaybe<Scalars['String']['input']>;
   preview?: InputMaybe<Scalars['Boolean']['input']>;
   skip?: InputMaybe<Scalars['Int']['input']>;
+  useFallbackLocale?: InputMaybe<Scalars['Boolean']['input']>;
 };
 
 export enum TextOrder {
@@ -1559,6 +1810,13 @@ export enum TextOrder {
   SysPublishedVersionAsc = 'sys_publishedVersion_ASC',
   SysPublishedVersionDesc = 'sys_publishedVersion_DESC'
 }
+
+export type TimelineFilterInput = {
+  /** Preview content starting from a given release date */
+  release_lte?: InputMaybe<Scalars['String']['input']>;
+  /** Preview content starting from a given timestamp */
+  timestamp_lte?: InputMaybe<Scalars['DateTime']['input']>;
+};
 
 export type _Node = {
   _id: Scalars['ID']['output'];
@@ -1634,9 +1892,9 @@ export type DirectiveResolverFn<TResult = {}, TParent = {}, TContext = {}, TArgs
 
 /** Mapping of interface types */
 export type ResolversInterfaceTypes<_RefType extends Record<string, unknown>> = {
-  Entry: ( Omit<CaseStudy, 'completeText' | 'linkedFrom' | 'overview' | 'text'> & { completeText?: Maybe<_RefType['CaseStudyCompleteText']>, linkedFrom?: Maybe<_RefType['CaseStudyLinkingCollections']>, overview?: Maybe<_RefType['CaseStudyOverview']>, text?: Maybe<_RefType['CaseStudyText']> } ) | ( Omit<Experience, 'linkedFrom' | 'text'> & { linkedFrom?: Maybe<_RefType['ExperienceLinkingCollections']>, text?: Maybe<_RefType['ExperienceText']> } ) | ( Omit<Header, 'linkedFrom' | 'title'> & { linkedFrom?: Maybe<_RefType['HeaderLinkingCollections']>, title?: Maybe<_RefType['HeaderTitle']> } ) | ( Omit<Project, 'linkedFrom'> & { linkedFrom?: Maybe<_RefType['ProjectLinkingCollections']> } ) | ( Omit<Text, 'content' | 'linkedFrom'> & { content?: Maybe<_RefType['TextContent']>, linkedFrom?: Maybe<_RefType['TextLinkingCollections']> } );
-  ResourceLink: ( CaseStudyCompleteTextResourcesBlock ) | ( CaseStudyCompleteTextResourcesHyperlink ) | ( CaseStudyCompleteTextResourcesInline ) | ( CaseStudyOverviewResourcesBlock ) | ( CaseStudyOverviewResourcesHyperlink ) | ( CaseStudyOverviewResourcesInline ) | ( CaseStudyTextResourcesBlock ) | ( CaseStudyTextResourcesHyperlink ) | ( CaseStudyTextResourcesInline ) | ( ExperienceTextResourcesBlock ) | ( ExperienceTextResourcesHyperlink ) | ( ExperienceTextResourcesInline ) | ( HeaderTitleResourcesBlock ) | ( HeaderTitleResourcesHyperlink ) | ( HeaderTitleResourcesInline ) | ( TextContentResourcesBlock ) | ( TextContentResourcesHyperlink ) | ( TextContentResourcesInline );
-  _Node: ( Omit<CaseStudy, 'completeText' | 'linkedFrom' | 'overview' | 'text'> & { completeText?: Maybe<_RefType['CaseStudyCompleteText']>, linkedFrom?: Maybe<_RefType['CaseStudyLinkingCollections']>, overview?: Maybe<_RefType['CaseStudyOverview']>, text?: Maybe<_RefType['CaseStudyText']> } ) | ( Omit<Experience, 'linkedFrom' | 'text'> & { linkedFrom?: Maybe<_RefType['ExperienceLinkingCollections']>, text?: Maybe<_RefType['ExperienceText']> } ) | ( Omit<Header, 'linkedFrom' | 'title'> & { linkedFrom?: Maybe<_RefType['HeaderLinkingCollections']>, title?: Maybe<_RefType['HeaderTitle']> } ) | ( Omit<Project, 'linkedFrom'> & { linkedFrom?: Maybe<_RefType['ProjectLinkingCollections']> } ) | ( Omit<Text, 'content' | 'linkedFrom'> & { content?: Maybe<_RefType['TextContent']>, linkedFrom?: Maybe<_RefType['TextLinkingCollections']> } );
+  Entry: ( Omit<CaseStudy, 'completeText' | 'linkedFrom' | 'overview' | 'text'> & { completeText?: Maybe<_RefType['CaseStudyCompleteText']>, linkedFrom?: Maybe<_RefType['CaseStudyLinkingCollections']>, overview?: Maybe<_RefType['CaseStudyOverview']>, text?: Maybe<_RefType['CaseStudyText']> } ) | ( Omit<Experience, 'linkedFrom' | 'text'> & { linkedFrom?: Maybe<_RefType['ExperienceLinkingCollections']>, text?: Maybe<_RefType['ExperienceText']> } ) | ( Omit<Header, 'linkedFrom' | 'title'> & { linkedFrom?: Maybe<_RefType['HeaderLinkingCollections']>, title?: Maybe<_RefType['HeaderTitle']> } ) | ( Omit<Project, 'linkedFrom'> & { linkedFrom?: Maybe<_RefType['ProjectLinkingCollections']> } ) | ( Omit<Skill, 'description' | 'linkedFrom'> & { description?: Maybe<_RefType['SkillDescription']>, linkedFrom?: Maybe<_RefType['SkillLinkingCollections']> } ) | ( Omit<Text, 'content' | 'linkedFrom'> & { content?: Maybe<_RefType['TextContent']>, linkedFrom?: Maybe<_RefType['TextLinkingCollections']> } );
+  ResourceLink: ( CaseStudyCompleteTextResourcesBlock ) | ( CaseStudyCompleteTextResourcesHyperlink ) | ( CaseStudyCompleteTextResourcesInline ) | ( CaseStudyOverviewResourcesBlock ) | ( CaseStudyOverviewResourcesHyperlink ) | ( CaseStudyOverviewResourcesInline ) | ( CaseStudyTextResourcesBlock ) | ( CaseStudyTextResourcesHyperlink ) | ( CaseStudyTextResourcesInline ) | ( ExperienceTextResourcesBlock ) | ( ExperienceTextResourcesHyperlink ) | ( ExperienceTextResourcesInline ) | ( HeaderTitleResourcesBlock ) | ( HeaderTitleResourcesHyperlink ) | ( HeaderTitleResourcesInline ) | ( SkillDescriptionResourcesBlock ) | ( SkillDescriptionResourcesHyperlink ) | ( SkillDescriptionResourcesInline ) | ( TextContentResourcesBlock ) | ( TextContentResourcesHyperlink ) | ( TextContentResourcesInline );
+  _Node: ( Omit<CaseStudy, 'completeText' | 'linkedFrom' | 'overview' | 'text'> & { completeText?: Maybe<_RefType['CaseStudyCompleteText']>, linkedFrom?: Maybe<_RefType['CaseStudyLinkingCollections']>, overview?: Maybe<_RefType['CaseStudyOverview']>, text?: Maybe<_RefType['CaseStudyText']> } ) | ( Omit<Experience, 'linkedFrom' | 'text'> & { linkedFrom?: Maybe<_RefType['ExperienceLinkingCollections']>, text?: Maybe<_RefType['ExperienceText']> } ) | ( Omit<Header, 'linkedFrom' | 'title'> & { linkedFrom?: Maybe<_RefType['HeaderLinkingCollections']>, title?: Maybe<_RefType['HeaderTitle']> } ) | ( Omit<Project, 'linkedFrom'> & { linkedFrom?: Maybe<_RefType['ProjectLinkingCollections']> } ) | ( Omit<Skill, 'description' | 'linkedFrom'> & { description?: Maybe<_RefType['SkillDescription']>, linkedFrom?: Maybe<_RefType['SkillLinkingCollections']> } ) | ( Omit<Text, 'content' | 'linkedFrom'> & { content?: Maybe<_RefType['TextContent']>, linkedFrom?: Maybe<_RefType['TextLinkingCollections']> } );
 };
 
 /** Mapping between all available schema types and the resolvers types */
@@ -1644,7 +1902,7 @@ export type ResolversTypes = {
   Asset: ResolverTypeWrapper<Omit<Asset, 'linkedFrom'> & { linkedFrom?: Maybe<ResolversTypes['AssetLinkingCollections']> }>;
   AssetCollection: ResolverTypeWrapper<AssetCollection>;
   AssetFilter: AssetFilter;
-  AssetLinkingCollections: ResolverTypeWrapper<Omit<AssetLinkingCollections, 'caseStudyCollection' | 'entryCollection' | 'projectCollection'> & { caseStudyCollection?: Maybe<ResolversTypes['CaseStudyCollection']>, entryCollection?: Maybe<ResolversTypes['EntryCollection']>, projectCollection?: Maybe<ResolversTypes['ProjectCollection']> }>;
+  AssetLinkingCollections: ResolverTypeWrapper<Omit<AssetLinkingCollections, 'caseStudyCollection' | 'entryCollection' | 'projectCollection' | 'skillCollection'> & { caseStudyCollection?: Maybe<ResolversTypes['CaseStudyCollection']>, entryCollection?: Maybe<ResolversTypes['EntryCollection']>, projectCollection?: Maybe<ResolversTypes['ProjectCollection']>, skillCollection?: Maybe<ResolversTypes['SkillCollection']> }>;
   AssetOrder: AssetOrder;
   Boolean: ResolverTypeWrapper<Scalars['Boolean']['output']>;
   CaseStudy: ResolverTypeWrapper<Omit<CaseStudy, 'completeText' | 'linkedFrom' | 'overview' | 'text'> & { completeText?: Maybe<ResolversTypes['CaseStudyCompleteText']>, linkedFrom?: Maybe<ResolversTypes['CaseStudyLinkingCollections']>, overview?: Maybe<ResolversTypes['CaseStudyOverview']>, text?: Maybe<ResolversTypes['CaseStudyText']> }>;
@@ -1732,6 +1990,19 @@ export type ResolversTypes = {
   Query: ResolverTypeWrapper<{}>;
   ResourceLink: ResolverTypeWrapper<ResolversInterfaceTypes<ResolversTypes>['ResourceLink']>;
   ResourceSys: ResolverTypeWrapper<ResourceSys>;
+  Skill: ResolverTypeWrapper<Omit<Skill, 'description' | 'linkedFrom'> & { description?: Maybe<ResolversTypes['SkillDescription']>, linkedFrom?: Maybe<ResolversTypes['SkillLinkingCollections']> }>;
+  SkillCollection: ResolverTypeWrapper<Omit<SkillCollection, 'items'> & { items: Array<Maybe<ResolversTypes['Skill']>> }>;
+  SkillDescription: ResolverTypeWrapper<Omit<SkillDescription, 'links'> & { links: ResolversTypes['SkillDescriptionLinks'] }>;
+  SkillDescriptionAssets: ResolverTypeWrapper<SkillDescriptionAssets>;
+  SkillDescriptionEntries: ResolverTypeWrapper<Omit<SkillDescriptionEntries, 'block' | 'hyperlink' | 'inline'> & { block: Array<Maybe<ResolversTypes['Entry']>>, hyperlink: Array<Maybe<ResolversTypes['Entry']>>, inline: Array<Maybe<ResolversTypes['Entry']>> }>;
+  SkillDescriptionLinks: ResolverTypeWrapper<Omit<SkillDescriptionLinks, 'assets' | 'entries'> & { assets: ResolversTypes['SkillDescriptionAssets'], entries: ResolversTypes['SkillDescriptionEntries'] }>;
+  SkillDescriptionResources: ResolverTypeWrapper<SkillDescriptionResources>;
+  SkillDescriptionResourcesBlock: ResolverTypeWrapper<SkillDescriptionResourcesBlock>;
+  SkillDescriptionResourcesHyperlink: ResolverTypeWrapper<SkillDescriptionResourcesHyperlink>;
+  SkillDescriptionResourcesInline: ResolverTypeWrapper<SkillDescriptionResourcesInline>;
+  SkillFilter: SkillFilter;
+  SkillLinkingCollections: ResolverTypeWrapper<Omit<SkillLinkingCollections, 'entryCollection'> & { entryCollection?: Maybe<ResolversTypes['EntryCollection']> }>;
+  SkillOrder: SkillOrder;
   String: ResolverTypeWrapper<Scalars['String']['output']>;
   Sys: ResolverTypeWrapper<Sys>;
   SysFilter: SysFilter;
@@ -1749,6 +2020,7 @@ export type ResolversTypes = {
   TextFilter: TextFilter;
   TextLinkingCollections: ResolverTypeWrapper<Omit<TextLinkingCollections, 'entryCollection'> & { entryCollection?: Maybe<ResolversTypes['EntryCollection']> }>;
   TextOrder: TextOrder;
+  TimelineFilterInput: TimelineFilterInput;
   _Node: ResolverTypeWrapper<ResolversInterfaceTypes<ResolversTypes>['_Node']>;
 };
 
@@ -1757,7 +2029,7 @@ export type ResolversParentTypes = {
   Asset: Omit<Asset, 'linkedFrom'> & { linkedFrom?: Maybe<ResolversParentTypes['AssetLinkingCollections']> };
   AssetCollection: AssetCollection;
   AssetFilter: AssetFilter;
-  AssetLinkingCollections: Omit<AssetLinkingCollections, 'caseStudyCollection' | 'entryCollection' | 'projectCollection'> & { caseStudyCollection?: Maybe<ResolversParentTypes['CaseStudyCollection']>, entryCollection?: Maybe<ResolversParentTypes['EntryCollection']>, projectCollection?: Maybe<ResolversParentTypes['ProjectCollection']> };
+  AssetLinkingCollections: Omit<AssetLinkingCollections, 'caseStudyCollection' | 'entryCollection' | 'projectCollection' | 'skillCollection'> & { caseStudyCollection?: Maybe<ResolversParentTypes['CaseStudyCollection']>, entryCollection?: Maybe<ResolversParentTypes['EntryCollection']>, projectCollection?: Maybe<ResolversParentTypes['ProjectCollection']>, skillCollection?: Maybe<ResolversParentTypes['SkillCollection']> };
   Boolean: Scalars['Boolean']['output'];
   CaseStudy: Omit<CaseStudy, 'completeText' | 'linkedFrom' | 'overview' | 'text'> & { completeText?: Maybe<ResolversParentTypes['CaseStudyCompleteText']>, linkedFrom?: Maybe<ResolversParentTypes['CaseStudyLinkingCollections']>, overview?: Maybe<ResolversParentTypes['CaseStudyOverview']>, text?: Maybe<ResolversParentTypes['CaseStudyText']> };
   CaseStudyCollection: Omit<CaseStudyCollection, 'items'> & { items: Array<Maybe<ResolversParentTypes['CaseStudy']>> };
@@ -1836,6 +2108,18 @@ export type ResolversParentTypes = {
   Query: {};
   ResourceLink: ResolversInterfaceTypes<ResolversParentTypes>['ResourceLink'];
   ResourceSys: ResourceSys;
+  Skill: Omit<Skill, 'description' | 'linkedFrom'> & { description?: Maybe<ResolversParentTypes['SkillDescription']>, linkedFrom?: Maybe<ResolversParentTypes['SkillLinkingCollections']> };
+  SkillCollection: Omit<SkillCollection, 'items'> & { items: Array<Maybe<ResolversParentTypes['Skill']>> };
+  SkillDescription: Omit<SkillDescription, 'links'> & { links: ResolversParentTypes['SkillDescriptionLinks'] };
+  SkillDescriptionAssets: SkillDescriptionAssets;
+  SkillDescriptionEntries: Omit<SkillDescriptionEntries, 'block' | 'hyperlink' | 'inline'> & { block: Array<Maybe<ResolversParentTypes['Entry']>>, hyperlink: Array<Maybe<ResolversParentTypes['Entry']>>, inline: Array<Maybe<ResolversParentTypes['Entry']>> };
+  SkillDescriptionLinks: Omit<SkillDescriptionLinks, 'assets' | 'entries'> & { assets: ResolversParentTypes['SkillDescriptionAssets'], entries: ResolversParentTypes['SkillDescriptionEntries'] };
+  SkillDescriptionResources: SkillDescriptionResources;
+  SkillDescriptionResourcesBlock: SkillDescriptionResourcesBlock;
+  SkillDescriptionResourcesHyperlink: SkillDescriptionResourcesHyperlink;
+  SkillDescriptionResourcesInline: SkillDescriptionResourcesInline;
+  SkillFilter: SkillFilter;
+  SkillLinkingCollections: Omit<SkillLinkingCollections, 'entryCollection'> & { entryCollection?: Maybe<ResolversParentTypes['EntryCollection']> };
   String: Scalars['String']['output'];
   Sys: Sys;
   SysFilter: SysFilter;
@@ -1852,6 +2136,7 @@ export type ResolversParentTypes = {
   TextContentResourcesInline: TextContentResourcesInline;
   TextFilter: TextFilter;
   TextLinkingCollections: Omit<TextLinkingCollections, 'entryCollection'> & { entryCollection?: Maybe<ResolversParentTypes['EntryCollection']> };
+  TimelineFilterInput: TimelineFilterInput;
   _Node: ResolversInterfaceTypes<ResolversParentTypes>['_Node'];
 };
 
@@ -1859,37 +2144,11 @@ export type ContentSourceMapsDirectiveArgs = { };
 
 export type ContentSourceMapsDirectiveResolver<Result, Parent, ContextType = any, Args = ContentSourceMapsDirectiveArgs> = DirectiveResolverFn<Result, Parent, ContextType, Args>;
 
-export type DelegatedResourceLinkDirectiveArgs = {
-  contentTypeId?: Maybe<Scalars['String']['input']>;
-  field?: Maybe<Scalars['JSON']['input']>;
+export type TimelineDirectiveArgs = {
+  where: TimelineFilterInput;
 };
 
-export type DelegatedResourceLinkDirectiveResolver<Result, Parent, ContextType = any, Args = DelegatedResourceLinkDirectiveArgs> = DirectiveResolverFn<Result, Parent, ContextType, Args>;
-
-export type EnumMapperDirectiveArgs = {
-  value?: Maybe<Scalars['JSON']['input']>;
-};
-
-export type EnumMapperDirectiveResolver<Result, Parent, ContextType = any, Args = EnumMapperDirectiveArgs> = DirectiveResolverFn<Result, Parent, ContextType, Args>;
-
-export type FeatureFlagDirectiveArgs = {
-  featureName?: Maybe<Scalars['String']['input']>;
-};
-
-export type FeatureFlagDirectiveResolver<Result, Parent, ContextType = any, Args = FeatureFlagDirectiveArgs> = DirectiveResolverFn<Result, Parent, ContextType, Args>;
-
-export type FieldResolverDirectiveArgs = {
-  data?: Maybe<Scalars['JSON']['input']>;
-  kind?: Maybe<Scalars['String']['input']>;
-};
-
-export type FieldResolverDirectiveResolver<Result, Parent, ContextType = any, Args = FieldResolverDirectiveArgs> = DirectiveResolverFn<Result, Parent, ContextType, Args>;
-
-export type TypeIdentifierDirectiveArgs = {
-  contentTypeId?: Maybe<Scalars['String']['input']>;
-};
-
-export type TypeIdentifierDirectiveResolver<Result, Parent, ContextType = any, Args = TypeIdentifierDirectiveArgs> = DirectiveResolverFn<Result, Parent, ContextType, Args>;
+export type TimelineDirectiveResolver<Result, Parent, ContextType = any, Args = TimelineDirectiveArgs> = DirectiveResolverFn<Result, Parent, ContextType, Args>;
 
 export type AssetResolvers<ContextType = any, ParentType extends ResolversParentTypes['Asset'] = ResolversParentTypes['Asset']> = {
   contentType?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType, Partial<AssetContentTypeArgs>>;
@@ -1918,6 +2177,7 @@ export type AssetLinkingCollectionsResolvers<ContextType = any, ParentType exten
   caseStudyCollection?: Resolver<Maybe<ResolversTypes['CaseStudyCollection']>, ParentType, ContextType, RequireFields<AssetLinkingCollectionsCaseStudyCollectionArgs, 'limit' | 'skip'>>;
   entryCollection?: Resolver<Maybe<ResolversTypes['EntryCollection']>, ParentType, ContextType, RequireFields<AssetLinkingCollectionsEntryCollectionArgs, 'limit' | 'skip'>>;
   projectCollection?: Resolver<Maybe<ResolversTypes['ProjectCollection']>, ParentType, ContextType, RequireFields<AssetLinkingCollectionsProjectCollectionArgs, 'limit' | 'skip'>>;
+  skillCollection?: Resolver<Maybe<ResolversTypes['SkillCollection']>, ParentType, ContextType, RequireFields<AssetLinkingCollectionsSkillCollectionArgs, 'limit' | 'skip'>>;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
 
@@ -2122,7 +2382,7 @@ export interface DimensionScalarConfig extends GraphQLScalarTypeConfig<Resolvers
 }
 
 export type EntryResolvers<ContextType = any, ParentType extends ResolversParentTypes['Entry'] = ResolversParentTypes['Entry']> = {
-  __resolveType: TypeResolveFn<'CaseStudy' | 'Experience' | 'Header' | 'Project' | 'Text', ParentType, ContextType>;
+  __resolveType: TypeResolveFn<'CaseStudy' | 'Experience' | 'Header' | 'Project' | 'Skill' | 'Text', ParentType, ContextType>;
   contentfulMetadata?: Resolver<ResolversTypes['ContentfulMetadata'], ParentType, ContextType>;
   sys?: Resolver<ResolversTypes['Sys'], ParentType, ContextType>;
 };
@@ -2330,18 +2590,93 @@ export type QueryResolvers<ContextType = any, ParentType extends ResolversParent
   headerCollection?: Resolver<Maybe<ResolversTypes['HeaderCollection']>, ParentType, ContextType, RequireFields<QueryHeaderCollectionArgs, 'limit' | 'skip'>>;
   project?: Resolver<Maybe<ResolversTypes['Project']>, ParentType, ContextType, RequireFields<QueryProjectArgs, 'id'>>;
   projectCollection?: Resolver<Maybe<ResolversTypes['ProjectCollection']>, ParentType, ContextType, RequireFields<QueryProjectCollectionArgs, 'limit' | 'skip'>>;
+  skill?: Resolver<Maybe<ResolversTypes['Skill']>, ParentType, ContextType, RequireFields<QuerySkillArgs, 'id'>>;
+  skillCollection?: Resolver<Maybe<ResolversTypes['SkillCollection']>, ParentType, ContextType, RequireFields<QuerySkillCollectionArgs, 'limit' | 'skip'>>;
   text?: Resolver<Maybe<ResolversTypes['Text']>, ParentType, ContextType, RequireFields<QueryTextArgs, 'id'>>;
   textCollection?: Resolver<Maybe<ResolversTypes['TextCollection']>, ParentType, ContextType, RequireFields<QueryTextCollectionArgs, 'limit' | 'skip'>>;
 };
 
 export type ResourceLinkResolvers<ContextType = any, ParentType extends ResolversParentTypes['ResourceLink'] = ResolversParentTypes['ResourceLink']> = {
-  __resolveType: TypeResolveFn<'CaseStudyCompleteTextResourcesBlock' | 'CaseStudyCompleteTextResourcesHyperlink' | 'CaseStudyCompleteTextResourcesInline' | 'CaseStudyOverviewResourcesBlock' | 'CaseStudyOverviewResourcesHyperlink' | 'CaseStudyOverviewResourcesInline' | 'CaseStudyTextResourcesBlock' | 'CaseStudyTextResourcesHyperlink' | 'CaseStudyTextResourcesInline' | 'ExperienceTextResourcesBlock' | 'ExperienceTextResourcesHyperlink' | 'ExperienceTextResourcesInline' | 'HeaderTitleResourcesBlock' | 'HeaderTitleResourcesHyperlink' | 'HeaderTitleResourcesInline' | 'TextContentResourcesBlock' | 'TextContentResourcesHyperlink' | 'TextContentResourcesInline', ParentType, ContextType>;
+  __resolveType: TypeResolveFn<'CaseStudyCompleteTextResourcesBlock' | 'CaseStudyCompleteTextResourcesHyperlink' | 'CaseStudyCompleteTextResourcesInline' | 'CaseStudyOverviewResourcesBlock' | 'CaseStudyOverviewResourcesHyperlink' | 'CaseStudyOverviewResourcesInline' | 'CaseStudyTextResourcesBlock' | 'CaseStudyTextResourcesHyperlink' | 'CaseStudyTextResourcesInline' | 'ExperienceTextResourcesBlock' | 'ExperienceTextResourcesHyperlink' | 'ExperienceTextResourcesInline' | 'HeaderTitleResourcesBlock' | 'HeaderTitleResourcesHyperlink' | 'HeaderTitleResourcesInline' | 'SkillDescriptionResourcesBlock' | 'SkillDescriptionResourcesHyperlink' | 'SkillDescriptionResourcesInline' | 'TextContentResourcesBlock' | 'TextContentResourcesHyperlink' | 'TextContentResourcesInline', ParentType, ContextType>;
   sys?: Resolver<ResolversTypes['ResourceSys'], ParentType, ContextType>;
 };
 
 export type ResourceSysResolvers<ContextType = any, ParentType extends ResolversParentTypes['ResourceSys'] = ResolversParentTypes['ResourceSys']> = {
   linkType?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
   urn?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
+  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
+};
+
+export type SkillResolvers<ContextType = any, ParentType extends ResolversParentTypes['Skill'] = ResolversParentTypes['Skill']> = {
+  _id?: Resolver<ResolversTypes['ID'], ParentType, ContextType>;
+  contentfulMetadata?: Resolver<ResolversTypes['ContentfulMetadata'], ParentType, ContextType>;
+  description?: Resolver<Maybe<ResolversTypes['SkillDescription']>, ParentType, ContextType, Partial<SkillDescriptionArgs>>;
+  icon?: Resolver<Maybe<ResolversTypes['Asset']>, ParentType, ContextType, Partial<SkillIconArgs>>;
+  linkedFrom?: Resolver<Maybe<ResolversTypes['SkillLinkingCollections']>, ParentType, ContextType, Partial<SkillLinkedFromArgs>>;
+  order?: Resolver<Maybe<ResolversTypes['Int']>, ParentType, ContextType, Partial<SkillOrderArgs>>;
+  sys?: Resolver<ResolversTypes['Sys'], ParentType, ContextType>;
+  title?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType, Partial<SkillTitleArgs>>;
+  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
+};
+
+export type SkillCollectionResolvers<ContextType = any, ParentType extends ResolversParentTypes['SkillCollection'] = ResolversParentTypes['SkillCollection']> = {
+  items?: Resolver<Array<Maybe<ResolversTypes['Skill']>>, ParentType, ContextType>;
+  limit?: Resolver<ResolversTypes['Int'], ParentType, ContextType>;
+  skip?: Resolver<ResolversTypes['Int'], ParentType, ContextType>;
+  total?: Resolver<ResolversTypes['Int'], ParentType, ContextType>;
+  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
+};
+
+export type SkillDescriptionResolvers<ContextType = any, ParentType extends ResolversParentTypes['SkillDescription'] = ResolversParentTypes['SkillDescription']> = {
+  json?: Resolver<ResolversTypes['JSON'], ParentType, ContextType>;
+  links?: Resolver<ResolversTypes['SkillDescriptionLinks'], ParentType, ContextType>;
+  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
+};
+
+export type SkillDescriptionAssetsResolvers<ContextType = any, ParentType extends ResolversParentTypes['SkillDescriptionAssets'] = ResolversParentTypes['SkillDescriptionAssets']> = {
+  block?: Resolver<Array<Maybe<ResolversTypes['Asset']>>, ParentType, ContextType>;
+  hyperlink?: Resolver<Array<Maybe<ResolversTypes['Asset']>>, ParentType, ContextType>;
+  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
+};
+
+export type SkillDescriptionEntriesResolvers<ContextType = any, ParentType extends ResolversParentTypes['SkillDescriptionEntries'] = ResolversParentTypes['SkillDescriptionEntries']> = {
+  block?: Resolver<Array<Maybe<ResolversTypes['Entry']>>, ParentType, ContextType>;
+  hyperlink?: Resolver<Array<Maybe<ResolversTypes['Entry']>>, ParentType, ContextType>;
+  inline?: Resolver<Array<Maybe<ResolversTypes['Entry']>>, ParentType, ContextType>;
+  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
+};
+
+export type SkillDescriptionLinksResolvers<ContextType = any, ParentType extends ResolversParentTypes['SkillDescriptionLinks'] = ResolversParentTypes['SkillDescriptionLinks']> = {
+  assets?: Resolver<ResolversTypes['SkillDescriptionAssets'], ParentType, ContextType>;
+  entries?: Resolver<ResolversTypes['SkillDescriptionEntries'], ParentType, ContextType>;
+  resources?: Resolver<ResolversTypes['SkillDescriptionResources'], ParentType, ContextType>;
+  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
+};
+
+export type SkillDescriptionResourcesResolvers<ContextType = any, ParentType extends ResolversParentTypes['SkillDescriptionResources'] = ResolversParentTypes['SkillDescriptionResources']> = {
+  block?: Resolver<Array<ResolversTypes['SkillDescriptionResourcesBlock']>, ParentType, ContextType>;
+  hyperlink?: Resolver<Array<ResolversTypes['SkillDescriptionResourcesHyperlink']>, ParentType, ContextType>;
+  inline?: Resolver<Array<ResolversTypes['SkillDescriptionResourcesInline']>, ParentType, ContextType>;
+  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
+};
+
+export type SkillDescriptionResourcesBlockResolvers<ContextType = any, ParentType extends ResolversParentTypes['SkillDescriptionResourcesBlock'] = ResolversParentTypes['SkillDescriptionResourcesBlock']> = {
+  sys?: Resolver<ResolversTypes['ResourceSys'], ParentType, ContextType>;
+  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
+};
+
+export type SkillDescriptionResourcesHyperlinkResolvers<ContextType = any, ParentType extends ResolversParentTypes['SkillDescriptionResourcesHyperlink'] = ResolversParentTypes['SkillDescriptionResourcesHyperlink']> = {
+  sys?: Resolver<ResolversTypes['ResourceSys'], ParentType, ContextType>;
+  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
+};
+
+export type SkillDescriptionResourcesInlineResolvers<ContextType = any, ParentType extends ResolversParentTypes['SkillDescriptionResourcesInline'] = ResolversParentTypes['SkillDescriptionResourcesInline']> = {
+  sys?: Resolver<ResolversTypes['ResourceSys'], ParentType, ContextType>;
+  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
+};
+
+export type SkillLinkingCollectionsResolvers<ContextType = any, ParentType extends ResolversParentTypes['SkillLinkingCollections'] = ResolversParentTypes['SkillLinkingCollections']> = {
+  entryCollection?: Resolver<Maybe<ResolversTypes['EntryCollection']>, ParentType, ContextType, RequireFields<SkillLinkingCollectionsEntryCollectionArgs, 'limit' | 'skip'>>;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
 
@@ -2435,7 +2770,7 @@ export type TextLinkingCollectionsResolvers<ContextType = any, ParentType extend
 };
 
 export type _NodeResolvers<ContextType = any, ParentType extends ResolversParentTypes['_Node'] = ResolversParentTypes['_Node']> = {
-  __resolveType: TypeResolveFn<'CaseStudy' | 'Experience' | 'Header' | 'Project' | 'Text', ParentType, ContextType>;
+  __resolveType: TypeResolveFn<'CaseStudy' | 'Experience' | 'Header' | 'Project' | 'Skill' | 'Text', ParentType, ContextType>;
   _id?: Resolver<ResolversTypes['ID'], ParentType, ContextType>;
 };
 
@@ -2507,6 +2842,17 @@ export type Resolvers<ContextType = any> = {
   Query?: QueryResolvers<ContextType>;
   ResourceLink?: ResourceLinkResolvers<ContextType>;
   ResourceSys?: ResourceSysResolvers<ContextType>;
+  Skill?: SkillResolvers<ContextType>;
+  SkillCollection?: SkillCollectionResolvers<ContextType>;
+  SkillDescription?: SkillDescriptionResolvers<ContextType>;
+  SkillDescriptionAssets?: SkillDescriptionAssetsResolvers<ContextType>;
+  SkillDescriptionEntries?: SkillDescriptionEntriesResolvers<ContextType>;
+  SkillDescriptionLinks?: SkillDescriptionLinksResolvers<ContextType>;
+  SkillDescriptionResources?: SkillDescriptionResourcesResolvers<ContextType>;
+  SkillDescriptionResourcesBlock?: SkillDescriptionResourcesBlockResolvers<ContextType>;
+  SkillDescriptionResourcesHyperlink?: SkillDescriptionResourcesHyperlinkResolvers<ContextType>;
+  SkillDescriptionResourcesInline?: SkillDescriptionResourcesInlineResolvers<ContextType>;
+  SkillLinkingCollections?: SkillLinkingCollectionsResolvers<ContextType>;
   Sys?: SysResolvers<ContextType>;
   TaxonomyConcept?: TaxonomyConceptResolvers<ContextType>;
   Text?: TextResolvers<ContextType>;
@@ -2525,11 +2871,7 @@ export type Resolvers<ContextType = any> = {
 
 export type DirectiveResolvers<ContextType = any> = {
   contentSourceMaps?: ContentSourceMapsDirectiveResolver<any, any, ContextType>;
-  delegatedResourceLink?: DelegatedResourceLinkDirectiveResolver<any, any, ContextType>;
-  enumMapper?: EnumMapperDirectiveResolver<any, any, ContextType>;
-  featureFlag?: FeatureFlagDirectiveResolver<any, any, ContextType>;
-  fieldResolver?: FieldResolverDirectiveResolver<any, any, ContextType>;
-  typeIdentifier?: TypeIdentifierDirectiveResolver<any, any, ContextType>;
+  timeline?: TimelineDirectiveResolver<any, any, ContextType>;
 };
 
 export type GetAssetQueryVariables = Exact<{
@@ -2544,7 +2886,7 @@ export type GetCaseStudyQueryVariables = Exact<{
 }>;
 
 
-export type GetCaseStudyQuery = { __typename: 'Query', caseStudy?: { __typename: 'CaseStudy', title?: string | null, subtitle?: string | null, team?: string | null, category?: string | null, role?: string | null, client?: string | null, date?: string | null, classified?: boolean | null, overview?: { __typename: 'CaseStudyOverview', json: any } | null, completeText?: { __typename: 'CaseStudyCompleteText', json: any, links: { __typename: 'CaseStudyCompleteTextLinks', entries: { __typename: 'CaseStudyCompleteTextEntries', inline: Array<{ __typename: 'CaseStudy', sys: { __typename: 'Sys', id: string } } | { __typename: 'Experience', sys: { __typename: 'Sys', id: string } } | { __typename: 'Header', sys: { __typename: 'Sys', id: string } } | { __typename: 'Project', sys: { __typename: 'Sys', id: string } } | { __typename: 'Text', sys: { __typename: 'Sys', id: string } } | null>, block: Array<{ __typename: 'CaseStudy', sys: { __typename: 'Sys', id: string } } | { __typename: 'Experience', sys: { __typename: 'Sys', id: string } } | { __typename: 'Header', sys: { __typename: 'Sys', id: string } } | { __typename: 'Project', sys: { __typename: 'Sys', id: string } } | { __typename: 'Text', sys: { __typename: 'Sys', id: string } } | null> }, assets: { __typename: 'CaseStudyCompleteTextAssets', block: Array<{ __typename: 'Asset', url?: string | null, contentType?: string | null, title?: string | null, width?: number | null, height?: number | null, description?: string | null, sys: { __typename: 'Sys', id: string } } | null> } } } | null } | null };
+export type GetCaseStudyQuery = { __typename: 'Query', caseStudy?: { __typename: 'CaseStudy', title?: string | null, subtitle?: string | null, team?: string | null, category?: string | null, role?: string | null, client?: string | null, date?: string | null, classified?: boolean | null, overview?: { __typename: 'CaseStudyOverview', json: any } | null, completeText?: { __typename: 'CaseStudyCompleteText', json: any, links: { __typename: 'CaseStudyCompleteTextLinks', entries: { __typename: 'CaseStudyCompleteTextEntries', inline: Array<{ __typename: 'CaseStudy', sys: { __typename: 'Sys', id: string } } | { __typename: 'Experience', sys: { __typename: 'Sys', id: string } } | { __typename: 'Header', sys: { __typename: 'Sys', id: string } } | { __typename: 'Project', sys: { __typename: 'Sys', id: string } } | { __typename: 'Skill', sys: { __typename: 'Sys', id: string } } | { __typename: 'Text', sys: { __typename: 'Sys', id: string } } | null>, block: Array<{ __typename: 'CaseStudy', sys: { __typename: 'Sys', id: string } } | { __typename: 'Experience', sys: { __typename: 'Sys', id: string } } | { __typename: 'Header', sys: { __typename: 'Sys', id: string } } | { __typename: 'Project', sys: { __typename: 'Sys', id: string } } | { __typename: 'Skill', sys: { __typename: 'Sys', id: string } } | { __typename: 'Text', sys: { __typename: 'Sys', id: string } } | null> }, assets: { __typename: 'CaseStudyCompleteTextAssets', block: Array<{ __typename: 'Asset', url?: string | null, contentType?: string | null, title?: string | null, width?: number | null, height?: number | null, description?: string | null, sys: { __typename: 'Sys', id: string } } | null> } } } | null } | null };
 
 export type GetCaseStudyCollectionQueryVariables = Exact<{ [key: string]: never; }>;
 
@@ -2562,6 +2904,11 @@ export type GetExperienceCollectionQueryVariables = Exact<{ [key: string]: never
 
 
 export type GetExperienceCollectionQuery = { __typename: 'Query', experienceCollection?: { __typename: 'ExperienceCollection', items: Array<{ __typename: 'Experience', _id: string, date?: string | null, order?: number | null, client?: string | null, clientLink?: string | null, position?: string | null, text?: { __typename: 'ExperienceText', json: any } | null } | null> } | null };
+
+export type GetSkillCollectionQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type GetSkillCollectionQuery = { __typename: 'Query', skillCollection?: { __typename: 'SkillCollection', items: Array<{ __typename: 'Skill', _id: string, order?: number | null, title?: string | null, icon?: { __typename: 'Asset', url?: string | null } | null, description?: { __typename: 'SkillDescription', json: any } | null } | null> } | null };
 
 export type GetTextQueryQueryVariables = Exact<{
   id: Scalars['String']['input'];
@@ -2835,6 +3182,55 @@ export type GetExperienceCollectionQueryHookResult = ReturnType<typeof useGetExp
 export type GetExperienceCollectionLazyQueryHookResult = ReturnType<typeof useGetExperienceCollectionLazyQuery>;
 export type GetExperienceCollectionSuspenseQueryHookResult = ReturnType<typeof useGetExperienceCollectionSuspenseQuery>;
 export type GetExperienceCollectionQueryResult = Apollo.QueryResult<GetExperienceCollectionQuery, GetExperienceCollectionQueryVariables>;
+export const GetSkillCollectionDocument = gql`
+    query getSkillCollection {
+  skillCollection {
+    items {
+      _id
+      order
+      icon {
+        url
+      }
+      title
+      description {
+        json
+      }
+    }
+  }
+}
+    `;
+
+/**
+ * __useGetSkillCollectionQuery__
+ *
+ * To run a query within a React component, call `useGetSkillCollectionQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetSkillCollectionQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetSkillCollectionQuery({
+ *   variables: {
+ *   },
+ * });
+ */
+export function useGetSkillCollectionQuery(baseOptions?: Apollo.QueryHookOptions<GetSkillCollectionQuery, GetSkillCollectionQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<GetSkillCollectionQuery, GetSkillCollectionQueryVariables>(GetSkillCollectionDocument, options);
+      }
+export function useGetSkillCollectionLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetSkillCollectionQuery, GetSkillCollectionQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<GetSkillCollectionQuery, GetSkillCollectionQueryVariables>(GetSkillCollectionDocument, options);
+        }
+export function useGetSkillCollectionSuspenseQuery(baseOptions?: Apollo.SkipToken | Apollo.SuspenseQueryHookOptions<GetSkillCollectionQuery, GetSkillCollectionQueryVariables>) {
+          const options = baseOptions === Apollo.skipToken ? baseOptions : {...defaultOptions, ...baseOptions}
+          return Apollo.useSuspenseQuery<GetSkillCollectionQuery, GetSkillCollectionQueryVariables>(GetSkillCollectionDocument, options);
+        }
+export type GetSkillCollectionQueryHookResult = ReturnType<typeof useGetSkillCollectionQuery>;
+export type GetSkillCollectionLazyQueryHookResult = ReturnType<typeof useGetSkillCollectionLazyQuery>;
+export type GetSkillCollectionSuspenseQueryHookResult = ReturnType<typeof useGetSkillCollectionSuspenseQuery>;
+export type GetSkillCollectionQueryResult = Apollo.QueryResult<GetSkillCollectionQuery, GetSkillCollectionQueryVariables>;
 export const GetTextQueryDocument = gql`
     query GetTextQuery($id: String!) {
   text(id: $id) {

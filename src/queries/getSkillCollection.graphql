@@ -1,0 +1,15 @@
+query getSkillCollection {
+  skillCollection {
+    items {
+      _id
+      order
+      icon {
+        url
+      }
+      title
+      description {
+        json
+      }
+    }
+  }
+}

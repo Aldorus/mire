@@ -1,13 +1,28 @@
+@use '../../tokens/breakpoints';
+
 .ExperienceList {
-  display: flex;
-  flex-direction: column;
+  &__title {
+    text-align: center;
+    margin-bottom: var(--space-10x);
+  }
 
   &__item {
-    border-bottom: 1px solid #9BB0AE;
+    border-bottom: 1px solid var(--border-subtle);
+    margin-bottom: var(--space-6x);
+    padding: 0 var(--space-6x) var(--space-6x);
+    @media screen and (max-width: breakpoints.$breakpoint-md) {
+      padding: 0 0 var(--space-6x);
+    }
 
     &:last-child {
       border-bottom: none;
     }
   }
 
+  &__actions {
+    padding: 0 var(--space-6x) var(--space-20x);
+    @media screen and (max-width: breakpoints.$breakpoint-md) {
+      padding: 0 0 var(--space-20x);
+    }
+  }
 }

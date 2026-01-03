@@ -1,28 +1,20 @@
 directive @contentSourceMaps on QUERY
 
-directive @delegatedResourceLink(contentTypeId: String, field: JSON) on FIELD_DEFINITION | OBJECT
-
-directive @enumMapper(value: JSON) on ENUM_VALUE
-
-directive @featureFlag(featureName: String) on FIELD
-
-directive @fieldResolver(data: JSON, kind: String) on FIELD_DEFINITION
-
-directive @typeIdentifier(contentTypeId: String) on OBJECT
+directive @timeline(where: TimelineFilterInput!) on QUERY
 
 """Represents a binary file in a space. An asset can be any file type."""
 type Asset {
-  contentType(locale: String): String
+  contentType(locale: String, useFallbackLocale: Boolean): String
   contentfulMetadata: ContentfulMetadata!
-  description(locale: String): String
-  fileName(locale: String): String
-  height(locale: String): Int
+  description(locale: String, useFallbackLocale: Boolean): String
+  fileName(locale: String, useFallbackLocale: Boolean): String
+  height(locale: String, useFallbackLocale: Boolean): Int
   linkedFrom(allowedLocales: [String]): AssetLinkingCollections
-  size(locale: String): Int
+  size(locale: String, useFallbackLocale: Boolean): Int
   sys: Sys!
-  title(locale: String): String
-  url(locale: String, transform: ImageTransformOptions): String
-  width(locale: String): Int
+  title(locale: String, useFallbackLocale: Boolean): String
+  url(locale: String, transform: ImageTransformOptions, useFallbackLocale: Boolean): String
+  width(locale: String, useFallbackLocale: Boolean): Int
 }
 
 type AssetCollection {
@@ -102,9 +94,10 @@ input AssetFilter {
 }
 
 type AssetLinkingCollections {
-  caseStudyCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): CaseStudyCollection
-  entryCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): EntryCollection
-  projectCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): ProjectCollection
+  caseStudyCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0, useFallbackLocale: Boolean): CaseStudyCollection
+  entryCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0, useFallbackLocale: Boolean): EntryCollection
+  projectCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0, useFallbackLocale: Boolean): ProjectCollection
+  skillCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0, useFallbackLocale: Boolean): SkillCollection
 }
 
 enum AssetOrder {
@@ -135,24 +128,24 @@ enum AssetOrder {
 """
 type CaseStudy implements Entry & _Node {
   _id: ID!
-  assets(locale: String, preview: Boolean): Asset
-  category(locale: String): String
-  classified(locale: String): Boolean
-  client(locale: String): String
-  completeText(locale: String): CaseStudyCompleteText
+  assets(locale: String, preview: Boolean, useFallbackLocale: Boolean): Asset
+  category(locale: String, useFallbackLocale: Boolean): String
+  classified(locale: String, useFallbackLocale: Boolean): Boolean
+  client(locale: String, useFallbackLocale: Boolean): String
+  completeText(locale: String, useFallbackLocale: Boolean): CaseStudyCompleteText
   contentfulMetadata: ContentfulMetadata!
-  date(locale: String): String
+  date(locale: String, useFallbackLocale: Boolean): String
   linkedFrom(allowedLocales: [String]): CaseStudyLinkingCollections
-  mobileAsset(locale: String, preview: Boolean): Asset
-  order(locale: String): Int
-  overview(locale: String): CaseStudyOverview
-  role(locale: String): String
-  slug(locale: String): String
-  subtitle(locale: String): String
+  mobileAsset(locale: String, preview: Boolean, useFallbackLocale: Boolean): Asset
+  order(locale: String, useFallbackLocale: Boolean): Int
+  overview(locale: String, useFallbackLocale: Boolean): CaseStudyOverview
+  role(locale: String, useFallbackLocale: Boolean): String
+  slug(locale: String, useFallbackLocale: Boolean): String
+  subtitle(locale: String, useFallbackLocale: Boolean): String
   sys: Sys!
-  team(locale: String): String
-  text(locale: String): CaseStudyText
-  title(locale: String): String
+  team(locale: String, useFallbackLocale: Boolean): String
+  text(locale: String, useFallbackLocale: Boolean): CaseStudyText
+  title(locale: String, useFallbackLocale: Boolean): String
 }
 
 type CaseStudyCollection {
@@ -289,7 +282,7 @@ input CaseStudyFilter {
 }
 
 type CaseStudyLinkingCollections {
-  entryCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): EntryCollection
+  entryCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0, useFallbackLocale: Boolean): EntryCollection
 }
 
 enum CaseStudyOrder {
@@ -491,15 +484,15 @@ enum EntryOrder {
 """
 type Experience implements Entry & _Node {
   _id: ID!
-  client(locale: String): String
-  clientLink(locale: String): String
+  client(locale: String, useFallbackLocale: Boolean): String
+  clientLink(locale: String, useFallbackLocale: Boolean): String
   contentfulMetadata: ContentfulMetadata!
-  date(locale: String): String
+  date(locale: String, useFallbackLocale: Boolean): String
   linkedFrom(allowedLocales: [String]): ExperienceLinkingCollections
-  order(locale: String): Int
-  position(locale: String): String
+  order(locale: String, useFallbackLocale: Boolean): Int
+  position(locale: String, useFallbackLocale: Boolean): String
   sys: Sys!
-  text(locale: String): ExperienceText
+  text(locale: String, useFallbackLocale: Boolean): ExperienceText
 }
 
 type ExperienceCollection {
@@ -557,7 +550,7 @@ input ExperienceFilter {
 }
 
 type ExperienceLinkingCollections {
-  entryCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): EntryCollection
+  entryCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0, useFallbackLocale: Boolean): EntryCollection
 }
 
 enum ExperienceOrder {
@@ -627,10 +620,10 @@ type ExperienceTextResourcesInline implements ResourceLink {
 type Header implements Entry & _Node {
   _id: ID!
   contentfulMetadata: ContentfulMetadata!
-  info(locale: String): [String]
+  info(locale: String, useFallbackLocale: Boolean): [String]
   linkedFrom(allowedLocales: [String]): HeaderLinkingCollections
   sys: Sys!
-  title(locale: String): HeaderTitle
+  title(locale: String, useFallbackLocale: Boolean): HeaderTitle
 }
 
 type HeaderCollection {
@@ -655,7 +648,7 @@ input HeaderFilter {
 }
 
 type HeaderLinkingCollections {
-  entryCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): EntryCollection
+  entryCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0, useFallbackLocale: Boolean): EntryCollection
 }
 
 enum HeaderOrder {
@@ -851,11 +844,11 @@ scalar JSON
 """
 type Project implements Entry & _Node {
   _id: ID!
-  asset(locale: String, preview: Boolean): Asset
+  asset(locale: String, preview: Boolean, useFallbackLocale: Boolean): Asset
   contentfulMetadata: ContentfulMetadata!
   linkedFrom(allowedLocales: [String]): ProjectLinkingCollections
   sys: Sys!
-  title(locale: String): String
+  title(locale: String, useFallbackLocale: Boolean): String
 }
 
 type ProjectCollection {
@@ -881,7 +874,7 @@ input ProjectFilter {
 }
 
 type ProjectLinkingCollections {
-  entryCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): EntryCollection
+  entryCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0, useFallbackLocale: Boolean): EntryCollection
 }
 
 enum ProjectOrder {
@@ -903,21 +896,23 @@ The 'Quality' type represents quality as whole numeric values between `1` and `1
 scalar Quality
 
 type Query {
-  _node(id: ID!, locale: String, preview: Boolean): _Node
-  _nodes(ids: [ID!]!, locale: String, preview: Boolean): [_Node]!
-  asset(id: String!, locale: String, preview: Boolean): Asset
-  assetCollection(limit: Int = 100, locale: String, order: [AssetOrder], preview: Boolean, skip: Int = 0, where: AssetFilter): AssetCollection
-  caseStudy(id: String!, locale: String, preview: Boolean): CaseStudy
-  caseStudyCollection(limit: Int = 100, locale: String, order: [CaseStudyOrder], preview: Boolean, skip: Int = 0, where: CaseStudyFilter): CaseStudyCollection
-  entryCollection(limit: Int = 100, locale: String, order: [EntryOrder], preview: Boolean, skip: Int = 0, where: EntryFilter): EntryCollection
-  experience(id: String!, locale: String, preview: Boolean): Experience
-  experienceCollection(limit: Int = 100, locale: String, order: [ExperienceOrder], preview: Boolean, skip: Int = 0, where: ExperienceFilter): ExperienceCollection
-  header(id: String!, locale: String, preview: Boolean): Header
-  headerCollection(limit: Int = 100, locale: String, order: [HeaderOrder], preview: Boolean, skip: Int = 0, where: HeaderFilter): HeaderCollection
-  project(id: String!, locale: String, preview: Boolean): Project
-  projectCollection(limit: Int = 100, locale: String, order: [ProjectOrder], preview: Boolean, skip: Int = 0, where: ProjectFilter): ProjectCollection
-  text(id: String!, locale: String, preview: Boolean): Text
-  textCollection(limit: Int = 100, locale: String, order: [TextOrder], preview: Boolean, skip: Int = 0, where: TextFilter): TextCollection
+  _node(id: ID!, locale: String, preview: Boolean, useFallbackLocale: Boolean): _Node
+  _nodes(ids: [ID!]!, locale: String, preview: Boolean, useFallbackLocale: Boolean): [_Node]!
+  asset(id: String!, locale: String, preview: Boolean, useFallbackLocale: Boolean): Asset
+  assetCollection(limit: Int = 100, locale: String, order: [AssetOrder], preview: Boolean, skip: Int = 0, useFallbackLocale: Boolean, where: AssetFilter): AssetCollection
+  caseStudy(id: String!, locale: String, preview: Boolean, useFallbackLocale: Boolean): CaseStudy
+  caseStudyCollection(limit: Int = 100, locale: String, order: [CaseStudyOrder], preview: Boolean, skip: Int = 0, useFallbackLocale: Boolean, where: CaseStudyFilter): CaseStudyCollection
+  entryCollection(limit: Int = 100, locale: String, order: [EntryOrder], preview: Boolean, skip: Int = 0, useFallbackLocale: Boolean, where: EntryFilter): EntryCollection
+  experience(id: String!, locale: String, preview: Boolean, useFallbackLocale: Boolean): Experience
+  experienceCollection(limit: Int = 100, locale: String, order: [ExperienceOrder], preview: Boolean, skip: Int = 0, useFallbackLocale: Boolean, where: ExperienceFilter): ExperienceCollection
+  header(id: String!, locale: String, preview: Boolean, useFallbackLocale: Boolean): Header
+  headerCollection(limit: Int = 100, locale: String, order: [HeaderOrder], preview: Boolean, skip: Int = 0, useFallbackLocale: Boolean, where: HeaderFilter): HeaderCollection
+  project(id: String!, locale: String, preview: Boolean, useFallbackLocale: Boolean): Project
+  projectCollection(limit: Int = 100, locale: String, order: [ProjectOrder], preview: Boolean, skip: Int = 0, useFallbackLocale: Boolean, where: ProjectFilter): ProjectCollection
+  skill(id: String!, locale: String, preview: Boolean, useFallbackLocale: Boolean): Skill
+  skillCollection(limit: Int = 100, locale: String, order: [SkillOrder], preview: Boolean, skip: Int = 0, useFallbackLocale: Boolean, where: SkillFilter): SkillCollection
+  text(id: String!, locale: String, preview: Boolean, useFallbackLocale: Boolean): Text
+  textCollection(limit: Int = 100, locale: String, order: [TextOrder], preview: Boolean, skip: Int = 0, useFallbackLocale: Boolean, where: TextFilter): TextCollection
 }
 
 interface ResourceLink {
@@ -927,6 +922,113 @@ interface ResourceLink {
 type ResourceSys {
   linkType: String!
   urn: String!
+}
+
+"""
+[See type definition](https://app.contentful.com/spaces/bvolcybk2xx6/content_types/skill)
+"""
+type Skill implements Entry & _Node {
+  _id: ID!
+  contentfulMetadata: ContentfulMetadata!
+  description(locale: String, useFallbackLocale: Boolean): SkillDescription
+  icon(locale: String, preview: Boolean, useFallbackLocale: Boolean): Asset
+  linkedFrom(allowedLocales: [String]): SkillLinkingCollections
+  order(locale: String, useFallbackLocale: Boolean): Int
+  sys: Sys!
+  title(locale: String, useFallbackLocale: Boolean): String
+}
+
+type SkillCollection {
+  items: [Skill]!
+  limit: Int!
+  skip: Int!
+  total: Int!
+}
+
+type SkillDescription {
+  json: JSON!
+  links: SkillDescriptionLinks!
+}
+
+type SkillDescriptionAssets {
+  block: [Asset]!
+  hyperlink: [Asset]!
+}
+
+type SkillDescriptionEntries {
+  block: [Entry]!
+  hyperlink: [Entry]!
+  inline: [Entry]!
+}
+
+type SkillDescriptionLinks {
+  assets: SkillDescriptionAssets!
+  entries: SkillDescriptionEntries!
+  resources: SkillDescriptionResources!
+}
+
+type SkillDescriptionResources {
+  block: [SkillDescriptionResourcesBlock!]!
+  hyperlink: [SkillDescriptionResourcesHyperlink!]!
+  inline: [SkillDescriptionResourcesInline!]!
+}
+
+type SkillDescriptionResourcesBlock implements ResourceLink {
+  sys: ResourceSys!
+}
+
+type SkillDescriptionResourcesHyperlink implements ResourceLink {
+  sys: ResourceSys!
+}
+
+type SkillDescriptionResourcesInline implements ResourceLink {
+  sys: ResourceSys!
+}
+
+input SkillFilter {
+  AND: [SkillFilter]
+  OR: [SkillFilter]
+  contentfulMetadata: ContentfulMetadataFilter
+  description_contains: String
+  description_exists: Boolean
+  description_not_contains: String
+  icon_exists: Boolean
+  order: Int
+  order_exists: Boolean
+  order_gt: Int
+  order_gte: Int
+  order_in: [Int]
+  order_lt: Int
+  order_lte: Int
+  order_not: Int
+  order_not_in: [Int]
+  sys: SysFilter
+  title: String
+  title_contains: String
+  title_exists: Boolean
+  title_in: [String]
+  title_not: String
+  title_not_contains: String
+  title_not_in: [String]
+}
+
+type SkillLinkingCollections {
+  entryCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0, useFallbackLocale: Boolean): EntryCollection
+}
+
+enum SkillOrder {
+  order_ASC
+  order_DESC
+  sys_firstPublishedAt_ASC
+  sys_firstPublishedAt_DESC
+  sys_id_ASC
+  sys_id_DESC
+  sys_publishedAt_ASC
+  sys_publishedAt_DESC
+  sys_publishedVersion_ASC
+  sys_publishedVersion_DESC
+  title_ASC
+  title_DESC
 }
 
 type Sys {
@@ -991,13 +1093,13 @@ type TaxonomyConcept {
 """
 type Text implements Entry & _Node {
   _id: ID!
-  content(locale: String): TextContent
+  content(locale: String, useFallbackLocale: Boolean): TextContent
   contentfulMetadata: ContentfulMetadata!
   linkedFrom(allowedLocales: [String]): TextLinkingCollections
-  reference(locale: String): String
-  secondaryFont(locale: String): Boolean
+  reference(locale: String, useFallbackLocale: Boolean): String
+  secondaryFont(locale: String, useFallbackLocale: Boolean): Boolean
   sys: Sys!
-  tags(locale: String): [String]
+  tags(locale: String, useFallbackLocale: Boolean): [String]
 }
 
 type TextCollection {
@@ -1072,7 +1174,7 @@ input TextFilter {
 }
 
 type TextLinkingCollections {
-  entryCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): EntryCollection
+  entryCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0, useFallbackLocale: Boolean): EntryCollection
 }
 
 enum TextOrder {
@@ -1088,6 +1190,14 @@ enum TextOrder {
   sys_publishedAt_DESC
   sys_publishedVersion_ASC
   sys_publishedVersion_DESC
+}
+
+input TimelineFilterInput {
+  """Preview content starting from a given release date"""
+  release_lte: String
+
+  """Preview content starting from a given timestamp"""
+  timestamp_lte: DateTime
 }
 
 interface _Node {

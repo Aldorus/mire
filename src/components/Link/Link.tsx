@@ -19,7 +19,7 @@ export const Link: React.FC<LinkProps> = ({hoverIcon, icon, children, ...props})
       {...(props as ReactRouterLinkProps)}
       data-testid={Link.displayName}
       className={classnames([props.className, "Link", hoverIcon && "Link--hoverIcon"])}
-    >{children}<span className="Link__icon">{icon}</span></NavLink>
+    >{children}{icon && <span className="Link__icon">{icon}</span>}</NavLink>
   ) : (
     <a
       {...(props as DefaultLinkProps)}
@@ -27,7 +27,7 @@ export const Link: React.FC<LinkProps> = ({hoverIcon, icon, children, ...props})
       data-testid={Link.displayName}
     >
       {children}
-      <span className="Link__icon">{icon}</span>
+      {icon && <span className="Link__icon">{icon}</span>}
     </a>
   );
 };

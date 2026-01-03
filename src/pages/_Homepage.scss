@@ -1,4 +1,5 @@
 @use "../tokens/breakpoints";
+@use "../tokens/mixins";
 
 .Homepage {
   z-index: 2;
@@ -116,9 +117,22 @@
     }
   }
 
-  &__CaseStudies.Section--withPadding {
-    background: var(--primary-8);
+  &__Section {
+    background: var(--primary-6);
+
+    .Section__content {
+      display: flex;
+      flex-direction: column;
+      gap: 80px;
+    }
+  }
+
+  &__CaseStudies {
     padding-top: 0;
     z-index: 3;
+  }
+
+  &__About, &__Experiences {
+    @include mixins.layout-middle();
   }
 }

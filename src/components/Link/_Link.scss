@@ -7,10 +7,19 @@
   display: inline-flex;
   position: relative;
   gap: var(--space-2x);
+  cursor: pointer;
+  align-items: center;
+
+  .Link__icon {
+    height: 100%;
+    display: flex;
+    align-items: center;
+  }
 
   .Link__icon svg, .Link__icon path {
     transition: all 0.3s ease;
   }
+
   &:hover {
     .Link__icon svg, .Link__icon path {
       fill: var(--accent-2);

@@ -9,8 +9,6 @@ import {ApolloClient, ApolloProvider, InMemoryCache} from "@apollo/client";
 // import Swiper and modules styles
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import '@coreui/coreui/dist/css/coreui.min.css';
-
 
 const client = new ApolloClient({
   uri: "https://graphql.contentful.com/content/v1/spaces/bvolcybk2xx6/environments/master?access_token=h4BYfdi10dRMYuFHSJOFWD97-jzattUwAEvHYY7bGmo",

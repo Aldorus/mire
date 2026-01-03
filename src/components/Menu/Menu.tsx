@@ -6,7 +6,6 @@ import BettyHappy from "../../assets/BettyHappy.svg";
 import {useState} from "react";
 import classnames from "classnames";
 import classNames from "classnames";
-import {useLocation} from "react-router-dom";
 
 interface Props {
   isMenuOpen: boolean;
@@ -14,11 +13,10 @@ interface Props {
   onMenuClose: () => void;
 }
 const Menu = ({isMenuOpen, onMenuOpen, onMenuClose}: Props) => {
-  const {pathname} = useLocation();
   const [isHover, setIsHover] = useState(false);
 
   return <nav className="Menu">
-    <Link to="/" className={classNames(["Menu__hi", pathname.includes("about") && "Menu__hi--alternate" ])}><Sun/>&nbsp;Hello, I’m Barbara</Link>
+    <Link to="/" className={classNames(["Menu__hi"])}><Sun/>&nbsp;Hello, I’m Barbara</Link>
     <div
       onClick={() => isMenuOpen ? onMenuClose(): onMenuOpen()}
       onMouseEnter={() => setIsHover(true)}

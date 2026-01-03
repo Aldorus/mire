@@ -5,7 +5,7 @@ const RoundedBorder = () => {
   const opacity = (y / (screen.height));
   const height = 200;
   return <div style={{
-    backgroundColor: "var(--primary-8)",
+    backgroundColor: "var(--primary-6)",
     height: height,
     zIndex:2,
     position: "relative",

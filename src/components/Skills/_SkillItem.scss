@@ -1,0 +1,23 @@
+@use '../../tokens/breakpoints';
+@use '../../tokens/typography';
+
+
+.SkillItem {
+  display: flex;
+  flex-direction: column;
+  padding: var(--space-6x);
+  border-radius: var(--space-4x);
+  border: 1.5px solid var(--primary-4);
+  min-height: 269px;
+
+  &__img {
+    width: 64px;
+    height: 64px;
+    margin-bottom: auto;
+  }
+
+  &__description {
+    margin-top: var(--space-2x);
+    @include typography.body-3;
+  }
+}

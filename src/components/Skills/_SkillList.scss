@@ -1,0 +1,13 @@
+@use '../../tokens/breakpoints';
+
+.SkillList {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: var(--space-6x);
+
+  @media screen and (max-width: breakpoints.$breakpoint-md) {
+    grid-template-columns: 1fr;
+    padding-left: var(--space-4x);
+    padding-right: var(--space-4x);
+  }
+}
