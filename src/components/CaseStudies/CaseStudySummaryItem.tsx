@@ -2,10 +2,10 @@ import {flow} from "lodash/fp";
 import {Link} from "../Link/Link.tsx";
 import {useNavigate} from "react-router";
 import {useGetCaseStudyCollectionSuspenseQuery} from "../../models/graphql.ts";
-import {CSSProperties, HTMLAttributes, useEffect, useRef, useState} from "react";
+import {CSSProperties, HTMLAttributes, useState} from "react";
 import classnames from "classnames";
 import "./_CaseStudySummaryItem.scss"
-import {isVideo} from "../../lib/asset.ts";
+import {Media} from "../Media/Media.tsx";
 
 type CaseStudy = NonNullable<NonNullable<NonNullable<ReturnType<typeof useGetCaseStudyCollectionSuspenseQuery>['data']>['caseStudyCollection']>['items'][number]>;
 
@@ -17,26 +17,7 @@ type Props = {
 
 const CaseStudySummaryItem = ({item, className, style}: Props) => {
   const navigate = useNavigate();
-  const ref = useRef<HTMLVideoElement>(null);
   const [hover, setHover] = useState(false);
-
-  useEffect(() => {
-    if(ref.current){
-      ref.current?.pause();
-      ref.current.currentTime = 0;
-    }
-  }, []);
-
-  useEffect(() => {
-    if(hover) {
-      ref.current?.play();
-    } else {
-      if(ref.current){
-        ref.current?.pause();
-        ref.current.currentTime = 0;
-      }
-    }
-  }, [hover]);
 
   return <div
     key={item._id}
@@ -48,15 +29,13 @@ const CaseStudySummaryItem = ({item, className, style}: Props) => {
     )}
     onMouseOver={() => setHover(true)}
     onMouseLeave={() => setHover(false)}>
-    <div className="asset">
-      {isVideo(item.assets) ? <video loop muted ref={ref} playsInline autoPlay>
-        <source src={item.assets?.url ?? ''} type="video/mp4"/>
-      </video> : <img src={item.assets?.url ?? ''}/>}
-    </div>
-    <Link to={`/case/${item.slug}`} className="CaseStudiesItem__link" button><div className="description">
-      <h5>{item.title}</h5>
-      <span className="subtitle">{item.subtitle}</span>
-    </div></Link>
+    <Media asset={item.assets} play={hover} className="CaseStudiesItem__asset"/>
+    <Link to={`/case/${item.slug}`} className="CaseStudiesItem__link" button>
+      <div className="CaseStudiesItem__description">
+        <h5>{item.title}</h5>
+        <span className="subtitle">{item.subtitle}</span>
+      </div>
+    </Link>
   </div>
 }
 

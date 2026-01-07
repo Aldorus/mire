@@ -11,10 +11,10 @@
   align-items: center;
 
   .Link__icon {
-    height: 100%;
     display: flex;
     align-items: center;
     width: 0.8em;
+    height: 0;
   }
 
   .Link__icon svg, .Link__icon path {
@@ -33,5 +33,31 @@
 
   &--reverseIcon {
     flex-direction: row-reverse;
+  }
+
+
+  &--animated {
+    .Link__children {
+      position: relative;
+
+      &::after {
+        content: '';
+        display: block;
+        width: 0;
+        height: 1px;
+        background: var(--accent-2);
+        position: absolute;
+        bottom: 0;
+      }
+
+      &:hover {
+        &::after {
+          animation: 'widthFromLeft';
+          animation-duration: 0.5s;
+          animation-fill-mode: forwards;
+        }
+      }
+    }
+
   }
 }

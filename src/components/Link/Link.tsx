@@ -12,22 +12,26 @@ type LinkProps = (DefaultLinkProps | ReactRouterLinkProps) & {
   icon?: ReactNode;
   button?: boolean;
   reverseIcon?: boolean;
+  animated?: boolean;
 };
-export const Link: React.FC<LinkProps> = ({ icon, button = false, reverseIcon = false, children, ...props}) => {
+export const Link: React.FC<LinkProps> = ({ icon, button = false, reverseIcon = false, animated = false, children, ...props}) => {
   return (props as ReactRouterLinkProps).to ? (
     <NavLink
       smooth
       {...(props as ReactRouterLinkProps)}
       data-testid={Link.displayName}
-      className={classnames([props.className, "Link", button && "Link--button", reverseIcon && "Link--reverseIcon"])}
-    >{children}{icon && <span className="Link__icon">{icon}</span>}</NavLink>
+      className={classnames([props.className, "Link", button && "Link--button", animated && "Link--animated", reverseIcon && "Link--reverseIcon"])}
+    >
+      <span className="Link__children">{children}</span>
+      {icon && <span className="Link__icon">{icon}</span>}
+    </NavLink>
   ) : (
     <a
       {...(props as DefaultLinkProps)}
-      className={classnames([props.className, 'Link', button && "Link--button", reverseIcon && "Link--reverseIcon"])}
+      className={classnames([props.className, 'Link', button && "Link--button", animated && "Link--animated", reverseIcon && "Link--reverseIcon"])}
       data-testid={Link.displayName}
     >
-      {children}
+      <span className="Link__children">{children}</span>
       {icon && <span className="Link__icon">{icon}</span>}
     </a>
   );

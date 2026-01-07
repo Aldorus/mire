@@ -19,6 +19,10 @@ const Homepage = () => {
 
   return <Page className="Homepage">
     <Section fullHeight sticky className="Homepage__top" centered={false}>
+      {/*<div className="Homepage__orb Homepage__orb--1" />*/}
+      {/*<div className="Homepage__orb Homepage__orb--2" />*/}
+      {/*<div className="Homepage__orb Homepage__orb--3" />*/}
+
       <div style={{opacity}} >
         <div className="Homepage__headline">
           <RichText content={data?.text?.content} className="Homepage__headline__text"/>

@@ -13,7 +13,7 @@
     }
   }
 
-  .asset {
+  &__asset {
     flex: 1;
     overflow: hidden;
     border-radius: 8px;
@@ -30,7 +30,7 @@
     &:hover {color:black}
   }
 
-  .description {
+  &__description {
     display: flex;
     flex-direction: column;
     margin: var(--space-4x) 0;

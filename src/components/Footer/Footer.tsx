@@ -16,13 +16,13 @@ const Footer = ({className}: Props) => {
 
   return <Section className={classnames([className, 'Footer'])} id="footer" centered={false} noPadding>
     <div className="Footer__links">
-      {resumeData?.asset?.url && <Link to={resumeData.asset.url} target="_blank" icon={<ExternalLink/>} button>
+      {resumeData?.asset?.url && <Link to={resumeData.asset.url} target="_blank" icon={<ExternalLink/>} button animated>
         Resume
       </Link>}
-      <Link to="https://www.linkedin.com/in/barbaramarche/" target="_blank" icon={<ExternalLink/>} button>
+      <Link to="https://www.linkedin.com/in/barbaramarche/" target="_blank" icon={<ExternalLink/>} button animated>
         Linkedin
       </Link>
-      <Link to="https://www.behance.net/barbara-marche" target="_blank" icon={<ExternalLink/>} button>
+      <Link to="https://www.behance.net/barbara-marche" target="_blank" icon={<ExternalLink/>} button animated>
         Behance
       </Link>
     </div>
