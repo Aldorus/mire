@@ -2,138 +2,35 @@
 @use "../tokens/mixins";
 
 .Homepage {
-  z-index: 2;
   position: relative;
-  background: var(--background-color);
-  overflow: hidden;
 
   &__top {
-    pointer-events: none;
     display: flex;
-    flex-direction: column;
     align-items: center;
-    margin-top: var(--space-8x);
-    position: sticky;
-
-    @media screen and (max-width: breakpoints.$breakpoint-md) {
-      padding-top: 80px;
-    }
+    background: url("../assets/Gradient v1.svg");
+    background-size:  cover;
   }
 
   &__headline {
-    &__title {
-      text-align: center;
-      font-size: 4.9rem;
-      font-family: var(--font-secondary);
-      font-weight: 600;
-      line-height: 1.05;
-
-      @media screen and (max-width: breakpoints.$breakpoint-md) {
-        font-size: 2.5rem;
-        line-height: 1.1;
-      }
-
-      &__alternativeColor {
-        color: var(--accent-2)
-      }
-
-      &__alternativeFont {
-        font-family: var(--font-primary);
-        font-weight: 300;
-        font-style: italic;
-        position: relative;
-        top: -10px;
-      }
-
-      &__icon {
-        width: 64px;
-        height: 64px;
-        position: relative;
-        top: -10px;
-
-        @media screen and (max-width: breakpoints.$breakpoint-md) {
-          width: 30px;
-          height: 30px;
-        }
-
-        path {
-          fill: #9BB0AE;
-        }
-      }
-    }
-
-    &__text {
-      color: var(--primary-2);
-      margin-top: var(--space-6x);
-      line-height: 24px;
-      text-align: center;
-      max-width: 540px;
-
-      @media screen and (max-width: breakpoints.$breakpoint-md) {
-        max-width: 288px;
-      }
-    }
+    max-width: var(--max-width-small);
   }
 
-  &__town {
-    font-family: var(--font-secondary);
-    margin-bottom: var(--space-8x);
-    color: var(--primary-2);
-  }
-
-  @keyframes shink {
-    from {
-      transform: scaleY(2);
-      transform-origin: center 6px;
-    }
-    to{
-      transform: scaleY(2);
-      transform-origin: center 6px;
-    }
-  }
-  @keyframes move {
-    from {
-      transform: translateY(0);
-    }
-    to{
-      transform: translateY(15px);
-    }
-  }
-  &__cta__icon {
-    position: absolute;
-    left: calc(50% - 12px);
-    bottom: -10vh;
-    z-index: 1;
-    display: none;
-
-    @media screen and (max-width: breakpoints.$breakpoint-md) {
-      bottom: var(--space-6x);
-    }
-
-    g rect {
-      animation: shink 2s alternate-reverse infinite linear;
-    }
-    g #bottom {
-      animation: move 2s alternate-reverse infinite linear;
-    }
-  }
 
   &__Section {
-    background: var(--primary-6);
-
-    .Section__content {
-      display: flex;
-      flex-direction: column;
-      gap: 80px;
-    }
-  }
-
-  &__CaseStudies {
+    background: var(--neutral-2);
     padding-top: 0;
     z-index: 3;
+    display: flex;
+    flex-direction: column;
+    gap: 120px;
+    margin-bottom: 80px;
+  }
+
+  &__Skills {
+    margin-top: 80px;
   }
 
   &__About, &__Experiences {
-    @include mixins.layout-middle();
+    max-width: var(--max-width-small);
   }
 }

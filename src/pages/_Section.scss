@@ -5,9 +5,10 @@
 .Section{
   position: relative;
 
-  &--fullHeight{
+  &--fullHeight {
     min-height: 100vh;
   }
+
 
   &--noPadding {
     padding: 0;
@@ -26,26 +27,10 @@
     top: 0;
   }
 
-  &--large {
-    .Section__content {
+  &--centered {
+    &>* {
       @include mixins.centered;
       padding: 0 var(--space-16x) 0 var(--space-16x);
-
-      @media screen and (max-width: breakpoints.$breakpoint-md) {
-        padding: 0;
-      }
     }
   }
-
-  &--small {
-    .Section__content {
-      @include mixins.centered;
-      max-width: 984px;
-      padding: 0 var(--space-16x) 0 var(--space-16x);
-      @media screen and (max-width: breakpoints.$breakpoint-md) {
-        padding: 0;
-      }
-    }
-  }
-
 }

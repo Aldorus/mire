@@ -14,6 +14,7 @@
     height: 100%;
     display: flex;
     align-items: center;
+    width: 0.8rem;
   }
 
   .Link__icon svg, .Link__icon path {
@@ -26,16 +27,11 @@
     }
   }
 
-  &--hoverIcon {
-    .Link__icon {
-      opacity: 0;
-      transition: all 0.3s ease;
-    }
+  &--button {
+    text-decoration: none;
+  }
 
-    &:hover{
-      .Link__icon {
-        opacity: 1;
-      }
-    }
+  &--reverseIcon {
+    flex-direction: row-reverse;
   }
 }

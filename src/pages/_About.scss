@@ -4,11 +4,11 @@
 
 .About {
   display: flex;
-  gap: var(--space-10x);
+  gap: var(--space-8x);
   flex-direction: column;
-  align-items: center;
 
   &__image {
+    align-self: center;
     width: 156px;
     border-radius: 78px;
   }

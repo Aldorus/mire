@@ -18,7 +18,7 @@ const ExperienceList = ({className}: Props) => {
     <ExperienceItem experience={experience} className="ExperienceList__item" key={experience._id} />
 
   return <div className={classNames(['ExperienceList', className])}>
-    <h2 className="ExperienceList__title">EXPERIENCES</h2>
+    <h4 className="ExperienceList__title">Experiences</h4>
     {flow(
       sortBy((experience: Pick<Experience, 'order'>) => experience.order),
       isExpended ? (a) => a : slice(0, 3),

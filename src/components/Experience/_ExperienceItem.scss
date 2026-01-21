@@ -7,15 +7,17 @@
   grid-template-columns: 1fr 2fr;
   grid-gap: var(--space-8x);
 
+  &__client {
+    color: var(--accent-4);
+  }
+
+  &__position.Text, &__date.Text {
+    @include typography.emphasis-4;
+  }
+
   &__info {
     display: flex;
     flex-direction: column;
     gap: var(--space-2x);
-  }
-
-  .ExperienceItem__date {
-    font-size: 0.9rem;
-    text-transform: uppercase;
-    color: var(--primary-2);
   }
 }

@@ -13,7 +13,7 @@ const ExperienceItem = ({experience, className}: Props) => {
   return <div className={classNames([className, "ExperienceItem"])}>
     <div className="ExperienceItem__info">
       <Text className="ExperienceItem__date">{experience.date}</Text>
-      <Text className="ExperienceItem__link">{experience.client}</Text>
+      <h5 className="ExperienceItem__client">{experience.client}</h5>
       <Text className="ExperienceItem__position">{experience.position}</Text>
     </div>
     <div className="ExperienceItem__content">

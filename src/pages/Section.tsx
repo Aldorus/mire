@@ -4,9 +4,9 @@ import classnames from "classnames";
 
 interface Props {
   fullHeight?: boolean;
+  centered?: boolean;
   noPadding?: boolean;
   sticky?: boolean;
-  type?: 'small' | 'large';
   children: ReactNode;
   id?: string,
   className?: HTMLAttributes<HTMLDivElement>['className'],
@@ -14,16 +14,18 @@ interface Props {
   ref?: Ref<HTMLDivElement>;
 }
 
-const Section = ({fullHeight = false, sticky=false, noPadding=false, type="large", style, className, id, children, ref}: Props) => {
+const Section = ({fullHeight = false, centered = true, sticky=false, noPadding=false, style, className, id, children, ref}: Props) => {
   return <div ref={ref} style={style} className={classnames([
     className,
     'Section',
     fullHeight && 'Section--fullHeight',
+    centered && 'Section--centered',
     noPadding && "Section--noPadding",
     !noPadding && "Section--withPadding",
     sticky && "Section--sticky",
-    `Section--${type}`
-  ])} id={id}><div className="Section__content">{children}</div></div>
+  ])} id={id}>
+    {children}
+  </div>
 }
 
 export default Section;

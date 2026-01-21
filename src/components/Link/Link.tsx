@@ -9,21 +9,22 @@ type ReactRouterLinkProps = NavLinkProps &
   React.AnchorHTMLAttributes<HTMLAnchorElement>;
 type DefaultLinkProps = React.AnchorHTMLAttributes<HTMLAnchorElement>;
 type LinkProps = (DefaultLinkProps | ReactRouterLinkProps) & {
-  hoverIcon?: boolean;
   icon?: ReactNode;
+  button?: boolean;
+  reverseIcon?: boolean;
 };
-export const Link: React.FC<LinkProps> = ({hoverIcon, icon, children, ...props}) => {
+export const Link: React.FC<LinkProps> = ({ icon, button = false, reverseIcon = false, children, ...props}) => {
   return (props as ReactRouterLinkProps).to ? (
     <NavLink
       smooth
       {...(props as ReactRouterLinkProps)}
       data-testid={Link.displayName}
-      className={classnames([props.className, "Link", hoverIcon && "Link--hoverIcon"])}
+      className={classnames([props.className, "Link", button && "Link--button", reverseIcon && "Link--reverseIcon"])}
     >{children}{icon && <span className="Link__icon">{icon}</span>}</NavLink>
   ) : (
     <a
       {...(props as DefaultLinkProps)}
-      className={classnames([props.className, 'Link', hoverIcon && "Link--hoverIcon"])}
+      className={classnames([props.className, 'Link', button && "Link--button", reverseIcon && "Link--reverseIcon"])}
       data-testid={Link.displayName}
     >
       {children}

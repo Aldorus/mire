@@ -3,19 +3,15 @@
 @use '../../tokens/breakpoints';
 
 .Menu {
-  @include mixins.centered;
   padding: var(--space-4x) var(--space-16x);
   display: flex;
   justify-content: space-between;
   align-items: center;
   position: relative;
   z-index: 10;
+  height: 100px;
 
-  @media screen and (max-width: breakpoints.$breakpoint-md) {
-    padding:var(--space-4x);
-  }
-
-  .Menu__hi {
+  &__hi {
     display: flex;
     @include typography.emphasis-3;
     align-items: center;
@@ -49,33 +45,49 @@
     }
   }
 
-  &__trigger {
-    position: relative;
-    width: 48px;
-    height: 48px;
-    cursor: pointer;
-    z-index: 5;
+  &__navigation {
+    display: flex;
+    gap: var(--space-8x);
+    align-items: center;
+    list-style-type: none;
 
-    .betty {
-      position: fixed;
-      transition: opacity .3s ease;
-      z-index: -1;
+    .Link {
+      font-family: var(--font-secondary);
+      font-weight: 500;
     }
-    .standard{
-      opacity: 1;
-      z-index: 1;
-    }
-    .happy {
-      opacity: 0;
-    }
-    &--hover, &--open {
-      .standard{
-        opacity: 0;
-      }
-      .happy {
-        opacity: 1;
-        z-index: 1;
-      }
+
+    @media screen and (max-width: breakpoints.$breakpoint-md) {
+      display: none;
     }
   }
+
+  //&__trigger {
+  //  position: relative;
+  //  width: 48px;
+  //  height: 48px;
+  //  cursor: pointer;
+  //  z-index: 5;
+  //
+  //  .betty {
+  //    position: fixed;
+  //    transition: opacity .3s ease;
+  //    z-index: -1;
+  //  }
+  //  .standard{
+  //    opacity: 1;
+  //    z-index: 1;
+  //  }
+  //  .happy {
+  //    opacity: 0;
+  //  }
+  //  &--hover, &--open {
+  //    .standard{
+  //      opacity: 0;
+  //    }
+  //    .happy {
+  //      opacity: 1;
+  //      z-index: 1;
+  //    }
+  //  }
+  //}
 }

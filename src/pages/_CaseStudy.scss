@@ -4,18 +4,11 @@
 @use "../tokens/animations";
 
 .CaseStudy {
-  --paddingCaseStudy: var(--space-48x);
-  background: var(--primary-8);
   z-index: 2;
   position: relative;
 
-
-  @media screen and (max-width: breakpoints.$breakpoint-md) {
-    --paddingCaseStudy: var(--space-6x);
-  }
-
-  &__section {
-    padding-bottom: var(--space-8x);
+  &__header  {
+    padding-bottom: var(--space-10x);
   }
 
   &__title {
@@ -24,14 +17,12 @@
   }
 
   &__subtitle {
-    font-size: 1.2rem;
-    line-height: 1.33;
-    font-weight: 300;
+    @include typography.body-1;
     margin-bottom: var(--space-8x);
   }
 
   &__wrapper {
-    border-top: 1px solid var(--primary-2);
+    border-top: 1px solid var(--neutral-3);
     display: grid;
     grid-template-columns: 1fr 2fr;
     padding-top: var(--space-10x);
@@ -59,7 +50,6 @@
   }
 
   &__overview {
-
     @media screen and (max-width: breakpoints.$breakpoint-md) {
       margin-top: var(--space-8x);
       border-top: 1px solid var(--primary-2);
@@ -73,7 +63,7 @@
 
   &__quote {
     border-radius: 8px;
-    background: var(--primary-1);
+    background: var(--accent-2);
     padding: var(--space-8x) var(--space-8x);
     display: flex;
     flex-direction: column;
@@ -114,18 +104,7 @@
     padding-bottom: var(--space-32x);
 
     > *:not(figure)  {
-      @include mixins.centered;
-      max-width: 984px;
-      padding: 0 var(--space-16x);
-    }
-
-    @media screen and (max-width: breakpoints.$breakpoint-md) {
-      padding-left: var(--space-4x);
-      padding-right: var(--space-4x);
-
-      > *:not(figure)  {
-        padding: 0;
-      }
+      width: 100%;
     }
 
     img,video {
@@ -141,17 +120,10 @@
     }
 
     blockquote {
-      border: 1px solid var(--primary-2);
+      border: 1px solid var(--accent-4);
       border-radius: 8px;
       text-align: center;
       padding: var(--space-10x);
-      max-width: calc(984px - 64px - 64px);
-      width: calc(100% - 64px - 64px);
-
-      @media screen and (max-width: breakpoints.$breakpoint-md) {
-        width: calc(100% - var(--space-8x));
-        margin: 0 var(--space-4x);
-      }
 
       p {
         line-height: 1.5;

@@ -22,7 +22,6 @@ const CaseStudiesSummary = ({className}: Props) => {
   return <div
     className={classnames('CaseStudies', className)}
     id="projects">
-    <BlockReveal><h2 className="CaseStudies__title">SELECTED WORKS</h2></BlockReveal>
     <div className="CaseStudies__list--vertical">
       {flow(
         compact,

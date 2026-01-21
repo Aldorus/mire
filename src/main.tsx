@@ -11,7 +11,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
 const client = new ApolloClient({
-  uri: "https://graphql.contentful.com/content/v1/spaces/bvolcybk2xx6/environments/master?access_token=h4BYfdi10dRMYuFHSJOFWD97-jzattUwAEvHYY7bGmo",
+  uri: "https://graphql.contentful.com/content/v1/spaces/bvolcybk2xx6/environments/dev?access_token=h4BYfdi10dRMYuFHSJOFWD97-jzattUwAEvHYY7bGmo",
   cache: new InMemoryCache(),
 });
 

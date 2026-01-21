@@ -40,22 +40,19 @@
     figcaption {
       @include typography.body-3;
       text-align: center;
-      margin-top: var(--space-6x);
-
-      @media screen and (max-width: breakpoints.$breakpoint-md) {
-        margin-top: var(--space-2x);
-      }
     }
   }
 
   blockquote {
+    display: block;
+    width: 100%;
     font-size: 1.77rem;
     font-style: italic;
     margin: 0;
 
     p {
       line-height: normal;
-      font-weight: normal;
+      font-weight: 300;
     }
   }
 

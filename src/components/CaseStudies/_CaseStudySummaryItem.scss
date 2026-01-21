@@ -35,9 +35,4 @@
     flex-direction: column;
     margin: var(--space-4x) 0;
   }
-  
-
-  .title {
-    @include typography.emphasis-3;
-  }
 }
