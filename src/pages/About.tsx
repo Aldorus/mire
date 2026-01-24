@@ -1,5 +1,5 @@
 import "./_About.scss";
-import {useGetAssetSuspenseQuery, useGetTextQuerySuspenseQuery} from "../models/graphql.ts";
+import {useGetTextQuerySuspenseQuery} from "../models/graphql.ts";
 import {RichText} from "../components/Typography/RichText.tsx";
 import {HTMLAttributes} from "react";
 import classNames from "classnames";

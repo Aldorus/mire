@@ -4,7 +4,6 @@
 }
 
 @mixin opacityAnimation($animationDuration: var(--shortAnimation), $animationDelay: 0) {
-
   animation: opacityEffect;
   animation-fill-mode: both;
   animation-duration: $animationDuration;
@@ -12,7 +11,6 @@
 }
 
 @mixin blockReveal($animationDuration: var(--longAnimation), $animationDelay: 0) {
-
   animation: blockReveal;
   animation-fill-mode: both;
   animation-duration: $animationDuration;

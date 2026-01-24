@@ -6,7 +6,7 @@
   }
 
   &__item {
-    border-bottom: 1px solid var(--border-subtle);
+    border-bottom: 1px solid var(--neutral-3);
     margin-bottom: var(--space-6x);
     padding: 0 0 var(--space-6x);
     @media screen and (max-width: breakpoints.$breakpoint-md) {
@@ -19,6 +19,6 @@
   }
 
   &__actions {
-    
+
   }
 }

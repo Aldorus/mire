@@ -11,15 +11,16 @@
   z-index: 10;
   height: 100px;
 
-  &__hi {
+  @media screen and (max-width: breakpoints.$breakpoint-md) {
+    padding: 0 var(--space-4x);
+    height: 80px;
+  }
+
+  &__name {
     display: flex;
     @include typography.emphasis-3;
     align-items: center;
     color: var(--text-color);
-
-    &--alternate {
-      color: var(--neutral-3);
-    }
 
     svg path {
       transition: all .3s ease;
@@ -27,7 +28,7 @@
 
     &:hover, &:active {
       svg path {
-        fill: var(--accent-2);
+        fill: var(--accent-3);
       }
     }
 
@@ -51,43 +52,18 @@
     align-items: center;
     list-style-type: none;
 
-    .Link {
-      font-family: var(--font-secondary);
-      font-weight: 500;
-    }
-
     @media screen and (max-width: breakpoints.$breakpoint-md) {
       display: none;
     }
   }
 
-  //&__trigger {
-  //  position: relative;
-  //  width: 48px;
-  //  height: 48px;
-  //  cursor: pointer;
-  //  z-index: 5;
-  //
-  //  .betty {
-  //    position: fixed;
-  //    transition: opacity .3s ease;
-  //    z-index: -1;
-  //  }
-  //  .standard{
-  //    opacity: 1;
-  //    z-index: 1;
-  //  }
-  //  .happy {
-  //    opacity: 0;
-  //  }
-  //  &--hover, &--open {
-  //    .standard{
-  //      opacity: 0;
-  //    }
-  //    .happy {
-  //      opacity: 1;
-  //      z-index: 1;
-  //    }
-  //  }
-  //}
+  &__trigger {
+    display: none;
+    padding: var(--space-3x);
+
+    @media screen and (max-width: breakpoints.$breakpoint-md) {
+      display: block;
+    }
+  }
+
 }

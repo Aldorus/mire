@@ -24,11 +24,14 @@
   }
 
   @media screen and (max-width: breakpoints.$breakpoint-md) {
+    padding: var(--space-10x) var(--space-4x);
+    flex-direction: column;
+
     .Footer__links {
       flex-direction: column;
-      padding-bottom: var(--space-6x);
-      margin-bottom: var(--space-6x);
-      border-bottom: 1px solid var(--primary-2);
+      padding-bottom: var(--space-8x);
+      margin-bottom: var(--space-8x);
+      border-bottom: 1px solid var(--neutral-4);
     }
 
     .Footer__credits {

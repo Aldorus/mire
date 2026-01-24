@@ -2,13 +2,12 @@
 @use './../tokens/mixins';
 @use './../tokens/colors';
 
-.Section{
+.Section {
   position: relative;
 
-  &--fullHeight {
+  &--fullHeight{
     min-height: 100vh;
   }
-
 
   &--noPadding {
     padding: 0;
@@ -30,7 +29,6 @@
   &--centered {
     &>* {
       @include mixins.centered;
-      padding: 0 var(--space-16x) 0 var(--space-16x);
     }
   }
 }

@@ -1,9 +1,10 @@
 import './_Menu.scss';
 import {Link} from "../Link/Link.tsx";
 import Sun from "../../assets/Sun.svg?react";
-import {useState} from "react";
 import classNames from "classnames";
 import ExternalLink from "../../assets/ExternalLink.svg?react";
+import Burger from "../../assets/Burger.svg?react";
+import Close from "../../assets/Close.svg?react";
 
 interface Props {
   isMenuOpen: boolean;
@@ -11,10 +12,8 @@ interface Props {
   onMenuClose: () => void;
 }
 const Menu = ({isMenuOpen, onMenuOpen, onMenuClose}: Props) => {
-  const [isHover, setIsHover] = useState(false);
-
   return <nav className="Menu">
-    <Link to="/" button className={classNames(["Menu__hi"])}><Sun/>&nbsp;Barbara Marche</Link>
+    <Link to="/" button className={classNames(["Menu__name"])}><Sun/>&nbsp;Barbara Marche</Link>
 
     <ol className="Menu__navigation">
       <li>
@@ -43,20 +42,11 @@ const Menu = ({isMenuOpen, onMenuOpen, onMenuClose}: Props) => {
       </li>
     </ol>
 
-    {/*<div*/}
-    {/*  onClick={() => isMenuOpen ? onMenuClose(): onMenuOpen()}*/}
-    {/*  onMouseEnter={() => setIsHover(true)}*/}
-    {/*  onMouseLeave={() => setIsHover(false)}*/}
-    {/*  className={classnames([*/}
-    {/*    "Menu__trigger",*/}
-    {/*    isMenuOpen && 'Menu__trigger--open',*/}
-    {/*    isHover && 'Menu__trigger--hover'*/}
-    {/*  ])}>*/}
-    {/*  <div>*/}
-    {/*    <img src={BettyStandard} className={classnames(['betty', 'standard'])}/>*/}
-    {/*    <img src={BettyHappy} className={classnames(['betty', 'happy'])}/>*/}
-    {/*  </div>*/}
-    {/*</div>*/}
+    <div
+      onClick={() => isMenuOpen ? onMenuClose(): onMenuOpen()}
+      className="Menu__trigger">
+      {isMenuOpen ? <Close/> : <Burger/>}
+    </div>
   </nav>
 }
 export default Menu

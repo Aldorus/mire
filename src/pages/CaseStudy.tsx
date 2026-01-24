@@ -77,7 +77,7 @@ const CaseStudy = () => {
       </Section>
     </BlockReveal>
     <BlockReveal>
-      <Section noPadding>
+      <Section className="CaseStudy__content">
         <div>
           <RichText content={data?.caseStudy.completeText} className="CaseStudy__completeText"/>
         </div>

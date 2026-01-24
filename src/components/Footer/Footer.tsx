@@ -17,7 +17,7 @@ const Footer = ({className}: Props) => {
   return <Section className={classnames([className, 'Footer'])} id="footer" centered={false} noPadding>
     <div className="Footer__links">
       {resumeData?.asset?.url && <Link to={resumeData.asset.url} target="_blank" icon={<ExternalLink/>} button>
-        Download my resume
+        Resume
       </Link>}
       <Link to="https://www.linkedin.com/in/barbaramarche/" target="_blank" icon={<ExternalLink/>} button>
         Linkedin

@@ -39,6 +39,7 @@
   figure {
     figcaption {
       @include typography.body-3;
+      font-style: italic;
       text-align: center;
     }
   }
@@ -57,9 +58,6 @@
   }
 
   ul {
-    position: relative;
-    left: var(--space-6x);
-
-    p{margin-bottom: 0}
+    p { margin-bottom: 0 }
   }
 }

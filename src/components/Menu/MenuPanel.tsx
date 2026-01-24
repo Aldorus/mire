@@ -9,43 +9,35 @@ interface Props {
 }
 export const MenuPanel = ({isMenuOpen, onClose}: Props) => {
   return <div className={classnames(['MenuPanel', isMenuOpen && 'MenuPanel--open']) }>
-    <div className="Section">
-      <ol>
-        <li>
-          <Link
-            to='/#projects'
-            onClick={onClose}>
-            Projects
-          </Link>
-        </li>
-        <li>
-          <Link
-            to='https://assets.ctfassets.net/bvolcybk2xx6/7vsh60Sp5ygHoftxr1Eime/3bb6f7f8bbb8c0e3547be52ffe6c1ef4/bmarche-resume.pdf'
-            onClick={onClose}
-            target="_blank"
-            icon={<ExternalLink/>}>
-            Resume
-          </Link>
-        </li>
-        <li>
-          <Link
-            to="https://www.linkedin.com/in/barbaramarche/"
-            onClick={onClose}
-            target="_blank"
-            icon={<ExternalLink/>}>
-            LinkedIn
-          </Link>
-        </li>
-        <li>
-          <Link
-            to="https://www.behance.net/barbara-marche"
-            onClick={onClose}
-            target="_blank"
-            icon={<ExternalLink/>}>
-            Behance
-          </Link>
-        </li>
-      </ol>
-    </div>
+    <ol>
+      <li>
+        <Link
+          to='/#projects'
+          button
+          onClick={onClose}>
+          Projects
+        </Link>
+      </li>
+      <li>
+        <Link
+          to='https://assets.ctfassets.net/bvolcybk2xx6/7vsh60Sp5ygHoftxr1Eime/3bb6f7f8bbb8c0e3547be52ffe6c1ef4/bmarche-resume.pdf'
+          onClick={onClose}
+          target="_blank"
+          button
+          icon={<ExternalLink/>}>
+          Resume
+        </Link>
+      </li>
+      <li>
+        <Link
+          to="https://www.linkedin.com/in/barbaramarche/"
+          onClick={onClose}
+          target="_blank"
+          button
+          icon={<ExternalLink/>}>
+          LinkedIn
+        </Link>
+      </li>
+    </ol>
   </div>;
 }

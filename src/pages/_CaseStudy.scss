@@ -9,10 +9,15 @@
 
   &__header  {
     padding-bottom: var(--space-10x);
+
+    @media screen and (max-width: breakpoints.$breakpoint-md) {
+      margin-top: var(--space-8x);
+    }
   }
 
   &__title {
     @include typography.heading1;
+    margin-top: var(--space-2x);
     margin-bottom: var(--space-2x);
   }
 
@@ -52,7 +57,7 @@
   &__overview {
     @media screen and (max-width: breakpoints.$breakpoint-md) {
       margin-top: var(--space-8x);
-      border-top: 1px solid var(--primary-2);
+      border-top: 1px solid var(--neutral-3);
       padding-top: var(--space-8x);
     }
 
@@ -95,6 +100,10 @@
         margin-bottom: 0;
       }
     }
+  }
+
+  &__content {
+    padding-top: 0;
   }
 
   &__completeText {
