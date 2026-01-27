@@ -2,34 +2,47 @@ import './App.scss'
 import {Route} from "react-router-dom";
 import Homepage from "./pages/Homepage.tsx";
 import CaseStudy from "./pages/CaseStudy.tsx";
-import {createBrowserRouter, createRoutesFromElements, RouterProvider} from "react-router";
-import ApplicationShell from "./ApplicationShell.tsx";
+import {BrowserRouter, Routes} from "react-router";
+import { useEffect, useState } from 'react';
+import { MenuPanel } from './components/Menu/MenuPanel.tsx';
+import Menu from './components/Menu/Menu.tsx';
+import Footer from './components/Footer/Footer.tsx';
 
 export const ROUTE = {
   HOME: '/',
   CASE_STUDY: '/case/:slug',
 }
 
-const router = createBrowserRouter(
-  createRoutesFromElements(
-    <>
-      <Route path="/" element={<ApplicationShell />}>
-        <Route path={ROUTE.CASE_STUDY} element={<CaseStudy/>}/>
-        <Route path={ROUTE.HOME} element={<Homepage/>}/>
-      </Route>
-    </>
-  )
-);
-
-
 const App = () => {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
   const href = window.location.href;
   if (href.includes('/?/')) {
     window.history.replaceState({}, "", window.location.href.replace("/?/", "/"));
   }
 
+  useEffect(() => {
+    if(isMenuOpen && !document.body.classList.contains("hidden")) {
+      document.body.classList.add("hidden")
+    }
+    if(!isMenuOpen && document.body.classList.contains("hidden")) {
+      document.body.classList.remove("hidden")
+    }
+  }, [isMenuOpen]);
+
   return <div className="App">
-    <RouterProvider router={router}/>
+    <BrowserRouter>
+      <MenuPanel isMenuOpen={isMenuOpen} onClose={() => setIsMenuOpen(false)}/>
+      <Menu
+        isMenuOpen={isMenuOpen}
+        onMenuOpen={() => setIsMenuOpen(true)}
+        onMenuClose={() => setIsMenuOpen(false)}
+      />
+      <Routes>
+        <Route path={ROUTE.CASE_STUDY} element={<CaseStudy/>}></Route>
+        <Route path={ROUTE.HOME} element={<Homepage/>}></Route>
+      </Routes>
+      <Footer className="App__contact"/>
+    </BrowserRouter>
   </div>
 }
 

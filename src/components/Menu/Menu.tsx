@@ -4,6 +4,7 @@ import Sun from "../../assets/Sun.svg?react";
 import ExternalLink from "../../assets/ExternalLink.svg?react";
 import Burger from "../../assets/Burger.svg?react";
 import Close from "../../assets/Close.svg?react";
+import { useGetAssetSuspenseQuery } from '../../models/graphql.ts';
 
 interface Props {
   isMenuOpen: boolean;
@@ -11,6 +12,7 @@ interface Props {
   onMenuClose: () => void;
 }
 const Menu = ({isMenuOpen, onMenuOpen, onMenuClose}: Props) => {
+  const {data: resumeData} = useGetAssetSuspenseQuery({variables: {id: '7vsh60Sp5ygHoftxr1Eime'}});
   return <nav className="Menu">
     <Link to="/" button className="Menu__name" icon={<Sun/>} reverseIcon>Barbara Marche</Link>
 
@@ -22,14 +24,14 @@ const Menu = ({isMenuOpen, onMenuOpen, onMenuClose}: Props) => {
         </Link>
       </li>
       <li>
-        <Link
-          to='https://assets.ctfassets.net/bvolcybk2xx6/7vsh60Sp5ygHoftxr1Eime/3bb6f7f8bbb8c0e3547be52ffe6c1ef4/bmarche-resume.pdf'
+        {resumeData?.asset?.url && <Link
+          to={resumeData?.asset?.url}
           target="_blank"
           button
           animated
           icon={<ExternalLink/>}>
           Resume
-        </Link>
+        </Link>}
       </li>
       <li>
         <Link

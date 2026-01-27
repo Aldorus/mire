@@ -10,6 +10,7 @@ import Section from "./Section.tsx";
 import BlockReveal from "../components/BlockReveal/BlockReveal.tsx";
 import {Link} from "../components/Link/Link.tsx";
 import ArrowLeft from "../assets/ArrowLeft.svg?react";
+import { useEffect } from "react";
 
 type Params = {
   slug: string;
@@ -20,6 +21,10 @@ const CaseStudy = () => {
   const caseStudyId = caseStudySummary?.caseStudyCollection?.items[0];
   const {data} = useGetCaseStudySuspenseQuery({variables: {id: caseStudyId?.sys.id as string}});
 
+  useEffect(() => {
+    window.scrollTo({top:0, left:0, behavior: 'instant'})
+  }, []);
+
   if (isNil(data?.caseStudy)) {
     return null;
   }
@@ -28,7 +33,7 @@ const CaseStudy = () => {
     <BlockReveal>
       <Section className="CaseStudy__section CaseStudy__header">
         <div>
-          <Link to="/" button icon={<ArrowLeft/>} reverseIcon>Back</Link>
+          <Link to="/" button icon={<ArrowLeft/>} reverseIcon animated>Back</Link>
           <h1 className="CaseStudy__title">{data?.caseStudy.title}</h1>
           <h2 className="CaseStudy__subtitle">{data?.caseStudy.subtitle}</h2>
           <div className="CaseStudy__wrapper">
