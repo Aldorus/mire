@@ -55,7 +55,7 @@ function renderOptions(links: any) {
         // find the asset in the assetBlockMap by ID
         const asset = assetBlockMap.get(node.data.target.sys.id);
         return <figure key={node.data.target.sys.id}>
-          <Media asset={asset}/>
+          <Media asset={asset} play/>
           <figcaption>{asset.description}</figcaption>
         </figure>;
       },
