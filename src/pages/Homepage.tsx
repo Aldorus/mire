@@ -23,7 +23,7 @@ const Homepage = () => {
       <div className="Homepage__orb Homepage__orb--2" />
       <div className="Homepage__orb Homepage__orb--3" />
 
-      <div style={{ opacity }} >
+      <div style={{ opacity }}>
         <div className="Homepage__headline">
           <RichText content={data?.text?.content} className="Homepage__headline__text" />
         </div>
