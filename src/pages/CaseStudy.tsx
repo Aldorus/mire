@@ -1,14 +1,14 @@
 import "./_CaseStudy.scss";
-import {useGetCaseStudyIdSuspenseQuery, useGetCaseStudySuspenseQuery} from "../models/graphql.ts";
-import {useParams} from "react-router-dom";
+import { useGetCaseStudyIdSuspenseQuery, useGetCaseStudySuspenseQuery } from "../models/graphql.ts";
+import { useParams } from "react-router-dom";
 import Warning from "../assets/Warning.svg?react";
-import {isNil} from "lodash";
+import { isNil } from "lodash";
 import ProgressBar from "../components/ProgressBar/ProgressBar.tsx";
-import {RichText} from "../components/Typography/RichText.tsx";
+import { RichText } from "../components/Typography/RichText.tsx";
 import Page from "./Page.tsx";
 import Section from "./Section.tsx";
 import BlockReveal from "../components/BlockReveal/BlockReveal.tsx";
-import {Link} from "../components/Link/Link.tsx";
+import { Link } from "../components/Link/Link.tsx";
 import ArrowLeft from "../assets/ArrowLeft.svg?react";
 import { useEffect } from "react";
 
@@ -16,24 +16,24 @@ type Params = {
   slug: string;
 }
 const CaseStudy = () => {
-  const {slug} = useParams<Params>()
-  const {data: caseStudySummary} = useGetCaseStudyIdSuspenseQuery({variables: {where: {slug}}});
+  const { slug } = useParams<Params>()
+  const { data: caseStudySummary } = useGetCaseStudyIdSuspenseQuery({ variables: { where: { slug } } });
   const caseStudyId = caseStudySummary?.caseStudyCollection?.items[0];
-  const {data} = useGetCaseStudySuspenseQuery({variables: {id: caseStudyId?.sys.id as string}});
+  const { data } = useGetCaseStudySuspenseQuery({ variables: { id: caseStudyId?.sys.id as string } });
 
   useEffect(() => {
-    window.scrollTo({top:0, left:0, behavior: 'instant'})
+    window.scrollTo({ top: 0, left: 0, behavior: 'instant' })
   }, []);
 
   if (isNil(data?.caseStudy)) {
     return null;
   }
   return <Page className="CaseStudy">
-    <ProgressBar/>
+    <ProgressBar />
     <BlockReveal>
       <Section className="CaseStudy__section CaseStudy__header">
         <div>
-          <Link to="/" button icon={<ArrowLeft/>} reverseIcon animated>Back</Link>
+          <Link to="/" button icon={<ArrowLeft />} reverseIcon animated>Back</Link>
           <h1 className="CaseStudy__title">{data?.caseStudy.title}</h1>
           <h2 className="CaseStudy__subtitle">{data?.caseStudy.subtitle}</h2>
           <div className="CaseStudy__wrapper">
@@ -65,10 +65,10 @@ const CaseStudy = () => {
             </div>
           </div>
           {data?.caseStudy.classified && <div className="CaseStudy__quote">
-          <span className="CaseStudy__quote__wrapper">
-            <Warning className="CaseStudy__quote__warning"/>
-            <strong className="CaseStudy__quote__title">Confidentiality Notice</strong>
-          </span>
+            <span className="CaseStudy__quote__wrapper">
+              <Warning className="CaseStudy__quote__warning" />
+              <strong className="CaseStudy__quote__title">Confidentiality Notice</strong>
+            </span>
             <div className="CaseStudy__quote__text">
               <p>
                 This project is part of a broader redesign initiative currently underway at RSI. Due to confidentiality
@@ -84,7 +84,7 @@ const CaseStudy = () => {
     <BlockReveal>
       <Section className="CaseStudy__content">
         <div>
-          <RichText content={data?.caseStudy.completeText} className="CaseStudy__completeText"/>
+          <RichText content={data?.caseStudy.completeText} className="CaseStudy__completeText" />
         </div>
       </Section>
     </BlockReveal>

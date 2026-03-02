@@ -2,32 +2,32 @@
 @use "../tokens/mixins";
 
 // Random positions for keyframes
-$orb1-x-0: calc(50vw - 100%);
-$orb1-y-0: calc(50vh - 100%);
-$orb1-x-25: calc(80vw - 100%);
-$orb1-y-25: calc(10vh - 100%);
-$orb1-x-50: calc(70vw - 100%);
-$orb1-y-50: calc(30vh - 100%);
-$orb1-x-75: calc(45vw - 100%);
-$orb1-y-75: calc(75vh - 100%);
+$orb1-x-0: calc(20vw - 50%);
+$orb1-y-0: calc(20vh - 50%);
+$orb1-x-25: calc(40vw - 50%);
+$orb1-y-25: calc(80vh - 50%);
+$orb1-x-50: calc(80vw - 50%);
+$orb1-y-50: calc(40vh - 50%);
+$orb1-x-75: calc(60vw - 50%);
+$orb1-y-75: calc(10vh - 50%);
 
-$orb2-x-0: calc(40vw - 100%);
-$orb2-y-0: calc(80vh - 100%);
-$orb2-x-20: calc(65vw - 100%);
-$orb2-y-30: calc(70vh - 100%);
-$orb2-x-45: calc(10vw - 100%);
-$orb2-y-60: calc(80vh - 100%);
-$orb2-x-70: calc(20vw - 100%);
-$orb2-y-85: calc(10vh - 100%);
+$orb2-x-0: calc(80vw - 50%);
+$orb2-y-0: calc(20vh - 50%);
+$orb2-x-25: calc(40vw - 50%);
+$orb2-y-25: calc(10vh - 50%);
+$orb2-x-50: calc(20vw - 50%);
+$orb2-y-50: calc(80vh - 50%);
+$orb2-x-75: calc(60vw - 50%);
+$orb2-y-75: calc(40vh - 50%);
 
-$orb3-x-0: calc(40vw - 100%);
-$orb3-y-0: calc(50vh - 100%);
-$orb3-x-28: calc(50vw - 100%);
-$orb3-y-35: calc(70vh - 100%);
-$orb3-x-52: calc(10vw - 100%);
-$orb3-y-55: calc(20vh - 100%);
-$orb3-x-78: calc(45vw - 100%);
-$orb3-y-80: calc(90vh - 100%);
+$orb3-x-0: calc(10vw - 50%);
+$orb3-y-0: calc(80vh - 50%);
+$orb3-x-25: calc(80vw - 50%);
+$orb3-y-25: calc(40vh - 50%);
+$orb3-x-50: calc(40vw - 50%);
+$orb3-y-50: calc(10vh - 50%);
+$orb3-x-75: calc(20vw - 50%);
+$orb3-y-75: calc(40vh - 50%);
 
 .Homepage {
   position: relative;
@@ -35,8 +35,7 @@ $orb3-y-80: calc(90vh - 100%);
   &__top {
     display: flex;
     align-items: center;
-    background: url("../assets/Gradient v1.svg");
-    background-size:  cover;
+    background: var(--neutral-3); // Background color for the mesh
     height: 100vh;
     width: 100%;
     position: relative;
@@ -47,37 +46,39 @@ $orb3-y-80: calc(90vh - 100%);
   &__orb {
     position: absolute;
     border-radius: 50%;
-    filter: blur(40px);
+    filter: blur(120px);
     pointer-events: none;
+    opacity: 0.6;
+    z-index: 1;
 
     &--1 {
-      width: 500px;
-      height: 500px;
-      background: radial-gradient(circle, rgba(#9a6757, 1) 0%, rgba(#9a6757, 0.1) 70%);
+      width: 700px;
+      height: 700px;
+      background: radial-gradient(circle, rgba(229, 139, 106, 0.8) 0%, rgba(229, 139, 106, 0) 70%); // #E58B6A
       animation:
-        float-orb-1 20s ease infinite;
+        float-orb-1 30s ease-in-out infinite;
     }
 
     &--2 {
-      width: 450px;
-      height: 450px;
-      background: radial-gradient(circle, rgba(#E58B6A, 0.6) 0%, rgba(#E58B6A, 0) 70%);
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(229, 139, 106, 0.7) 0%, rgba(229, 139, 106, 0) 70%); // #E58B6A
       animation:
-        float-orb-2 20s ease infinite;
+        float-orb-2 40s ease-in-out infinite;
     }
 
     &--3 {
-      width: 380px;
-      height: 380px;
-      background: radial-gradient(circle, rgba(#F0B59D, 0.6) 0%, rgba(#F0B59D, 0) 70%);
+      width: 550px;
+      height: 550px;
+      background: radial-gradient(circle, rgba(229, 139, 106, 0.6) 0%, rgba(229, 139, 106, 0) 70%); // #E58B6A
       animation:
-        float-orb-3 20s ease infinite;
+        float-orb-3 50s ease-in-out infinite;
     }
   }
 
   &__headline {
     max-width: 800px;
-    z-index: 1;
+    z-index: 2;
   }
 
 
@@ -95,29 +96,69 @@ $orb3-y-80: calc(90vh - 100%);
     margin-top: 80px;
   }
 
-  &__About, &__Experiences {
+  &__About,
+  &__Experiences {
     max-width: var(--max-width);
   }
 }
 
-// Keyframe animations for the orbs - separate X and Y for more randomness
+// Keyframe animations for the orbs
 @keyframes float-orb-1 {
-  0%, 100% { transform: translateY($orb1-y-0) translateX($orb1-x-0); }
-  25% { transform: translateY($orb1-y-25) translateX($orb1-x-25); }
-  50% { transform: translateY($orb1-y-50) translateX($orb1-x-50); }
-  75% { transform: translateY($orb1-y-75) translateX($orb1-x-75); }
+
+  0%,
+  100% {
+    transform: translate($orb1-x-0, $orb1-y-0) scale(1.1);
+  }
+
+  25% {
+    transform: translate($orb1-x-25, $orb1-y-25) scale(0.9);
+  }
+
+  50% {
+    transform: translate($orb1-x-50, $orb1-y-50) scale(1.2);
+  }
+
+  75% {
+    transform: translate($orb1-x-75, $orb1-y-75) scale(0.8);
+  }
 }
 
 @keyframes float-orb-2 {
-  0%, 100% { transform: translateY($orb2-y-0) translateX($orb2-x-0); ; }
-  30% { transform: translateY($orb2-y-30) translateX($orb2-x-20); ; }
-  60% { transform: translateY($orb2-y-60) translateX($orb2-x-45); ; }
-  85% { transform: translateY($orb2-y-85) translateX($orb2-x-70); ; }
+
+  0%,
+  100% {
+    transform: translate($orb2-x-0, $orb2-y-0) scale(0.8);
+  }
+
+  25% {
+    transform: translate($orb2-x-25, $orb2-y-25) scale(1.2);
+  }
+
+  50% {
+    transform: translate($orb2-x-50, $orb2-y-50) scale(0.9);
+  }
+
+  75% {
+    transform: translate($orb2-x-75, $orb2-y-75) scale(1.1);
+  }
 }
 
 @keyframes float-orb-3 {
-  0%, 100% { transform: translateY($orb3-y-0) translateX($orb3-x-0); }
-  35% { transform: translateY($orb3-y-35) translateX($orb3-x-28); }
-  55% { transform: translateY($orb3-y-55) translateX($orb3-x-52); }
-  80% { transform: translateY($orb3-y-80) translateX($orb3-x-78); }
+
+  0%,
+  100% {
+    transform: translate($orb3-x-0, $orb3-y-0) scale(1.2);
+  }
+
+  25% {
+    transform: translate($orb3-x-25, $orb3-y-25) scale(0.8);
+  }
+
+  50% {
+    transform: translate($orb3-x-50, $orb3-y-50) scale(1.1);
+  }
+
+  75% {
+    transform: translate($orb3-x-75, $orb3-y-75) scale(0.9);
+  }
 }
