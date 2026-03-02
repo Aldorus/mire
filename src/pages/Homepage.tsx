@@ -18,7 +18,7 @@ const Homepage = () => {
   const opacity = 1 - (y / (window.innerHeight / 2));
 
   return <Page className="Homepage">
-    <Section fullHeight sticky className="Homepage__top" centered={false}>
+    <Section fullHeight sticky className="Homepage__top top" centered={false}>
       <div className="Homepage__orb Homepage__orb--1" />
       <div className="Homepage__orb Homepage__orb--2" />
       <div className="Homepage__orb Homepage__orb--3" />
