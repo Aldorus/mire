@@ -52,3 +52,11 @@ export default tseslint.config({
   },
 })
 ```
+
+## Déploiement
+
+Pour déployer les modifications sur le site :
+1. Commandez et commitez vos changements : `git commit -am "Mon message"`
+2. Poussez vers la branche main : `git push origin main`
+
+Le déploiement se fera alors automatiquement.
