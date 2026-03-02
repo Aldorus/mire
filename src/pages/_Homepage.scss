@@ -32,17 +32,30 @@ $orb3-y-75: calc(40vh - 50%);
 .Homepage {
   position: relative;
 
+  &__noise {
+    position: fixed;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    z-index: 5; // Above orbs, below headline (z-index 10)
+    pointer-events: none;
+    opacity: 0.20; // More visible as requested
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+    animation: noise-jitter 0.2s steps(2) infinite;
+    mix-blend-mode: overlay;
+  }
+
   &__top {
     display: flex;
     align-items: center;
-    background: var(--neutral-3); // Background color for the mesh
+    background: var(--neutral-3);
     height: 100vh;
     width: 100%;
     position: relative;
     overflow: hidden;
   }
 
-  // Orb styles
   &__orb {
     position: absolute;
     border-radius: 50%;
@@ -52,40 +65,52 @@ $orb3-y-75: calc(40vh - 50%);
     z-index: 1;
 
     &--1 {
-      width: 700px;
-      height: 700px;
-      background: radial-gradient(circle, rgba(229, 139, 106, 0.8) 0%, rgba(229, 139, 106, 0) 70%); // #E58B6A
-      animation:
-        float-orb-1 30s ease-in-out infinite;
+      width: 840px;
+      height: 840px;
+      background: radial-gradient(circle, rgba(229, 139, 106, 0.8) 0%, rgba(229, 139, 106, 0) 70%);
+      animation: float-orb-1 30s ease-in-out infinite;
     }
 
     &--2 {
-      width: 600px;
-      height: 600px;
-      background: radial-gradient(circle, rgba(229, 139, 106, 0.7) 0%, rgba(229, 139, 106, 0) 70%); // #E58B6A
-      animation:
-        float-orb-2 40s ease-in-out infinite;
+      width: 720px;
+      height: 720px;
+      background: radial-gradient(circle, rgba(229, 139, 106, 0.7) 0%, rgba(229, 139, 106, 0) 70%);
+      animation: float-orb-2 40s ease-in-out infinite;
     }
 
     &--3 {
-      width: 550px;
-      height: 550px;
-      background: radial-gradient(circle, rgba(229, 139, 106, 0.6) 0%, rgba(229, 139, 106, 0) 70%); // #E58B6A
-      animation:
-        float-orb-3 50s ease-in-out infinite;
+      width: 660px;
+      height: 660px;
+      background: radial-gradient(circle, rgba(229, 139, 106, 0.6) 0%, rgba(229, 139, 106, 0) 70%);
+      animation: float-orb-3 50s ease-in-out infinite;
     }
   }
 
-  &__headline {
-    max-width: 800px;
-    z-index: 2;
+  &__content {
+    position: relative;
+    z-index: 20; // Above orbs (1) and noise (5)
   }
 
+  &__headline {
+    max-width: 1100px;
+    z-index: 10; // Above noise
+
+    &__text.RichText {
+      h1 {
+        font-size: 64px !important; // Force size if needed by specificity
+        line-height: 1.1;
+      }
+
+      p {
+        max-width: 800px;
+      }
+    }
+  }
 
   &__Section {
     background: var(--neutral-2);
     padding-top: 0;
-    z-index: 3;
+    z-index: 10; // Above noise
     display: flex;
     flex-direction: column;
     gap: 120px;
@@ -160,5 +185,51 @@ $orb3-y-75: calc(40vh - 50%);
 
   75% {
     transform: translate($orb3-x-75, $orb3-y-75) scale(0.9);
+  }
+}
+
+@keyframes noise-jitter {
+  0% {
+    transform: translate(0, 0)
+  }
+
+  10% {
+    transform: translate(-5%, -5%)
+  }
+
+  20% {
+    transform: translate(-10%, 5%)
+  }
+
+  30% {
+    transform: translate(5%, -10%)
+  }
+
+  40% {
+    transform: translate(-5%, 15%)
+  }
+
+  50% {
+    transform: translate(-10%, 5%)
+  }
+
+  60% {
+    transform: translate(15%, 0)
+  }
+
+  70% {
+    transform: translate(0, 10%)
+  }
+
+  80% {
+    transform: translate(-15%, 0)
+  }
+
+  90% {
+    transform: translate(10%, 5%)
+  }
+
+  100% {
+    transform: translate(5%, 0)
   }
 }

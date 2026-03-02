@@ -18,12 +18,13 @@ const Homepage = () => {
   const opacity = 1 - (y / (window.innerHeight / 2));
 
   return <Page className="Homepage">
+    <div className="Homepage__noise" />
     <Section fullHeight sticky className="Homepage__top top" centered={false}>
       <div className="Homepage__orb Homepage__orb--1" />
       <div className="Homepage__orb Homepage__orb--2" />
       <div className="Homepage__orb Homepage__orb--3" />
 
-      <div style={{ opacity }}>
+      <div style={{ opacity }} className="Homepage__content">
         <div className="Homepage__headline">
           <RichText content={data?.text?.content} className="Homepage__headline__text" />
         </div>
