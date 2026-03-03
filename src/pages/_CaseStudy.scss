@@ -7,12 +7,30 @@
   z-index: 2;
   position: relative;
 
-  &__header  {
+  &__header {
     padding-bottom: var(--space-10x);
 
     @media screen and (max-width: breakpoints.$breakpoint-md) {
       margin-top: var(--space-8x);
     }
+
+    &__top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: var(--space-4x);
+      width: 100%;
+    }
+  }
+
+  &__reading-time {
+    @include typography.emphasis-4;
+    color: var(--accent-3);
+    border: 1px solid var(--accent-3);
+    padding: var(--space-1x) var(--space-4x);
+    border-radius: 100px;
+    font-size: 0.8rem;
+    white-space: nowrap;
   }
 
   &__title {
@@ -61,7 +79,7 @@
       padding-top: var(--space-8x);
     }
 
-    &__text p{
+    &__text p {
       font-weight: 300;
     }
   }
@@ -94,6 +112,7 @@
 
     &__text {
       flex: 1;
+
       p {
         @include typography.body-4;
         color: var(--accent-6);
@@ -112,11 +131,12 @@
     gap: var(--space-2x);
     padding-bottom: var(--space-32x);
 
-    > *:not(figure)  {
+    >*:not(figure) {
       width: 100%;
     }
 
-    img,video {
+    img,
+    video {
       border-radius: 8px;
     }
 
@@ -124,7 +144,7 @@
       @include typography.heading4;
     }
 
-    > p {
+    >p {
       margin-bottom: var(--space-6x);
     }
 
@@ -138,7 +158,7 @@
         line-height: 1.5;
       }
 
-      &::before{
+      &::before {
         content: "";
         background: url("../assets/Union.svg") no-repeat center;
         width: 56px;

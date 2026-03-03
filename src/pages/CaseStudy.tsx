@@ -11,6 +11,7 @@ import BlockReveal from "../components/BlockReveal/BlockReveal.tsx";
 import { Link } from "../components/Link/Link.tsx";
 import ArrowLeft from "../assets/ArrowLeft.svg?react";
 import { useEffect } from "react";
+import { calculateReadingTime } from "../utils/readingTime.ts";
 
 type Params = {
   slug: string;
@@ -28,12 +29,25 @@ const CaseStudy = () => {
   if (isNil(data?.caseStudy)) {
     return null;
   }
+
+  const readingTime = calculateReadingTime(
+    data.caseStudy.title,
+    data.caseStudy.subtitle,
+    data.caseStudy.overview,
+    data.caseStudy.completeText
+  );
+
   return <Page className="CaseStudy">
     <ProgressBar />
     <BlockReveal>
       <Section className="CaseStudy__section CaseStudy__header">
         <div>
-          <Link to="/" button icon={<ArrowLeft />} reverseIcon animated>Back</Link>
+          <div className="CaseStudy__header__top">
+            <Link to="/" button icon={<ArrowLeft />} reverseIcon animated>Back</Link>
+            <div className="CaseStudy__reading-time">
+              Reading time: {readingTime} min
+            </div>
+          </div>
           <h1 className="CaseStudy__title">{data?.caseStudy.title}</h1>
           <h2 className="CaseStudy__subtitle">{data?.caseStudy.subtitle}</h2>
           <div className="CaseStudy__wrapper">
