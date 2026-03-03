@@ -20,33 +20,10 @@
     display: flex;
     @include typography.emphasis-3;
     align-items: center;
-    color: var(--accent-3);
-    transition: color 0.2s ease-in-out;
 
     .Link__icon {
       width: 1.2em;
       animation: rotating 12s linear infinite;
-
-      svg path {
-        fill: var(--accent-3);
-        transition: fill 0.2s ease-in-out;
-      }
-    }
-
-    &:hover {
-      color: var(--accent-2);
-
-      .Link__icon svg path {
-        fill: var(--accent-2);
-      }
-    }
-
-    &:active {
-      color: var(--accent-3);
-
-      .Link__icon svg path {
-        fill: var(--accent-3);
-      }
     }
   }
 
