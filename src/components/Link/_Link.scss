@@ -12,13 +12,20 @@
   align-items: center;
   transition: color 0.3s ease;
 
-  &:hover {
-    color: var(--accent-2);
+  .Link__icon {
+    display: flex;
+    align-items: center;
+    width: 0.8em;
+    height: 100%;
 
-    .Link__icon svg,
-    .Link__icon path {
+    svg,
+    path {
       fill: currentColor;
     }
+  }
+
+  &:hover {
+    color: var(--accent-2);
   }
 
   &--button {
