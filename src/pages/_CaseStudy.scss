@@ -6,6 +6,7 @@
 .CaseStudy {
   z-index: 2;
   position: relative;
+  opacity: 1;
 
   &__header {
     padding-bottom: var(--space-10x);
