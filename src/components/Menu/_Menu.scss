@@ -20,13 +20,23 @@
     display: flex;
     @include typography.emphasis-3;
     align-items: center;
+    color: var(--accent-3);
+    transition: color 0.3s ease;
+
+    &:hover {
+      color: var(--accent-2);
+    }
+
+    &:active {
+      color: var(--accent-3);
+    }
 
     .Link__icon {
       width: 1.2em;
       animation: rotating 12s linear infinite;
 
       svg path {
-        fill: var(--neutral-1);
+        fill: currentColor;
       }
     }
 

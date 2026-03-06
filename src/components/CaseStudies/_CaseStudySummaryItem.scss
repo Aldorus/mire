@@ -1,6 +1,6 @@
 @use '../../tokens/typography';
 
-.CaseStudiesItem{
+.CaseStudiesItem {
   cursor: pointer;
 
   .title {
@@ -27,12 +27,37 @@
   }
 
   &__link {
-    &:hover {color:black}
+    text-decoration: none;
+
+    &:hover {
+      color: inherit;
+    }
   }
 
   &__description {
     display: flex;
     flex-direction: column;
     margin: var(--space-4x) 0;
+
+    h5 {
+      transition: color .3s ease;
+      color: var(--neutral-1);
+    }
+
+    .subtitle {
+      color: var(--neutral-1);
+    }
+  }
+
+  &:hover {
+    .CaseStudiesItem__description h5 {
+      color: var(--accent-3);
+    }
+  }
+
+  &:active {
+    .CaseStudiesItem__description h5 {
+      color: var(--neutral-1);
+    }
   }
 }
